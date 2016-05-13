@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from .models import *
 # Create your views here.
 
 
@@ -10,9 +10,9 @@ def index(request):
 
 @login_required
 def dashboard(request):
-    return HttpResponse('''This is your dashboard.
-                           You can view this only
-                           if you are authenticed''', 200)
+    all_website_sections = WebsiteSection.objects.all()
+    context = {'all_sections': all_website_sections}
+    return render(request, 'website/dashboard.html', context)
 
 
 def dashboard_login(request):

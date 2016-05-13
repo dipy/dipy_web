@@ -1,5 +1,6 @@
 defusedxml==0.4.1
 Django==1.9.6
+Markdown==2.6.6
 oauthlib==1.1.1
 PyJWT==1.4.0
 python-social-auth==0.2.19

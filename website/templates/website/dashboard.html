@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+{% for section in all_sections %}
+{{section}}<br>
+{{section.body_html|safe}}<hr>
+{% endfor %}
+</body>
+</html>
