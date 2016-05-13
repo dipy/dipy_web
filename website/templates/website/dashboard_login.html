@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>Login with:</h2>
+	{% for backend in backends.backends %}
+		{% if next %}
+			<a href="/login/{{backend}}/?next={{next}}">{{backend}}</a><br>
+		{% else %}
+			<a href="/login/{{backend}}/?next=/dashboard/">{{backend}}</a><br>
+		{% endif %}
+	{% endfor %}
+</body>
+</html>
