@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import *
 import requests
@@ -6,7 +6,7 @@ import requests
 
 
 def index(request):
-    return HttpResponse('''Hello, world. Welcome to dipy website.''', 200)
+    return render(request, 'website/index.html', {})
 
 
 @login_required
