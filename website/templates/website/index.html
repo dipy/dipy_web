@@ -1,5 +1,6 @@
 {% extends "website/base_template.html" %}
 
 {% block content_body %}
-<h1>Hello World</h1>
+<h1>{{home_header.title}}</h1>
+<p>{{home_header.body_html|safe}}</p>
 {% endblock %}

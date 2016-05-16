@@ -6,7 +6,10 @@ import requests
 
 
 def index(request):
-    return render(request, 'website/index.html', {})
+    context = {}
+    home_header = WebsiteSection.objects.get(website_position_id="home_header")
+    context['home_header'] = home_header
+    return render(request, 'website/index.html', context)
 
 
 @login_required
