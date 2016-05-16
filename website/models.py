@@ -25,7 +25,15 @@ class WebsiteSection(models.Model):
     # determines for what purpose the article is used. Eg: header, body etc.
     website_position_id = models.CharField(max_length=100,
                                            unique=True,
-                                           null=True)
+                                           null=True,
+                                           db_index=True)
+
+    # determines for which page the article is used. Eg: home, development.
+    WEBSITE_PAGE_CHOICES = (
+        ('home', 'Home'),
+    )
+    website_page = models.CharField(max_length=100,
+                                    choices=WEBSITE_PAGE_CHOICES)
 
     class Meta:
         permissions = (

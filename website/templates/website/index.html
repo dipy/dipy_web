@@ -1,11 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
-	<title></title>
-</head>
-<body>
+{% extends "website/base_template.html" %}
+
+{% block content_body %}
 <h1>Hello World</h1>
-</body>
-</html>
+{% endblock %}
