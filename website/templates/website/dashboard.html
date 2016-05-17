@@ -8,7 +8,9 @@
 <body>
 {% for section in all_sections %}
 {{section}}<br>
-{{section.body_html|safe}}<hr>
+{{section.body_html|safe}}
+<a href="/dashboard/editsection/{{section.website_position_id}}/">Edit</a>
+<hr>
 {% endfor %}
 
 {{repos}}

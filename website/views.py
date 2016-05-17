@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from .models import *
+from .forms import *
 import requests
 # Create your views here.
 
@@ -32,6 +34,48 @@ def dashboard(request):
 def dashboard_login(request):
     next_url = request.GET.get('next')
     return render(request, 'website/dashboard_login.html', {'next': next_url})
+
+
+@login_required
+def edit_website_section(request, position_id):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/editsection.html', {})
+
+    # if user has edit permission:
+    try:
+        website_section = WebsiteSection.objects.get(
+            website_position_id=position_id)
+    except:
+        raise Http404("Website Section does not exist")
+
+    context = {}
+    if request.method == 'POST':
+        submitted_form = EditWebsiteSectionForm(request.POST,
+                                                instance=website_section)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('/dashboard/')
+        else:
+            context['website_section'] = website_section
+            context['form'] = submitted_form
+            return render(request, 'website/editsection.html', context)
+
+    form = EditWebsiteSectionForm(instance=website_section)
+    context['website_section'] = website_section
+    context['form'] = form
+    return render(request, 'website/editsection.html', context)
 
 
 # Definition of functons:
