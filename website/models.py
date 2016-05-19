@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import markdown
+import bleach
 import datetime
 
 # Create your models here.
@@ -41,9 +42,13 @@ class WebsiteSection(models.Model):
             ("edit_section", "Can edit available sections"),
         )
 
+    allowed_html_tags = bleach.ALLOWED_TAGS + ['p']
+
     def save(self, *args, **kwargs):
-        self.body_html = markdown.markdown(self.body_markdown,
-                                           extensions=['codehilite'])
+        html_content = markdown.markdown(self.body_markdown,
+                                         extensions=['codehilite'])
+        # bleach is used to filter html tags like <script> for security
+        self.body_html = bleach.clean(html_content, self.allowed_html_tags)
         self.modified = datetime.datetime.now()
         # Call the "real" save() method.
         super(WebsiteSection, self).save(*args, **kwargs)
