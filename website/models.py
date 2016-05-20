@@ -42,13 +42,17 @@ class WebsiteSection(models.Model):
             ("edit_section", "Can edit available sections"),
         )
 
-    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre']
+    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table',
+                                               'tr', 'td', 'div', 'span']
+    allowed_attrs = ['href', 'class', 'rel', 'alt', 'class']
 
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,
                                          extensions=['codehilite'])
+        print(html_content)
         # bleach is used to filter html tags like <script> for security
-        self.body_html = bleach.clean(html_content, self.allowed_html_tags)
+        self.body_html = bleach.clean(html_content, self.allowed_html_tags,
+                                      self.allowed_attrs)
         self.modified = datetime.datetime.now()
         # Call the "real" save() method.
         super(WebsiteSection, self).save(*args, **kwargs)
