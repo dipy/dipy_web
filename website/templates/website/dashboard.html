@@ -1,11 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
-	<title>Dashboard</title>
-</head>
-<body>
+{% extends "website/base_template.html" %}
+
+{% block content_body %}
+
 {% for section in all_sections %}
 {{section}}<br>
 {{section.body_html|safe}}
@@ -13,6 +9,4 @@
 <hr>
 {% endfor %}
 
-{{repos}}
-</body>
-</html>
+{% endblock %}
