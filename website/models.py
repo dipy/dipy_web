@@ -42,7 +42,7 @@ class WebsiteSection(models.Model):
             ("edit_section", "Can edit available sections"),
         )
 
-    allowed_html_tags = bleach.ALLOWED_TAGS + ['p']
+    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre']
 
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,

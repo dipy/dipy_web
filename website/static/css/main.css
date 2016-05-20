@@ -2,11 +2,15 @@
   height: 2.4em; }
 
 #websiteNavbar {
-  min-height: 80px; }
+  min-height: 80px;
+  background: #fff;
+  border-bottom: 4px solid #e7e7e7; }
 
 .websiteNavbarList {
-  font-size: 1.2em;
-  padding: 0.8em; }
+  font-size: 1.1em;
+  padding: 0.9em 0.1em; }
+  .websiteNavbarList:hover {
+    box-shadow: 0px 4px 0px #333; }
 
 .navbar-toggle {
   position: relative;

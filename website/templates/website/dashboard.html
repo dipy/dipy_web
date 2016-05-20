@@ -2,6 +2,9 @@
 
 {% block content_body %}
 
+<div><a href="/dashboard/addsection/">Add Section</a></div>
+<hr>
+
 {% for section in all_sections %}
 {{section}}<br>
 {{section.body_html|safe}}

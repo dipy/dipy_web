@@ -10,7 +10,10 @@ import requests
 def index(request):
     context = {}
     home_header = WebsiteSection.objects.get(website_position_id="home_header")
+    getting_started = WebsiteSection.objects.get(
+        website_position_id="getting_started")
     context['home_header'] = home_header
+    context['getting_started'] = getting_started
     return render(request, 'website/index.html', context)
 
 
@@ -76,6 +79,39 @@ def edit_website_section(request, position_id):
     context['website_section'] = website_section
     context['form'] = form
     return render(request, 'website/editsection.html', context)
+
+
+@login_required
+def add_website_section(request):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/addsection.html', {})
+
+    # if user has edit permission:
+    context = {}
+    if request.method == 'POST':
+        submitted_form = AddWebsiteSectionForm(request.POST)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('/dashboard/')
+        else:
+            context['form'] = submitted_form
+            return render(request, 'website/addsection.html', context)
+
+    form = AddWebsiteSectionForm()
+    context['form'] = form
+    return render(request, 'website/addsection.html', context)
 
 
 # Definition of functons:
