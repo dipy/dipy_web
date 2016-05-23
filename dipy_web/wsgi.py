@@ -11,6 +11,12 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+# imports for heroku
+from whitenoise.django import DjangoWhiteNoise
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dipy_web.settings")
 
 application = get_wsgi_application()
+
+# additional steps for heroku
+application = DjangoWhiteNoise(application)
