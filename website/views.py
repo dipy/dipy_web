@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
@@ -9,9 +10,18 @@ import requests
 
 def index(request):
     context = {}
-    home_header = WebsiteSection.objects.get(website_position_id="home_header")
-    getting_started = WebsiteSection.objects.get(
-        website_position_id="getting_started")
+    try:
+        home_header = WebsiteSection.objects.get(
+            website_position_id="home_header")
+    except ObjectDoesNotExist:
+        home_header = None
+
+    try:
+        getting_started = WebsiteSection.objects.get(
+            website_position_id="getting_started")
+    except ObjectDoesNotExist:
+        getting_started = None
+
     context['home_header'] = home_header
     context['getting_started'] = getting_started
     return render(request, 'website/index.html', context)
