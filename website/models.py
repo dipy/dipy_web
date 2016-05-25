@@ -4,6 +4,18 @@ import markdown
 import bleach
 import datetime
 
+# markdown allowed tags that are not filtered by bleach
+
+allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
+                                           'h1', 'h2', 'h3', 'h4', 'h5',
+                                           'h6', 'b', 'i', 'strong', 'em',
+                                           'tt', 'br', 'blockquote',
+                                           'code', 'ul', 'ol', 'li',
+                                           'dd', 'dt', 'a', 'tr', 'td',
+                                           'div', 'span', 'hr']
+
+allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
+
 # Create your models here.
 
 
@@ -41,17 +53,13 @@ class WebsiteSection(models.Model):
             ("edit_section", "Can edit available sections"),
         )
 
-    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
-                                               'tr', 'td', 'div', 'span', 'hr']
-    allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
-
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,
                                          extensions=['codehilite'])
         print(html_content)
         # bleach is used to filter html tags like <script> for security
-        self.body_html = bleach.clean(html_content, self.allowed_html_tags,
-                                      self.allowed_attrs)
+        self.body_html = bleach.clean(html_content, allowed_html_tags,
+                                      allowed_attrs)
         self.modified = datetime.datetime.now()
         # Call the "real" save() method.
         super(WebsiteSection, self).save(*args, **kwargs)
@@ -68,17 +76,13 @@ class NewsPost(models.Model):
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
 
-    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
-                                               'tr', 'td', 'div', 'span', 'hr']
-    allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
-
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,
                                          extensions=['codehilite'])
         print(html_content)
         # bleach is used to filter html tags like <script> for security
-        self.body_html = bleach.clean(html_content, self.allowed_html_tags,
-                                      self.allowed_attrs)
+        self.body_html = bleach.clean(html_content, allowed_html_tags,
+                                      allowed_attrs)
         self.modified = datetime.datetime.now()
         # Call the "real" save() method.
         super(NewsPost, self).save(*args, **kwargs)
