@@ -10,20 +10,14 @@ import requests
 
 def index(request):
     context = {}
-    try:
-        home_header = WebsiteSection.objects.get(
-            website_position_id="home_header")
-    except ObjectDoesNotExist:
-        home_header = None
+    home_header = get_website_section('home_header')
+    getting_started = get_website_section('getting_started')
 
-    try:
-        getting_started = WebsiteSection.objects.get(
-            website_position_id="getting_started")
-    except ObjectDoesNotExist:
-        getting_started = None
+    latest_news = get_latest_news_posts(5)
 
     context['home_header'] = home_header
     context['getting_started'] = getting_started
+    context['latest_news'] = latest_news
     return render(request, 'website/index.html', context)
 
 
@@ -150,3 +144,38 @@ def has_commit_permission(access_token, repository_name):
                permissions["pull"]):
                 return True
     return False
+
+
+def get_website_section(requested_website_position_id):
+    """
+    Fetch WebsiteSection with website_position_id
+
+    Input
+    -----
+    website_position_id : string
+
+    Output
+    ------
+    returns WebsiteSection object or None if not found
+    """
+    try:
+        section = WebsiteSection.objects.get(
+            website_position_id=requested_website_position_id)
+    except ObjectDoesNotExist:
+        section = None
+    return section
+
+
+def get_latest_news_posts(limit):
+    """
+    Fetch Latest NewsPosts according to post_date
+
+    Input
+    -----
+    limit : string
+
+    Output
+    ------
+    returns a list of NewsPost objects
+    """
+    return NewsPost.objects.order_by('-post_date')[0:limit]

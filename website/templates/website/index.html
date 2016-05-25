@@ -16,4 +16,11 @@
 <p>getting_started does not exist</p>
 {% endif %}
 
+
+<h2>News</h2>
+<ul>
+{% for news in latest_news %}
+<li><p>{{ news.body_html|safe }}</p></li>
+{% endfor %}
+</ul>
 {% endblock %}

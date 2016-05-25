@@ -43,7 +43,7 @@ class WebsiteSection(models.Model):
         )
 
     allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
-                                               'tr', 'td', 'div', 'span']
+                                               'tr', 'td', 'div', 'span', 'hr']
     allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
 
     def save(self, *args, **kwargs):
@@ -56,6 +56,33 @@ class WebsiteSection(models.Model):
         self.modified = datetime.datetime.now()
         # Call the "real" save() method.
         super(WebsiteSection, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+class NewsPost(models.Model):
+    title = models.CharField(max_length=200)
+    body_markdown = models.TextField()
+    body_html = models.TextField(editable=False)
+    post_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(editable=False, auto_now_add=True)
+    modified = models.DateTimeField(editable=False, auto_now_add=True)
+
+    allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
+                                               'tr', 'td', 'div', 'span', 'hr']
+    allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
+
+    def save(self, *args, **kwargs):
+        html_content = markdown.markdown(self.body_markdown,
+                                         extensions=['codehilite'])
+        print(html_content)
+        # bleach is used to filter html tags like <script> for security
+        self.body_html = bleach.clean(html_content, self.allowed_html_tags,
+                                      self.allowed_attrs)
+        self.modified = datetime.datetime.now()
+        # Call the "real" save() method.
+        super(NewsPost, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
