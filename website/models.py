@@ -26,7 +26,6 @@ class WebsiteSection(models.Model):
     # determines for what purpose the article is used. Eg: header, body etc.
     website_position_id = models.CharField(max_length=100,
                                            unique=True,
-                                           null=True,
                                            db_index=True)
 
     # determines for which page the article is used. Eg: home, development.
