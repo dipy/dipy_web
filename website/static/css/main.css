@@ -24,4 +24,13 @@
   border: 1px solid transparent;
   border-radius: 4px; }
 
+img {
+  display: block;
+  margin: 0 auto; }
+
+.youtube-embed {
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 1em #222; }
+
 /*# sourceMappingURL=main.css.map */
