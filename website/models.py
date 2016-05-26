@@ -12,7 +12,7 @@ allowed_html_tags = bleach.ALLOWED_TAGS + ['p', 'pre', 'table', 'img',
                                            'tt', 'br', 'blockquote',
                                            'code', 'ul', 'ol', 'li',
                                            'dd', 'dt', 'a', 'tr', 'td',
-                                           'div', 'span', 'hr', 'iframe']
+                                           'div', 'span', 'hr']
 
 allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
 

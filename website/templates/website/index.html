@@ -1,17 +1,18 @@
 {% extends "website/base_template.html" %}
+{% load customfilters %}
 
 {% block content_body %}
 
 {% if home_header %}
 <h1>{{ home_header.title }}</h1>
-<p>{{ home_header.body_html|safe }}</p>
+<p>{{ home_header.body_html|youtube_embed_url|safe }}</p>
 {% else %}
 <p>home_header does not exist</p>
 {% endif %}
 
 {% if getting_started %}
 <h1>{{ getting_started.title }}</h1>
-<p>{{ getting_started.body_html|safe }}</p>
+<p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
 {% else %}
 <p>getting_started does not exist</p>
 {% endif %}

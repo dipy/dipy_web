@@ -1,5 +1,5 @@
 {% extends "website/base_template.html" %}
-
+{% load customfilters %}
 {% block content_body %}
 
 <div><a href="/dashboard/addsection/">Add Section</a></div>
@@ -7,7 +7,7 @@
 
 {% for section in all_sections %}
 {{section}}<br>
-{{section.body_html|safe}}
+{{section.body_html|youtube_embed_url|safe}}
 <a href="/dashboard/editsection/{{section.website_position_id}}/">Edit</a>
 <hr>
 {% endfor %}
