@@ -14,3 +14,9 @@ class AddWebsiteSectionForm(ModelForm):
         fields = ['title', 'body_markdown',
                   'website_position_id',
                   'website_page']
+
+
+class AddEditNewsPostForm(ModelForm):
+    class Meta:
+        model = NewsPost
+        fields = ['title', 'body_markdown', 'post_date']

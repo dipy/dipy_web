@@ -1,0 +1,19 @@
+{% extends "website/base_template.html" %}
+{% load customfilters %}
+{% block content_body %}
+
+<h1>Admin Panel</h1>
+
+<h3>Add / Edit News</h3>
+
+<div><a href="/dashboard/news/add/">Add News</a></div>
+<hr>
+
+{% for post in all_news_posts %}
+{{post}}<br>
+{{post.body_html|safe}}
+<a href="/dashboard/news/edit/{{post.id}}/">Edit</a>
+<hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "website/base_template.html" %}
+
+{% load staticfiles %}
+
+{% block extra_css %}
+<!-- Include simplemde markdown editor css-->
+<link rel="stylesheet" type="text/css" href="{% static "css/simplemde.min.css" %}">
+{% endblock %}
+
+{% block content_body %}
+
+{% if form %}
+	<form action="." method="post">
+	    {% csrf_token %}
+	    {{ form }}
+	    <input type="submit" value="Submit" />
+	</form>
+{% endif %}
+
+{% endblock %}
+
+
+{% block extra_js_bottom %}
+<!-- Include and call simplemde markdown editor js-->
+<script type="text/javascript" src="{% static "js/simplemde.min.js" %}"></script>
+<script>
+var simplemde = new SimpleMDE({ element: $("#id_body_markdown")[0] });
+</script>
+{% endblock %}

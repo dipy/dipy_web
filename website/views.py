@@ -23,6 +23,16 @@ def index(request):
 
 @login_required
 def dashboard(request):
+        return render(request, 'website/dashboard.html', {})
+
+
+def dashboard_login(request):
+    next_url = request.GET.get('next')
+    return render(request, 'website/dashboard_login.html', {'next': next_url})
+
+
+@login_required
+def dashboard_sections(request):
     try:
         social = request.user.social_auth.get(provider='github')
         access_token = social.extra_data['access_token']
@@ -33,14 +43,9 @@ def dashboard(request):
         all_website_sections = WebsiteSection.objects.all()
         context = {'all_sections': all_website_sections}
         # if(request.user.has_perm('website.view_section')):
-        return render(request, 'website/dashboard.html', context)
+        return render(request, 'website/dashboard_sections.html', context)
     else:
-        return render(request, 'website/dashboard.html', {})
-
-
-def dashboard_login(request):
-    next_url = request.GET.get('next')
-    return render(request, 'website/dashboard_login.html', {'next': next_url})
+        return render(request, 'website/dashboard_sections.html', {})
 
 
 @login_required
@@ -73,7 +78,7 @@ def edit_website_section(request, position_id):
                                                 instance=website_section)
         if submitted_form.is_valid():
             submitted_form.save()
-            return redirect('/dashboard/')
+            return redirect('/dashboard/sections/')
         else:
             context['website_section'] = website_section
             context['form'] = submitted_form
@@ -108,7 +113,7 @@ def add_website_section(request):
         submitted_form = AddWebsiteSectionForm(request.POST)
         if submitted_form.is_valid():
             submitted_form.save()
-            return redirect('/dashboard/')
+            return redirect('/dashboard/sections/')
         else:
             context['form'] = submitted_form
             return render(request, 'website/addsection.html', context)
@@ -116,6 +121,96 @@ def add_website_section(request):
     form = AddWebsiteSectionForm()
     context['form'] = form
     return render(request, 'website/addsection.html', context)
+
+
+@login_required
+def dashboard_news(request):
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    has_permission = has_commit_permission(access_token, 'dipy_web')
+    if has_permission:
+        all_news_posts = NewsPost.objects.all()
+        context = {'all_news_posts': all_news_posts}
+        # if(request.user.has_perm('website.view_section')):
+        return render(request, 'website/dashboard_news.html', context)
+    else:
+        return render(request, 'website/dashboard_news.html', {})
+
+
+@login_required
+def add_news_post(request):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/addnews.html', {})
+
+    # if user has edit permission:
+    context = {}
+    if request.method == 'POST':
+        submitted_form = AddEditNewsPostForm(request.POST)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('/dashboard/news/')
+        else:
+            context['form'] = submitted_form
+            return render(request, 'website/addnews.html', context)
+
+    form = AddEditNewsPostForm()
+    context['form'] = form
+    return render(request, 'website/addnews.html', context)
+
+
+@login_required
+def edit_news_post(request, news_id):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/editnews.html', {})
+
+    # if user has edit permission:
+    try:
+        news_post = NewsPost.objects.get(
+            id=news_id)
+    except:
+        raise Http404("Website Section does not exist")
+
+    context = {}
+    if request.method == 'POST':
+        submitted_form = AddEditNewsPostForm(request.POST,
+                                             instance=news_post)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('/dashboard/news/')
+        else:
+            context['form'] = submitted_form
+            return render(request, 'website/editnews.html', context)
+
+    form = AddEditNewsPostForm(instance=news_post)
+    context['form'] = form
+    return render(request, 'website/editnews.html', context)
 
 
 # Definition of functons:

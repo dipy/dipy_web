@@ -2,14 +2,8 @@
 {% load customfilters %}
 {% block content_body %}
 
-<div><a href="/dashboard/addsection/">Add Section</a></div>
-<hr>
-
-{% for section in all_sections %}
-{{section}}<br>
-{{section.body_html|youtube_embed_url|safe}}
-<a href="/dashboard/editsection/{{section.website_position_id}}/">Edit</a>
-<hr>
-{% endfor %}
+<h1>Admin Panel</h1>
+<a href="/dashboard/sections/"><div>Edit Website Sections</div></a>
+<a href="/dashboard/news/"><div>Add / Edit News</div></a>
 
 {% endblock %}

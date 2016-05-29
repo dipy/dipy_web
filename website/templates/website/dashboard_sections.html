@@ -1,0 +1,19 @@
+{% extends "website/base_template.html" %}
+{% load customfilters %}
+{% block content_body %}
+
+<h1>Admin Panel</h1>
+
+<h3>Edit Website Sections</h3>
+
+<div><a href="/dashboard/sections/add/">Add Section</a></div>
+<hr>
+
+{% for section in all_sections %}
+{{section}}<br>
+{{section.body_html|youtube_embed_url|safe}}
+<a href="/dashboard/sections/edit/{{section.website_position_id}}/">Edit</a>
+<hr>
+{% endfor %}
+
+{% endblock %}

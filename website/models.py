@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 import markdown
 import bleach
 import datetime
@@ -72,7 +73,7 @@ class NewsPost(models.Model):
     title = models.CharField(max_length=200)
     body_markdown = models.TextField()
     body_html = models.TextField(editable=False)
-    post_date = models.DateTimeField(auto_now_add=True)
+    post_date = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
 
