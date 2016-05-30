@@ -24,6 +24,10 @@
   border: 1px solid transparent;
   border-radius: 4px; }
 
+.news-date {
+  float: left;
+  margin-right: 4px; }
+
 img {
   display: block;
   margin: 0 auto; }

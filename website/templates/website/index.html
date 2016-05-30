@@ -21,7 +21,7 @@
 <h2>News</h2>
 <ul>
 {% for news in latest_news %}
-<li><p>{{ news.body_html|safe }}</p></li>
+<li><span class="news-date">{{news.post_date}} |</span><p>{{ news.body_html|safe }}</p></li>
 {% endfor %}
 </ul>
 {% endblock %}
