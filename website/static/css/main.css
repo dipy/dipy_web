@@ -37,4 +37,9 @@ img {
   margin: 0 auto;
   box-shadow: 0 0 1em #222; }
 
+.carousel-indicators li {
+  border: 1px solid #1a1a1a; }
+.carousel-indicators .active {
+  background: #e5e5e5; }
+
 /*# sourceMappingURL=main.css.map */

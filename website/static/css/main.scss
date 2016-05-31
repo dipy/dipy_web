@@ -46,3 +46,15 @@ img {
     margin: 0 auto;
     box-shadow: 0 0 1em #222;
 }
+
+
+// carousal-main styles
+.carousel-indicators{
+        li {
+            border: 1px solid #1a1a1a;
+        }
+
+        .active {
+            background: #e5e5e5;
+        }
+    }
