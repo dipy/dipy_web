@@ -11,9 +11,9 @@ def youtube_embed_url(value):
     exp = re.compile(r'((http|https)\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]*))')
     matches = exp.findall(value)
     processed_str = value
-    template = '<iframe class="youtube-embed" width="640" height="360" \
+    template = '<div class="youtube-wrapper"><iframe class="youtube-embed" width="640" height="360" \
                 src="https://www.youtube.com/embed/%s?rel=0&modestbranding=1" \
-                frameborder="0" allowfullscreen></iframe>'
+                frameborder="0" allowfullscreen></iframe></div>'
     for match in matches:
         processed_str = processed_str.replace(match[0], template % match[2])
     return processed_str
