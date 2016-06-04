@@ -4,7 +4,6 @@ import re
 register = template.Library()
 
 
-@register.filter(name='youtube_embed_url')
 # converts all youtube URLs in the text to embed HTML
 @register.filter(name='youtube_embed_url')
 def youtube_embed_url(value):
