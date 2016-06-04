@@ -90,3 +90,30 @@ class NewsPost(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Publication(models.Model):
+    """
+    Model for storing publication information.
+    """
+    title = models.CharField(max_length=200)
+    url = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    doi = models.CharField(max_length=100, null=True, blank=True)
+    journal = models.CharField(max_length=200, null=True, blank=True)
+    publisher = models.CharField(max_length=200, null=True, blank=True)
+    year_of_publication = models.CharField(max_length=4, null=True, blank=True)
+    month_of_publication = models.CharField(max_length=10, null=True,
+                                            blank=True)
+    bibtex = models.TextField(null=True, blank=True)
+
+    created = models.DateTimeField(editable=False, auto_now_add=True)
+    modified = models.DateTimeField(editable=False, auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.modified = datetime.datetime.now()
+        # Call the "real" save() method.
+        super(Publication, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

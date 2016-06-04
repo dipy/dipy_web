@@ -26,6 +26,13 @@ urlpatterns = [
     url(r'^dashboard/news/add/$', views.add_news_post,
         name='add_news_post'),
 
+    # Publication Management
+    url(r'^dashboard/publications/$', views.dashboard_publications,
+        name='dashboard_publications'),
+    url(r'^dashboard/publications/edit/(?P<publication_id>.*?)/$',
+        views.edit_publication, name='edit_publication'),
+    url(r'^dashboard/publications/add/$', views.add_publication,
+        name='add_publication'),
 
     url('', include('social.apps.django_app.urls', namespace='social')),
 

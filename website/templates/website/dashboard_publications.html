@@ -1,0 +1,21 @@
+{% extends "website/base_template.html" %}
+{% load customfilters %}
+{% block content_body %}
+
+<h1>Admin Panel</h1>
+
+<h3>Add / Edit Publications</h3>
+
+<div><a href="/dashboard/publications/add/">Add Publication</a></div>
+<hr>
+
+{% if all_publications %}
+	{% for publication in all_publications %}
+		<a href="{{ publication.url }}">{{publication.title}}</a><br>
+		{{publication.author}}
+		<a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a>
+		<hr>
+	{% endfor %}
+{% endif %}
+
+{% endblock %}

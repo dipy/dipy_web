@@ -67,4 +67,15 @@
 <li><span class="news-date">{{news.post_date}} |</span><p>{{ news.body_html|safe }}</p></li>
 {% endfor %}
 </ul>
+
+
+
+<h2>Publications</h2>
+{% for publication in all_publications %}
+  <a href="{{ publication.url }}">{{publication.title}}</a><br>
+  {{publication.author}}
+  <a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a>
+  <hr>
+{% endfor %}
+
 {% endblock %}

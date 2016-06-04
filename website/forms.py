@@ -20,3 +20,10 @@ class AddEditNewsPostForm(ModelForm):
     class Meta:
         model = NewsPost
         fields = ['title', 'body_markdown', 'post_date']
+
+
+class AddEditPublicationForm(ModelForm):
+    class Meta:
+        model = Publication
+        fields = ['title', 'url', 'author', 'doi', 'journal', 'publisher',
+                  'year_of_publication', 'month_of_publication', 'bibtex']
