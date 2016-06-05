@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^dashboard/publications/add/$', views.add_publication,
         name='add_publication'),
 
+    # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
 
 ]
