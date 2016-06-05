@@ -38,7 +38,7 @@ def add_news_post(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addnews.html', {})
+        return render(request, 'website/addeditnews.html', {})
 
     # if user has edit permission:
     context = {}
@@ -49,11 +49,11 @@ def add_news_post(request):
             return redirect('/dashboard/news/')
         else:
             context['form'] = submitted_form
-            return render(request, 'website/addnews.html', context)
+            return render(request, 'website/addeditnews.html', context)
 
     form = AddEditNewsPostForm()
     context['form'] = form
-    return render(request, 'website/addnews.html', context)
+    return render(request, 'website/addeditnews.html', context)
 
 
 @login_required
@@ -71,7 +71,7 @@ def edit_news_post(request, news_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/editnews.html', {})
+        return render(request, 'website/addeditnews.html', {})
 
     # if user has edit permission:
     try:
@@ -89,8 +89,8 @@ def edit_news_post(request, news_id):
             return redirect('/dashboard/news/')
         else:
             context['form'] = submitted_form
-            return render(request, 'website/editnews.html', context)
+            return render(request, 'website/addeditnews.html', context)
 
     form = AddEditNewsPostForm(instance=news_post)
     context['form'] = form
-    return render(request, 'website/editnews.html', context)
+    return render(request, 'website/addeditnews.html', context)
