@@ -31,8 +31,8 @@ urlpatterns = [
         name='dashboard_publications'),
     url(r'^dashboard/publications/edit/(?P<publication_id>.*?)/$',
         views.edit_publication, name='edit_publication'),
-    url(r'^dashboard/publications/add/$', views.add_publication,
-        name='add_publication'),
+    url(r'^dashboard/publications/add/(?P<method>.*?)/$',
+        views.add_publication, name='add_publication'),
 
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
