@@ -139,7 +139,7 @@ def edit_publication(request, publication_id):
         publication = Publication.objects.get(
             id=publication_id)
     except:
-        raise Http404("Website Section does not exist")
+        raise Http404("Publication does not exist")
 
     context = {}
     if request.method == 'POST':
@@ -155,3 +155,27 @@ def edit_publication(request, publication_id):
     form = AddEditPublicationForm(instance=publication)
     context['form'] = form
     return render(request, 'website/addeditpublication.html', context)
+
+
+@login_required
+def delete_publication(request, publication_id):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/addeditpublication.html', {})
+    try:
+        p = Publication.objects.get(id=publication_id)
+    except:
+        raise Http404("Publication does not exist")
+    p.delete()
+    return redirect('/dashboard/publications/')

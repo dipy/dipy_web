@@ -13,10 +13,24 @@
 {% if all_publications %}
 	{% for publication in all_publications %}
 		<a href="{{ publication.url }}">{{publication.title}}</a><br>
-		{{publication.author}}
-		<a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a>
+		{{publication.author}}<br>
+		<a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a> | 
+		<a class="publicationDeleteLink" href="/dashboard/publications/delete/{{publication.id}}/">Delete</a>
 		<hr>
 	{% endfor %}
 {% endif %}
 
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show bibtex on link click -->
+<script>
+$( ".publicationDeleteLink" ).click(function( event ) {
+  	event.preventDefault();
+	var r = confirm("Are you sure you want to delete the publication?");
+	if (r == true) {
+	    window.location.href = $(this).attr('href');
+	}
+});
+</script>
 {% endblock %}
