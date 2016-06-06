@@ -74,7 +74,6 @@
 {% for publication in all_publications %}
   <a href="{{ publication.url }}">{{publication.title}}</a><br>
   {{publication.author}}
-  <a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a>
   <hr>
 {% endfor %}
 
