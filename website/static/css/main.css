@@ -49,4 +49,9 @@ img {
 .carousel-indicators .active {
   background: #e5e5e5; }
 
+.publicationBibtex {
+  display: none;
+  background: #e9e9e9;
+  padding: 1em; }
+
 /*# sourceMappingURL=main.css.map */

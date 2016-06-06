@@ -11,13 +11,18 @@ def index(request):
     home_header = get_website_section('home_header')
     getting_started = get_website_section('getting_started')
     latest_news = get_latest_news_posts(5)
-    all_publications = Publication.objects.all()
 
     context['home_header'] = home_header
     context['getting_started'] = getting_started
     context['latest_news'] = latest_news
-    context['all_publications'] = all_publications
     return render(request, 'website/index.html', context)
+
+
+def cite(request):
+    context = {}
+    all_publications = Publication.objects.all()
+    context['all_publications'] = all_publications
+    return render(request, 'website/cite.html', context)
 
 
 @login_required

@@ -5,6 +5,9 @@ urlpatterns = [
     # Home Page
     url(r'^$', views.index, name='index'),
 
+    # Cite Page for publications
+    url(r'^cite/$', views.cite, name='cite'),
+
     # Admin Panel Dash Board
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
 
