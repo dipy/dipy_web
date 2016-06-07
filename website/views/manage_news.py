@@ -94,3 +94,27 @@ def edit_news_post(request, news_id):
     form = AddEditNewsPostForm(instance=news_post)
     context['form'] = form
     return render(request, 'website/addeditnews.html', context)
+
+
+@login_required
+def delete_news_post(request, news_id):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/addeditnews.html', {})
+    try:
+        n = NewsPost.objects.get(id=news_id)
+    except:
+        raise Http404("Publication does not exist")
+    n.delete()
+    return redirect('/dashboard/news/')

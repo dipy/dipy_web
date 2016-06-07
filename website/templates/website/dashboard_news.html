@@ -11,8 +11,21 @@
 {% for post in all_news_posts %}
 {{post}}<br>
 {{post.body_html|safe}}
-<a href="/dashboard/news/edit/{{post.id}}/">Edit</a>
+<a href="/dashboard/news/edit/{{post.id}}/">Edit</a> | <a class="newsDeleteLink" href="/dashboard/news/delete/{{post.id}}/">Delete</a>
 <hr>
 {% endfor %}
 
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show bibtex on link click -->
+<script>
+$( ".newsDeleteLink" ).click(function( event ) {
+    event.preventDefault();
+	var r = confirm("Are you sure you want to delete the news?");
+	if (r == true) {
+	    window.location.href = $(this).attr('href');
+	}
+});
+</script>
 {% endblock %}

@@ -28,6 +28,8 @@ urlpatterns = [
         views.edit_news_post, name='edit_news_post'),
     url(r'^dashboard/news/add/$', views.add_news_post,
         name='add_news_post'),
+    url(r'^dashboard/news/delete/(?P<news_id>.*?)/$',
+        views.delete_news_post, name='delete_news_post'),
 
     # Publication Management
     url(r'^dashboard/publications/$', views.dashboard_publications,
