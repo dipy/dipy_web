@@ -5,6 +5,7 @@ from website.models import Publication
 from website.forms import AddEditPublicationForm
 from django.http import Http404
 import bibtexparser
+from django.core.exceptions import ObjectDoesNotExist
 
 
 @login_required
@@ -179,3 +180,38 @@ def delete_publication(request, publication_id):
         raise Http404("Publication does not exist")
     p.delete()
     return redirect('/dashboard/publications/')
+
+
+@login_required
+def highlight_publications(request):
+    # check if user has edit permissions
+    try:
+        social = request.user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except:
+        access_token = ''
+    if access_token:
+        has_permission = has_commit_permission(access_token, 'dipy_web')
+    else:
+        has_permission = False
+
+    # if user does not have edit permission:
+    if not has_permission:
+        return render(request, 'website/addeditpublication.html', {})
+    else:
+        if request.method == 'POST':
+            highlighted_publications = request.POST.getlist('highlights[]')
+            all_publications = Publication.objects.all()
+
+            for p in all_publications:
+                if str(p.id) in highlighted_publications:
+                    p.is_highlighted = True
+                else:
+                    p.is_highlighted = False
+                p.save()
+            return redirect('/dashboard/publications/')
+        else:
+            all_publications = Publication.objects.all()
+            context = {'all_publications': all_publications}
+            return render(request, 'website/highlightpublications.html',
+                          context)

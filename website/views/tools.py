@@ -1,5 +1,6 @@
 from website.models import *
 import requests
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Definition of functions:

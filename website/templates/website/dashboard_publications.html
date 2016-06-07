@@ -7,12 +7,16 @@
 
 <div><a href="/dashboard/publications/add/bibtex/">Add Publication from bibtex</a></div>
 <div><a href="/dashboard/publications/add/manual/">Add Publication manually</a></div>
+<div><a href="/dashboard/publications/highlight/">Highlight Publications</a></div>
 
 <hr>
 
 {% if all_publications %}
 	{% for publication in all_publications %}
-		<a href="{{ publication.url }}">{{publication.title}}</a><br>
+		{% if publication.is_highlighted %}<b>{% endif %}
+		<a href="{{ publication.url }}">{{publication.title}}</a>
+		{% if publication.is_highlighted %}</b>{% endif %}
+		<br>
 		{{publication.author}}<br>
 		<a href="/dashboard/publications/edit/{{publication.id}}/">Edit</a> | 
 		<a class="publicationDeleteLink" href="/dashboard/publications/delete/{{publication.id}}/">Delete</a>

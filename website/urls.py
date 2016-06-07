@@ -40,6 +40,8 @@ urlpatterns = [
         views.add_publication, name='add_publication'),
     url(r'^dashboard/publications/delete/(?P<publication_id>.*?)/$',
         views.delete_publication, name='delete_publication'),
+    url(r'^dashboard/publications/highlight/$',
+        views.highlight_publications, name='highlight_publications'),
 
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
