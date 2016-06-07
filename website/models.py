@@ -106,6 +106,7 @@ class Publication(models.Model):
     month_of_publication = models.CharField(max_length=10, null=True,
                                             blank=True)
     bibtex = models.TextField(null=True, blank=True)
+    is_highlighted = models.BooleanField(default=False)
 
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
