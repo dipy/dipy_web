@@ -62,11 +62,11 @@
 
 
 <h2>News</h2>
-<ul>
+<table class="table">
 {% for news in latest_news %}
-<li><span class="news-date">{{news.post_date}} |</span><p>{{ news.body_html|safe }}</p></li>
+<tr><td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td><td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}</td></tr>
 {% endfor %}
-</ul>
+</table>
 
 <h2>Highlighted Publications</h2>
 {% for publication in highlighted_publications %}
