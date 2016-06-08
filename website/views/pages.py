@@ -11,10 +11,12 @@ def index(request):
     home_header = get_website_section('home_header')
     getting_started = get_website_section('getting_started')
     latest_news = get_latest_news_posts(5)
+    highlighted_publications = Publication.objects.filter(is_highlighted=True)
 
     context['home_header'] = home_header
     context['getting_started'] = getting_started
     context['latest_news'] = latest_news
+    context['highlighted_publications'] = highlighted_publications
     return render(request, 'website/index.html', context)
 
 

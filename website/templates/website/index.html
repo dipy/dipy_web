@@ -68,5 +68,28 @@
 {% endfor %}
 </ul>
 
+<h2>Highlighted Publications</h2>
+{% for publication in highlighted_publications %}
+  <div class="publicationInfo">
+    <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>
+    <p>{{publication.author}}</p>
+    {% if publication.bibtex %}
+    <a href="#" class="bibtexShowButton">Bibtex</a>
+    <p class="publicationBibtex">{{publication.bibtex}}</p>
+    {% endif %}
+  </div>
+  <hr>
+{% endfor %}
 
+{% endblock %}
+
+
+{% block extra_js_bottom %}
+<!-- Script to show bibtex on link click -->
+<script>
+$( ".bibtexShowButton" ).click(function( event ) {
+  event.preventDefault();
+  $( this ).next().slideToggle();
+});
+</script>
 {% endblock %}
