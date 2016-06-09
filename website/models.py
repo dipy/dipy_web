@@ -118,3 +118,22 @@ class Publication(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CarouselImage(models.Model):
+    """
+    Model for storing image links for carousel.
+    """
+    image_caption = models.CharField(max_length=200)
+    image_url = models.URLField(max_length=200)
+
+    created = models.DateTimeField(editable=False, auto_now_add=True)
+    modified = models.DateTimeField(editable=False, auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.modified = datetime.datetime.now()
+        # Call the "real" save() method.
+        super(CarouselImage, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.image_url

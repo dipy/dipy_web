@@ -43,6 +43,16 @@ urlpatterns = [
     url(r'^dashboard/publications/highlight/$',
         views.highlight_publications, name='highlight_publications'),
 
+    # Carousel Management
+    url(r'^dashboard/carousel/$', views.dashboard_carousel,
+        name='dashboard_carousel'),
+    url(r'^dashboard/carousel/edit/(?P<carousel_image_id>.*?)/$',
+        views.edit_carousel_image, name='edit_carousel_image'),
+    url(r'^dashboard/carousel/add/$', views.add_carousel_image,
+        name='add_carousel_image'),
+    url(r'^dashboard/carousel/delete/(?P<carousel_image_id>.*?)/$',
+        views.delete_carousel_image, name='delete_carousel_image'),
+
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
 

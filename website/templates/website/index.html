@@ -14,23 +14,14 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://garyfallidis.github.io/images/quickbundles_banner.jpg" alt="">
+    {% for image in all_carousel_images %}
+    <div class="item {% if forloop.first %}active{% endif %}">
+      <img src="{{ image.image_url }}" alt="{{ image.image_caption }}">
       <div class="carousel-caption">
+        {{ image.image_caption }}
       </div>
     </div>
-    <div class="item">
-      <img src="http://garyfallidis.github.io/images/recognize_bundles_ismrm_2015.jpg" alt="">
-      <div class="carousel-caption">
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="http://garyfallidis.github.io/images/slr_banner.jpg" alt="">
-      <div class="carousel-caption">
-      </div>
-    </div>
-  </div>
+    {% endfor %}
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-main" role="button" data-slide="prev">
