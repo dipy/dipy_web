@@ -23,6 +23,24 @@ def index(request):
     return render(request, 'website/index.html', context)
 
 
+def installation(request):
+    context = {}
+    installation_section = get_website_section('installation_section')
+
+    context['installation_section'] = installation_section
+
+    return render(request, 'website/installation.html', context)
+
+
+def overview(request):
+    context = {}
+    overview_section = get_website_section('overview_section')
+
+    context['overview_section'] = overview_section
+
+    return render(request, 'website/overview.html', context)
+
+
 def cite(request):
     context = {}
     all_publications = Publication.objects.all()
@@ -32,7 +50,7 @@ def cite(request):
 
 @login_required
 def dashboard(request):
-        return render(request, 'website/dashboard.html', {})
+    return render(request, 'website/dashboard.html', {})
 
 
 def dashboard_login(request):

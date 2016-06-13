@@ -44,6 +44,8 @@ class WebsiteSection(models.Model):
     # determines for which page the article is used. Eg: home, development.
     WEBSITE_PAGE_CHOICES = (
         ('home', 'Home'),
+        ('installation', 'Installation'),
+        ('overview', 'Overview'),
     )
     website_page = models.CharField(max_length=100,
                                     choices=WEBSITE_PAGE_CHOICES)

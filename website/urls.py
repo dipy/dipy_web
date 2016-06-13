@@ -5,6 +5,13 @@ urlpatterns = [
     # Home Page
     url(r'^$', views.index, name='index'),
 
+    # Installation Page
+    url(r'^installation/$', views.installation, name='installation'),
+
+    # Overview Page
+    url(r'^overview/$', views.overview, name='overview'),
+
+
     # Cite Page for publications
     url(r'^cite/$', views.cite, name='cite'),
 

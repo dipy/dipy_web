@@ -2,7 +2,7 @@ img {
   display: block;
   margin: 0 auto; }
 
-p {
+p, li {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
   font-weight: 300; }
@@ -88,9 +88,26 @@ body {
 
 .content-card {
   background-color: #fff;
-  padding-left: 18px;
-  padding-right: 18px;
-  padding-top: 1px; }
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+.page-heading {
+  background: rgba(255, 128, 0, 0.04);
+  background: -moz-linear-gradient(left, rgba(255, 128, 0, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 128, 0, 0.04)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(left, rgba(255, 128, 0, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, rgba(255, 128, 0, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(255, 128, 0, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, rgba(255, 128, 0, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8000', endColorstr='#ffffff', GradientType=1 );
+  padding: 2px;
+  margin-left: -2%;
+  padding-left: 2%;
+  margin-right: -2%;
+  border-left: 4px solid rgba(255, 127, 0, 0.26);
+  margin-top: 2em; }
 
 .publicationBibtex {
   display: none;
@@ -101,7 +118,7 @@ div.codehilite {
   background: #fff;
   border: none; }
   div.codehilite pre {
-    background: #fff;
+    background: #edf0ff;
     border: none;
     border-radius: 0px;
     border-left: 4px solid #2ea8d1;
@@ -123,24 +140,29 @@ div.codehilite {
   background: #e3e3e3;
   overflow: hidden; }
 
-.big-link img {
-  padding: 10px;
-  max-width: 140px;
-  padding-bottom: 1.4em;
-  padding-top: 3em;
-  transition: all .2s ease-in-out; }
-.big-link span {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.6em;
-  color: #1a1a1a;
-  padding: 0.6em;
+.big-link {
+  box-shadow: inset 0px 0px 0px #1a1a1a;
   transition: all .2s; }
-.big-link:hover img {
-  transform: scale(1.1); }
-.big-link:hover span {
-  transform: scale(1.01); }
+  .big-link img {
+    padding: 10px;
+    max-width: 140px;
+    padding-bottom: 1.4em;
+    padding-top: 3em;
+    transition: all .2s ease-in-out; }
+  .big-link span {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.6em;
+    color: #1a1a1a;
+    padding: 0.6em;
+    transition: all .2s; }
+  .big-link:hover {
+    box-shadow: inset 0px -2px 0px #1a1a1a; }
+    .big-link:hover img {
+      transform: scale(1.1); }
+    .big-link:hover span {
+      transform: scale(1.01); }
 
 /*# sourceMappingURL=main.css.map */
