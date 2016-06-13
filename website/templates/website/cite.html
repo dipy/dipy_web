@@ -3,21 +3,21 @@
 {% block content_body %}
 
 <!-- Content -->
-<h2>Publications</h2>
-{% for publication in all_publications %}
-  <div class="publicationInfo">
-    {% if publication.is_highlighted %}<b>{% endif %}
-    <p><a href="{{ publication.url }}">{{publication.title}}</a></p>
-    {% if publication.is_highlighted %}</b>{% endif %}
-    <p>{{publication.author}}</p>
-    {% if publication.bibtex %}
-    <a href="#" class="bibtexShowButton">Bibtex</a>
-    <p class="publicationBibtex">{{publication.bibtex}}</p>
-    {% endif %}
-  </div>
-  <hr>
-{% endfor %}
-
+<div class="content-card">
+  <div class="page-heading"><h2>Publications</h2></div>
+  {% for publication in all_publications %}
+    <div class="publicationInfo">
+      {% if publication.is_highlighted %}<b>{% endif %}
+      <p><a href="{{ publication.url }}">{{publication.title}}</a></p>
+      {% if publication.is_highlighted %}</b>{% endif %}
+      <p>{{publication.author}}</p>
+      {% if publication.bibtex %}
+      <a href="#" class="bibtexShowButton">Bibtex</a>
+      <p class="publicationBibtex">{{publication.bibtex}}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
 
 

@@ -180,6 +180,12 @@ div.codehilite {
   padding-left: -15px;
   padding-right: -15px; }
 
+.publicationInfo {
+  border-bottom: 1px solid #c9c9c9;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 1em; }
+
 #footerContentContainer {
   background: #1a1a1a;
   color: #e5e5e5;
