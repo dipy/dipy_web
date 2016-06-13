@@ -32,13 +32,15 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; }
+  z-index: 5; }
 
 .websiteNavbarList {
   font-size: 1.1em;
   padding: 0.9em 0.1em;
   transition: .15s;
   text-shadow: 0px 0px 1px #FFF; }
+  .websiteNavbarList a {
+    font-weight: 400; }
   .websiteNavbarList:hover {
     box-shadow: 0px 4px 0px #ff7f00;
     color: #000;
@@ -164,5 +166,13 @@ div.codehilite {
       transform: scale(1.1); }
     .big-link:hover span {
       transform: scale(1.01); }
+
+.split-column-wrapper {
+  background: #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+  overflow: hidden;
+  padding-left: -15px;
+  padding-right: -15px; }
 
 /*# sourceMappingURL=main.css.map */

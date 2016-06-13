@@ -45,7 +45,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 5;
 }
 
 .websiteNavbarList {
@@ -53,6 +53,9 @@ body {
 	padding: 0.9em 0.1em;
     transition: .15s;
     text-shadow: 0px 0px 1px #FFF;
+    a {
+        font-weight: 400;
+    }
     &:hover {
       box-shadow: 0px 4px 0px #ff7f00;
       color: #000;
@@ -218,4 +221,13 @@ div.codehilite {
         }
     }
     transition: all .2s;
+}
+
+.split-column-wrapper {
+    background: #fff;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+    padding-left: -15px;
+    padding-right: -15px;
 }

@@ -52,29 +52,29 @@
     </div>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-      <div id="bigLinksWrapper">
+    <div id="bigLinksWrapper">
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="/installation/">
-        <div class="big-link">
-          <img src="{% static "images/download-logo.png" %}">
-          <span>Install Now</span>
-        </div>
+          <div class="big-link">
+            <img src="{% static "images/download-logo.png" %}">
+            <span>Install Now</span>
+          </div>
         </a>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="https://github.com/nipy/dipy" target="_blank">
-        <div class="big-link">
-          <img src="{% static "images/github-logo.png" %}">
-          <span>Fork on Github</span>
-        </div>
+          <div class="big-link">
+            <img src="{% static "images/github-logo.png" %}">
+            <span>Fork on Github</span>
+          </div>
         </a>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="#">
-        <div class="big-link">
-          <img src="{% static "images/gitter-logo.png" %}">
-          <span>Get Support</span>
-        </div>
+          <div class="big-link">
+            <img src="{% static "images/gitter-logo.png" %}">
+            <span>Get Support</span>
+          </div>
         </a>
       </div>
     </div>
@@ -82,37 +82,52 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <div class="content-card">
-      {% if getting_started %}
-      <h1>{{ getting_started.title }}</h1>
-      <p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
-      {% else %}
-      <p>getting_started does not exist</p>
-      {% endif %}
+  <div class="split-column-wrapper">
+    <div class="col-md-9 col-sm-12 col-xs-12 col-lg-9">
+      <div class="row"> 
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+          <div class="content-card">
+            {% if getting_started %}
+            <h1>{{ getting_started.title }}</h1>
+            <p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
+            {% else %}
+            <p>getting_started does not exist</p>
+            {% endif %}
+          </div>
+
+          <div class="content-card">
+            <h2>News</h2>
+            <table class="table">
+              {% for news in latest_news %}
+              <tr><td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td><td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}</td></tr>
+              {% endfor %}
+            </table>
+          </div>
+
+          <div class="content-card">
+            <h2>Highlighted Publications</h2>
+            {% for publication in highlighted_publications %}
+            <div class="publicationInfo">
+              <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>
+              <p>{{publication.author}}</p>
+              {% if publication.bibtex %}
+              <a href="#" class="bibtexShowButton">Bibtex</a>
+              <p class="publicationBibtex">{{publication.bibtex}}</p>
+              {% endif %}
+            </div>
+            <hr>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="content-card">
-      <h2>News</h2>
-      <table class="table">
-        {% for news in latest_news %}
-        <tr><td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td><td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}</td></tr>
-        {% endfor %}
-      </table>
+    <!-- sidebar -->
+    <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">
+      <div class="content-card" id="twitter-feed">
+      <a class="twitter-timeline" data-link-color="#2B7BB9" data-tweet-limit="4" href="https://twitter.com/dipymri">Loading Tweets by dipymri</a>
+      </div>
     </div>
-
-    <h2>Highlighted Publications</h2>
-    {% for publication in highlighted_publications %}
-    <div class="publicationInfo">
-      <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>
-      <p>{{publication.author}}</p>
-      {% if publication.bibtex %}
-      <a href="#" class="bibtexShowButton">Bibtex</a>
-      <p class="publicationBibtex">{{publication.bibtex}}</p>
-      {% endif %}
-    </div>
-    <hr>
-    {% endfor %}
   </div>
 </div>
 
@@ -127,4 +142,5 @@
     $( this ).next().slideToggle();
   });
 </script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endblock %}
