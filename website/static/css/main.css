@@ -42,9 +42,10 @@ body {
   .websiteNavbarList a {
     font-weight: 400; }
   .websiteNavbarList:hover {
+    background: #f8f8f8 none repeat scroll 0% 0%;
     box-shadow: 0px 4px 0px #ff7f00;
     color: #000;
-    text-shadow: 0px 0px 12px #FCB14F; }
+    text-shadow: 0px 0px 12px #F5C383; }
 
 .navbar-toggle {
   position: relative;
@@ -109,7 +110,8 @@ body {
   padding-left: 2%;
   margin-right: -2%;
   border-left: 4px solid rgba(255, 127, 0, 0.26);
-  margin-top: 2em; }
+  margin-top: 2em;
+  margin-bottom: 1em; }
   .page-heading .h1, .page-heading .h2, .page-heading .h3, .page-heading h1, .page-heading h2, .page-heading h3 {
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -133,8 +135,7 @@ div.codehilite {
 
 .home-header {
   background: #e3e3e3;
-  color: #182422;
-  padding: 1em; }
+  color: #182422; }
   .home-header p {
     font-size: 1.1em;
     font-weight: 400;
@@ -143,7 +144,8 @@ div.codehilite {
 
 #bigLinksWrapper {
   background: #e3e3e3;
-  overflow: hidden; }
+  overflow: hidden;
+  border-bottom: 2px solid #1a1a1a; }
 
 .big-link {
   box-shadow: inset 0px 0px 0px #1a1a1a;
@@ -177,5 +179,10 @@ div.codehilite {
   overflow: hidden;
   padding-left: -15px;
   padding-right: -15px; }
+
+#footerContentContainer {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  padding: 1em; }
 
 /*# sourceMappingURL=main.css.map */
