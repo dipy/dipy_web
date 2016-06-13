@@ -88,7 +88,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
           <div class="content-card">
             {% if getting_started %}
-            <h1>{{ getting_started.title }}</h1>
+            <div class="page-heading"><h1>{{ getting_started.title }}</h1></div>
             <p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
             {% else %}
             <p>getting_started does not exist</p>
@@ -96,7 +96,7 @@
           </div>
 
           <div class="content-card">
-            <h2>News</h2>
+            <div class="page-heading"><h2>News</h2></div>
             <table class="table">
               {% for news in latest_news %}
               <tr><td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td><td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}</td></tr>
@@ -105,7 +105,7 @@
           </div>
 
           <div class="content-card">
-            <h2>Highlighted Publications</h2>
+            <div class="page-heading"><h2>Highlighted Publications</h2></div>
             {% for publication in highlighted_publications %}
             <div class="publicationInfo">
               <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>

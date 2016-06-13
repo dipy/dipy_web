@@ -124,7 +124,7 @@ body {
     padding-left: 6%;
     padding-right: 6%;
     padding-top: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
 }
 
 // page-heading styles
@@ -144,6 +144,10 @@ body {
     margin-right: -2%;
     border-left: 4px solid rgba(255, 127, 0, 0.26);
     margin-top: 2em;
+        .h1, .h2, .h3, h1, h2, h3 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 
