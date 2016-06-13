@@ -11,6 +11,13 @@ p {
     font-size: 16px;
     font-weight: 300;
 }
+
+a {
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
 // default body styles
 body {
     background-color: #f0f0f0;
@@ -41,11 +48,11 @@ body {
 	padding: 0.9em 0.1em;
     transition: .15s;
     text-shadow: 0px 0px 1px #FFF;
-	&:hover {
-		box-shadow: 0px 4px 0px #ff7f00;
-        color: #000;
-        text-shadow: 0px 0px 12px #FCB14F;
-	}
+    &:hover {
+      box-shadow: 0px 4px 0px #ff7f00;
+      color: #000;
+      text-shadow: 0px 0px 12px #FCB14F;
+  }
 }
 
 .navbar-toggle {
@@ -83,14 +90,20 @@ body {
 
 // carousel-main styles
 .carousel-indicators{
-        li {
-            border: 1px solid #1a1a1a;
-        }
-
-        .active {
-            background: #e5e5e5;
-        }
+    li {
+        border: 1px solid #1a1a1a;
     }
+
+    .active {
+        background: #e5e5e5;
+    }
+}
+.carousel-control.right {
+    background: none;
+}
+.carousel-control.left {
+    background: none;
+}
 
 // container-card styles
 .content-card {
@@ -123,16 +136,51 @@ div.codehilite {
     }
 }
 
-// home-header section styles
+// home-page section styles
 .home-header {
     background: #e3e3e3;
     color: #182422;
     padding: 1em;
 
- p {
-    font-size: 1.1em;
-    font-weight: 400;
-    font-family: sans serif;
-    color: #444;
+    p {
+        font-size: 1.1em;
+        font-weight: 400;
+        font-family: sans serif;
+        color: #444;
     }
+}
+
+#bigLinksWrapper {
+    background: #e3e3e3;
+    overflow: hidden;
+}
+
+.big-link {
+    img {
+        padding: 10px;
+        max-width: 140px;
+        padding-bottom: 1.4em;
+        padding-top: 3em;
+        transition: all .2s ease-in-out;
+    }
+
+    span {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1.6em;
+        color: #1a1a1a;
+        padding: 0.6em;
+        transition: all .2s;
+    }
+
+    &:hover{
+            img {
+                transform: scale(1.1);
+            }
+            span {
+                transform: scale(1.01);
+            }
+        }
 }

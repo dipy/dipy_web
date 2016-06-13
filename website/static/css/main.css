@@ -7,6 +7,11 @@ p {
   font-size: 16px;
   font-weight: 300; }
 
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+
 body {
   background-color: #f0f0f0; }
 
@@ -67,6 +72,12 @@ body {
 .carousel-indicators .active {
   background: #e5e5e5; }
 
+.carousel-control.right {
+  background: none; }
+
+.carousel-control.left {
+  background: none; }
+
 .content-card {
   background-color: #fff;
   padding-left: 18px;
@@ -99,5 +110,29 @@ div.codehilite {
     font-weight: 400;
     font-family: sans serif;
     color: #444; }
+
+#bigLinksWrapper {
+  background: #e3e3e3;
+  overflow: hidden; }
+
+.big-link img {
+  padding: 10px;
+  max-width: 140px;
+  padding-bottom: 1.4em;
+  padding-top: 3em;
+  transition: all .2s ease-in-out; }
+.big-link span {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.6em;
+  color: #1a1a1a;
+  padding: 0.6em;
+  transition: all .2s; }
+.big-link:hover img {
+  transform: scale(1.1); }
+.big-link:hover span {
+  transform: scale(1.01); }
 
 /*# sourceMappingURL=main.css.map */
