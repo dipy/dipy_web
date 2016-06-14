@@ -22,7 +22,7 @@ def index(request):
 
     hlength = len(all_honeycomb_posts)
     # maximum number of honeycomb posts to display
-    max_honeycombs = 20
+    max_honeycombs = 21
     for i in range(max_honeycombs):
         context['fill_honeycomb_posts'].append(
             all_honeycomb_posts[i % hlength])

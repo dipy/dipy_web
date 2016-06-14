@@ -180,6 +180,12 @@ div.codehilite {
 .honeycombs {
     max-height: 400px;
     margin-top: -90px;
+    transition: all 1s ease-in-out;
+    transition-delay: 0.5s;
+    &:hover {
+        margin-top: 0px;
+        max-height: 600px;
+    }
 }
 .honeycombs .inner_span {
     background-color: rgba(254, 221, 179, 0.89);
@@ -261,4 +267,9 @@ div.codehilite {
     background: #1a1a1a;
     color: #e5e5e5;
     padding: 1em;
+}
+
+// twitter styles
+#twitter-feed {
+    padding-top: 2em;
 }
