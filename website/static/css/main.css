@@ -19,7 +19,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif; }
 
 #websiteHeaderLogo {
-  height: 44px; }
+  height: 2.4em; }
 
 #websiteNavbar {
   min-height: 80px;
@@ -206,5 +206,17 @@ div.codehilite {
 
 #twitter-feed {
   padding-top: 2em; }
+
+.login-button {
+  background-repeat: no-repeat;
+  display: block;
+  width: 32em;
+  height: 5.4em;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0);
+  max-width: 100%; }
+
+.login-button.google-oauth2 {
+  background-position: 0px -80px; }
 
 /*# sourceMappingURL=main.css.map */

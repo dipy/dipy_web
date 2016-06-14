@@ -273,3 +273,17 @@ div.codehilite {
 #twitter-feed {
     padding-top: 2em;
 }
+
+// login button styles
+.login-button {
+    background-repeat: no-repeat;
+    display: block;
+    width: 32em;
+    height: 5.4em;
+    margin: 0 auto;
+    color: rgba(255,255,255,0);
+    max-width: 100%;
+}
+.login-button.google-oauth2 {
+    background-position: 0px -80px;
+}
