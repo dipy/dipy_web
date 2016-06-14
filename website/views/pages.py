@@ -12,13 +12,20 @@ def index(request):
     getting_started = get_website_section('getting_started')
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.filter(is_highlighted=True)
-    all_carousel_images = CarouselImage.objects.all()
+    all_honeycomb_posts = list(HoneycombPost.objects.all())
 
     context['home_header'] = home_header
     context['getting_started'] = getting_started
     context['latest_news'] = latest_news
     context['highlighted_publications'] = highlighted_publications
-    context['all_carousel_images'] = all_carousel_images
+    context['fill_honeycomb_posts'] = []
+
+    hlength = len(all_honeycomb_posts)
+    # maximum number of honeycomb posts to display
+    max_honeycombs = 20
+    for i in range(max_honeycombs):
+        context['fill_honeycomb_posts'].append(
+            all_honeycomb_posts[i % hlength])
 
     return render(request, 'website/index.html', context)
 

@@ -133,9 +133,17 @@ div.codehilite {
     font-family: sans-serif;
     margin: 0; }
 
+.honeycombs {
+  max-height: 400px;
+  margin-top: -90px; }
+
+.honeycombs .inner_span {
+  background-color: rgba(254, 221, 179, 0.89); }
+
 .home-header {
   background: #e3e3e3;
-  color: #182422; }
+  color: #182422;
+  box-shadow: 0px -34px 19px -22px RGBA(101, 101, 101, 0.41), inset 0px 0px 0px 0px #CCC; }
   .home-header p {
     font-size: 1.1em;
     font-weight: 400;
