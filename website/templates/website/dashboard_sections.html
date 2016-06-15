@@ -2,18 +2,24 @@
 {% load customfilters %}
 {% block content_body %}
 
-<h1>Admin Panel</h1>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<div class="content-card">
+			<div class="page-heading"><h1>Admin Panel</h1></div>
 
-<h3>Edit Website Sections</h3>
+			<h3>Edit Website Sections</h3>
 
-<div><a href="/dashboard/sections/add/">Add Section</a></div>
-<hr>
+			<a href="/dashboard/sections/add/"><div class="btn btn-success">Add Section</div></a>
+			<hr>
 
-{% for section in all_sections %}
-{{section}}<br>
-{{section.body_html|youtube_embed_url|safe}}
-<a href="/dashboard/sections/edit/{{section.website_position_id}}/">Edit</a>
-<hr>
-{% endfor %}
-
+			{% for section in all_sections %}
+			<h3>{{section}}</h3>
+			{{section.body_html|youtube_embed_url|safe}}
+			<hr>
+			<a href="/dashboard/sections/edit/{{section.website_position_id}}/"><div class="btn btn-primary">Edit</div></a>
+			<hr class="post-separator"></hr>
+			{% endfor %}
+		</div>
+	</div>
+</div>
 {% endblock %}
