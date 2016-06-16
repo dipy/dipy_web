@@ -17,7 +17,6 @@ def dashboard_honeycomb(request):
     if has_permission:
         all_honeycomb_posts = HoneycombPost.objects.all()
         context = {'all_honeycomb_posts': all_honeycomb_posts}
-        # if(request.user.has_perm('website.view_section')):
         return render(request, 'website/dashboard_honeycomb.html', context)
     else:
         return render(request, 'website/dashboard_honeycomb.html', {})

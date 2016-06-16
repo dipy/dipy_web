@@ -17,7 +17,6 @@ def dashboard_carousel(request):
     if has_permission:
         all_carousel_images = CarouselImage.objects.all()
         context = {'all_carousel_images': all_carousel_images}
-        # if(request.user.has_perm('website.view_section')):
         return render(request, 'website/dashboard_carousel.html', context)
     else:
         return render(request, 'website/dashboard_carousel.html', {})

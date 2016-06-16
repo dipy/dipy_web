@@ -18,7 +18,6 @@ def dashboard_publications(request):
     if has_permission:
         all_publications = Publication.objects.all()
         context = {'all_publications': all_publications}
-        # if(request.user.has_perm('website.view_section')):
         return render(request, 'website/dashboard_publications.html', context)
     else:
         return render(request, 'website/dashboard_publications.html', {})
@@ -63,7 +62,6 @@ def add_publication(request, method):
             try:
                 bib_parsed = bibtexparser.loads(bibtex_entered)
                 bibInfo = bib_parsed.entries[0]
-                print(bibInfo)
 
                 if 'title' in bibInfo:
                     title = bibInfo['title']
@@ -85,7 +83,6 @@ def add_publication(request, method):
                     url = "http://dx.doi.org/" + bibInfo['doi']
                 else:
                     url = None
-                print(url)
 
                 if(title and authors and url):
                     publicationObj = Publication(title=title,

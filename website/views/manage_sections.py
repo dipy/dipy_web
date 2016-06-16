@@ -17,7 +17,6 @@ def dashboard_sections(request):
     if has_permission:
         all_website_sections = WebsiteSection.objects.all()
         context = {'all_sections': all_website_sections}
-        # if(request.user.has_perm('website.view_section')):
         return render(request, 'website/dashboard_sections.html', context)
     else:
         return render(request, 'website/dashboard_sections.html', {})

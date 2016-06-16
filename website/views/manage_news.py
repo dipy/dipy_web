@@ -17,7 +17,6 @@ def dashboard_news(request):
     if has_permission:
         all_news_posts = NewsPost.objects.all()
         context = {'all_news_posts': all_news_posts}
-        # if(request.user.has_perm('website.view_section')):
         return render(request, 'website/dashboard_news.html', context)
     else:
         return render(request, 'website/dashboard_news.html', {})
