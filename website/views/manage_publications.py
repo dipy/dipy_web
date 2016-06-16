@@ -5,7 +5,6 @@ from website.models import Publication
 from website.forms import AddEditPublicationForm
 from django.http import Http404
 import bibtexparser
-from django.core.exceptions import ObjectDoesNotExist
 
 
 @login_required
@@ -92,10 +91,14 @@ def add_publication(request, method):
                     publicationObj = Publication(title=title,
                                                  author=authors,
                                                  url=url)
+                    if 'ENTRYTYPE' in bibInfo:
+                        publicationObj.entry_type = bibInfo['ENTRYTYPE']
                     if 'doi' in bibInfo:
                         publicationObj.doi = bibInfo['doi']
                     if 'journal' in bibInfo:
-                        publicationObj.journal = bibInfo['journal']
+                        publicationObj.published_in = bibInfo['journal']
+                    if 'booktitle' in bibInfo:
+                        publicationObj.published_in = bibInfo['booktitle']
                     if 'publisher' in bibInfo:
                         publicationObj.publisher = bibInfo['publisher']
                     if 'year' in bibInfo:

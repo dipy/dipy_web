@@ -25,8 +25,9 @@ class AddEditNewsPostForm(ModelForm):
 class AddEditPublicationForm(ModelForm):
     class Meta:
         model = Publication
-        fields = ['title', 'url', 'author', 'doi', 'journal', 'publisher',
-                  'year_of_publication', 'month_of_publication', 'bibtex']
+        fields = ['title', 'url', 'author', 'doi', 'entry_type',
+                  'published_in', 'publisher', 'year_of_publication',
+                  'month_of_publication', 'bibtex']
 
 
 class AddEditCarouselImageForm(ModelForm):

@@ -102,7 +102,11 @@ class Publication(models.Model):
     url = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     doi = models.CharField(max_length=100, null=True, blank=True)
-    journal = models.CharField(max_length=200, null=True, blank=True)
+    # entry type like article, inproceedings, book etc
+    entry_type = models.CharField(max_length=100, null=True, blank=True)
+    # name of journal in case of article or booktitle in case of
+    # inproceedings
+    published_in = models.CharField(max_length=200, null=True, blank=True)
     publisher = models.CharField(max_length=200, null=True, blank=True)
     year_of_publication = models.CharField(max_length=4, null=True, blank=True)
     month_of_publication = models.CharField(max_length=10, null=True,
