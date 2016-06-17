@@ -27,12 +27,11 @@
       <ul class="nav navbar-nav navbar-right websiteNavbarList">
         <li><a href="http://ghoshbishakh.github.io/dipy/newTheme/documentation.html" target="_blank">Documentation</a></li>
       </ul>
+      {% for page in pages_in_nav %}
       <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/installation">Installation</a></li>
+        <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/overview/">Overview</a></li>
-      </ul>
+      {% endfor %}
       <ul class="nav navbar-nav navbar-right websiteNavbarList">
         <li><a href="/">Home</a></li>
       </ul>

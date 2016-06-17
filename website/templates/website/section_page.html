@@ -1,0 +1,15 @@
+{% extends "website/base_template.html" %}
+{% load customfilters %}
+
+{% block content_body %}
+
+<!-- Content -->
+  <div class="content-card">
+  {% if section %}
+      <div class="page-heading"><h1>{{ section.title }}</h1></div>
+      <p>{{ section.body_html|youtube_embed_url|safe }}</p>
+  {% else %}
+      <p>section does not exist</p>
+  {% endif %}
+  </div>
+{% endblock %}

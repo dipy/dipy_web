@@ -2,6 +2,7 @@ from django.shortcuts import render
 from website.models import *
 from django.contrib.auth.decorators import login_required
 from .tools import get_website_section, get_latest_news_posts
+from django.http import Http404
 
 
 # Definition of views:
@@ -30,22 +31,15 @@ def index(request):
     return render(request, 'website/index.html', context)
 
 
-def installation(request):
+def page(request, position_id):
     context = {}
-    installation_section = get_website_section('installation_section')
+    try:
+        section = get_website_section(position_id)
+    except:
+        raise Http404("Page does not exist")
 
-    context['installation_section'] = installation_section
-
-    return render(request, 'website/installation.html', context)
-
-
-def overview(request):
-    context = {}
-    overview_section = get_website_section('overview_section')
-
-    context['overview_section'] = overview_section
-
-    return render(request, 'website/overview.html', context)
+    context['section'] = section
+    return render(request, 'website/section_page.html', context)
 
 
 def cite(request):
