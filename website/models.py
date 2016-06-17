@@ -36,19 +36,22 @@ class WebsiteSection(models.Model):
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
 
-    # determines for what purpose the article is used. Eg: header, body etc.
+    # determines for what purpose the article is used. Eg: index-header, body,
+    # installation-page, getting-started-page etc
     website_position_id = models.CharField(max_length=100,
                                            unique=True,
                                            db_index=True)
 
-    # determines for which page the article is used. Eg: home, development.
-    WEBSITE_PAGE_CHOICES = (
-        ('home', 'Home'),
-        ('installation', 'Installation'),
-        ('overview', 'Overview'),
+    # fixed sections cannot be added or deleted, pages can be added or deleted
+    # and pages can also be listed in the nav bar
+    SECTION_TYPE_CHOICES = (
+        ('fixed', 'Fixed Section'),
+        ('page', 'Page'),
     )
-    website_page = models.CharField(max_length=100,
-                                    choices=WEBSITE_PAGE_CHOICES)
+    section_type = models.CharField(max_length=100,
+                                    choices=SECTION_TYPE_CHOICES,
+                                    default='page')
+    show_in_nav = models.BooleanField(default=False)
 
     class Meta:
         permissions = (

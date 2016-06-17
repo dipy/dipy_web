@@ -21,13 +21,15 @@ urlpatterns = [
     # Admin Panel Login Page
     url(r'^dashboard/login/?$', views.dashboard_login, name='dashboard_login'),
 
-    # Section Management
-    url(r'^dashboard/sections/$', views.dashboard_sections,
-        name='dashboard_sections'),
-    url(r'^dashboard/sections/edit/(?P<position_id>.*?)/$',
+    # Section and Page Management
+    url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
         views.edit_website_section, name='edit_website_section'),
-    url(r'^dashboard/sections/add/$', views.add_website_section,
-        name='add_website_section'),
+    url(r'^dashboard/sections/add/$',
+        views.add_website_page, name='add_website_page'),
+    url(r'^dashboard/sections/delete/(?P<position_id>.*?)/$',
+        views.delete_website_page, name='delete_website_page'),
+    url(r'^dashboard/sections/(?P<section_type_requested>.*?)/$',
+        views.dashboard_sections, name='dashboard_sections'),
 
     # News Management
     url(r'^dashboard/news/$', views.dashboard_news, name='dashboard_news'),
