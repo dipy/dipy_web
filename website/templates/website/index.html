@@ -10,14 +10,14 @@
 {% block content_body %}
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-      <div class="honeycombs">
-          {% for post in fill_honeycomb_posts %}
-            <div class="comb">
-              <img src="{{ post.image_url }}" />
-              <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
-            </div>
-          {% endfor %}
+    <div class="honeycombs">
+      {% for post in fill_honeycomb_posts %}
+      <div class="comb">
+        <img src="{{ post.image_url }}" />
+        <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
       </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -99,6 +99,18 @@
             </div>
             {% endfor %}
           </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>Google Plus Feed</h2></div>
+            <div>
+              {% for activity in gplus_feed %}
+              <h3>{{ activity.title }}</h3>
+              <p>{{ activity.object.content|safe|slice:":255" }}</p>
+              <hr>
+              {% endfor %}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -106,7 +118,7 @@
     <!-- sidebar -->
     <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">
       <div class="content-card" id="twitter-feed">
-      <a class="twitter-timeline" data-link-color="#2B7BB9" data-tweet-limit="4" href="https://twitter.com/dipymri">Loading Tweets by dipymri</a>
+        <a class="twitter-timeline" data-link-color="#2B7BB9" data-tweet-limit="4" href="https://twitter.com/dipymri">Loading Tweets by dipymri</a>
       </div>
     </div>
   </div>

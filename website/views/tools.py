@@ -64,3 +64,21 @@ def has_commit_permission(access_token, repository_name):
                permissions["pull"]):
                 return True
     return False
+
+
+def get_google_plus_activity(user_id):
+    """
+    Fetch google plus activity list of a user
+
+    Input
+    -----
+    user_id : string
+        The ID of the user to get activities for.
+    """
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=10&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyCKyDJwNQUD7mIz_WK_Gfn-XHwFg3ZOr5g"
+    r = requests.get(url)
+    json_response = r.json()
+    if 'error' not in json_response:
+        return json_response['items']
+    else:
+        return {}
