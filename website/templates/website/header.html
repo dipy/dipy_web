@@ -18,22 +18,24 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/dashboard">Admin Panel</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/cite">Cite</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="http://ghoshbishakh.github.io/dipy/newTheme/documentation.html" target="_blank">Documentation</a></li>
-      </ul>
-      {% for page in pages_in_nav %}
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
-      </ul>
-      {% endfor %}
-      <ul class="nav navbar-nav navbar-right websiteNavbarList">
-        <li><a href="/">Home</a></li>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="websiteNavbarList"><a href="/">Home</a></li>
+        {% for page in pages_in_nav %}
+        <li class="websiteNavbarList"><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
+        {% endfor %}
+        <li class="websiteNavbarList"><a href="/gallery">Gallery</a></li>
+        <li class="websiteNavbarList"><a href="http://ghoshbishakh.github.io/dipy/newTheme/documentation.html" target="_blank">Documentation</a></li>
+        <li class="websiteNavbarList"><a href="/cite">Cite</a></li>
+        <li class="websiteNavbarList"><a href="/support">Support</a></li>
+        <li class="dropdown websiteNavbarList">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="websiteNavbarList"><a href="https://github.com/nipy/dipy">Source Code</a></li>
+            <li class="websiteNavbarList"><a href="http://nipy.org/dipy/developers.html">Developers</a></li>
+            <li class="websiteNavbarList"><a href="http://nipy.org/">Nipy Projects</a></li>
+            <li class="websiteNavbarList"><a href="/dashboard">Admin Panel</a></li>
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
     </div>
