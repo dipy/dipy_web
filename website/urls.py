@@ -12,6 +12,9 @@ urlpatterns = [
     # Cite Page for publications
     url(r'^cite/$', views.cite, name='cite'),
 
+    # Honeycomb gallery
+    url(r'^gallery/$', views.honeycomb, name='gallery'),
+
     # Admin Panel Dash Board
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
 

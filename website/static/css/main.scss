@@ -176,8 +176,12 @@ div.codehilite {
     }
 }
 
+// default honeycomb styles
+.honeycombs .inner_span {
+    background-color: rgba(254, 221, 179, 0.89);
+}
 // home page honeycomb styles
-.honeycombs {
+#honeycomb_home {
     max-height: 400px;
     margin-top: -90px;
     transition: all 1s ease-in-out;
@@ -187,7 +191,7 @@ div.codehilite {
         max-height: 600px;
     }
 }
-.honeycombs .inner_span {
+#honeycomb_home .inner_span {
     background-color: rgba(254, 221, 179, 0.89);
 }
 

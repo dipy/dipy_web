@@ -133,16 +133,19 @@ div.codehilite {
     font-family: sans-serif;
     margin: 0; }
 
-.honeycombs {
+.honeycombs .inner_span {
+  background-color: rgba(254, 221, 179, 0.89); }
+
+#honeycomb_home {
   max-height: 400px;
   margin-top: -90px;
   transition: all 1s ease-in-out;
   transition-delay: 0.5s; }
-  .honeycombs:hover {
+  #honeycomb_home:hover {
     margin-top: 0px;
     max-height: 600px; }
 
-.honeycombs .inner_span {
+#honeycomb_home .inner_span {
   background-color: rgba(254, 221, 179, 0.89); }
 
 .home-header {

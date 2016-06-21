@@ -51,6 +51,13 @@ def cite(request):
     return render(request, 'website/cite.html', context)
 
 
+def honeycomb(request):
+    context = {}
+    all_honeycomb_posts = HoneycombPost.objects.all()
+    context['all_honeycomb_posts'] = all_honeycomb_posts
+    return render(request, 'website/honeycomb.html', context)
+
+
 @login_required
 def dashboard(request):
     return render(request, 'website/dashboard.html', {})
