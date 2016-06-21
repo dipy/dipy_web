@@ -1,5 +1,6 @@
 from django import template
 import re
+import markdown
 
 register = template.Library()
 
@@ -15,4 +16,11 @@ def youtube_embed_url(value):
                 frameborder="0" allowfullscreen></iframe></div>'
     for match in matches:
         processed_str = processed_str.replace(match[0], template % match[2])
+    return processed_str
+
+
+# converts Markdown to HTML
+@register.filter(name='markdown_to_html')
+def markdown_to_html(value):
+    processed_str = markdown.markdown(value, extensions=['codehilite'])
     return processed_str
