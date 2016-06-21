@@ -15,6 +15,9 @@ urlpatterns = [
     # Honeycomb gallery
     url(r'^gallery/$', views.honeycomb, name='gallery'),
 
+    # Support Page
+    url(r'^support/$', views.support, name='support'),
+
     # Admin Panel Dash Board
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
 

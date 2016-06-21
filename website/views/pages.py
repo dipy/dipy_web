@@ -58,6 +58,10 @@ def honeycomb(request):
     return render(request, 'website/honeycomb.html', context)
 
 
+def support(request):
+    return render(request, 'website/support.html', {})
+
+
 @login_required
 def dashboard(request):
     return render(request, 'website/dashboard.html', {})
