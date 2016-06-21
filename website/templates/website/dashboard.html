@@ -1,15 +1,17 @@
 {% extends "website/base_template.html" %}
-
 {% block content_body %}
 
-<div><a href="/dashboard/addsection/">Add Section</a></div>
-<hr>
-
-{% for section in all_sections %}
-{{section}}<br>
-{{section.body_html|safe}}
-<a href="/dashboard/editsection/{{section.website_position_id}}/">Edit</a>
-<hr>
-{% endfor %}
-
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<div class="content-card">
+			<div class="page-heading"><h1>Admin Panel</h1></div>
+			<a href="/dashboard/sections/fixed/"><div class="dashboard-button btn btn-default">Edit Fixed Sections</div></a>
+			<a href="/dashboard/sections/page/"><div class="dashboard-button btn btn-default">Add / Edit Pages</div></a>
+			<a href="/dashboard/news/"><div class="dashboard-button btn btn-default">Add / Edit News</div></a>
+			<a href="/dashboard/publications/"><div class="dashboard-button btn btn-default">Add / Edit Publications</div></a>
+			<a href="/dashboard/carousel/"><div class="dashboard-button btn btn-default">Add / Edit Carousel Images</div></a>
+			<a href="/dashboard/honeycomb/"><div class="dashboard-button btn btn-default">Add / Edit Honeycomb Images</div></a>
+		</div>
+	</div>
+</div>
 {% endblock %}

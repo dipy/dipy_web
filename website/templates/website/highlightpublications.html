@@ -1,0 +1,20 @@
+{% extends "website/base_template.html" %}
+{% load staticfiles %}
+
+{% block content_body %}
+
+<h2>Select Publications to highlight:</h2>
+
+<form action="." method="post">
+{% csrf_token %}
+
+{% for publication in all_publications %}
+	<input type="checkbox" name="highlights[]" value="{{ publication.id }}" {% if publication.is_highlighted %}checked="checked"{% endif %}> <a href="{{ publication.url }}">{{ publication.title }}</a><br>
+	{{ publication.author }} <br><hr>
+{% endfor %}
+
+<input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}

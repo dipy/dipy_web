@@ -1,0 +1,31 @@
+{% extends "website/base_template.html" %}
+{% block content_body %}
+
+<h1>Admin Panel</h1>
+
+<h3>Add / Edit Carousel</h3>
+
+<div><a href="/dashboard/carousel/add/">Add New Image</a></div>
+<hr>
+
+{% for image in all_carousel_images %}
+<p>{{ image.image_caption }}</p>
+<img src="{{ image.image_url }}">
+<a href="/dashboard/carousel/edit/{{image.id}}/">Edit</a> | <a class="carouselImageDeleteLink" href="/dashboard/carousel/delete/{{image.id}}/">Delete</a>
+<hr>
+{% endfor %}
+
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show confirmation box before deleting -->
+<script>
+$( ".carouselImageDeleteLink" ).click(function( event ) {
+    event.preventDefault();
+	var r = confirm("Are you sure you want to delete the carousel?");
+	if (r == true) {
+	    window.location.href = $(this).attr('href');
+	}
+});
+</script>
+{% endblock %}

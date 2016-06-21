@@ -7,9 +7,11 @@
 
 
 {% block content %}
-<div class="container">
-  <div class="row">
+<div class="container" id="superContentContainer">
     {% block content_body %}{% endblock %}
-  </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+	{% include "website/footer.html" %}
 {% endblock %}

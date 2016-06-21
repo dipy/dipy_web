@@ -1,26 +1,148 @@
 {% extends "website/base_template.html" %}
+{% load staticfiles %}
+{% load customfilters %}
+
+{% block extra_css %}
+<!-- Include simplemde markdown editor css-->
+<link rel="stylesheet" type="text/css" href="{% static "css/homeycombs.css" %}">
+{% endblock %}
 
 {% block content_body %}
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    <div class="honeycombs" id="honeycomb_home">
+      {% for post in fill_honeycomb_posts %}
+      <div class="comb">
+        <img src="{{ post.image_url }}" />
+        <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
-{% if home_header %}
-<h1>{{ home_header.title }}</h1>
-<p>{{ home_header.body_html|safe }}</p>
-{% else %}
-<p>home_header does not exist</p>
-{% endif %}
+<!-- Content -->
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    <div class="content-card home-header">
+      {% if home_header %}
+      <h1>{{ home_header.title }}</h1>
+      <p>{{ home_header.body_html|youtube_embed_url|safe }}</p>
+      {% else %}
+      <p>home_header does not exist</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    <div id="bigLinksWrapper">
+      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+        <a href="/installation/">
+          <div class="big-link">
+            <img src="{% static "images/download-logo.png" %}">
+            <span>Install Now</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+        <a href="https://github.com/nipy/dipy" target="_blank">
+          <div class="big-link">
+            <img src="{% static "images/github-logo.png" %}">
+            <span>Fork on Github</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+        <a href="/support">
+          <div class="big-link">
+            <img src="{% static "images/gitter-logo.png" %}">
+            <span>Get Support</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
-{% if getting_started %}
-<h1>{{ getting_started.title }}</h1>
-<p>{{ getting_started.body_html|safe }}</p>
-{% else %}
-<p>getting_started does not exist</p>
-{% endif %}
+<div class="row">
+  <div class="split-column-wrapper">
+    <div class="col-md-9 col-sm-12 col-xs-12 col-lg-9">
+      <div class="row"> 
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+          <div class="content-card">
+            {% if getting_started %}
+            <div class="page-heading"><h1>{{ getting_started.title }}</h1></div>
+            <p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
+            {% else %}
+            <p>getting_started does not exist</p>
+            {% endif %}
+          </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>News</h2></div>
+            <table class="table">
+              {% for news in latest_news %}
+              <tr><td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td><td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}</td></tr>
+              {% endfor %}
+            </table>
+          </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>Highlighted Publications</h2></div>
+            {% for publication in highlighted_publications %}
+            <div class="publicationInfo">
+              <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>
+              <p>{{publication.author}}</p>
+              {% if publication.bibtex %}
+              <a href="#" class="bibtexShowButton">Bibtex</a>
+              <p class="publicationBibtex">{{publication.bibtex}}</p>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>Google Plus Feed</h2></div>
+            <div>
+              {% for activity in gplus_feed %}
+              <h3>{{ activity.title }}</h3>
+              <p>{{ activity.object.content|safe|slice:":255" }}</p>
+              <hr>
+              {% endfor %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">
+      <div class="content-card" id="twitter-feed">
+        <a class="twitter-timeline" data-link-color="#2B7BB9" data-tweet-limit="4" href="https://twitter.com/dipymri">Loading Tweets by dipymri</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
 
 
-<h2>News</h2>
-<ul>
-{% for news in latest_news %}
-<li><p>{{ news.body_html|safe }}</p></li>
-{% endfor %}
-</ul>
+{% block extra_js_bottom %}
+<!-- honycomb visualisation script-->
+<script src="{% static "js/jquery.homeycombs.js" %}"></script> 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.honeycombs').honeycombs({combWidth: 200, margin: 4});
+  });
+</script>
+
+
+<!-- Script to show bibtex on link click -->
+<script>
+  $( ".bibtexShowButton" ).click(function( event ) {
+    event.preventDefault();
+    $( this ).next().slideToggle();
+  });
+</script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endblock %}

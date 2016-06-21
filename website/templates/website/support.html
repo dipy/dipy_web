@@ -1,0 +1,25 @@
+{% extends "website/base_template.html" %}
+
+{% block content_body %}
+
+<!-- Content -->
+<div class="content-card">
+	<div class="row">
+		<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+			<h2>Mailing List</h2>
+			<div>
+			Dipy is a part of the Nipy community and we are happy to share the same e-mail list. This makes sense as we can share ideas with a broader community and boost collaboration across neuroimagers. If you want to post to the list you will need first to subscribe to the nipy mailing list.<br>We suggest to begin the subject of your e-mail with <b>[Dipy]</b>. This will help us respond faster to your questions.
+			</div>
+			<a href="https://mail.python.org/mailman/listinfo/neuroimaging" target="_blank"><div class="btn btn-subscribe">Subscribe to mailing list</div></a>
+
+			<h2>Forum</h2>
+			<div>Additional help can be found on the <b>Neurostars</b> forum.</div>
+			<a href="https://neurostars.org/" target="_blank"><div class="btn btn-subscribe">Neurostars Forum</div></a>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+			<h2>Gitter Channel</h2>
+			<iframe id="gitterFrame" src="https://gitter.im/nipy/dipy/~embed"></iframe>
+		</div>
+	</div>
+</div>
+{% endblock %}

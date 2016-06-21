@@ -1,0 +1,14 @@
+{% extends "website/base_template.html" %}
+{% load staticfiles %}
+
+{% block content_body %}
+
+{% if form %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% endif %}
+
+{% endblock %}

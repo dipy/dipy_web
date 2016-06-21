@@ -11,6 +11,7 @@ python3-openid==3.0.10
 requests==2.10.0
 requests-oauthlib==0.6.1
 six==1.10.0
+bibtexparser==0.6.2
 
 # heroku dependencies
 whitenoise==3.1

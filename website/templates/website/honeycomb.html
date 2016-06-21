@@ -1,0 +1,33 @@
+{% extends "website/base_template.html" %}
+{% load staticfiles %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static "css/homeycombs.css" %}">
+{% endblock %}
+
+{% block content_body %}
+
+<!-- Content -->
+<div class="content-card">
+  <div class="page-heading"><h2>Gallery</h2></div>
+  <div class="honeycombs">
+    {% for post in all_honeycomb_posts %}
+    <div class="comb">
+      <img src="{{ post.image_url }}" />
+      <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
+    </div>
+    {% endfor %}  
+  </div>
+</div>
+{% endblock %}
+
+
+{% block extra_js_bottom %}
+<!-- honycomb visualisation script-->
+<script src="{% static "js/jquery.homeycombs.js" %}"></script> 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.honeycombs').honeycombs({combWidth: 200, margin: 4});
+  });
+</script>
+{% endblock %}

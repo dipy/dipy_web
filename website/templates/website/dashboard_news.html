@@ -1,0 +1,38 @@
+{% extends "website/base_template.html" %}
+{% block content_body %}
+
+
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<div class="content-card">
+			<div class="page-heading"><h1>Admin Panel</h1></div>
+
+			<h3>Add / Edit News</h3>
+
+			<a href="/dashboard/news/add/"><div class="btn btn-success">Add News</div></a>
+			<hr>
+
+			{% for post in all_news_posts %}
+			{{post}}<br>
+			{{post.body_html|safe}}
+			<a href="/dashboard/news/edit/{{post.id}}/"><span class="btn btn-primary">Edit</span></a> | <a class="newsDeleteLink btn btn-primary" href="/dashboard/news/delete/{{post.id}}/"><span>Delete</span></a>
+			<hr class="post-separator">
+			{% endfor %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show confirmation box before deleting -->
+<script>
+	$( ".newsDeleteLink" ).click(function( event ) {
+		event.preventDefault();
+		var r = confirm("Are you sure you want to delete the news?");
+		if (r == true) {
+			window.location.href = $(this).attr('href');
+		}
+	});
+</script>
+{% endblock %}

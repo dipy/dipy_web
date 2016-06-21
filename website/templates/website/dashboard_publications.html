@@ -1,0 +1,47 @@
+{% extends "website/base_template.html" %}
+{% block content_body %}
+
+
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<div class="content-card">
+
+		<div class="page-heading"><h1>Admin Panel</h1></div>
+
+			<h3>Add / Edit Publications</h3>
+
+			<a href="/dashboard/publications/add/bibtex/"><div class="btn btn-success">Add Publication from bibtex</div></a>
+			<a href="/dashboard/publications/add/manual/"><div class="btn btn-success">Add Publication manually</div></a>
+			<a href="/dashboard/publications/highlight/"><div class="btn btn-success">Highlight Publications</div></a>
+
+			<hr>
+
+			{% if all_publications %}
+			{% for publication in all_publications %}
+			{% if publication.is_highlighted %}<b>{% endif %}
+			<a href="{{ publication.url }}">{{publication.title}}</a>
+			{% if publication.is_highlighted %}</b>{% endif %}
+			<br>
+			{{publication.author}}<br>
+			<a href="/dashboard/publications/edit/{{publication.id}}/"><div class="btn btn-primary">Edit</div></a> | 
+			<a class="publicationDeleteLink" href="/dashboard/publications/delete/{{publication.id}}/"><div class="btn btn-primary">Delete</div></a>
+			<hr>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show confirmation box before deleting -->
+<script>
+	$( ".publicationDeleteLink" ).click(function( event ) {
+		event.preventDefault();
+		var r = confirm("Are you sure you want to delete the publication?");
+		if (r == true) {
+			window.location.href = $(this).attr('href');
+		}
+	});
+</script>
+{% endblock %}
