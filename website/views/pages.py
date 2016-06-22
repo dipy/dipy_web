@@ -28,7 +28,8 @@ def index(request):
         context['fill_honeycomb_posts'].append(
             all_honeycomb_posts[i % hlength])
 
-    context['gplus_feed'] = get_google_plus_activity("107763702707848478173")
+    context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
+                                                     2)
 
     return render(request, 'website/index.html', context)
 

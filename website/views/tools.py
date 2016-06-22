@@ -66,7 +66,7 @@ def has_commit_permission(access_token, repository_name):
     return False
 
 
-def get_google_plus_activity(user_id):
+def get_google_plus_activity(user_id, count):
     """
     Fetch google plus activity list of a user
 
@@ -75,10 +75,11 @@ def get_google_plus_activity(user_id):
     user_id : string
         The ID of the user to get activities for.
     """
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=10&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyCKyDJwNQUD7mIz_WK_Gfn-XHwFg3ZOr5g"
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyA0dPfkGKCzEWJz9INBYslY25MC-M4NG7s"
     r = requests.get(url)
     json_response = r.json()
     if 'error' not in json_response:
         return json_response['items']
     else:
+        print(json_response)
         return {}
