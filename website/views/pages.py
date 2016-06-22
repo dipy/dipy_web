@@ -29,7 +29,7 @@ def index(request):
             all_honeycomb_posts[i % hlength])
 
     context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
-                                                     2)
+                                                     4)
 
     return render(request, 'website/index.html', context)
 
