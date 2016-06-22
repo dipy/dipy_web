@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 
     # Section Page
-    url(r'^page/(?P<position_id>.*?)$', views.page,
+    url(r'^page/(?P<position_id>.*?)/$', views.page,
         name='section_page'),
 
     # Cite Page for publications
