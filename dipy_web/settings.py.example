@@ -142,8 +142,8 @@ STATICFILES_DIRS = (
 LOGIN_URL = '/dashboard/login'
 
 # documentation repository settings
-documentation_repo_owner = 'ghoshbishakh'
-documentation_repo_name = 'dipy_web'
+DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
+DOCUMENTATION_REPO_NAME = 'dipy_web'
 
 # python-social-auth settings
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
