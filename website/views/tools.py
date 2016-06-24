@@ -1,6 +1,7 @@
 from website.models import *
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 
 
 # Definition of functions:
@@ -83,3 +84,30 @@ def get_google_plus_activity(user_id, count):
     else:
         print(json_response)
         return {}
+
+
+def update_documentations():
+    """
+    Check list of documentations from gh-pages branches of the dipy_web
+    repository and update the database (DocumentationLink model).
+
+    To change the url of the repository in which the documentations will be
+    hosted change the DOCUMENTATION_REPO_OWNER and DOCUMENTATION_REPO_NAME
+    in settings.py
+    """
+    url = "https://api.github.com/repos/%s/%s/contents/?ref=gh-pages" % (
+        settings.DOCUMENTATION_REPO_OWNER, settings.DOCUMENTATION_REPO_NAME)
+    base_url = "http://%s.github.io/%s/" % (
+        settings.DOCUMENTATION_REPO_OWNER, settings.DOCUMENTATION_REPO_NAME)
+    response = requests.get(url)
+    response_json = response.json()
+    for content in response_json:
+        if content["type"] == "dir":
+            version_name = content["name"]
+            page_url = base_url + version_name
+            try:
+                DocumentationLink.objects.get(version=version_name)
+            except ObjectDoesNotExist:
+                d = DocumentationLink(version=version_name,
+                                      url=page_url)
+                d.save()

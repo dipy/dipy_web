@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from website.models import *
 from django.contrib.auth.decorators import login_required
-from .tools import get_website_section, get_latest_news_posts, get_google_plus_activity
+from .tools import get_website_section, get_latest_news_posts
+from .tools import get_google_plus_activity
 from django.http import Http404
 
 

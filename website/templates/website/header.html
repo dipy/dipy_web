@@ -24,7 +24,14 @@
         <li class="websiteNavbarList"><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
         {% endfor %}
         <li class="websiteNavbarList"><a href="/gallery">Gallery</a></li>
-        <li class="websiteNavbarList"><a href="http://ghoshbishakh.github.io/dipy/newTheme/documentation.html" target="_blank">Documentation</a></li>
+        <li class="dropdown websiteNavbarList">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for doc in all_doc_displayed %}
+            <li class="websiteNavbarList"><a href="{{ doc.url }}">{{ doc.version }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
         <li class="websiteNavbarList"><a href="/cite">Cite</a></li>
         <li class="websiteNavbarList"><a href="/support">Support</a></li>
         <li class="dropdown websiteNavbarList">

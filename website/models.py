@@ -166,3 +166,12 @@ class HoneycombPost(models.Model):
 
     def __str__(self):
         return self.image_url
+
+
+class DocumentationLink(models.Model):
+    """
+    Model for storing links to the documentation pages
+    """
+    version = models.CharField(max_length=20, unique=True)
+    url = models.URLField(max_length=100)
+    displayed = models.BooleanField(default=True)
