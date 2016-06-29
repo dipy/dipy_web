@@ -130,6 +130,22 @@
           </div>
 
           <div class="content-card">
+            <div class="page-heading"><h2>Facebook Feed</h2></div>
+            <div>
+              <table class="table">
+              {% for post in fb_posts %}
+                <tr>
+                  {% if post.message %}
+                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ post.created_time|slice:":10" }}</p></td>
+                  <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ post.message|urlize }}</p></td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+              </table>
+            </div>
+          </div>
+
+          <div class="content-card">
             <div class="page-heading"><h2>Highlighted Publications</h2></div>
             {% for publication in highlighted_publications %}
             <div class="publicationInfo">

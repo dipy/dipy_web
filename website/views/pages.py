@@ -2,7 +2,7 @@ from django.shortcuts import render
 from website.models import *
 from django.contrib.auth.decorators import login_required
 from .tools import get_website_section, get_latest_news_posts
-from .tools import get_google_plus_activity
+from .tools import get_google_plus_activity, get_facebook_page_feed
 from django.http import Http404
 
 
@@ -31,6 +31,7 @@ def index(request):
 
     context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
                                                      4)
+    context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
 
     return render(request, 'website/index.html', context)
 

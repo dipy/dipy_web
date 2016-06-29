@@ -75,6 +75,9 @@ def get_google_plus_activity(user_id, count):
     -----
     user_id : string
         The ID of the user to get activities for.
+
+    count: int
+        Maximum number of activities to fetch.
     """
     url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyA0dPfkGKCzEWJz9INBYslY25MC-M4NG7s"
     r = requests.get(url)
@@ -84,6 +87,27 @@ def get_google_plus_activity(user_id, count):
     else:
         print(json_response)
         return {}
+
+
+def get_facebook_page_feed(page_id, count):
+    """
+    Fetch the feed of posts published by this page, or by others on this page.
+
+    Input
+    -----
+    page_id : string
+        The ID of the page.
+    count: int
+        Maximum number of posts to fetch.
+    """
+    app_id = settings.FACEBOOK_APP_ID
+    app_secret = settings.FACEBOOK_APP_SECRET
+
+    params = (page_id, count, app_id, app_secret)
+    url = "https://graph.facebook.com/%s/feed?limit=%s&access_token=%s|%s" % params
+    response = requests.get(url)
+    response_json = response.json()
+    return response_json["data"]
 
 
 def update_documentations():
