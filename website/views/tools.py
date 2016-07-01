@@ -2,6 +2,8 @@ from website.models import *
 import requests
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
+import base64
+import os
 
 
 # Definition of functions:
@@ -104,10 +106,64 @@ def get_facebook_page_feed(page_id, count):
     app_secret = settings.FACEBOOK_APP_SECRET
 
     params = (page_id, count, app_id, app_secret)
-    url = "https://graph.facebook.com/%s/feed?limit=%s&access_token=%s|%s" % params
+    url = ("https://graph.facebook.com/%s/feed?limit=%s&access_token=%s|%s" %
+           params)
     response = requests.get(url)
     response_json = response.json()
     return response_json["data"]
+
+
+def get_twitter_bearer_token():
+    """
+    Fetch the bearer token from twitter and save it to TWITER_TOKEN
+    environment variable
+    """
+    consumer_key = settings.TWITTER_CONSUMER_KEY
+    consumer_secret = settings.TWITTER_CONSUMER_SECRET
+
+    bearer_token_credentials = "%s:%s" % (consumer_key, consumer_secret)
+
+    encoded_credentials = base64.b64encode(
+        str.encode(bearer_token_credentials)).decode()
+    auth_header = "Basic %s" % (encoded_credentials,)
+
+    headers = {'Authorization': auth_header,
+               'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+    response = requests.post('https://api.twitter.com/oauth2/token',
+                             headers=headers,
+                             data={'grant_type': 'client_credentials'})
+    response_json = response.json()
+    if 'access_token' in response_json:
+        token = response_json['access_token']
+    else:
+        token = ''
+    os.environ["TWITER_TOKEN"] = token
+    return token
+
+
+def get_twitter_feed(screen_name, count):
+    """
+    Fetch the most recent Tweets posted by the user indicated
+    by the screen_name
+
+    Input
+    -----
+    screen_name : string
+        The screen name of the user for whom to return Tweets for.
+
+    count: int
+        Maximum number of Tweets to fetch.
+    """
+    try:
+        token = os.environ["TWITER_TOKEN"]
+    except KeyError:
+        token = get_twitter_bearer_token()
+    parms = (screen_name, str(count))
+    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % (parms)
+    headers = {'Authorization': 'Bearer %s' % (token,)}
+    response = requests.get(url, headers=headers)
+    response_json = response.json()
+    return response_json
 
 
 def update_documentations():
