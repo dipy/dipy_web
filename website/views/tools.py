@@ -82,7 +82,10 @@ def get_google_plus_activity(user_id, count):
         Maximum number of activities to fetch.
     """
     url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyA0dPfkGKCzEWJz9INBYslY25MC-M4NG7s"
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        return {}
     json_response = r.json()
     if 'error' not in json_response:
         return json_response['items']
@@ -108,7 +111,10 @@ def get_facebook_page_feed(page_id, count):
     params = (page_id, count, app_id, app_secret)
     url = ("https://graph.facebook.com/%s/feed?limit=%s&access_token=%s|%s" %
            params)
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        return {}
     response_json = response.json()
     return response_json["data"]
 
@@ -129,10 +135,13 @@ def get_twitter_bearer_token():
 
     headers = {'Authorization': auth_header,
                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
-    response = requests.post('https://api.twitter.com/oauth2/token',
-                             headers=headers,
-                             data={'grant_type': 'client_credentials'})
-    response_json = response.json()
+    try:
+        response = requests.post('https://api.twitter.com/oauth2/token',
+                                 headers=headers,
+                                 data={'grant_type': 'client_credentials'})
+        response_json = response.json()
+    except requests.exceptions.ConnectionError:
+        response_json = {}
     if 'access_token' in response_json:
         token = response_json['access_token']
     else:
@@ -161,7 +170,10 @@ def get_twitter_feed(screen_name, count):
     parms = (screen_name, str(count))
     url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % (parms)
     headers = {'Authorization': 'Bearer %s' % (token,)}
-    response = requests.get(url, headers=headers)
+    try:
+        response = requests.get(url, headers=headers)
+    except requests.exceptions.ConnectionError:
+        return {}
     response_json = response.json()
     return response_json
 
