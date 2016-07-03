@@ -2,25 +2,8 @@
 {% load staticfiles %}
 {% load customfilters %}
 
-{% block extra_css %}
-<!-- Include simplemde markdown editor css-->
-<link rel="stylesheet" type="text/css" href="{% static "css/homeycombs.css" %}">
-{% endblock %}
 
 {% block content_body %}
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <div class="honeycombs" id="honeycomb_home">
-      {% for post in fill_honeycomb_posts %}
-      <div class="comb">
-        <img src="{{ post.image_url }}" />
-        <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
 <!-- Content -->
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
@@ -182,15 +165,6 @@
 
 
 {% block extra_js_bottom %}
-<!-- honycomb visualisation script-->
-<script src="{% static "js/jquery.homeycombs.js" %}"></script> 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.honeycombs').honeycombs({combWidth: 200, margin: 4});
-  });
-</script>
-
-
 <!-- Script to show bibtex on link click -->
 <script>
   $( ".bibtexShowButton" ).click(function( event ) {
