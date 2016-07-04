@@ -13,8 +13,8 @@ def get_website_section(requested_website_position_id):
     """
     Fetch WebsiteSection with website_position_id
 
-    Input
-    -----
+    Parameters
+    ----------
     website_position_id : string
 
     Output
@@ -33,8 +33,8 @@ def get_latest_news_posts(limit):
     """
     Fetch Latest NewsPosts according to post_date
 
-    Input
-    -----
+    Parameters
+    ----------
     limit : string
 
     Output
@@ -48,8 +48,8 @@ def has_commit_permission(access_token, repository_name):
     """
     Determine if user has commit access to the repository in nipy organisation.
 
-    Input
-    -----
+    Parameters
+    ----------
     access_token : string
         GitHub access token of user.
     repository_name : string
@@ -74,8 +74,8 @@ def get_google_plus_activity(user_id, count):
     """
     Fetch google plus activity list of a user
 
-    Input
-    -----
+    Parameters
+    ----------
     user_id : string
         The ID of the user to get activities for.
 
@@ -99,8 +99,8 @@ def get_facebook_page_feed(page_id, count):
     """
     Fetch the feed of posts published by this page, or by others on this page.
 
-    Input
-    -----
+    Parameters
+    ----------
     page_id : string
         The ID of the page.
     count: int
@@ -159,8 +159,8 @@ def get_twitter_feed(screen_name, count):
     Fetch the most recent Tweets posted by the user indicated
     by the screen_name
 
-    Input
-    -----
+    Parameters
+    ----------
     screen_name : string
         The screen name of the user for whom to return Tweets for.
 
