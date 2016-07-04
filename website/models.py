@@ -134,7 +134,10 @@ class CarouselImage(models.Model):
     Model for storing image links for carousel.
     """
     image_caption = models.CharField(max_length=200)
+    image_description = models.TextField(blank=True, null=True)
+    target_url = models.URLField(blank=True, null=True)
     image_url = models.URLField(max_length=200)
+    display_description = models.BooleanField(default=True)
 
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)

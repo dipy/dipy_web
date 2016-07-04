@@ -19,13 +19,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif; }
 
 #websiteHeaderLogo {
-  height: 2.4em; }
+  height: 2.2em;
+  padding-left: 15px; }
 
 #websiteNavbar {
   min-height: 80px;
-  background: #fff;
+  background: none;
   border: none;
-  box-shadow: 0px -13px 30px #1a1a1a;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 15px;
   position: fixed;
@@ -33,19 +33,22 @@ body {
   left: 0;
   right: 0;
   z-index: 5; }
-
-.websiteNavbarList {
-  font-size: 1.1em;
-  padding: 0.9em 0.1em;
-  transition: .15s;
-  text-shadow: 0px 0px 1px #FFF; }
-  .websiteNavbarList a {
-    font-weight: 400; }
-  .websiteNavbarList:hover {
-    background: #f8f8f8 none repeat scroll 0% 0%;
-    box-shadow: 0px 4px 0px #ff7f00;
-    color: #000;
-    text-shadow: 0px 0px 12px #F5C383; }
+  #websiteNavbar li {
+    font-size: 1.1em;
+    padding: 0.9em 0.1em;
+    transition: .15s;
+    text-shadow: 0px 0px 1px #FFF; }
+    #websiteNavbar li a {
+      font-weight: 400; }
+    #websiteNavbar li:hover {
+      background: #f8f8f8 none repeat scroll 0% 0%;
+      box-shadow: 0px 4px 0px #ff7f00;
+      color: #000;
+      text-shadow: 0px 0px 12px #F5C383; }
+  #websiteNavbar .inner-wrapper {
+    background: #fff;
+    border-radius: 0em 0em 0.2em 0.2em;
+    border-bottom: 2px solid rgba(255, 128, 5, 0.26); }
 
 .navbar-toggle {
   position: relative;
@@ -105,17 +108,26 @@ body {
     margin-top: 10px;
     margin-bottom: 10px; }
 
-.carousel-inner .item {
-  padding-bottom: 52px; }
-
 .carousel-caption {
-  background: rgba(24, 24, 24, 0.3);
-  bottom: 0;
+  background: rgba(14, 156, 76, 0.81);
+  z-index: 4;
+  top: 30%;
   left: 0;
-  right: 0;
-  padding: .2em;
-  font-size: 2em;
-  z-index: 4; }
+  bottom: inherit;
+  right: inherit;
+  overflow: hidden;
+  width: auto;
+  max-width: 30em;
+  font-size: 1em;
+  padding: 1em;
+  transition: all 0.2s;
+  text-align: left; }
+  .carousel-caption:hover {
+    background: rgba(13, 137, 67, 0.92); }
+  .carousel-caption h2 {
+    margin: 0; }
+  .carousel-caption p {
+    font-size: 18px; }
 
 .carousel-indicators {
   bottom: 40px;
@@ -149,7 +161,7 @@ div.codehilite {
   background-color: rgba(254, 221, 179, 0.89); }
 
 .home-header {
-  background: #e3e3e3;
+  background: #fff;
   color: #182422;
   box-shadow: 0px -34px 19px -22px RGBA(101, 101, 101, 0.41), inset 0px 0px 0px 0px #CCC; }
   .home-header p {

@@ -20,9 +20,14 @@
         {% for image in all_carousel %}
           <div class="item {% if forloop.first %}active{% endif %}">
             <img src="{{ image.image_url }}" alt="{{ image.image_caption }}">
-            <div class="carousel-caption">
-              {{ image.image_caption }}
-            </div>
+            {% if image.display_description %}
+            <a target="_blank" href="{% if image.target_url %}{{ image.target_url }}{% else %}#{% endif %}">
+              <div class="carousel-caption">
+                <h2>{{ image.image_caption }}</h2>
+                {% if image.image_description %}<p>{{ image.image_description }}</p>{% endif %}
+              </div>
+            </a>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
