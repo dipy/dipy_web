@@ -7,6 +7,36 @@
 <!-- Content -->
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+
+    <div id="homeCarousel" class="carousel slide">
+      <!-- Carousel indicators -->
+      <ol class="carousel-indicators">
+        {% for image in all_carousel %}
+          <li data-target="#homeCarousel" data-slide-to="{{forloop.counter|add:"-1"}}" class="{% if forloop.first %}active{% endif %}"></li>
+        {% endfor %}
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        {% for image in all_carousel %}
+          <div class="item {% if forloop.first %}active{% endif %}">
+            <img src="{{ image.image_url }}" alt="{{ image.image_caption }}">
+            <div class="carousel-caption">
+              {{ image.image_caption }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
     <div class="content-card home-header">
       {% if home_header %}
       <h1>{{ home_header.title }}</h1>
@@ -73,41 +103,41 @@
             <div class="page-heading"><h2>Google Plus Feed</h2></div>
             <div>
               <table class="table">
-              {% for activity in gplus_feed %}
+                {% for activity in gplus_feed %}
                 <tr>
                   <td class="col-md-3 col-lg-3 col-sm-3"><p>{{activity.published|slice:":10"}}</p></td>
                   <td class="col-md-9 col-lg-9 col-sm-9">
                     <a href="{{ activity.url }}" target="_blank"><b>{{ activity.title }}</b></a>
                     <div  class="gplus_content_summary" id="{{ activity.id }}-summary">
                       {% if activity.object.content == "" %}
-                        <!-- for attachment only posts -->
-                        {% for attachment in activity.object.attachments %}
-                            <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
-                        {% endfor %}
+                      <!-- for attachment only posts -->
+                      {% for attachment in activity.object.attachments %}
+                      <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                      {% endfor %}
                       {% else %}
                       <p>{{ activity.object.content|truncatechars_html:100|safe }}&emsp;<a class="gplus_more_link" data="{{ activity.id }}" href="{{ activity.url }}">more</a></p>
                       {% endif %}
                     </div>
                     <div class="gplus_content_body" id="{{ activity.id }}-full">
                       <div class="gplus_inner_wrapper">
-                      <a class="gplus_close_link glyphicon glyphicon-remove" data="{{ activity.id }}" href="#"></a>
-                      <div class="clearfix"></div>
-                      <a href="{{ activity.url }}" target="_blank"><h2>{{ activity.title }}</h2></a>
-                      <p>{{ activity.object.content|safe }}</p>
-                      {% for attachment in activity.object.attachments %}
-                      <div class="gplus_attachments_wrapper">
-                        <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
-                        <p>{{ attachment.content }}</p>
-                        {% if attachment.image.url %}
+                        <a class="gplus_close_link glyphicon glyphicon-remove" data="{{ activity.id }}" href="#"></a>
+                        <div class="clearfix"></div>
+                        <a href="{{ activity.url }}" target="_blank"><h2>{{ activity.title }}</h2></a>
+                        <p>{{ activity.object.content|safe }}</p>
+                        {% for attachment in activity.object.attachments %}
+                        <div class="gplus_attachments_wrapper">
+                          <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                          <p>{{ attachment.content }}</p>
+                          {% if attachment.image.url %}
                           <img class="gplus_attachment_image" src="{{ attachment.image.url }}">
-                        {% endif %}
-                      </div>
-                      {% endfor %}
+                          {% endif %}
+                        </div>
+                        {% endfor %}
                       </div>
                     </div>
                   </td>
                 </tr>
-              {% endfor %}
+                {% endfor %}
               </table>
             </div>
           </div>
@@ -116,14 +146,14 @@
             <div class="page-heading"><h2>Facebook Feed</h2></div>
             <div>
               <table class="table">
-              {% for post in fb_posts %}
+                {% for post in fb_posts %}
                 <tr>
                   {% if post.message %}
                   <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ post.created_time|slice:":10" }}</p></td>
                   <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ post.message|urlize }}</p></td>
                   {% endif %}
                 </tr>
-              {% endfor %}
+                {% endfor %}
               </table>
             </div>
           </div>
@@ -132,12 +162,12 @@
             <div class="page-heading"><h2>Tweets</h2></div>
             <div>
               <table class="table">
-              {% for tweet in tweets %}
+                {% for tweet in tweets %}
                 <tr>
                   <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ tweet.created_at|slice:":10" }}</p></td>
                   <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ tweet.text|urlize }}</p></td>
                 </tr>
-              {% endfor %}
+                {% endfor %}
               </table>
             </div>
           </div>
@@ -165,6 +195,11 @@
 
 
 {% block extra_js_bottom %}
+<!-- Carousel Script -->
+<script type="text/javascript">
+  $('.carousel').carousel()
+</script>
+
 <!-- Script to show bibtex on link click -->
 <script>
   $( ".bibtexShowButton" ).click(function( event ) {

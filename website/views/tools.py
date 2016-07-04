@@ -116,7 +116,10 @@ def get_facebook_page_feed(page_id, count):
     except requests.exceptions.ConnectionError:
         return {}
     response_json = response.json()
-    return response_json["data"]
+    if 'data' in response_json:
+        return response_json["data"]
+    else:
+        return {}
 
 
 def get_twitter_bearer_token():

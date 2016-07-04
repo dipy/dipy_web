@@ -75,17 +75,6 @@ body {
   margin: 0 auto;
   box-shadow: 0 0 1em #222; }
 
-.carousel-indicators li {
-  border: 1px solid #1a1a1a; }
-.carousel-indicators .active {
-  background: #e5e5e5; }
-
-.carousel-control.right {
-  background: none; }
-
-.carousel-control.left {
-  background: none; }
-
 #superContentContainer {
   margin-top: 83px; }
 
@@ -115,6 +104,29 @@ body {
   .page-heading .h1, .page-heading .h2, .page-heading .h3, .page-heading h1, .page-heading h2, .page-heading h3 {
     margin-top: 10px;
     margin-bottom: 10px; }
+
+.carousel-inner .item {
+  padding-bottom: 52px; }
+
+.carousel-caption {
+  background: rgba(24, 24, 24, 0.3);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .2em;
+  font-size: 2em;
+  z-index: 4; }
+
+.carousel-indicators {
+  bottom: 40px;
+  z-index: 4; }
+  .carousel-indicators li {
+    background: rgba(229, 229, 229, 0.16);
+    border: solid 1px #a1a1a1; }
+
+.carousel-control {
+  padding-top: 2em;
+  font-size: 4em; }
 
 .publicationBibtex {
   display: none;
