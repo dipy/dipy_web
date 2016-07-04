@@ -1,9 +1,10 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 import markdown
 import bleach
-import datetime
 
 # markdown allowed tags that are not filtered by bleach
 

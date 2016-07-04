@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+
 from .tools import update_documentations, has_commit_permission
 from website.models import DocumentationLink
 

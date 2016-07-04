@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from website.models import *
 from django.contrib.auth.decorators import login_required
-from .tools import *
 from django.http import Http404
+from django.shortcuts import render
+
+from .tools import *
+from website.models import *
 
 
 # Definition of views:

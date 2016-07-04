@@ -1,5 +1,6 @@
-from django import template
 import re
+
+from django import template
 import markdown
 
 register = template.Library()

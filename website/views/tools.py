@@ -1,9 +1,10 @@
-from website.models import *
-import requests
-from django.core.exceptions import ObjectDoesNotExist
-from django.conf import settings
 import base64
+from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 import os
+import requests
+
+from website.models import *
 
 
 # Definition of functions:

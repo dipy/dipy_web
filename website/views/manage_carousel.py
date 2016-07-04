@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .tools import has_commit_permission
-from website.models import CarouselImage
-from website.forms import AddEditCarouselImageForm
 from django.http import Http404
+from django.shortcuts import render, redirect
+
+from .tools import has_commit_permission
+from website.forms import AddEditCarouselImageForm
+from website.models import CarouselImage
 
 
 @login_required
