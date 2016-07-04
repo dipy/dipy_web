@@ -141,6 +141,18 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = '/dashboard/login'
 
+# documentation repository settings
+DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
+DOCUMENTATION_REPO_NAME = 'dipy_web'
+
+# facebook API keys
+FACEBOOK_APP_ID = ''
+FACEBOOK_APP_SECRET = ''
+
+# twitter API keys
+TWITTER_CONSUMER_KEY = ''
+TWITTER_CONSUMER_SECRET = ''
+
 # python-social-auth settings
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_URL = '/login'

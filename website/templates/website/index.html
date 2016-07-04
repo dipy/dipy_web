@@ -2,26 +2,44 @@
 {% load staticfiles %}
 {% load customfilters %}
 
-{% block extra_css %}
-<!-- Include simplemde markdown editor css-->
-<link rel="stylesheet" type="text/css" href="{% static "css/homeycombs.css" %}">
-{% endblock %}
 
 {% block content_body %}
+<!-- Content -->
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <div class="honeycombs" id="honeycomb_home">
-      {% for post in fill_honeycomb_posts %}
-      <div class="comb">
-        <img src="{{ post.image_url }}" />
-        <span><a href="{{ post.target_url }}">{{ post.image_caption }}</a></span>
+
+    <div id="homeCarousel" class="carousel slide">
+      <!-- Carousel indicators -->
+      <ol class="carousel-indicators">
+        {% for image in all_carousel %}
+          <li data-target="#homeCarousel" data-slide-to="{{forloop.counter|add:"-1"}}" class="{% if forloop.first %}active{% endif %}"></li>
+        {% endfor %}
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        {% for image in all_carousel %}
+          <div class="item {% if forloop.first %}active{% endif %}">
+            <img src="{{ image.image_url }}" alt="{{ image.image_caption }}">
+            {% if image.display_description %}
+            <a target="_blank" href="{% if image.target_url %}{{ image.target_url }}{% else %}#{% endif %}">
+              <div class="carousel-caption">
+                <h2>{{ image.image_caption }}</h2>
+                {% if image.image_description %}<p>{{ image.image_description }}</p>{% endif %}
+              </div>
+            </a>
+            {% endif %}
+          </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
+
   </div>
 </div>
 
-<!-- Content -->
+
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
     <div class="content-card home-header">
@@ -36,7 +54,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
     <div id="bigLinksWrapper">
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
-        <a href="/installation/">
+        <a href="/page/installation/">
           <div class="big-link">
             <img src="{% static "images/download-logo.png" %}">
             <span>Install Now</span>
@@ -65,7 +83,7 @@
 
 <div class="row">
   <div class="split-column-wrapper">
-    <div class="col-md-9 col-sm-12 col-xs-12 col-lg-9">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
       <div class="row"> 
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
           <div class="content-card">
@@ -87,6 +105,79 @@
           </div>
 
           <div class="content-card">
+            <div class="page-heading"><h2>Google Plus Feed</h2></div>
+            <div>
+              <table class="table">
+                {% for activity in gplus_feed %}
+                <tr>
+                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{activity.published|slice:":10"}}</p></td>
+                  <td class="col-md-9 col-lg-9 col-sm-9">
+                    <a href="{{ activity.url }}" target="_blank"><b>{{ activity.title }}</b></a>
+                    <div  class="gplus_content_summary" id="{{ activity.id }}-summary">
+                      {% if activity.object.content == "" %}
+                      <!-- for attachment only posts -->
+                      {% for attachment in activity.object.attachments %}
+                      <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                      {% endfor %}
+                      {% else %}
+                      <p>{{ activity.object.content|truncatechars_html:100|safe }}&emsp;<a class="gplus_more_link" data="{{ activity.id }}" href="{{ activity.url }}">more</a></p>
+                      {% endif %}
+                    </div>
+                    <div class="gplus_content_body" id="{{ activity.id }}-full">
+                      <div class="gplus_inner_wrapper">
+                        <a class="gplus_close_link glyphicon glyphicon-remove" data="{{ activity.id }}" href="#"></a>
+                        <div class="clearfix"></div>
+                        <a href="{{ activity.url }}" target="_blank"><h2>{{ activity.title }}</h2></a>
+                        <p>{{ activity.object.content|safe }}</p>
+                        {% for attachment in activity.object.attachments %}
+                        <div class="gplus_attachments_wrapper">
+                          <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                          <p>{{ attachment.content }}</p>
+                          {% if attachment.image.url %}
+                          <img class="gplus_attachment_image" src="{{ attachment.image.url }}">
+                          {% endif %}
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>Facebook Feed</h2></div>
+            <div>
+              <table class="table">
+                {% for post in fb_posts %}
+                <tr>
+                  {% if post.message %}
+                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ post.created_time|slice:":10" }}</p></td>
+                  <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ post.message|urlize }}</p></td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="page-heading"><h2>Tweets</h2></div>
+            <div>
+              <table class="table">
+                {% for tweet in tweets %}
+                <tr>
+                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ tweet.created_at|slice:":10" }}</p></td>
+                  <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ tweet.text|urlize }}</p></td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+
+          <div class="content-card">
             <div class="page-heading"><h2>Highlighted Publications</h2></div>
             {% for publication in highlighted_publications %}
             <div class="publicationInfo">
@@ -99,26 +190,7 @@
             </div>
             {% endfor %}
           </div>
-
-          <div class="content-card">
-            <div class="page-heading"><h2>Google Plus Feed</h2></div>
-            <div>
-              {% for activity in gplus_feed %}
-              <h3>{{ activity.title }}</h3>
-              <p>{{ activity.object.content|safe|slice:":255" }}</p>
-              <hr>
-              {% endfor %}
-            </div>
-          </div>
-
         </div>
-      </div>
-    </div>
-
-    <!-- sidebar -->
-    <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">
-      <div class="content-card" id="twitter-feed">
-        <a class="twitter-timeline" data-link-color="#2B7BB9" data-tweet-limit="4" href="https://twitter.com/dipymri">Loading Tweets by dipymri</a>
       </div>
     </div>
   </div>
@@ -128,14 +200,10 @@
 
 
 {% block extra_js_bottom %}
-<!-- honycomb visualisation script-->
-<script src="{% static "js/jquery.homeycombs.js" %}"></script> 
+<!-- Carousel Script -->
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('.honeycombs').honeycombs({combWidth: 200, margin: 4});
-  });
+  $('.carousel').carousel()
 </script>
-
 
 <!-- Script to show bibtex on link click -->
 <script>
@@ -144,5 +212,20 @@
     $( this ).next().slideToggle();
   });
 </script>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- Script to customize google plus feed -->
+<script type="text/javascript">
+  $( ".gplus_more_link" ).click(function( event ) {
+    event.preventDefault();
+    var contentTarget = jQuery(this).attr("data");
+    $( "#" + contentTarget + "-full" ).fadeIn();
+    $("body").css( "overflow", "hidden" );
+  });
+  $( ".gplus_close_link" ).click(function( event ) {
+    event.preventDefault();
+    var contentTarget = jQuery(this).attr("data");
+    $( "#" + contentTarget + "-full" ).fadeOut();
+    $("body").css( "overflow", "auto" );
+  });
+</script>
 {% endblock %}

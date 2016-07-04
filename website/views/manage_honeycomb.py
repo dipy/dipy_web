@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .tools import has_commit_permission
-from website.models import HoneycombPost
-from website.forms import AddEditHoneycombPostForm
 from django.http import Http404
+from django.shortcuts import render, redirect
+
+from .tools import has_commit_permission
+from website.forms import AddEditHoneycombPostForm
+from website.models import HoneycombPost
 
 
 @login_required

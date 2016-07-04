@@ -16,7 +16,7 @@
 
 			{% for section in sections %}
 			<h3>{{section}}</h3>
-			{{section.body_html|youtube_embed_url|safe}}
+			{{ section.body_markdown|truncatechars:400|markdown_to_html|youtube_embed_url|safe }}
 			<hr>
 			<a href="/dashboard/sections/edit/{{ section.section_type }}/{{section.website_position_id}}/"><div class="btn btn-primary">Edit</div></a>
 			{% if type == "page" %}

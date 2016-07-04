@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .tools import has_commit_permission
-from website.models import Publication
-from website.forms import AddEditPublicationForm
-from django.http import Http404
 import bibtexparser
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.shortcuts import render, redirect
+
+from .tools import has_commit_permission
+from website.forms import AddEditPublicationForm
+from website.models import Publication
 
 
 @login_required

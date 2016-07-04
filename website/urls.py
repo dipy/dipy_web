@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 
     # Section Page
-    url(r'^page/(?P<position_id>.*?)$', views.page,
+    url(r'^page/(?P<position_id>.*?)/$', views.page,
         name='section_page'),
 
     # Cite Page for publications
@@ -74,6 +74,12 @@ urlpatterns = [
         name='add_honeycomb_post'),
     url(r'^dashboard/honeycomb/delete/(?P<honeycomb_post_id>.*?)/$',
         views.delete_honeycomb_post, name='delete_honeycomb_post'),
+
+    # Documentation Management
+    url(r'^dashboard/documentation/$', views.dashboard_documentation,
+        name='dashboard_documentation'),
+    url(r'^dashboard/documentation/update/$', views.update_documentation,
+        name='update_documentation'),
 
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),

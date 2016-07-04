@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .tools import has_commit_permission
-from website.models import WebsiteSection
-from website.forms import AddEditPageSectionForm, EditFixedSectionForm
 from django.http import Http404
+from django.shortcuts import render, redirect
+
+from .tools import has_commit_permission
+from website.forms import AddEditPageSectionForm, EditFixedSectionForm
+from website.models import WebsiteSection
 
 
 @login_required

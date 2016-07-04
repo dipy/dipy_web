@@ -1,9 +1,10 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 import markdown
 import bleach
-import datetime
 
 # markdown allowed tags that are not filtered by bleach
 
@@ -134,7 +135,10 @@ class CarouselImage(models.Model):
     Model for storing image links for carousel.
     """
     image_caption = models.CharField(max_length=200)
+    image_description = models.TextField(blank=True, null=True)
+    target_url = models.URLField(blank=True, null=True)
     image_url = models.URLField(max_length=200)
+    display_description = models.BooleanField(default=True)
 
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
@@ -166,3 +170,12 @@ class HoneycombPost(models.Model):
 
     def __str__(self):
         return self.image_url
+
+
+class DocumentationLink(models.Model):
+    """
+    Model for storing links to the documentation pages
+    """
+    version = models.CharField(max_length=20, unique=True)
+    url = models.URLField(max_length=100)
+    displayed = models.BooleanField(default=True)
