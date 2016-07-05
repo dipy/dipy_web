@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 import os
 import requests
+from meta.views import Meta
 
 from website.models import *
 
@@ -207,3 +208,38 @@ def update_documentations():
                 d = DocumentationLink(version=version_name,
                                       url=page_url)
                 d.save()
+
+
+def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
+                       description=settings.DEFAULT_DESCRIPTION,
+                       keywords=settings.DEFAULT_KEYWORDS,
+                       url="/", image=settings.DEFAULT_LOGO_URL,
+                       object_type="website"):
+    """
+    Get meta data dictionary for a page
+
+    Parameters
+    ----------
+    title : string
+        The title of the page used in og:title, twitter:title, <title> tag etc.
+    description: string
+        Description used in description meta tag as well as the
+        og:description and twitter:description property.
+    keywords: list
+        List of keywords related to the page
+    url: string
+        Full or partial url of the page
+    image: string
+        Full or partial url of an image
+    object_type: string
+        Used for the og:type property.
+    """
+    meta = Meta(title=title,
+                description=description,
+                keywords=keywords + settings.DEFAULT_KEYWORDS,
+                url=url,
+                image=image,
+                object_type=object_type,
+                use_og=True, use_twitter=True, use_facebook=True,
+                use_googleplus=True, use_title_tag=True)
+    return meta
