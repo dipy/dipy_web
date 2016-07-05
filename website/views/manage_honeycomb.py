@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import render, redirect
 
@@ -20,7 +21,7 @@ def dashboard_honeycomb(request):
         context = {'all_honeycomb_posts': all_honeycomb_posts}
         return render(request, 'website/dashboard_honeycomb.html', context)
     else:
-        return render(request, 'website/dashboard_honeycomb.html', {})
+        raise PermissionDenied
 
 
 @login_required
@@ -38,7 +39,7 @@ def add_honeycomb_post(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addedithoneycomb.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     context = {}
@@ -71,7 +72,7 @@ def edit_honeycomb_post(request, honeycomb_post_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addedithoneycomb.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     try:
@@ -111,7 +112,7 @@ def delete_honeycomb_post(request, honeycomb_post_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addedithoneycomb.html', {})
+        raise PermissionDenied
     try:
         n = HoneycombPost.objects.get(id=honeycomb_post_id)
     except:

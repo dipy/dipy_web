@@ -84,4 +84,8 @@ urlpatterns = [
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
 
+    # logout url
+    url(r'^dashboard/logout/$', 'django.contrib.auth.views.logout',
+        {'next_page': '/'})
+
 ]

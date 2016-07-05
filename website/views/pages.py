@@ -60,17 +60,21 @@ def honeycomb(request):
 
 
 def support(request):
+    context = {}
     context['meta'] = get_meta_tags_dict()
-    return render(request, 'website/support.html', {})
+    return render(request, 'website/support.html', context)
 
 
 @login_required
 def dashboard(request):
+    context = {}
     context['meta'] = get_meta_tags_dict()
-    return render(request, 'website/dashboard.html', {})
+    return render(request, 'website/dashboard.html', context)
 
 
 def dashboard_login(request):
+    context = {}
     next_url = request.GET.get('next')
+    context['next'] = next_url
     context['meta'] = get_meta_tags_dict()
-    return render(request, 'website/dashboard_login.html', {'next': next_url})
+    return render(request, 'website/dashboard_login.html', context)

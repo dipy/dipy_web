@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 
 from .tools import update_documentations, has_commit_permission
@@ -18,7 +19,7 @@ def dashboard_documentation(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/dashboard_documentation.html', {})
+        raise PermissionDenied
     else:
         context = {}
         if request.method == 'POST':
