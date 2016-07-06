@@ -18,6 +18,9 @@ body {
 .h1, .h2, .h3, h1, h2, h3 {
   font-family: 'Source Sans Pro', sans-serif; }
 
+td {
+  padding: 0.2em; }
+
 #websiteHeaderLogo {
   height: 2.2em;
   padding-left: 15px; }
@@ -129,10 +132,10 @@ body {
   background: #e9e9e9;
   padding: 1em; }
 
-div.codehilite {
+div.codehilite, .highlight {
   background: #fff;
   border: none; }
-  div.codehilite pre {
+  div.codehilite pre, .highlight pre {
     background: #fafbff;
     border: 1px solid rgba(46, 168, 209, 0.16);
     border-radius: 0px;
@@ -298,5 +301,21 @@ div.codehilite {
   padding: 1em;
   margin-top: 1em;
   text-decoration: none; }
+
+.documentation-toc-tree {
+  border-left: 3px solid rgba(255, 222, 190, 0.44);
+  padding-left: 1em;
+  margin-top: 1.8em;
+  color: #454545; }
+  .documentation-toc-tree ul {
+    padding-left: 1em; }
+
+code {
+  padding: 0px 4px; }
+
+.documentation-parent-links {
+  border-bottom: 1px solid #eceaea;
+  padding-bottom: 0.2em;
+  padding-top: 0.4em; }
 
 /*# sourceMappingURL=main.css.map */

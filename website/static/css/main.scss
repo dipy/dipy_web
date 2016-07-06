@@ -27,6 +27,11 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+// default table styles
+td {
+    padding: 0.2em;
+}
+
 //// Specific Styles
 
 // website header and navbar styles
@@ -172,7 +177,7 @@ body {
 }
 
 // codehilite styles
-div.codehilite {
+div.codehilite, .highlight {
     background: #fff;
     border: none;
     pre {
@@ -384,4 +389,26 @@ div.codehilite {
     padding: 1em;
     margin-top: 1em;
     text-decoration: none;
+}
+
+
+// documentation styles
+.documentation-toc-tree {
+    border-left: 3px solid rgba(255, 222, 190, 0.44);
+    padding-left: 1em;
+    margin-top: 1.8em;
+    color: #454545;
+    ul {
+        padding-left: 1em;
+    }
+}
+
+code {
+    padding: 0px 4px;
+}
+
+.documentation-parent-links {
+    border-bottom: 1px solid rgb(236, 234, 234);
+    padding-bottom: 0.2em;
+    padding-top: 0.4em;
 }
