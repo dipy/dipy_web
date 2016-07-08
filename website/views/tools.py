@@ -198,9 +198,13 @@ def update_documentations():
         settings.DOCUMENTATION_REPO_OWNER, settings.DOCUMENTATION_REPO_NAME)
     response = requests.get(url)
     response_json = response.json()
+    all_versions_in_github = []
+
+    # add new docs to database
     for content in response_json:
         if content["type"] == "dir":
             version_name = content["name"]
+            all_versions_in_github.append(version_name)
             page_url = base_url + version_name
             try:
                 DocumentationLink.objects.get(version=version_name)
@@ -208,6 +212,12 @@ def update_documentations():
                 d = DocumentationLink(version=version_name,
                                       url=page_url)
                 d.save()
+    all_doc_links = DocumentationLink.objects.all()
+
+    # remove deleted docs from database
+    for doc in all_doc_links:
+        if doc.version not in all_versions_in_github:
+            doc.delete()
 
 
 def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
