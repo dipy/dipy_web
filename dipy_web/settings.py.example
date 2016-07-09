@@ -150,6 +150,9 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+# heroku settings for static files gzip
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 LOGIN_URL = '/dashboard/login'
 
 # documentation repository settings
