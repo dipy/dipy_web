@@ -41,7 +41,8 @@ def page(request, position_id):
         raise Http404("Page does not exist")
 
     context['section'] = section
-    context['meta'] = get_meta_tags_dict()
+    page_title = "DIPY - %s" % (section.title,)
+    context['meta'] = get_meta_tags_dict(title=page_title)
     return render(request, 'website/section_page.html', context)
 
 
@@ -49,7 +50,7 @@ def cite(request):
     context = {}
     all_publications = Publication.objects.all()
     context['all_publications'] = all_publications
-    context['meta'] = get_meta_tags_dict()
+    context['meta'] = get_meta_tags_dict(title="DIPY - Publications")
     return render(request, 'website/cite.html', context)
 
 
@@ -57,13 +58,13 @@ def honeycomb(request):
     context = {}
     all_honeycomb_posts = HoneycombPost.objects.all()
     context['all_honeycomb_posts'] = all_honeycomb_posts
-    context['meta'] = get_meta_tags_dict()
+    context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 
 
 def support(request):
     context = {}
-    context['meta'] = get_meta_tags_dict()
+    context['meta'] = get_meta_tags_dict(title="DIPY - Support")
     return render(request, 'website/support.html', context)
 
 

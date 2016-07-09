@@ -177,7 +177,7 @@ DEFAULT_DESCRIPTION = """Dipy is a free and open source software
                       registration, reconstruction, tracking,
                       clustering, visualization, and statistical
                       analysis of MRI data."""
-DEFAULT_LOGO_URL = "http://dipy.herokuapp.com/static/images/dipy-logo.png"
+DEFAULT_LOGO_URL = "http://dipy.herokuapp.com/static/images/dipy-thumb.jpg"
 DEFAULT_KEYWORDS = ['DIPY', 'MRI', 'Diffusion Imaging In Python']
 
 # django-meta settings
