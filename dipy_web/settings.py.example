@@ -115,6 +115,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# cache preferences (currently using in memory cache. Replace
+# with Memcached for better performance)
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'dipy-cache',
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

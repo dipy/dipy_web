@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 
 from .tools import *
 from website.models import *
@@ -8,6 +9,7 @@ from website.models import *
 
 # Definition of views:
 
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
     home_header = get_website_section('home_header')

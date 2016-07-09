@@ -3,8 +3,10 @@ import requests
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def documentation(request, version, path):
     context = {}
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
