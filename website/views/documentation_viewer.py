@@ -22,7 +22,9 @@ def documentation(request, version, path):
         response = requests.get(url)
         if response.status_code == 404:
             raise Http404("Page not found")
-    url_dir = url[:-len(url.split("/")[-1])]
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
     response_json = response.json()
     response_json['body'] = response_json['body'].replace("src=\"",
                                                           "src=\"" + url_dir)
