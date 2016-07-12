@@ -232,16 +232,16 @@ def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
     ----------
     title : string
         The title of the page used in og:title, twitter:title, <title> tag etc.
-    description: string
+    description : string
         Description used in description meta tag as well as the
         og:description and twitter:description property.
-    keywords: list
+    keywords : list
         List of keywords related to the page
-    url: string
+    url : string
         Full or partial url of the page
-    image: string
+    image : string
         Full or partial url of an image
-    object_type: string
+    object_type : string
         Used for the og:type property.
     """
     meta = Meta(title=title,
