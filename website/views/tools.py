@@ -83,7 +83,8 @@ def get_google_plus_activity(user_id, count):
     count: int
         Maximum number of activities to fetch.
     """
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyA0dPfkGKCzEWJz9INBYslY25MC-M4NG7s"
+    api_key = settings.GOOGLE_API_KEY
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
     try:
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
