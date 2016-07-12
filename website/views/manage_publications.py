@@ -1,5 +1,6 @@
 import bibtexparser
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import render, redirect
 
@@ -21,7 +22,7 @@ def dashboard_publications(request):
         context = {'all_publications': all_publications}
         return render(request, 'website/dashboard_publications.html', context)
     else:
-        return render(request, 'website/dashboard_publications.html', {})
+        raise PermissionDenied
 
 
 @login_required
@@ -39,7 +40,7 @@ def add_publication(request, method):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditpublication.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     if(method == "manual"):
@@ -134,7 +135,7 @@ def edit_publication(request, publication_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditpublication.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     try:
@@ -174,7 +175,7 @@ def delete_publication(request, publication_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditpublication.html', {})
+        raise PermissionDenied
     try:
         p = Publication.objects.get(id=publication_id)
     except:
@@ -198,7 +199,7 @@ def highlight_publications(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditpublication.html', {})
+        raise PermissionDenied
     else:
         if request.method == 'POST':
             highlighted_publications = request.POST.getlist('highlights[]')

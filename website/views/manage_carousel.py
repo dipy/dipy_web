@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import render, redirect
 
@@ -20,7 +21,7 @@ def dashboard_carousel(request):
         context = {'all_carousel_images': all_carousel_images}
         return render(request, 'website/dashboard_carousel.html', context)
     else:
-        return render(request, 'website/dashboard_carousel.html', {})
+        raise PermissionDenied
 
 
 @login_required
@@ -38,7 +39,7 @@ def add_carousel_image(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditcarousel.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     context = {}
@@ -71,7 +72,7 @@ def edit_carousel_image(request, carousel_image_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditcarousel.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     try:
@@ -111,7 +112,7 @@ def delete_carousel_image(request, carousel_image_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addeditcarousel.html', {})
+        raise PermissionDenied
     try:
         n = CarouselImage.objects.get(id=carousel_image_id)
     except:

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import render, redirect
 
@@ -25,7 +26,7 @@ def dashboard_sections(request, section_type_requested):
         context["type"] = section_type_requested
         return render(request, 'website/dashboard_sections.html', context)
     else:
-        return render(request, 'website/dashboard_sections.html', {})
+        raise PermissionDenied
 
 
 @login_required
@@ -43,7 +44,7 @@ def edit_website_section(request, section_type_requested, position_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/editsection.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     try:
@@ -100,7 +101,7 @@ def add_website_page(request):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/addpagesection.html', {})
+        raise PermissionDenied
 
     # if user has edit permission:
     context = {}
@@ -135,7 +136,7 @@ def delete_website_page(request, position_id):
 
     # if user does not have edit permission:
     if not has_permission:
-        return render(request, 'website/dashboard_sections.html', {})
+        raise PermissionDenied
     try:
         page_section = WebsiteSection.objects.get(
             website_position_id=position_id)

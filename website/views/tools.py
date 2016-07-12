@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 import os
 import requests
+from meta.views import Meta
 
 from website.models import *
 
@@ -13,8 +14,8 @@ def get_website_section(requested_website_position_id):
     """
     Fetch WebsiteSection with website_position_id
 
-    Input
-    -----
+    Parameters
+    ----------
     website_position_id : string
 
     Output
@@ -33,8 +34,8 @@ def get_latest_news_posts(limit):
     """
     Fetch Latest NewsPosts according to post_date
 
-    Input
-    -----
+    Parameters
+    ----------
     limit : string
 
     Output
@@ -48,8 +49,8 @@ def has_commit_permission(access_token, repository_name):
     """
     Determine if user has commit access to the repository in nipy organisation.
 
-    Input
-    -----
+    Parameters
+    ----------
     access_token : string
         GitHub access token of user.
     repository_name : string
@@ -74,8 +75,8 @@ def get_google_plus_activity(user_id, count):
     """
     Fetch google plus activity list of a user
 
-    Input
-    -----
+    Parameters
+    ----------
     user_id : string
         The ID of the user to get activities for.
 
@@ -99,8 +100,8 @@ def get_facebook_page_feed(page_id, count):
     """
     Fetch the feed of posts published by this page, or by others on this page.
 
-    Input
-    -----
+    Parameters
+    ----------
     page_id : string
         The ID of the page.
     count: int
@@ -159,8 +160,8 @@ def get_twitter_feed(screen_name, count):
     Fetch the most recent Tweets posted by the user indicated
     by the screen_name
 
-    Input
-    -----
+    Parameters
+    ----------
     screen_name : string
         The screen name of the user for whom to return Tweets for.
 
@@ -197,9 +198,13 @@ def update_documentations():
         settings.DOCUMENTATION_REPO_OWNER, settings.DOCUMENTATION_REPO_NAME)
     response = requests.get(url)
     response_json = response.json()
+    all_versions_in_github = []
+
+    # add new docs to database
     for content in response_json:
         if content["type"] == "dir":
             version_name = content["name"]
+            all_versions_in_github.append(version_name)
             page_url = base_url + version_name
             try:
                 DocumentationLink.objects.get(version=version_name)
@@ -207,3 +212,44 @@ def update_documentations():
                 d = DocumentationLink(version=version_name,
                                       url=page_url)
                 d.save()
+    all_doc_links = DocumentationLink.objects.all()
+
+    # remove deleted docs from database
+    for doc in all_doc_links:
+        if doc.version not in all_versions_in_github:
+            doc.delete()
+
+
+def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
+                       description=settings.DEFAULT_DESCRIPTION,
+                       keywords=settings.DEFAULT_KEYWORDS,
+                       url="/", image=settings.DEFAULT_LOGO_URL,
+                       object_type="website"):
+    """
+    Get meta data dictionary for a page
+
+    Parameters
+    ----------
+    title : string
+        The title of the page used in og:title, twitter:title, <title> tag etc.
+    description : string
+        Description used in description meta tag as well as the
+        og:description and twitter:description property.
+    keywords : list
+        List of keywords related to the page
+    url : string
+        Full or partial url of the page
+    image : string
+        Full or partial url of an image
+    object_type : string
+        Used for the og:type property.
+    """
+    meta = Meta(title=title,
+                description=description,
+                keywords=keywords + settings.DEFAULT_KEYWORDS,
+                url=url,
+                image=image,
+                object_type=object_type,
+                use_og=True, use_twitter=True, use_facebook=True,
+                use_googleplus=True, use_title_tag=True)
+    return meta

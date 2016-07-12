@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 
 from .tools import *
 from website.models import *
@@ -8,6 +9,7 @@ from website.models import *
 
 # Definition of views:
 
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
     home_header = get_website_section('home_header')
@@ -27,6 +29,7 @@ def index(request):
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
 
+    context['meta'] = get_meta_tags_dict()
     return render(request, 'website/index.html', context)
 
 
@@ -38,6 +41,8 @@ def page(request, position_id):
         raise Http404("Page does not exist")
 
     context['section'] = section
+    page_title = "DIPY - %s" % (section.title,)
+    context['meta'] = get_meta_tags_dict(title=page_title)
     return render(request, 'website/section_page.html', context)
 
 
@@ -45,6 +50,7 @@ def cite(request):
     context = {}
     all_publications = Publication.objects.all()
     context['all_publications'] = all_publications
+    context['meta'] = get_meta_tags_dict(title="DIPY - Publications")
     return render(request, 'website/cite.html', context)
 
 
@@ -52,18 +58,26 @@ def honeycomb(request):
     context = {}
     all_honeycomb_posts = HoneycombPost.objects.all()
     context['all_honeycomb_posts'] = all_honeycomb_posts
+    context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 
 
 def support(request):
-    return render(request, 'website/support.html', {})
+    context = {}
+    context['meta'] = get_meta_tags_dict(title="DIPY - Support")
+    return render(request, 'website/support.html', context)
 
 
 @login_required
 def dashboard(request):
-    return render(request, 'website/dashboard.html', {})
+    context = {}
+    context['meta'] = get_meta_tags_dict()
+    return render(request, 'website/dashboard.html', context)
 
 
 def dashboard_login(request):
+    context = {}
     next_url = request.GET.get('next')
-    return render(request, 'website/dashboard_login.html', {'next': next_url})
+    context['next'] = next_url
+    context['meta'] = get_meta_tags_dict()
+    return render(request, 'website/dashboard_login.html', context)

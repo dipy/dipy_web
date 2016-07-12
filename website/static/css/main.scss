@@ -27,6 +27,11 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+// default table styles
+td {
+    padding: 0.2em;
+}
+
 //// Specific Styles
 
 // website header and navbar styles
@@ -119,22 +124,6 @@ body {
 
 // page-heading styles
 .page-heading {
-    background: rgba(255,128,0,0.04);
-    background: -moz-linear-gradient(left, rgba(255,128,0,0.04) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,128,0,0.04)), color-stop(100%, rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(left, rgba(255,128,0,0.04) 0%, rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(left, rgba(255,128,0,0.04) 0%, rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(left, rgba(255,128,0,0.04) 0%, rgba(255,255,255,0) 100%);
-    background: linear-gradient(to right, rgba(255,128,0,0.04) 0%, rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8000', endColorstr='#ffffff', GradientType=1 );
-
-    padding: 2px;
-    margin-left: -2%;
-    padding-left: 2%;
-    margin-right: -2%;
-    border-left: 4px solid rgba(255, 127, 0, 0.26);
-    margin-top: 2em;
-    margin-bottom: 1em;
     .h1, .h2, .h3, h1, h2, h3 {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -188,14 +177,14 @@ body {
 }
 
 // codehilite styles
-div.codehilite {
+div.codehilite, .highlight {
     background: #fff;
     border: none;
     pre {
         background: #fafbff;
-        border: none;
+        border: 1px solid rgba(46, 168, 209, 0.16);
         border-radius: 0px;
-        border-left: 4px solid #2ea8d1;
+        border-left: 4px solid rgba(46, 168, 209, 0.16);
         margin: 10px;
         font-family: sans-serif;
         margin: 0;
@@ -221,20 +210,30 @@ div.codehilite {
     }
 }
 
+.big-link-col {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
 #bigLinksWrapper {
-    background: #e3e3e3;
+    background: #fff;
     overflow: hidden;
-    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 3%;
 }
 
 .big-link {
-    box-shadow: inset 0px 0px 0px rgb(26, 26, 26);
+    border-radius: 100%;
+    border: 1px solid #CCC;
+    max-width: 16em;
+    padding: 1.5em;
+    margin: 0 auto;
+    transition: all .4s ease-in-out;
 
     img {
         padding: 10px;
-        max-width: 140px;
+        max-width: 80px;
         padding-bottom: 1.4em;
-        padding-top: 3em;
+        padding-top: 2em;
         transition: all .2s ease-in-out;
     }
 
@@ -250,7 +249,9 @@ div.codehilite {
     }
 
     &:hover{
-        box-shadow: inset 0px -2px 0px rgb(26, 26, 26);
+        transform: scale(1.04);
+        border: 1px solid #222;
+        box-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.1);
         img {
             transform: scale(1.1);
         }
@@ -258,7 +259,6 @@ div.codehilite {
             transform: scale(1.01);
         }
     }
-    transition: all .2s;
 }
 
 .split-column-wrapper {
@@ -339,7 +339,7 @@ div.codehilite {
 
 
 // dashboard panel styles 
-.dashboard-button.btn.btn-default {
+.dashboard-button {
     padding: 1em;
     font-size: 1.4em;
     margin: 1em;
@@ -349,6 +349,16 @@ div.codehilite {
     background: #f3f3f3;
     color: #363636;
     transition: all 0.5s;
+    &.logout {
+        background: rgb(218, 118, 118) none repeat scroll 0% 0%;
+        border: #1a1a1a;
+        color: #fff;
+        &:hover {
+        background: rgb(225, 118, 118) none repeat scroll 0% 0%;
+        color: #fff;
+        box-shadow: 0px 0px 7px RGBA(0, 0, 0, 0.27);
+    }
+    }
     &:hover {
         background: #6C6B6B;
         color: #EDEDED;
@@ -380,4 +390,33 @@ div.codehilite {
     padding: 1em;
     margin-top: 1em;
     text-decoration: none;
+}
+
+
+// documentation styles
+.documentation-toc-tree {
+    border-left: 3px solid rgba(255, 222, 190, 0.44);
+    padding-left: 1em;
+    margin-top: 1.8em;
+    color: #454545;
+    ul {
+        padding-left: 1em;
+    }
+}
+
+code {
+    padding: 0px 4px;
+}
+
+.documentation-parent-links {
+    border-bottom: 1px solid rgb(236, 234, 234);
+    padding-bottom: 0.2em;
+    padding-top: 0.4em;
+}
+
+.caption-text {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }

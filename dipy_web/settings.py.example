@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'meta',
     'website'
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
 ]
 
 ROOT_URLCONF = 'dipy_web.urls'
@@ -114,6 +116,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# cache preferences (currently using in memory cache. Replace
+# with Memcached for better performance)
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'dipy-cache',
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -139,6 +150,9 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+# heroku settings for static files gzip
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 LOGIN_URL = '/dashboard/login'
 
 # documentation repository settings
@@ -152,6 +166,23 @@ FACEBOOK_APP_SECRET = ''
 # twitter API keys
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
+
+# default meta information
+DEFAULT_TITLE = "DIPY - Diffusion Imaging In Python"
+DEFAULT_DESCRIPTION = """Dipy is a free and open source software
+                      project for computational neuroanatomy,
+                      focusing mainly on diffusion magnetic resonance
+                      imaging (dMRI) analysis. It implements a broad
+                      range of algorithms for denoising,
+                      registration, reconstruction, tracking,
+                      clustering, visualization, and statistical
+                      analysis of MRI data."""
+DEFAULT_LOGO_URL = "http://dipy.herokuapp.com/static/images/dipy-thumb.jpg"
+DEFAULT_KEYWORDS = ['DIPY', 'MRI', 'Diffusion Imaging In Python']
+
+# django-meta settings
+META_SITE_PROTOCOL = 'https'
+META_SITE_DOMAIN = 'dipy.herokuapp.com'
 
 # python-social-auth settings
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'

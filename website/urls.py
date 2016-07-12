@@ -24,6 +24,10 @@ urlpatterns = [
     # Admin Panel Login Page
     url(r'^dashboard/login/?$', views.dashboard_login, name='dashboard_login'),
 
+    # Documentation Pages
+    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
+        views.documentation, name='documentation'),
+
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
         views.edit_website_section, name='edit_website_section'),
@@ -83,5 +87,9 @@ urlpatterns = [
 
     # social login urls
     url('', include('social.apps.django_app.urls', namespace='social')),
+
+    # logout url
+    url(r'^dashboard/logout/$', 'django.contrib.auth.views.logout',
+        {'next_page': '/'})
 
 ]
