@@ -74,6 +74,7 @@ TEMPLATES = [
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
                 'website.context_processor.nav_pages_processor',
+                'website.context_processor.google_analytics_processor',
             ],
         },
     },
@@ -154,6 +155,9 @@ STATICFILES_DIRS = (
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = '/dashboard/login'
+
+# Google Analytics
+GOOGLE_ANALYTICS_TRACKING_ID = ''
 
 # documentation repository settings
 DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
