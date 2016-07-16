@@ -79,6 +79,7 @@ class NewsPost(models.Model):
     title = models.CharField(max_length=200)
     body_markdown = models.TextField()
     body_html = models.TextField(editable=False)
+    description = models.CharField(max_length=140)
     post_date = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)

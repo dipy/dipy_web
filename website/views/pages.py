@@ -78,9 +78,8 @@ def news_page(request, news_id):
     context['news_post'] = news_post
     news_title = news_post.title
     meta_title = "DIPY - %s" % (news_title, )
-    meta_description = strip_tags(news_post.body_html)
     context['meta'] = get_meta_tags_dict(title=meta_title,
-                                         description=meta_description)
+                                         description=news_post.description)
     return render(request, 'website/news.html', context)
 
 

@@ -19,7 +19,7 @@ class AddEditPageSectionForm(ModelForm):
 class AddEditNewsPostForm(ModelForm):
     class Meta:
         model = NewsPost
-        fields = ['title', 'body_markdown', 'post_date']
+        fields = ['title', 'body_markdown', 'post_date', 'description']
 
 
 class AddEditPublicationForm(ModelForm):
