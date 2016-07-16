@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.utils import timezone
 import markdown
 import bleach
@@ -68,6 +69,10 @@ class WebsiteSection(models.Model):
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
         self.modified = datetime.datetime.now()
+
+        # clear the cache
+        cache.clear()
+
         # Call the "real" save() method.
         super(WebsiteSection, self).save(*args, **kwargs)
 
@@ -92,6 +97,10 @@ class NewsPost(models.Model):
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
         self.modified = datetime.datetime.now()
+
+        # clear the cache
+        cache.clear()
+
         # Call the "real" save() method.
         super(NewsPost, self).save(*args, **kwargs)
 
@@ -124,6 +133,10 @@ class Publication(models.Model):
 
     def save(self, *args, **kwargs):
         self.modified = datetime.datetime.now()
+
+        # clear the cache
+        cache.clear()
+
         # Call the "real" save() method.
         super(Publication, self).save(*args, **kwargs)
 
@@ -146,6 +159,10 @@ class CarouselImage(models.Model):
 
     def save(self, *args, **kwargs):
         self.modified = datetime.datetime.now()
+
+        # clear the cache
+        cache.clear()
+
         # Call the "real" save() method.
         super(CarouselImage, self).save(*args, **kwargs)
 
