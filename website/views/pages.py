@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render
+from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
 
 from .tools import *
@@ -66,6 +67,21 @@ def support(request):
     context = {}
     context['meta'] = get_meta_tags_dict(title="DIPY - Support")
     return render(request, 'website/support.html', context)
+
+
+def news_page(request, news_id):
+    context = {}
+    try:
+        news_post = NewsPost.objects.get(id=news_id)
+    except ObjectDoesNotExist:
+        raise Http404("News Post does not exist")
+    context['news_post'] = news_post
+    news_title = news_post.title
+    meta_title = "DIPY - %s" % (news_title, )
+    meta_description = strip_tags(news_post.body_html)
+    context['meta'] = get_meta_tags_dict(title=meta_title,
+                                         description=meta_description)
+    return render(request, 'website/news.html', context)
 
 
 @login_required

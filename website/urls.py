@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.contrib.auth.views import logout
 from . import views
 
 urlpatterns = [
@@ -11,6 +12,9 @@ urlpatterns = [
 
     # Cite Page for publications
     url(r'^cite/$', views.cite, name='cite'),
+
+    # News Post display page
+    url(r'^news/(?P<news_id>.*?)/$', views.news_page, name='news_page'),
 
     # Honeycomb gallery
     url(r'^gallery/$', views.honeycomb, name='gallery'),
@@ -89,7 +93,7 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
 
     # logout url
-    url(r'^dashboard/logout/$', 'django.contrib.auth.views.logout',
+    url(r'^dashboard/logout/$', logout,
         {'next_page': '/'})
 
 ]
