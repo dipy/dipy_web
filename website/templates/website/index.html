@@ -103,7 +103,7 @@
               <tr>
                 <td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td>
                 <td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}
-                <hr>
+                <br>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ news.description }}" data-url="http://{{ request.get_host }}/news/{{news.id}}" data-via="dipymri" data-related="dipymri" data-show-count="false">Tweet</a>
                 <span data-href="http://{{ request.get_host }}/news/{{news.id}}" class="g-plus" data-action="share" data-annotation="none"></span>
                 <span class="fb-share-button" data-href="http://{{ request.get_host }}/news/{{news.id}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></span>
