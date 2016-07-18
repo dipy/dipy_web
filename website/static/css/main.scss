@@ -91,71 +91,6 @@ td {
     border-radius: 4px;
 }
 
-// navbar collapse breakpoint change
-@media (max-width: 1200px) {
-    .navbar-header {
-        float: none;
-    }
-    .navbar-left,.navbar-right {
-        float: none !important;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-fixed-top {
-        top: 0;
-        border-width: 0 0 1px;
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin-top: 7.5px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .collapse.in{
-        display:block !important;
-    }
-    .navbar-nav .open .dropdown-menu {
-     position: static;
-     float: none;
-     width: auto;
-     margin-top: 0;
-     background-color: transparent;
-     border: 0;
-     -webkit-box-shadow: none;
-     box-shadow: none;
- }
-
-}
-
-@media (max-width: 768px) {
-    #websiteNavbar {
-        .container-fluid {
-            .container {
-                background: #fff;
-                border-bottom: 2px solid rgba(255,128,5,0.26);
-            }
-        }
-        .inner-wrapper {
-            background: #fff;
-            border-radius: 0em 0em 0.2em 0.2em;
-            border-bottom: none;
-        }
-    }
-}
-
 // news post styles
 
 .news-date {
@@ -495,4 +430,86 @@ code {
 // social media share button styles
 .fb_iframe_widget {
     vertical-align: top;
+}
+
+
+//// Style for different screen sizes
+
+// navbar collapse breakpoint change
+@media (max-width: 1200px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+    .navbar-nav .open .dropdown-menu {
+     position: static;
+     float: none;
+     width: auto;
+     margin-top: 0;
+     background-color: transparent;
+     border: 0;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+ }
+
+}
+
+@media (max-width: 768px) {
+    #websiteNavbar {
+        .container-fluid {
+            .container {
+                background: #fff;
+                border-bottom: 2px solid rgba(255,128,5,0.26);
+                li {
+                    padding: 0px;
+                }
+                .navbar-toggle {
+                    margin-top: 7px;
+                }
+            }
+        }
+        .inner-wrapper {
+            background: #fff;
+            border-radius: 0em 0em 0.2em 0.2em;
+            border-bottom: none;
+        }
+    }
+
+    #websiteHeaderLogo {
+        height: 1.4em;
+    }
+
+    #superContentContainer{
+        margin-top: 60px;
+    }
 }
