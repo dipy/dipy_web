@@ -100,9 +100,11 @@ def dashboard_login(request):
 
 def custom404(request):
     context = {}
+    context['meta'] = get_meta_tags_dict(title="DIPY - 404 Page Not Found")
     return render(request, 'website/error_pages/404.html', context, status=400)
 
 
 def custom500(request):
     context = {}
+    context['meta'] = get_meta_tags_dict(title="DIPY - 500 Error Occured")
     return render(request, 'website/error_pages/404.html', context, status=400)
