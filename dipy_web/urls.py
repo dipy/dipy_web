@@ -20,3 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('website.urls')),
 ]
+
+handler404 = 'website.views.custom404'
+handler500 = 'website.views.custom500'

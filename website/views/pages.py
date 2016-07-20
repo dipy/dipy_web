@@ -96,3 +96,13 @@ def dashboard_login(request):
     context['next'] = next_url
     context['meta'] = get_meta_tags_dict()
     return render(request, 'website/dashboard_login.html', context)
+
+
+def custom404(request):
+    context = {}
+    return render(request, 'website/error_pages/404.html', context, status=400)
+
+
+def custom500(request):
+    context = {}
+    return render(request, 'website/error_pages/404.html', context, status=400)
