@@ -59,6 +59,10 @@ def honeycomb(request):
     context = {}
     all_honeycomb_posts = HoneycombPost.objects.all()
     context['all_honeycomb_posts'] = all_honeycomb_posts
+
+    context['all_youtube_videos'] = get_youtube_videos(
+        'UCHnEuCRDGFOR5cfEo0nD3pw', 100)
+
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 

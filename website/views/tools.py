@@ -254,3 +254,27 @@ def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
                 use_og=True, use_twitter=True, use_facebook=True,
                 use_googleplus=True, use_title_tag=True)
     return meta
+
+
+def get_youtube_videos(channel_id, count):
+    """
+    Fetch the list of videos posted in a youtube channel
+
+    Parameters
+    ----------
+    channel_id : string
+        Channel ID of the youtube channel for which the videos will
+        be retrieved.
+
+    count: int
+        Maximum number of videos to fetch.
+    """
+
+    parms = (channel_id, settings.GOOGLE_API_KEY)
+    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" % (parms)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        return {}
+    response_json = response.json()
+    return response_json['items']
