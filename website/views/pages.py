@@ -36,9 +36,8 @@ def index(request):
 
 def page(request, position_id):
     context = {}
-    try:
-        section = get_website_section(position_id)
-    except:
+    section = get_website_section(position_id)
+    if not section:
         raise Http404("Page does not exist")
 
     context['section'] = section
