@@ -1,6 +1,6 @@
 $(window).scroll(function (event) {
 	var scroll = $(window).scrollTop();
-	if(scroll > 100 && window.matchMedia('(min-width: 768px)').matches){
+	if(scroll > 100 && window.matchMedia('(min-width: 1200px)').matches){
 		if(! $("#websiteHeaderLogo").hasClass("smallNav")){
 			$("#websiteHeaderLogo").addClass("smallNav");
 			$("#websiteHeaderLogo").animate({"height": "1.4em"}, { duration: 400, queue: false });
@@ -9,7 +9,7 @@ $(window).scroll(function (event) {
 			console.log("header shrink");
 		}
 	}
-	else if(scroll < 120 && window.matchMedia('(min-width: 768px)').matches){
+	else if(scroll < 120 && window.matchMedia('(min-width: 1200px)').matches){
 		if($("#websiteHeaderLogo").hasClass("smallNav")){
 			$("#websiteHeaderLogo").removeClass("smallNav");
 			$("#websiteNavbar").animate({"min-height": "80px"}, { duration: 200, queue: false });
