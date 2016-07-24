@@ -72,6 +72,19 @@ def support(request):
     return render(request, 'website/support.html', context)
 
 
+@cache_page(60 * 5)  # cache the view for 5 minutes
+def follow_us(request):
+    context = {}
+    context['latest_news'] = get_latest_news_posts(5)
+    context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
+                                                     4)
+    context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
+    context['tweets'] = get_twitter_feed('dipymri', 5)
+
+    context['meta'] = get_meta_tags_dict(title="DIPY - Follow Us")
+    return render(request, 'website/follow_us.html', context)
+
+
 def news_page(request, news_id):
     context = {}
     try:

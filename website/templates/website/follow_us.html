@@ -1,0 +1,159 @@
+{% extends "website/base_template.html" %}
+
+{% block content_body %}
+
+<!-- Content -->
+<div class="content-card">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+
+      <h1>Latest Updates</h1>
+      <hr>
+
+      <!-- Google Plus Feed -->
+      <div class="content-card">
+        <div class="page-heading"><h3>Google Plus</h3></div>
+        <div>
+          <table class="table">
+            {% for activity in gplus_feed %}
+            <tr>
+              <td class="col-md-3 col-lg-3 col-sm-3"><p>{{activity.published|slice:":10"}}</p></td>
+              <td class="col-md-9 col-lg-9 col-sm-9">
+                <a href="{{ activity.url }}" target="_blank"><b>{{ activity.title }}</b></a>
+                <div  class="gplus_content_summary" id="{{ activity.id }}-summary">
+                  {% if activity.object.content == "" %}
+                  <!-- for attachment only posts -->
+                  {% for attachment in activity.object.attachments %}
+                  <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                  {% endfor %}
+                  {% else %}
+                  <p>{{ activity.object.content|truncatechars_html:100|safe }}&emsp;<a class="gplus_more_link" data="{{ activity.id }}" href="{{ activity.url }}">more</a></p>
+                  {% endif %}
+                </div>
+                <div class="gplus_content_body" id="{{ activity.id }}-full">
+                  <div class="gplus_inner_wrapper">
+                    <a class="gplus_close_link glyphicon glyphicon-remove" data="{{ activity.id }}" href="#"></a>
+                    <div class="clearfix"></div>
+                    <a href="{{ activity.url }}" target="_blank"><h2>{{ activity.title }}</h2></a>
+                    <p>{{ activity.object.content|safe }}</p>
+                    {% for attachment in activity.object.attachments %}
+                    <div class="gplus_attachments_wrapper">
+                      <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
+                      <p>{{ attachment.content }}</p>
+                      {% if attachment.image.url %}
+                      <img class="gplus_attachment_image" src="{{ attachment.image.url }}">
+                      {% endif %}
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+
+      <!-- Facebook feed -->
+      <div class="content-card">
+        <div class="page-heading"><h3>Facebook</h3></div>
+        <div>
+          <table class="table">
+            {% for post in fb_posts %}
+            <tr>
+              {% if post.message %}
+              <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ post.created_time|slice:":10" }}</p></td>
+              <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ post.message|urlize }}</p></td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+
+      <!-- Twitter Feed -->
+      <div class="content-card">
+        <div class="page-heading"><h3>Tweets</h3></div>
+        <div>
+          <table class="table">
+            {% for tweet in tweets %}
+            <tr>
+              <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ tweet.created_at|slice:":10" }}</p></td>
+              <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ tweet.text|urlize }}</p></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      <!-- News Feed -->
+      <div class="content-card">
+        <div class="page-heading"><h3>News</h3></div>
+        <table class="table">
+          {% for news in latest_news %}
+          <tr>
+            <td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td>
+            <td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}
+              <br>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ news.description }}" data-url="http://{{ request.get_host }}/news/{{news.id}}" data-via="dipymri" data-related="dipymri" data-show-count="false">Tweet</a>
+              <span data-href="http://{{ request.get_host }}/news/{{news.id}}" class="g-plus" data-action="share" data-annotation="none"></span>
+              <span class="fb-share-button" data-href="http://{{ request.get_host }}/news/{{news.id}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></span>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+{% block extra_js_bottom %}
+<!-- Script to customize google plus feed -->
+<script type="text/javascript">
+  $( ".gplus_more_link" ).click(function( event ) {
+    event.preventDefault();
+    var contentTarget = jQuery(this).attr("data");
+    $( "#" + contentTarget + "-full" ).fadeIn();
+    $("body").css( "overflow", "hidden" );
+  });
+  $( ".gplus_close_link" ).click(function( event ) {
+    event.preventDefault();
+    var contentTarget = jQuery(this).attr("data");
+    $( "#" + contentTarget + "-full" ).fadeOut();
+    $("body").css( "overflow", "auto" );
+  });
+</script>
+
+<!-- Twitter Share Button script-->
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- Google Plus Share Button script -->
+<script>
+  function renderGooglePlusButtons() {
+    gapi.plus.go();
+  }
+  window.___gcfg = {
+    lang: 'en-US',
+    parsetags: 'explicit'
+  };
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderGooglePlusButtons" async defer></script>
+
+<!-- Facebook Share Button script -->
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+{% endblock %}

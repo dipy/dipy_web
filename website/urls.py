@@ -22,6 +22,9 @@ urlpatterns = [
     # Support Page
     url(r'^support/$', views.support, name='support'),
 
+    # Follow us page for social feeds
+    url(r'^follow/$', views.follow_us, name='follow_us'),
+
     # Admin Panel Dash Board
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
 

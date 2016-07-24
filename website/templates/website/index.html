@@ -94,7 +94,9 @@
             <p>getting_started does not exist</p>
             {% endif %}
           </div>
+        </div>
 
+        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
           <!-- News Feed -->
           <div class="content-card">
             <div class="page-heading"><h2>News</h2></div>
@@ -112,68 +114,9 @@
               {% endfor %}
             </table>
           </div>
+        </div>
 
-          <!-- Google Plus Feed -->
-          <div class="content-card">
-            <div class="page-heading"><h2>Google Plus Feed</h2></div>
-            <div>
-              <table class="table">
-                {% for activity in gplus_feed %}
-                <tr>
-                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{activity.published|slice:":10"}}</p></td>
-                  <td class="col-md-9 col-lg-9 col-sm-9">
-                    <a href="{{ activity.url }}" target="_blank"><b>{{ activity.title }}</b></a>
-                    <div  class="gplus_content_summary" id="{{ activity.id }}-summary">
-                      {% if activity.object.content == "" %}
-                      <!-- for attachment only posts -->
-                      {% for attachment in activity.object.attachments %}
-                      <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
-                      {% endfor %}
-                      {% else %}
-                      <p>{{ activity.object.content|truncatechars_html:100|safe }}&emsp;<a class="gplus_more_link" data="{{ activity.id }}" href="{{ activity.url }}">more</a></p>
-                      {% endif %}
-                    </div>
-                    <div class="gplus_content_body" id="{{ activity.id }}-full">
-                      <div class="gplus_inner_wrapper">
-                        <a class="gplus_close_link glyphicon glyphicon-remove" data="{{ activity.id }}" href="#"></a>
-                        <div class="clearfix"></div>
-                        <a href="{{ activity.url }}" target="_blank"><h2>{{ activity.title }}</h2></a>
-                        <p>{{ activity.object.content|safe }}</p>
-                        {% for attachment in activity.object.attachments %}
-                        <div class="gplus_attachments_wrapper">
-                          <a href="{{ attachment.url }}" target="_blank"><b>{{ attachment.displayName }}</b></a>
-                          <p>{{ attachment.content }}</p>
-                          {% if attachment.image.url %}
-                          <img class="gplus_attachment_image" src="{{ attachment.image.url }}">
-                          {% endif %}
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                {% endfor %}
-              </table>
-            </div>
-          </div>
-
-          <!-- Facebook feed -->
-          <div class="content-card">
-            <div class="page-heading"><h2>Facebook Feed</h2></div>
-            <div>
-              <table class="table">
-                {% for post in fb_posts %}
-                <tr>
-                  {% if post.message %}
-                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ post.created_time|slice:":10" }}</p></td>
-                  <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ post.message|urlize }}</p></td>
-                  {% endif %}
-                </tr>
-                {% endfor %}
-              </table>
-            </div>
-          </div>
-
+        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
           <!-- Twitter Feed -->
           <div class="content-card">
             <div class="page-heading"><h2>Tweets</h2></div>
@@ -188,7 +131,8 @@
               </table>
             </div>
           </div>
-
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
           <div class="content-card">
             <div class="page-heading"><h2>Highlighted Publications</h2></div>
             {% for publication in highlighted_publications %}
@@ -222,22 +166,6 @@
   $( ".bibtexShowButton" ).click(function( event ) {
     event.preventDefault();
     $( this ).next().slideToggle();
-  });
-</script>
-
-<!-- Script to customize google plus feed -->
-<script type="text/javascript">
-  $( ".gplus_more_link" ).click(function( event ) {
-    event.preventDefault();
-    var contentTarget = jQuery(this).attr("data");
-    $( "#" + contentTarget + "-full" ).fadeIn();
-    $("body").css( "overflow", "hidden" );
-  });
-  $( ".gplus_close_link" ).click(function( event ) {
-    event.preventDefault();
-    var contentTarget = jQuery(this).attr("data");
-    $( "#" + contentTarget + "-full" ).fadeOut();
-    $("body").css( "overflow", "auto" );
   });
 </script>
 
