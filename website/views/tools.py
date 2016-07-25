@@ -1,8 +1,12 @@
 import base64
-from django.conf import settings
-from django.core.exceptions import ObjectDoesNotExist
 import os
 import requests
+
+
+from bs4 import BeautifulSoup
+from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.html import strip_tags
 from meta.views import Meta
 
 from website.models import *
@@ -278,3 +282,55 @@ def get_youtube_videos(channel_id, count):
         return {}
     response_json = response.json()
     return response_json['items']
+
+
+def get_doc_examples_images():
+    """
+    Fetch all images in examples in latest documentation
+
+    """
+    doc = DocumentationLink.objects.filter(displayed=True)[0]
+    version = doc.version
+    path = 'examples_index'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "http://%s.github.io/%s/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+    all_links = bs_doc.find_all('a')
+
+    examples_list = []
+    for link in all_links:
+        if(link.get('href').startswith('../examples_built')):
+            rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
+            example_url = base_url + version + "/" + rel_url + ".fjson"
+            example_response = requests.get(example_url)
+            example_json = example_response.json()
+            example_title = strip_tags(example_json['title'])
+
+            # replace relative image links with absolute links
+            example_json['body'] = example_json['body'].replace(
+                "src=\"../", "src=\"" + url_dir)
+
+            # extract title and all images
+            example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
+            example_dict = {}
+            example_dict['title'] = example_title
+            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
+            example_dict['images'] = []
+            for tag in list(example_bs_doc.find_all('img')):
+                example_dict['images'].append(str(tag))
+            examples_list.append(example_dict)
+    return examples_list

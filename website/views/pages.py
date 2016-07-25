@@ -54,6 +54,7 @@ def cite(request):
     return render(request, 'website/cite.html', context)
 
 
+@cache_page(60 * 30)  # cache the view for 5 minutes
 def honeycomb(request):
     context = {}
     all_honeycomb_posts = HoneycombPost.objects.all()
@@ -61,6 +62,7 @@ def honeycomb(request):
 
     context['all_youtube_videos'] = get_youtube_videos(
         'UCHnEuCRDGFOR5cfEo0nD3pw', 100)
+    context['all_documentation_examples'] = get_doc_examples_images()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)

@@ -432,6 +432,16 @@ code {
     vertical-align: top;
 }
 
+// Examples Gallery Styles
+.examples-gallery {
+    overflow: hidden;
+
+    img {
+        max-width: 10em;
+        margin: 1em;
+        float: left;
+    }
+}
 
 //// Style for different screen sizes
 

@@ -28,6 +28,17 @@
         {% endif %}
     {% endfor %}
   </div>
+
+
+  <div class="examples-gallery">
+    <h2>Examples Gallery</h2>
+    {% for example in all_documentation_examples %}
+        {% for image in example.images %}
+          <a href="{{ example.link }}">{{ image|safe }}</a>
+        {% endfor %}
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock %}
 
