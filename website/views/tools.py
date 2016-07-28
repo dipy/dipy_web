@@ -329,6 +329,7 @@ def get_doc_examples_images():
             example_dict = {}
             example_dict['title'] = example_title
             example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
+            example_dict['description'] = example_bs_doc.p.text
             example_dict['images'] = []
             for tag in list(example_bs_doc.find_all('img')):
                 example_dict['images'].append(str(tag))

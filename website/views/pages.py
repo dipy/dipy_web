@@ -54,7 +54,7 @@ def cite(request):
     return render(request, 'website/cite.html', context)
 
 
-@cache_page(60 * 30)  # cache the view for 5 minutes
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
     context = {}
     all_honeycomb_posts = HoneycombPost.objects.all()
@@ -66,6 +66,15 @@ def honeycomb(request):
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
+
+
+@cache_page(60 * 30)  # cache the view for 30 minutes
+def tutorials(request):
+    context = {}
+    context['all_documentation_examples'] = get_doc_examples_images()
+
+    context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
+    return render(request, 'website/tutorials.html', context)
 
 
 def support(request):
