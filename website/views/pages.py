@@ -71,7 +71,7 @@ def honeycomb(request):
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
     context = {}
-    context['all_documentation_examples'] = get_doc_examples_images()
+    context['all_documentation_examples'] = get_doc_examples()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
     return render(request, 'website/tutorials.html', context)
