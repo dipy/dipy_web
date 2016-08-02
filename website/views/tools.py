@@ -313,7 +313,6 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
             for tag in list(example_bs_doc.find_all('img')):
                 example_dict['images'].append(str(tag))
             examples_list.append(example_dict)
-            examples_list.append(example_dict)
     return examples_list
 
 
