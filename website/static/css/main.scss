@@ -427,11 +427,42 @@ code {
 }
 
 // tutorial page styles
+.tutorials-container {
+    h2, h3 {
+        cursor: pointer;
+    }
+
+    a.headerlink {
+        opacity: 0.1;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        margin-top: 1em;
+        &:hover {
+            color: black;
+        }
+    }
+    h2 {
+        font-size: 1.6em;
+    }
+}
+
 .tutorial-wrapper {
     background: #f8f8f8;
     margin: 1em 0em;
     border-left: 2px solid rgb(222, 222, 222);
     margin-left: 1em;
+}
+
+.minor_section{
+    display: none;
+    margin-left: 0.8em;
+
+}
+
+.tutorials_section{
+    display: none;
 }
 
 // social media share button styles

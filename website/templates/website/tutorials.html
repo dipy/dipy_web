@@ -9,10 +9,13 @@
   <div class="tutorials-container">
 
     {% for major_section in all_documentation_examples %}
+    <div class="major_section">
       {{ major_section.title|safe }}
 
       {% for minor_section in major_section.minor_sections %}
+        <div class="minor_section">
         {{ minor_section.title|safe }}
+        <div class="tutorials_section">
         {% for example in minor_section.examples_list %}
           <div class="tutorial-wrapper  row">
             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-9">
@@ -26,8 +29,11 @@
             </div>
           </div>
         {% endfor %}
+        </div>
+        </div>
       {% endfor %}
 
+      <div class="tutorials_section">
       {% for example in major_section.examples_list %}
         <div class="tutorial-wrapper  row">
           <div class="col-md-12 col-sm-12 col-xs-12 col-lg-9">
@@ -41,9 +47,27 @@
           </div>
         </div>
       {% endfor %}
+      </div>
 
+    </div>
     {% endfor %}
 
   </div>
 </div>
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to toggle example sections -->
+<script>
+$( ".major_section > h2" ).click(function( event ) {
+  event.preventDefault();
+  $(this).siblings("div.minor_section").slideToggle(200);
+  $(this).siblings("div.tutorials_section").slideToggle(200);
+});
+
+$( ".minor_section > h3" ).click(function( event ) {
+  event.preventDefault();
+  $(this).siblings("div.tutorials_section").slideToggle(400);
+});
+</script>
 {% endblock %}
