@@ -285,6 +285,11 @@ def get_youtube_videos(channel_id, count):
 
 
 def get_examples_list_from_li_tags(base_url, version, path, li_tags):
+    """
+    Fetch example title, description and images from a list of li tags
+    containing links to the examples
+    """
+
     examples_list = []
     url_dir = base_url + version + "/" + path + ".fjson/"
 
@@ -386,7 +391,7 @@ def get_doc_examples():
 
 def get_doc_examples_images():
     """
-    Fetch all images in examples in latest documentation
+    Fetch all images in all examples in latest documentation
 
     """
     doc = DocumentationLink.objects.filter(displayed=True)[0]
