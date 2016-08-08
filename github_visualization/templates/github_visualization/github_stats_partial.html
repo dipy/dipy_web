@@ -1,0 +1,12 @@
+<h1>{{ basic_stats.repo_name }}</h1>
+<h3>{{ basic_stats.repo_description }}</h3>
+
+<h3>Start: {{ basic_stats.stars }}</h3>
+<h3>Forks: {{ basic_stats.forks }}</h3>
+<h1>{{ contributors.total_contributors }} Contributors and {{ contributors.total_commits }} commits</h1>
+{% for contributor in contributors.contributors %}
+<img src="{{ contributor.avatar_url }}">
+<p>{{ contributor.user_name }}</p>
+<p>Commits: {{ contributor.total_commits }}</p>
+<p>+{{ contributor.total_additions }} -{{contributor.total_deletions }}</p>
+{% endfor %}

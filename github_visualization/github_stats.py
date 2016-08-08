@@ -96,6 +96,8 @@ class GithubStatFetcher:
         contributor_stats : dict
             A dictionary containting contributor statistics. For Example:
             { 'response_code': 200,
+              'total_contributors': 50,
+              'total_commits': 6031,
               'contributors': [ {
                                 "user_name": "Garyfallidis"
                                 "avatar_url": "https://avatars.githubusercontent.com/u/134276?v=3",
@@ -130,7 +132,9 @@ class GithubStatFetcher:
 
             # parse response
             r_json = response.json()
+            contributor_stats["total_contributors"] = len(r_json)
 
+            grand_total_commits = 0
             for contributor in r_json:
                 contributor_dict = {}
                 contributor_dict["user_name"] = contributor["author"]["login"]
@@ -141,6 +145,7 @@ class GithubStatFetcher:
                     "author"]["html_url"]
 
                 contributor_dict["total_commits"] = contributor["total"]
+                grand_total_commits += contributor["total"]
 
                 total_additions, total_deletions = self.total_contributions(
                     contributor["weeks"])
@@ -148,8 +153,9 @@ class GithubStatFetcher:
                 contributor_dict["total_additions"] = total_additions
                 contributor_dict["total_deletions"] = total_deletions
                 contributor_dict["weekly_commits"] = contributor["weeks"]
-                contributor_stats["contributors"].append(contributor_dict)
+                contributor_stats["contributors"].insert(0, contributor_dict)
 
+            contributor_stats["total_commits"] = grand_total_commits
             return contributor_stats
         except:
             raise
