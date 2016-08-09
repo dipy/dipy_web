@@ -11,4 +11,5 @@ def github_stats_block(user_name, repository_name):
         user_name, repository_name)
     context["contributors"] = github_stat_fetcher.fetch_contributor_stats()
     context["basic_stats"] = github_stat_fetcher.fetch_basic_stats()
+    context["weekly_stats"] = github_stat_fetcher.fetch_weekly_contributions()
     return context

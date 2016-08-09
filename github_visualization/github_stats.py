@@ -161,8 +161,9 @@ class GithubStatFetcher:
             raise
 
     def fetch_weekly_contributions(self):
-        ''' Fetch the number of additions and deletions per week
-        and the number of commits per week upto one year.
+        ''' Fetch the number of additions and deletions and total lines of
+        code per week from beginning; and the number of commits per week upto
+        one year.
 
         Returns
         -------
@@ -172,9 +173,10 @@ class GithubStatFetcher:
             "response_code": 200,
             "changes":    [
                             [
-                                1469923200,
-                                2,
-                                -3
+                                1469923200, // timestamp
+                                2, // additions
+                                -3, // deletions
+                                506 // total lines of code
                             ],
                         ]
             "commits":    [
@@ -208,7 +210,17 @@ class GithubStatFetcher:
             # parse response
             r1_json = response1.json()
             r2_json = response2.json()
-            weekly_contributions["changes"] = r1_json
+
+            weekly_contributions["changes"] = []
+            lines = 0
+            for changes in r1_json:
+                changeList = []
+                changeList.append(changes[0])
+                changeList.append(changes[1])
+                changeList.append(changes[2])
+                lines = lines + changes[1] + changes[2]
+                changeList.append(lines)
+                weekly_contributions["changes"].append(changeList)
 
             offset = len(weekly_contributions["changes"]) - len(r2_json["all"])
             for i, commit in enumerate(r2_json["all"]):

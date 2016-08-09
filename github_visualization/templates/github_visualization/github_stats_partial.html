@@ -50,6 +50,118 @@
 
 		</div>
 
+		<canvas id="overallContributionGraph"></canvas>
+
+
 	</div>
 
 </div>
+
+<!-- Script to generate charts -->
+<script type="text/javascript">
+	var overallContributionData = {
+	    labels: [{% for change in weekly_stats.changes %}{{change.0}} * 1000,{% endfor %}],
+	    datasets: [
+	        {
+	            label: "Additions",
+	            fill: true,
+	            lineTension: 0.1,
+	            backgroundColor: "rgba(74, 191, 103, 0.2)",
+	            borderColor: "rgba(74, 191, 103, 0.6)",
+	            borderWidth: 2,
+	            borderCapStyle: 'butt',
+	            borderDash: [],
+	            borderDashOffset: 0.0,
+	            borderJoinStyle: 'miter',
+	            pointBorderColor: "rgba(74, 191, 103, 1)",
+	            pointBackgroundColor: "#fff",
+	            pointBorderWidth: 1,
+	            pointHoverRadius: 5,
+	            pointHoverBackgroundColor: "rgba(74, 191, 103, 1)",
+	            pointHoverBorderColor: "rgba(74, 191, 103, 1)",
+	            pointHoverBorderWidth: 2,
+	            pointRadius: 1,
+	            pointHitRadius: 10,
+	            data: [{% for change in weekly_stats.changes %}{{change.1}},{% endfor %}],
+	            spanGaps: false,
+	        },
+	        {
+	            label: "Deletions",
+	            fill: true,
+	            lineTension: 0.1,
+	            backgroundColor: "rgba(218, 47, 47, 0.2)",
+	            borderColor: "rgba(242, 109, 64, 0.6)",
+	            borderWidth: 2,
+	            borderCapStyle: 'butt',
+	            borderDash: [],
+	            borderDashOffset: 0.0,
+	            borderJoinStyle: 'miter',
+	            pointBorderColor: "rgba(242, 109, 64, 1)",
+	            pointBackgroundColor: "#fff",
+	            pointBorderWidth: 1,
+	            pointHoverRadius: 5,
+	            pointHoverBackgroundColor: "rgba(242, 109, 64, 1)",
+	            pointHoverBorderColor: "rgba(242, 109, 64, 1)",
+	            pointHoverBorderWidth: 2,
+	            pointRadius: 1,
+	            pointHitRadius: 10,
+	            data: [{% for change in weekly_stats.changes %}-1*{{change.2}},{% endfor %}],
+	            spanGaps: false,
+	        },
+	        {
+	            label: "Lines of code",
+	            fill: true,
+	            lineTension: 0.1,
+	            backgroundColor: "rgba(47, 133, 218, 0.2)",
+	            borderColor: "rgb(47, 133, 218, 0.6)",
+	            borderWidth: 2,
+	            borderCapStyle: 'butt',
+	            borderDash: [],
+	            borderDashOffset: 0.0,
+	            borderJoinStyle: 'miter',
+	            pointBorderColor: "rgb(47, 133, 218)",
+	            pointBackgroundColor: "#fff",
+	            pointBorderWidth: 1,
+	            pointHoverRadius: 5,
+	            pointHoverBackgroundColor: "rgb(47, 133, 218)",
+	            pointHoverBorderColor: "rgb(47, 133, 218)",
+	            pointHoverBorderWidth: 2,
+	            pointRadius: 1,
+	            pointHitRadius: 10,
+	            data: [{% for change in weekly_stats.changes %}{{change.3}},{% endfor %}],
+	            spanGaps: false,
+	        }
+	    ]
+	};
+
+	var ctx = document.getElementById("overallContributionGraph");
+	var timeFormat = 'MM/DD/YYYY HH:mm';
+	var myLineChart = Chart.Line(ctx, {
+	    data: overallContributionData,
+	    options: {
+	        scales: {
+					xAxes: [{
+						type: "time",
+						time: {
+							format: timeFormat,
+							// round: 'day'
+							tooltipFormat: 'll HH:mm'
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}, ],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Lines of code'
+						}
+					}, ]
+			}
+
+
+	    }
+	});
+
+</script>
