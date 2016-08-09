@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     # Home Page
-    url(r'^githubstats$', views.github_stats_visualization,
+    url(r'^githubstats/$', views.github_stats_visualization,
         name='github_stats_visualization'),
 
 ]

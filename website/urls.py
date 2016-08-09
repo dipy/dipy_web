@@ -28,6 +28,9 @@ urlpatterns = [
     # Follow us page for social feeds
     url(r'^follow/$', views.follow_us, name='follow_us'),
 
+    # Contributors page for github stats
+    url(r'^contributors/$', views.contributors, name='contributors'),
+
     # Admin Panel Dash Board
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
 

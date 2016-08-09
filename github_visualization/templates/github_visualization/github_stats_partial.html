@@ -1,12 +1,55 @@
-<h1>{{ basic_stats.repo_name }}</h1>
-<h3>{{ basic_stats.repo_description }}</h3>
+{% load staticfiles %}
 
-<h3>Start: {{ basic_stats.stars }}</h3>
-<h3>Forks: {{ basic_stats.forks }}</h3>
-<h1>{{ contributors.total_contributors }} Contributors and {{ contributors.total_commits }} commits</h1>
-{% for contributor in contributors.contributors %}
-<img src="{{ contributor.avatar_url }}">
-<p>{{ contributor.user_name }}</p>
-<p>Commits: {{ contributor.total_commits }}</p>
-<p>+{{ contributor.total_additions }} -{{contributor.total_deletions }}</p>
-{% endfor %}
+<div id="github_visualization_main_container">
+
+	<div id="github_visualization_repo_name">
+		<h1>{{ basic_stats.repo_name }}</h1>
+	</div>
+
+	<div id="github_visualization_repo_description">
+		<h3>{{ basic_stats.repo_description }}</h3>
+	</div>
+
+	<div class="github_visualization_visualization_container">
+
+		<div class="github_visualization_basic_stats_container">
+
+			<div class="github_visualization_basic_stats" id="github_visualization_repo_stars">
+				<span class="stat-value">{{ basic_stats.stars }}</span> Stars
+				<img class="basic_stat_icon" src="{% static "images/stars.png" %}">
+			</div>
+			
+			<div class="github_visualization_basic_stats" id="github_visualization_repo_forks">
+				<span class="stat-value">{{ basic_stats.forks }}</span> Forks
+				<img class="basic_stat_icon" src="{% static "images/forks.png" %}">
+			</div>
+
+			<div class="github_visualization_basic_stats" id="github_visualization_repo_contributors_count">
+				<span class="stat-value">{{ contributors.total_contributors }}</span> Contributors
+				<img class="basic_stat_icon" src="{% static "images/contributors.png" %}">
+			</div>
+
+			<div class="github_visualization_basic_stats" id="github_visualization_repo_commits_count">
+				<span class="stat-value">{{ contributors.total_commits }}</span> Commits
+				<img class="basic_stat_icon" src="{% static "images/commits.png" %}">
+			</div>
+
+		</div>
+		
+		<div id="github_visualization_contributors_wrapper">
+
+			{% for contributor in contributors.contributors %}
+			<div class="github_visualization_contributor_info">
+				<img class="github_visualization_contributor_img" src="{{ contributor.avatar_url }}">
+				<span class="github_visualization_contributor_name">{{ contributor.user_name }}</span>
+				<span class="github_visualization_contributor_commits">Commits: {{ contributor.total_commits }}</span>
+				<span class="github_visualization_contributor_additions"> ++{{ contributor.total_additions }}</span>
+				<span class="github_visualization_contributor_deletions"> --{{contributor.total_deletions }}</span>
+			</div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+</div>
