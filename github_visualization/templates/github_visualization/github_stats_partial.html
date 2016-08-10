@@ -39,6 +39,7 @@
 		<div id="github_visualization_contributors_wrapper">
 
 			{% for contributor in contributors.contributors %}
+			<a href="{{ contributor.html_url }}" target="_blank">
 			<div class="github_visualization_contributor_info">
 				<img class="github_visualization_contributor_img" src="{{ contributor.avatar_url }}">
 				<span class="github_visualization_contributor_name">{{ contributor.user_name }}</span>
@@ -46,11 +47,14 @@
 				<span class="github_visualization_contributor_additions"> ++{{ contributor.total_additions }}</span>
 				<span class="github_visualization_contributor_deletions"> --{{contributor.total_deletions }}</span>
 			</div>
+			</a>
 			{% endfor %}
 
 		</div>
 
 		<canvas id="overallContributionGraph"></canvas>
+
+		<canvas id="contributorsWithTimeGraph"></canvas>
 
 
 	</div>
@@ -59,6 +63,9 @@
 
 <!-- Script to generate charts -->
 <script type="text/javascript">
+
+	// Overall Contributions graph
+
 	var overallContributionData = {
 	    labels: [{% for change in weekly_stats.changes %}{{change.0}} * 1000,{% endfor %}],
 	    datasets: [
@@ -163,5 +170,69 @@
 
 	    }
 	});
+
+
+	// Total Contributors with time graph
+
+	var contributorsWithTimeData = {
+	    labels: [{% for data in contributors.cumulative_contributors %}{{data.0}} * 1000,{% endfor %}],
+	    datasets: [
+	        {
+	            label: "Contributors",
+	            fill: true,
+	            lineTension: 0.1,
+	            backgroundColor: "rgba(74, 191, 103, 0.2)",
+	            borderColor: "rgba(74, 191, 103, 0.6)",
+	            borderWidth: 2,
+	            borderCapStyle: 'butt',
+	            borderDash: [],
+	            borderDashOffset: 0.0,
+	            borderJoinStyle: 'miter',
+	            pointBorderColor: "rgba(74, 191, 103, 1)",
+	            pointBackgroundColor: "#fff",
+	            pointBorderWidth: 1,
+	            pointHoverRadius: 5,
+	            pointHoverBackgroundColor: "rgba(74, 191, 103, 1)",
+	            pointHoverBorderColor: "rgba(74, 191, 103, 1)",
+	            pointHoverBorderWidth: 2,
+	            pointRadius: 1,
+	            pointHitRadius: 10,
+	            data: [{% for data in contributors.cumulative_contributors %}{{data.1}},{% endfor %}],
+	            spanGaps: false,
+	        }
+	    ]
+	};
+
+	var ctx = document.getElementById("contributorsWithTimeGraph");
+	var timeFormat = 'MM/DD/YYYY HH:mm';
+	var myLineChart = Chart.Line(ctx, {
+	    data: contributorsWithTimeData,
+	    options: {
+	        scales: {
+					xAxes: [{
+						type: "time",
+						time: {
+							format: timeFormat,
+							// round: 'day'
+							tooltipFormat: 'll HH:mm'
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}, ],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Contributors'
+						}
+					}, ]
+			}
+
+
+	    }
+	});
+
+
 
 </script>

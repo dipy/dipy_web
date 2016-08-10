@@ -21,7 +21,7 @@ class GithubStatFetcher:
         self.baseurl = "https://api.github.com/repos/%s/%s" % (
             self.user_name, self.repositoty_name)
 
-    def total_contributions(self, weeks):
+    def get_total_contributions(self, weeks):
         ''' Helper function to calculate total additions
         and total deletions from a list of weeks of contributions
         of a contributor
@@ -42,6 +42,46 @@ class GithubStatFetcher:
             total_deletions += week['d']
         return total_additions, total_deletions
 
+    def get_cumulative_contributors(self, contributors_list):
+        ''' Helper function to calculate total contributors as
+        new contributors join with time
+
+        Parameters
+        -------------
+        contributors_list : list
+           List of contributors with weeks of contributions. Example:
+           [
+               {
+                    'weeks': [
+                            {'w': 1254009600, 'a': 5, 'c': 2, 'd': 9},
+                        ],
+                    .....
+                },
+            ]
+
+        '''
+        contributorsJoinDate = {}
+
+        for contributor in contributors_list:
+            for week in contributor["weeks"]:
+                if(week["c"] > 0):
+                    joinDate = week['w']
+            if joinDate not in contributorsJoinDate:
+                contributorsJoinDate[joinDate] = 0
+            contributorsJoinDate[joinDate] += 1
+
+        cumulativeJoinDate = {}
+        cumulative = 0
+        for time in sorted(contributorsJoinDate):
+            print(time)
+            cumulative += contributorsJoinDate[time]
+            cumulativeJoinDate[time] = cumulative
+
+        cumulativeList = list(cumulativeJoinDate.items())
+        cumulativeList.sort()
+
+        return cumulativeList
+
     def fetch_basic_stats(self):
         ''' Fetch the basic stats
 
@@ -55,10 +95,12 @@ class GithubStatFetcher:
               'html_url': 'https://github.com/nipy/dipy',
               'subscribers': 41,
               'forks': 142,
+              'forks_url': 'https://github.com/nipy/dipy/network'
               'watchers': 94,
               'open_issues': 154,
               'is_private': False,
-              'stars': 94
+              'stars': 94,
+              'stars_url': 'https://github.com/nipy/dipy/stargazers'
             }
 
         '''
@@ -79,8 +121,10 @@ class GithubStatFetcher:
             basic_stats["is_private"] = r_json["private"]
             basic_stats["html_url"] = r_json["html_url"]
             basic_stats["stars"] = r_json["stargazers_count"]
+            basic_stats["stars_url"] = r_json["html_url"] + "/stargazers"
             basic_stats["watchers"] = r_json["watchers_count"]
             basic_stats["forks"] = r_json["forks_count"]
+            basic_stats["forks_url"] = r_json["html_url"] + "/network"
             basic_stats["open_issues"] = r_json["open_issues_count"]
             basic_stats["subscribers"] = r_json["subscribers_count"]
 
@@ -115,6 +159,13 @@ class GithubStatFetcher:
                                         ]
                                 },
                             ]
+              'cumulative_contributors': [
+                                (
+                                    1367712000, // timestamp
+                                    20 // total number of contributions
+                                       // upto this time
+                                ),
+                            ]
             }
 
         '''
@@ -147,7 +198,7 @@ class GithubStatFetcher:
                 contributor_dict["total_commits"] = contributor["total"]
                 grand_total_commits += contributor["total"]
 
-                total_additions, total_deletions = self.total_contributions(
+                total_additions, total_deletions = self.get_total_contributions(
                     contributor["weeks"])
 
                 contributor_dict["total_additions"] = total_additions
@@ -156,6 +207,11 @@ class GithubStatFetcher:
                 contributor_stats["contributors"].insert(0, contributor_dict)
 
             contributor_stats["total_commits"] = grand_total_commits
+
+            cumulative_contributors = self.get_cumulative_contributors(r_json)
+            contributor_stats[
+                "cumulative_contributors"] = cumulative_contributors
+
             return contributor_stats
         except:
             raise
