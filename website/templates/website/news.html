@@ -1,0 +1,15 @@
+{% extends "website/base_template.html" %}
+{% load customfilters %}
+
+{% block content_body %}
+
+<!-- Content -->
+  <div class="content-card">
+  {% if news_post %}
+      <div class="page-heading"><h1>{{ news_post.title }}</h1></div>
+      <p>{{ news_post.body_html|youtube_embed_url|safe }}</p>
+  {% else %}
+      <p>News Post does not exist</p>
+  {% endif %}
+  </div>
+{% endblock %}

@@ -1,8 +1,12 @@
 import base64
-from django.conf import settings
-from django.core.exceptions import ObjectDoesNotExist
 import os
 import requests
+
+
+from bs4 import BeautifulSoup
+from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.html import strip_tags
 from meta.views import Meta
 
 from website.models import *
@@ -80,10 +84,11 @@ def get_google_plus_activity(user_id, count):
     user_id : string
         The ID of the user to get activities for.
 
-    count: int
+    count : int
         Maximum number of activities to fetch.
     """
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=AIzaSyA0dPfkGKCzEWJz9INBYslY25MC-M4NG7s"
+    api_key = settings.GOOGLE_API_KEY
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
     try:
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -104,7 +109,7 @@ def get_facebook_page_feed(page_id, count):
     ----------
     page_id : string
         The ID of the page.
-    count: int
+    count : int
         Maximum number of posts to fetch.
     """
     app_id = settings.FACEBOOK_APP_ID
@@ -165,7 +170,7 @@ def get_twitter_feed(screen_name, count):
     screen_name : string
         The screen name of the user for whom to return Tweets for.
 
-    count: int
+    count : int
         Maximum number of Tweets to fetch.
     """
     try:
@@ -253,3 +258,185 @@ def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
                 use_og=True, use_twitter=True, use_facebook=True,
                 use_googleplus=True, use_title_tag=True)
     return meta
+
+
+def get_youtube_videos(channel_id, count):
+    """
+    Fetch the list of videos posted in a youtube channel
+
+    Parameters
+    ----------
+    channel_id : string
+        Channel ID of the youtube channel for which the videos will
+        be retrieved.
+
+    count : int
+        Maximum number of videos to fetch.
+    """
+
+    parms = (channel_id, settings.GOOGLE_API_KEY)
+    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" % (parms)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        return {}
+    response_json = response.json()
+    return response_json['items']
+
+
+def get_examples_list_from_li_tags(base_url, version, path, li_tags):
+    """
+    Fetch example title, description and images from a list of li tags
+    containing links to the examples
+    """
+
+    examples_list = []
+    url_dir = base_url + version + "/" + path + ".fjson/"
+
+    for li in li_tags:
+        link = li.find("a")
+        if(link.get('href').startswith('../examples_built')):
+            example_dict = {}
+            # get images
+            rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
+            example_url = base_url + version + "/" + rel_url + ".fjson"
+            example_response = requests.get(example_url)
+            example_json = example_response.json()
+            example_title = strip_tags(example_json['title'])
+
+            # replace relative image links with absolute links
+            example_json['body'] = example_json['body'].replace(
+                "src=\"../", "src=\"" + url_dir)
+
+            # extract title and all images
+            example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
+            example_dict = {}
+            example_dict['title'] = example_title
+            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
+            example_dict['description'] = example_bs_doc.p.text
+            example_dict['images'] = []
+            for tag in list(example_bs_doc.find_all('img')):
+                example_dict['images'].append(str(tag))
+            examples_list.append(example_dict)
+    return examples_list
+
+
+def get_doc_examples():
+    """
+    Fetch all examples (tutorials) in latest documentation
+
+    """
+    doc_examples = []
+    doc = DocumentationLink.objects.filter(displayed=True)[0]
+    version = doc.version
+    path = 'examples_index'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "http://%s.github.io/%s/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+
+    examples_div = bs_doc.find("div", id="examples")
+    all_major_sections = examples_div.find_all("div",
+                                               class_="section",
+                                               recursive=False)
+
+    for major_section in all_major_sections:
+        major_section_dict = {}
+        major_section_title = major_section.find("h2")
+        major_section_dict["title"] = str(major_section_title)
+        major_section_dict["minor_sections"] = []
+        major_section_dict["examples_list"] = []
+        all_minor_sections = major_section.find_all("div",
+                                                    class_="section",
+                                                    recursive=False)
+
+        if len(all_minor_sections) == 0:
+            # no minor sections, only examples_list
+            all_li = major_section.find("ul").find_all("li")
+            major_section_dict[
+                "examples_list"] = get_examples_list_from_li_tags(base_url,
+                                                                  version,
+                                                                  path,
+                                                                  all_li)
+        else:
+            for minor_section in all_minor_sections:
+                minor_section_dict = {}
+                minor_section_title = minor_section.find("h3")
+                minor_section_dict["title"] = str(minor_section_title)
+                minor_section_dict["examples_list"] = []
+
+                all_li = minor_section.find("ul").find_all("li")
+                minor_section_dict[
+                    "examples_list"] = get_examples_list_from_li_tags(base_url,
+                                                                      version,
+                                                                      path,
+                                                                      all_li)
+                major_section_dict["minor_sections"].append(minor_section_dict)
+        doc_examples.append(major_section_dict)
+    return doc_examples
+
+
+def get_doc_examples_images():
+    """
+    Fetch all images in all examples in latest documentation
+
+    """
+    doc = DocumentationLink.objects.filter(displayed=True)[0]
+    version = doc.version
+    path = 'examples_index'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "http://%s.github.io/%s/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+    all_links = bs_doc.find_all('a')
+
+    examples_list = []
+    for link in all_links:
+        if(link.get('href').startswith('../examples_built')):
+            rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
+            example_url = base_url + version + "/" + rel_url + ".fjson"
+            example_response = requests.get(example_url)
+            example_json = example_response.json()
+            example_title = strip_tags(example_json['title'])
+
+            # replace relative image links with absolute links
+            example_json['body'] = example_json['body'].replace(
+                "src=\"../", "src=\"" + url_dir)
+
+            # extract title and all images
+            example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
+            example_dict = {}
+            example_dict['title'] = example_title
+            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
+            example_dict['description'] = example_bs_doc.p.text
+            example_dict['images'] = []
+            for tag in list(example_bs_doc.find_all('img')):
+                example_dict['images'].append(str(tag))
+            examples_list.append(example_dict)
+    return examples_list

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'meta',
-    'website'
+    'website',
+    'github_visualization'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
                 'website.context_processor.nav_pages_processor',
+                'website.context_processor.google_analytics_processor',
             ],
         },
     },
@@ -155,6 +157,9 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = '/dashboard/login'
 
+# Google Analytics
+GOOGLE_ANALYTICS_TRACKING_ID = ''
+
 # documentation repository settings
 DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
 DOCUMENTATION_REPO_NAME = 'dipy_web'
@@ -166,6 +171,9 @@ FACEBOOK_APP_SECRET = ''
 # twitter API keys
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
+
+# google API keys
+GOOGLE_API_KEY = ''
 
 # default meta information
 DEFAULT_TITLE = "DIPY - Diffusion Imaging In Python"

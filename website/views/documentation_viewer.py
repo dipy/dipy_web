@@ -1,4 +1,6 @@
+from bs4 import BeautifulSoup
 import requests
+
 
 from django.conf import settings
 from django.http import Http404
@@ -25,11 +27,26 @@ def documentation(request, version, path):
     url_dir = url
     if url_dir[-1] != "/":
         url_dir += "/"
+
+    # parse the content to json
     response_json = response.json()
+
+    # replace all image urls to absolute urls
     response_json['body'] = response_json['body'].replace("src=\"",
                                                           "src=\"" + url_dir)
+
+    # try to get first p tag to set as description meta tag
+    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+    first_p_text = bs_doc.p.text
+
+    # set title of the json doc as the title of the page
     page_title = "DIPY : Docs %s - %s" % (version,
                                           strip_tags(response_json['title']),)
-    context['meta'] = get_meta_tags_dict(title=page_title)
+
+    if(len(first_p_text) > 10):
+        context['meta'] = get_meta_tags_dict(title=page_title,
+                                             description=first_p_text)
+    else:
+        context['meta'] = get_meta_tags_dict(title=page_title)
     context['doc'] = response_json
     return render(request, 'website/documentation_page.html', context)
