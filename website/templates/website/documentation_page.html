@@ -1,6 +1,15 @@
 {% extends "website/base_template.html" %}
 {% load customfilters %}
 
+{% block extra_css %}
+<style type="text/css">
+	.section {
+    padding-top: 50px;
+    margin-top: -50px;
+}
+</style>
+{% endblock %}
+
 {% block content_body %}
 
 <!-- Content -->
