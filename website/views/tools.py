@@ -84,7 +84,7 @@ def get_google_plus_activity(user_id, count):
     user_id : string
         The ID of the user to get activities for.
 
-    count: int
+    count : int
         Maximum number of activities to fetch.
     """
     api_key = settings.GOOGLE_API_KEY
@@ -109,7 +109,7 @@ def get_facebook_page_feed(page_id, count):
     ----------
     page_id : string
         The ID of the page.
-    count: int
+    count : int
         Maximum number of posts to fetch.
     """
     app_id = settings.FACEBOOK_APP_ID
@@ -170,7 +170,7 @@ def get_twitter_feed(screen_name, count):
     screen_name : string
         The screen name of the user for whom to return Tweets for.
 
-    count: int
+    count : int
         Maximum number of Tweets to fetch.
     """
     try:
@@ -270,7 +270,7 @@ def get_youtube_videos(channel_id, count):
         Channel ID of the youtube channel for which the videos will
         be retrieved.
 
-    count: int
+    count : int
         Maximum number of videos to fetch.
     """
 
