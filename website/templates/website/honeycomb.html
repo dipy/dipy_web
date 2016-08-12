@@ -12,12 +12,14 @@
   <div class="page-heading"><h2>Gallery</h2></div>
   <div class="honeycombs">
     {% for example in all_documentation_examples %}
-    {% for image in example.images %}
-    <div class="comb">
-      {{ image|safe }}
-      <span><a href="{{ example.link }}">{{ example.title }}</a></span>
-    </div>
-    {% endfor %}
+    {% with example.images|last as image %}
+      {% if image %}
+      <div class="comb">
+        {{ image|safe }}
+        <span><a href="{{ example.link }}">{{ example.title }}</a></span>
+      </div>
+      {% endif %}
+    {% endwith %}
     {% endfor %}
 
 
