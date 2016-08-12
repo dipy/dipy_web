@@ -35,9 +35,3 @@ class AddEditCarouselImageForm(ModelForm):
         model = CarouselImage
         fields = ['image_url', 'image_caption',
                   'image_description', 'target_url']
-
-
-class AddEditHoneycombPostForm(ModelForm):
-    class Meta:
-        model = HoneycombPost
-        fields = ['image_caption', 'image_url', 'target_url']

@@ -79,16 +79,6 @@ urlpatterns = [
     url(r'^dashboard/carousel/delete/(?P<carousel_image_id>.*?)/$',
         views.delete_carousel_image, name='delete_carousel_image'),
 
-    # Honeycomb visualisation Management
-    url(r'^dashboard/honeycomb/$', views.dashboard_honeycomb,
-        name='dashboard_honeycomb'),
-    url(r'^dashboard/honeycomb/edit/(?P<honeycomb_post_id>.*?)/$',
-        views.edit_honeycomb_post, name='edit_honeycomb_post'),
-    url(r'^dashboard/honeycomb/add/$', views.add_honeycomb_post,
-        name='add_honeycomb_post'),
-    url(r'^dashboard/honeycomb/delete/(?P<honeycomb_post_id>.*?)/$',
-        views.delete_honeycomb_post, name='delete_honeycomb_post'),
-
     # Documentation Management
     url(r'^dashboard/documentation/$', views.dashboard_documentation,
         name='dashboard_documentation'),
