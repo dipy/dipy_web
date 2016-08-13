@@ -1,6 +1,6 @@
 /* general styles */
 
-#github_visualozation_main_container {
+#github_visualization_main_container {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -86,6 +86,7 @@
     display: block;
     float: left;
 }
+
 .github_visualization_contributor_deletions {
     color: #d45a5a;
     width: 48%;

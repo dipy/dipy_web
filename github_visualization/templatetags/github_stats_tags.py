@@ -1,5 +1,6 @@
 from django import template
 from github_visualization import github_stats
+
 register = template.Library()
 
 

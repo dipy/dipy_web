@@ -5,26 +5,25 @@ class GithubStatFetcher:
     """A GitHub statistics fetcher for github repositories
     """
 
-    def __init__(self, user_name, repositoty_name):
+    def __init__(self, user_name, repository_name):
         ''' Initialize GithubStatFetcher Object
 
         Parameters
         -------------
         user_name : str
            Name of the user or organization of the repository owner
-        repositoty_name : str
+        repository_name : str
            Name of repository
         '''
         self.user_name = user_name
-        self.repositoty_name = repositoty_name
+        self.repository_name = repository_name
 
         self.baseurl = "https://api.github.com/repos/%s/%s" % (
-            self.user_name, self.repositoty_name)
+            self.user_name, self.repository_name)
 
-    def get_total_contributions(self, weeks):
+    def __get_total_contributions(self, weeks):
         ''' Helper function to calculate total additions
-        and total deletions from a list of weeks of contributions
-        of a contributor
+        and total deletions from a list returned from GitHub API
 
         Parameters
         -------------
@@ -42,7 +41,7 @@ class GithubStatFetcher:
             total_deletions += week['d']
         return total_additions, total_deletions
 
-    def get_cumulative_contributors(self, contributors_list):
+    def __get_cumulative_contributors(self, contributors_list):
         ''' Helper function to calculate total contributors as
         new contributors join with time
 
@@ -60,27 +59,26 @@ class GithubStatFetcher:
             ]
 
         '''
-        contributorsJoinDate = {}
+        contributors_join_date = {}
 
         for contributor in contributors_list:
             for week in contributor["weeks"]:
                 if(week["c"] > 0):
-                    joinDate = week['w']
-            if joinDate not in contributorsJoinDate:
-                contributorsJoinDate[joinDate] = 0
-            contributorsJoinDate[joinDate] += 1
+                    join_date = week['w']
+            if join_date not in contributors_join_date:
+                contributors_join_date[join_date] = 0
+            contributors_join_date[join_date] += 1
 
-        cumulativeJoinDate = {}
+        cumulative_join_date = {}
         cumulative = 0
-        for time in sorted(contributorsJoinDate):
-            print(time)
-            cumulative += contributorsJoinDate[time]
-            cumulativeJoinDate[time] = cumulative
+        for time in sorted(contributors_join_date):
+            cumulative += contributors_join_date[time]
+            cumulative_join_date[time] = cumulative
 
-        cumulativeList = list(cumulativeJoinDate.items())
-        cumulativeList.sort()
+        cumulative_list = list(cumulative_join_date.items())
+        cumulative_list.sort()
 
-        return cumulativeList
+        return cumulative_list
 
     def fetch_basic_stats(self):
         ''' Fetch the basic stats
@@ -88,7 +86,7 @@ class GithubStatFetcher:
         Returns
         -------
         basic_stats : dict
-            A dictionary containting basic statistics. For Example:
+            A dictionary containing basic statistics. For example:
             { 'response_code': 200,
               'repo_name': 'dipy',
               'repo_description': 'Diffusion MR Imaging in Python',
@@ -138,7 +136,7 @@ class GithubStatFetcher:
         Returns
         -------
         contributor_stats : dict
-            A dictionary containting contributor statistics. For Example:
+            A dictionary containing contributor statistics. For example:
             { 'response_code': 200,
               'total_contributors': 50,
               'total_commits': 6031,
@@ -198,7 +196,7 @@ class GithubStatFetcher:
                 contributor_dict["total_commits"] = contributor["total"]
                 grand_total_commits += contributor["total"]
 
-                total_additions, total_deletions = self.get_total_contributions(
+                total_additions, total_deletions = self.__get_total_contributions(
                     contributor["weeks"])
 
                 contributor_dict["total_additions"] = total_additions
@@ -208,7 +206,8 @@ class GithubStatFetcher:
 
             contributor_stats["total_commits"] = grand_total_commits
 
-            cumulative_contributors = self.get_cumulative_contributors(r_json)
+            cumulative_contributors = self.__get_cumulative_contributors(
+                r_json)
             contributor_stats[
                 "cumulative_contributors"] = cumulative_contributors
 
@@ -270,13 +269,13 @@ class GithubStatFetcher:
             weekly_contributions["changes"] = []
             lines = 0
             for changes in r1_json:
-                changeList = []
-                changeList.append(changes[0])
-                changeList.append(changes[1])
-                changeList.append(changes[2])
+                change_list = []
+                change_list.append(changes[0])
+                change_list.append(changes[1])
+                change_list.append(changes[2])
                 lines = lines + changes[1] + changes[2]
-                changeList.append(lines)
-                weekly_contributions["changes"].append(changeList)
+                change_list.append(lines)
+                weekly_contributions["changes"].append(change_list)
 
             offset = len(weekly_contributions["changes"]) - len(r2_json["all"])
             for i, commit in enumerate(r2_json["all"]):
