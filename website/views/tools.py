@@ -295,7 +295,7 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
 
     for li in li_tags:
         link = li.find("a")
-        if(link.get('href').startswith('../examples_built')):
+        if(link and link.get('href').startswith('../examples_built')):
             example_dict = {}
             # get images
             rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
