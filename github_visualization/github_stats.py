@@ -2,7 +2,7 @@ import requests
 
 
 class GithubStatFetcher:
-    """A GitHub statistics fetcher for github repositories
+    """A GitHub statistics fetcher for Github repositories
     """
 
     def __init__(self, user_name, repository_name):
