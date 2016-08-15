@@ -433,7 +433,8 @@ def get_doc_examples_images():
             example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
             example_dict = {}
             example_dict['title'] = example_title
-            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
+            link_href = link.get('href').split("#")[0]
+            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link_href
             example_dict['description'] = example_bs_doc.p.text
             example_dict['images'] = []
             for tag in list(example_bs_doc.find_all('img')):
