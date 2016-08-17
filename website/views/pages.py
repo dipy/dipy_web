@@ -57,9 +57,6 @@ def cite(request):
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
     context = {}
-    all_honeycomb_posts = HoneycombPost.objects.all()
-    context['all_honeycomb_posts'] = all_honeycomb_posts
-
     context['all_youtube_videos'] = get_youtube_videos(
         'UCHnEuCRDGFOR5cfEo0nD3pw', 100)
     context['all_documentation_examples'] = get_doc_examples_images()
