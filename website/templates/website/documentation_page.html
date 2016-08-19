@@ -1,6 +1,7 @@
 {% extends "website/base_template.html" %}
 {% load customfilters %}
 
+
 {% block content_body %}
 
 <!-- Content -->
@@ -28,9 +29,22 @@
 </div>
 {% endblock %}
 
-
 {% block extra_js_bottom %}
 <!-- math rendering script-->
-<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- anchor link script-->
+<script type="text/javascript">
+	// function applying the offset
+	function offsetAnchor() {
+	    if(location.hash.length !== 0) {
+	        window.scrollTo(window.scrollX, window.scrollY - 70);
+	    }
+	}
+
+	// when new anchor is clicked in the same page the offsetAnchor function is called after 1s
+	$(window).on("hashchange",offsetAnchor);
+	// to ensure that the offset takes place after the page has scrolled to the anchor.
+	window.setTimeout(offsetAnchor, 1);
 </script>
 {% endblock %}
