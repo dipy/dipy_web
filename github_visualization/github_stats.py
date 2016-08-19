@@ -186,6 +186,10 @@ class GithubStatFetcher:
             grand_total_commits = 0
             for contributor in r_json:
                 contributor_dict = {}
+
+                # check if "author" is null
+                if not contributor["author"]:
+                    continue
                 contributor_dict["user_name"] = contributor["author"]["login"]
                 contributor_dict["avatar_url"] = contributor[
                     "author"]["avatar_url"]
