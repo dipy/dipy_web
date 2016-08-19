@@ -107,6 +107,12 @@ def news_page(request, news_id):
     return render(request, 'website/news.html', context)
 
 
+@cache_page(60 * 30)  # cache the view for 30 minutes
+def contributors(request):
+    context = {}
+    return render(request, 'website/contributors.html', context)
+
+
 @login_required
 def dashboard(request):
     context = {}

@@ -1,0 +1,15 @@
+{% extends "website/base_template.html" %}
+{% load github_stats_tags %}
+
+{% block extra_css %}
+	{% include "github_visualization/github_stats_includes.html" %}
+{% endblock %}
+
+
+{% block content_body %}
+<!-- Content -->
+<div class="content-card">
+  {% github_stats_block "nipy" "dipy" %}  
+</div>
+{% endblock %}
+
