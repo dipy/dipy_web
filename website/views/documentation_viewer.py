@@ -35,18 +35,22 @@ def documentation(request, version, path):
     response_json['body'] = response_json['body'].replace("src=\"",
                                                           "src=\"" + url_dir)
 
-    # try to get first p tag to set as description meta tag
-    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
-    first_p_text = bs_doc.p.text
-
     # set title of the json doc as the title of the page
     page_title = "DIPY : Docs %s - %s" % (version,
                                           strip_tags(response_json['title']),)
 
-    if(len(first_p_text) > 10):
-        context['meta'] = get_meta_tags_dict(title=page_title,
-                                             description=first_p_text)
-    else:
-        context['meta'] = get_meta_tags_dict(title=page_title)
+    context['meta'] = get_meta_tags_dict(title=page_title)
+
+    # try to get first p tag to set as description meta tag
+    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+
+    first_p = bs_doc.p
+    if(first_p):
+        first_p_text = first_p.text
+
+        if(len(first_p_text) > 10):
+            context['meta'] = get_meta_tags_dict(title=page_title,
+                                                 description=first_p_text)
+
     context['doc'] = response_json
     return render(request, 'website/documentation_page.html', context)
