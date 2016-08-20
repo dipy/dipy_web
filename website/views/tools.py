@@ -359,6 +359,7 @@ def get_doc_examples():
         major_section_dict["title"] = str(major_section_title)
         major_section_dict["minor_sections"] = []
         major_section_dict["examples_list"] = []
+        major_section_dict["valid"] = True
         all_minor_sections = major_section.find_all("div",
                                                     class_="section",
                                                     recursive=False)
@@ -371,12 +372,17 @@ def get_doc_examples():
                                                                   version,
                                                                   path,
                                                                   all_li)
+            # check if there are no tutoruals in major section:
+            if len(major_section_dict["examples_list"]) == 0:
+                major_section_dict["valid"] = False
+
         else:
             for minor_section in all_minor_sections:
                 minor_section_dict = {}
                 minor_section_title = minor_section.find("h3")
                 minor_section_dict["title"] = str(minor_section_title)
                 minor_section_dict["examples_list"] = []
+                minor_section_dict["valid"] = True
 
                 all_li = minor_section.find("ul").find_all("li")
                 minor_section_dict[
@@ -384,6 +390,9 @@ def get_doc_examples():
                                                                       version,
                                                                       path,
                                                                       all_li)
+                # check if there are no tutoruals in minor section:
+                if len(minor_section_dict["examples_list"]) == 0:
+                    minor_section_dict["valid"] = False
                 major_section_dict["minor_sections"].append(minor_section_dict)
         doc_examples.append(major_section_dict)
     return doc_examples
