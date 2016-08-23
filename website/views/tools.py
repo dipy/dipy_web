@@ -372,7 +372,7 @@ def get_doc_examples():
                                                                   version,
                                                                   path,
                                                                   all_li)
-            # check if there are no tutoruals in major section:
+            # check if there is no tutorual in major section:
             if len(major_section_dict["examples_list"]) == 0:
                 major_section_dict["valid"] = False
 
