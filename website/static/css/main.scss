@@ -451,6 +451,12 @@ code {
     margin: 1em 0em;
     border-left: 2px solid rgb(222, 222, 222);
     margin-left: 1em;
+
+    .tutorial_error {
+        background: #ffe1e1;
+        padding: 1em;
+        margin: 0;
+    }
 }
 
 .minor_section{
