@@ -372,7 +372,7 @@ def get_doc_examples():
                                                                   version,
                                                                   path,
                                                                   all_li)
-            # check if there is no tutorual in major section:
+            # check if there is no tutorial in major section:
             if len(major_section_dict["examples_list"]) == 0:
                 major_section_dict["valid"] = False
 
@@ -390,7 +390,7 @@ def get_doc_examples():
                                                                       version,
                                                                       path,
                                                                       all_li)
-                # check if there are no tutoruals in minor section:
+                # check if there is no tutorial in minor section:
                 if len(minor_section_dict["examples_list"]) == 0:
                     minor_section_dict["valid"] = False
                 major_section_dict["minor_sections"].append(minor_section_dict)
