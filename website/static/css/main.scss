@@ -425,6 +425,17 @@ code {
     text-align: center;
 }
 
+.section {
+    p {
+        margin: 1.2em 0;
+        line-height: 1.6em;
+    }
+
+    img {
+        padding: 1.6em 0;
+    }
+}
+
 // tutorial page styles
 .tutorials-container {
     h2, h3 {
