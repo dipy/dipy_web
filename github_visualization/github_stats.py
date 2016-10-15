@@ -1,3 +1,5 @@
+
+from django.conf import settings
 import requests
 
 
@@ -20,6 +22,29 @@ class GithubStatFetcher:
 
         self.baseurl = "https://api.github.com/repos/%s/%s" % (
             self.user_name, self.repository_name)
+
+    def construct_url(self, path):
+        '''Construct url from baseurl
+
+        Parameters
+        ----------
+        path : str
+            Path of API endpoint after /repos/username/reponame
+            Eg: /stats/contributors
+
+        Returns
+        -------
+        url : full canonical url of the API endpoint
+        '''
+        credentials = ""
+        if(len(settings.GITHUB_VIZ_CLIENT_ID) and
+           len(settings.GITHUB_VIZ_CLIENT_SECRET)):
+            credentials = "?client_id=%s&client_secret=%s" % (
+                settings.GITHUB_VIZ_CLIENT_ID,
+                settings.GITHUB_VIZ_CLIENT_SECRET)
+
+        url = self.baseurl + path + credentials
+        return url
 
     def __get_total_contributions(self, weeks):
         ''' Helper function to calculate total additions
@@ -103,7 +128,7 @@ class GithubStatFetcher:
 
         '''
         basic_stats = {}
-        url = self.baseurl
+        url = self.construct_url("")
         try:
             response = requests.get(url)
             basic_stats["response_code"] = response.status_code
@@ -170,7 +195,7 @@ class GithubStatFetcher:
         contributor_stats = {}
         contributor_stats["contributors"] = []
 
-        url = self.baseurl + "/stats/contributors"
+        url = self.construct_url("/stats/contributors")
         try:
             response = requests.get(url)
             contributor_stats["response_code"] = response.status_code
@@ -248,8 +273,8 @@ class GithubStatFetcher:
         weekly_contributions["changes"] = []
         weekly_contributions["commits"] = []
 
-        url1 = self.baseurl + "/stats/code_frequency"
-        url2 = self.baseurl + "/stats/participation"
+        url1 = self.construct_url("/stats/code_frequency")
+        url2 = self.construct_url("/stats/participation")
 
         try:
             response1 = requests.get(url1)
