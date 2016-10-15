@@ -175,6 +175,10 @@ TWITTER_CONSUMER_SECRET = ''
 # google API keys
 GOOGLE_API_KEY = ''
 
+# github_visualization settings
+GITHUB_VIZ_CLIENT_ID = ''
+GITHUB_VIZ_CLIENT_SECRET = ''
+
 # default meta information
 DEFAULT_TITLE = "DIPY - Diffusion Imaging In Python"
 DEFAULT_DESCRIPTION = """Dipy is a free and open source software
