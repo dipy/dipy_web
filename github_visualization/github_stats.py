@@ -1,6 +1,7 @@
+from time import sleep
+import requests
 
 from django.conf import settings
-import requests
 
 
 class GithubStatFetcher:
@@ -45,6 +46,18 @@ class GithubStatFetcher:
 
         url = self.baseurl + path + credentials
         return url
+
+    def __fetch_url(self, url):
+        response = requests.get(url)
+        if response.status_code == "202":
+            tries = 3
+            while tries >= 0:
+                tries -= 1
+                response = requests.get(url)
+                if response.status_code == "200":
+                    break
+                sleep(0.1)
+        return response
 
     def __get_total_contributions(self, weeks):
         ''' Helper function to calculate total additions
@@ -130,7 +143,7 @@ class GithubStatFetcher:
         basic_stats = {}
         url = self.construct_url("")
         try:
-            response = requests.get(url)
+            response = self.__fetch_url(url)
             basic_stats["response_code"] = response.status_code
 
             # check response code
@@ -197,7 +210,7 @@ class GithubStatFetcher:
 
         url = self.construct_url("/stats/contributors")
         try:
-            response = requests.get(url)
+            response = self.__fetch_url(url)
             contributor_stats["response_code"] = response.status_code
 
             # check response code
@@ -277,8 +290,8 @@ class GithubStatFetcher:
         url2 = self.construct_url("/stats/participation")
 
         try:
-            response1 = requests.get(url1)
-            response2 = requests.get(url2)
+            response1 = self.__fetch_url(url1)
+            response2 = self.__fetch_url(url2)
 
             if response1.status_code != 200:
                 weekly_contributions["response_code"] = response1.status_code
