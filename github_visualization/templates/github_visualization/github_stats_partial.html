@@ -236,3 +236,14 @@
 
 
 </script>
+
+<!-- script for image loading -->
+<script type="text/javascript">
+	var allImg = document.getElementsByClassName("github_visualization_contributor_img");
+	for (var i = allImg.length - 1; i >= 0; i--) {
+		allImg[i].classList.add("img-loading");
+		allImg[i].onload = function(){
+			this.classList.remove("img-loading");
+		}
+	};
+</script>

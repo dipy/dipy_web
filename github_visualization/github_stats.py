@@ -49,14 +49,16 @@ class GithubStatFetcher:
 
     def __fetch_url(self, url):
         response = requests.get(url)
-        if response.status_code == "202":
-            tries = 3
+        if response.status_code == 202:
+            tries = 5
             while tries >= 0:
                 tries -= 1
                 response = requests.get(url)
                 if response.status_code == "200":
                     break
-                sleep(0.1)
+                sleep(0.2)
+        if response.status_code != 200:
+            raise IOError("Could not fetch github data for %s" % url)
         return response
 
     def __get_total_contributions(self, weeks):
