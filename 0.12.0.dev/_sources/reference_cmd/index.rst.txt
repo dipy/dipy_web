@@ -3,3 +3,8 @@ Command Line Utilities Reference
 
 .. toctree::
 
+   dipy_reconst_dti.rst
+   dipy_reconst_dti_restore.rst
+   dipy_nlmeans.rst
+   dipy_mask.rst
+   dipy_median_otsu.rst

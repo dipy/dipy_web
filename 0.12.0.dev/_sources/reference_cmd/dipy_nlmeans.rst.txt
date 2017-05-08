@@ -1,0 +1,35 @@
+========================
+dipy_nlmeans
+========================
+
+::
+
+  /home/bishakh/projects/dipy/dipy/denoise/nlmeans.py:9: DeprecationWarning: Module 'dipy.denoise.nlmeans' is deprecated, use module 'dipy.denoise.non_local_means' instead
+    warn(DeprecationWarning("Module 'dipy.denoise.nlmeans' is deprecated,"
+  usage: dipy_nlmeans [-h] [--sigma float] [--out_dir str] [--out_denoised str]
+                      [--force] [--out_strat string] [--mix_names]
+                      [--log_level string] [--log_file string]
+                      input_files
+  
+  It applies nlmeans denoise on each file found by 'globing' ``input_files`` and saves the results in a directory specified by ``out_dir``.
+  
+  positional arguments:
+    input_files         Path to the input volumes. This path may contain wildcards toprocess multiple inputs at once.
+  
+  optional arguments:
+    -h, --help          show this help message and exit
+    --sigma float       Sigma parameter to pass to the nlmeans algorithm(default: auto estimation).
+    --force             Force overwriting output files.
+    --out_strat string  Strategy to manage output creation.
+    --mix_names         Prepend mixed input names to output names.
+    --log_level string  Log messsages display level
+    --log_file string   Log file to be saved.
+  
+  output arguments(optional):
+    --out_dir str       Output directory (default input file directory)
+    --out_denoised str  Name of the resuting denoised volume (default: dwi_nlmeans.nii.gz)
+  
+  References: 
+  Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.
+
+
