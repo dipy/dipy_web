@@ -1,0 +1,588 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`workflows`
+================
+.. automodule:: dipy.workflows
+
+.. currentmodule:: dipy.workflows
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.base`
+-----------------------------
+.. automodule:: dipy.workflows.base
+
+.. currentmodule:: dipy.workflows.base
+.. autosummary::
+
+   IntrospectiveArgumentParser
+   NumpyDocString
+   get_args_default
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.combined_workflow`
+------------------------------------------
+.. automodule:: dipy.workflows.combined_workflow
+
+.. currentmodule:: dipy.workflows.combined_workflow
+.. autosummary::
+
+   CombinedWorkflow
+   Workflow
+   iteritems
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.denoise`
+--------------------------------
+.. automodule:: dipy.workflows.denoise
+
+.. currentmodule:: dipy.workflows.denoise
+.. autosummary::
+
+   NLMeansFlow
+   Workflow
+   estimate_sigma
+   nlmeans
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.docstring_parser`
+-----------------------------------------
+.. automodule:: dipy.workflows.docstring_parser
+
+.. currentmodule:: dipy.workflows.docstring_parser
+.. autosummary::
+
+   NumpyDocString
+   Reader
+   dedent_lines
+   warn
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.flow_runner`
+------------------------------------
+.. automodule:: dipy.workflows.flow_runner
+
+.. currentmodule:: dipy.workflows.flow_runner
+.. autosummary::
+
+   IntrospectiveArgumentParser
+   get_level
+   iteritems
+   run_flow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.mask`
+-----------------------------
+.. automodule:: dipy.workflows.mask
+
+.. currentmodule:: dipy.workflows.mask
+.. autosummary::
+
+   MaskFlow
+   Workflow
+   load_nifti
+   save_nifti
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.multi_io`
+---------------------------------
+.. automodule:: dipy.workflows.multi_io
+
+.. currentmodule:: dipy.workflows.multi_io
+.. autosummary::
+
+   IOIterator
+   basename_without_extension
+   common_start
+   concatenate_inputs
+   connect_output_paths
+   glob
+   io_iterator
+   io_iterator_
+   slash_to_under
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.reconst`
+--------------------------------
+.. automodule:: dipy.workflows.reconst
+
+.. currentmodule:: dipy.workflows.reconst
+.. autosummary::
+
+   ReconstDtiFlow
+   ReconstDtiRestoreFlow
+   TensorModel
+   Workflow
+   axial_diffusivity
+   color_fa
+   fractional_anisotropy
+   geodesic_anisotropy
+   get_mode
+   gradient_table
+   lower_triangular
+   mean_diffusivity
+   radial_diffusivity
+   read_bvals_bvecs
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.segment`
+--------------------------------
+.. automodule:: dipy.workflows.segment
+
+.. currentmodule:: dipy.workflows.segment
+.. autosummary::
+
+   MedianOtsuFlow
+   Workflow
+   load_nifti
+   median_otsu
+   save_nifti
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.workflow`
+---------------------------------
+.. automodule:: dipy.workflows.workflow
+
+.. currentmodule:: dipy.workflows.workflow
+.. autosummary::
+
+   Workflow
+   io_iterator_
+
+
+.. currentmodule:: dipy.workflows
+
+
+.. currentmodule:: dipy.workflows.base
+
+
+:class:`IntrospectiveArgumentParser`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IntrospectiveArgumentParser
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`NumpyDocString`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NumpyDocString
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+get_args_default
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_args_default
+
+
+.. currentmodule:: dipy.workflows.combined_workflow
+
+
+:class:`CombinedWorkflow`
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: CombinedWorkflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+iteritems
+~~~~~~~~~
+
+.. autofunction:: iteritems
+
+
+.. currentmodule:: dipy.workflows.denoise
+
+
+:class:`NLMeansFlow`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NLMeansFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+estimate_sigma
+~~~~~~~~~~~~~~
+
+.. autofunction:: estimate_sigma
+
+nlmeans
+~~~~~~~
+
+.. autofunction:: nlmeans
+
+
+.. currentmodule:: dipy.workflows.docstring_parser
+
+
+:class:`NumpyDocString`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NumpyDocString
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Reader`
+~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Reader
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+dedent_lines
+~~~~~~~~~~~~
+
+.. autofunction:: dedent_lines
+
+warn
+~~~~
+
+.. autofunction:: warn
+
+
+.. currentmodule:: dipy.workflows.flow_runner
+
+
+:class:`IntrospectiveArgumentParser`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IntrospectiveArgumentParser
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+get_level
+~~~~~~~~~
+
+.. autofunction:: get_level
+
+iteritems
+~~~~~~~~~
+
+.. autofunction:: iteritems
+
+run_flow
+~~~~~~~~
+
+.. autofunction:: run_flow
+
+
+.. currentmodule:: dipy.workflows.mask
+
+
+:class:`MaskFlow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MaskFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+load_nifti
+~~~~~~~~~~
+
+.. autofunction:: load_nifti
+
+save_nifti
+~~~~~~~~~~
+
+.. autofunction:: save_nifti
+
+
+.. currentmodule:: dipy.workflows.multi_io
+
+
+:class:`IOIterator`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IOIterator
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+basename_without_extension
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: basename_without_extension
+
+common_start
+~~~~~~~~~~~~
+
+.. autofunction:: common_start
+
+concatenate_inputs
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: concatenate_inputs
+
+connect_output_paths
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: connect_output_paths
+
+glob
+~~~~
+
+.. autofunction:: glob
+
+io_iterator
+~~~~~~~~~~~
+
+.. autofunction:: io_iterator
+
+io_iterator_
+~~~~~~~~~~~~
+
+.. autofunction:: io_iterator_
+
+slash_to_under
+~~~~~~~~~~~~~~
+
+.. autofunction:: slash_to_under
+
+
+.. currentmodule:: dipy.workflows.reconst
+
+
+:class:`ReconstDtiFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstDtiFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstDtiRestoreFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstDtiRestoreFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`TensorModel`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TensorModel
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+axial_diffusivity
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: axial_diffusivity
+
+color_fa
+~~~~~~~~
+
+.. autofunction:: color_fa
+
+fractional_anisotropy
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fractional_anisotropy
+
+geodesic_anisotropy
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: geodesic_anisotropy
+
+get_mode
+~~~~~~~~
+
+.. autofunction:: get_mode
+
+gradient_table
+~~~~~~~~~~~~~~
+
+.. autofunction:: gradient_table
+
+lower_triangular
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: lower_triangular
+
+mean_diffusivity
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: mean_diffusivity
+
+radial_diffusivity
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: radial_diffusivity
+
+read_bvals_bvecs
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_bvals_bvecs
+
+
+.. currentmodule:: dipy.workflows.segment
+
+
+:class:`MedianOtsuFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MedianOtsuFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+load_nifti
+~~~~~~~~~~
+
+.. autofunction:: load_nifti
+
+median_otsu
+~~~~~~~~~~~
+
+.. autofunction:: median_otsu
+
+save_nifti
+~~~~~~~~~~
+
+.. autofunction:: save_nifti
+
+
+.. currentmodule:: dipy.workflows.workflow
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+io_iterator_
+~~~~~~~~~~~~
+
+.. autofunction:: io_iterator_
+
