@@ -189,7 +189,8 @@ div.codehilite, .highlight {
         border-radius: 0px;
         border-left: 4px solid rgba(46, 168, 209, 0.16);
         margin: 10px;
-        font-family: sans-serif;
+        font-family: "Lucida Console", Monaco, monospace;
+        line-height: 1.4em;
         margin: 0;
     }
 }
@@ -422,6 +423,17 @@ code {
     margin: 0 auto;
     width: 100%;
     text-align: center;
+}
+
+.section {
+    p {
+        margin: 1.2em 0;
+        line-height: 1.6em;
+    }
+
+    img {
+        padding: 1.6em 0;
+    }
 }
 
 // tutorial page styles
