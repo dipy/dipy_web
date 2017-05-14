@@ -1,0 +1,53 @@
+========================
+dipy_reconst_dti_restore
+========================
+
+::
+
+  usage: dipy_reconst_dti_restore [-h] [--b0_threshold float]
+                                  [--save_metrics [str [str ...]]] [--jacobian]
+                                  [--out_dir str] [--out_tensor str]
+                                  [--out_fa str] [--out_ga str] [--out_rgb str]
+                                  [--out_md str] [--out_ad str] [--out_rd str]
+                                  [--out_mode str] [--out_evec str]
+                                  [--out_eval str] [--force]
+                                  [--out_strat string] [--mix_names]
+                                  [--log_level string] [--log_file string]
+                                  input_files bvalues bvectors mask_files sigma
+  
+  positional arguments:
+    input_files           Path to the input volumes. This path may contain wildcards toprocess multiple inputs at once.
+    bvalues               Path to the bvalues files. This path may contain wildcards to usemultiple bvalues files at once.
+    bvectors              Path to the bvalues files. This path may contain wildcards to usemultiple bvalues files at once.
+    mask_files            Path to the input masks. This path may contain wildcards to usemultiple masks at once. (default: No mask used)
+    sigma                 An estimate of the variance.
+  
+  optional arguments:
+    -h, --help            show this help message and exit
+    --b0_threshold float  Threshold used to find b=0 directions (default 0.0)
+    --save_metrics [str [str ...]]
+                          List of metrics to save.Possible values: fa, ga, rgb, md, ad, rd, mode, tensor, evec, eval(default [] (all))
+    --jacobian            Whether to use the Jacobian of the tensor to speed thenon-linear optimization procedure used to fit the tensorparameters (default True)
+    --force               Force overwriting output files.
+    --out_strat string    Strategy to manage output creation.
+    --mix_names           Prepend mixed input names to output names.
+    --log_level string    Log messsages display level
+    --log_file string     Log file to be saved.
+  
+  output arguments(optional):
+    --out_dir str         Output directory (default input file directory)
+    --out_tensor str      Name of the tensors volume to be saved (default 'tensors.nii.gz')
+    --out_fa str          Name of the fractional anisotropy volume to be saved(default 'fa.nii.gz')
+    --out_ga str          Name of the geodesic anisotropy volume to be saved(default 'ga.nii.gz')
+    --out_rgb str         Name of the color fa volume to be saved (default 'rgb.nii.gz')
+    --out_md str          Name of the mean diffusivity volume to be saved(default 'md.nii.gz')
+    --out_ad str          Name of the axial diffusivity volume to be saved(default 'ad.nii.gz')
+    --out_rd str          Name of the radial diffusivity volume to be saved(default 'rd.nii.gz')
+    --out_mode str        Name of the mode volume to be saved (default 'mode.nii.gz')
+    --out_evec str        Name of the eigenvectors volume to be saved(default 'evecs.nii.gz')
+    --out_eval str        Name of the eigenvalues to be saved (default 'evals.nii.gz')
+  
+  References: 
+  Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.
+
+

@@ -1,0 +1,11 @@
+Command Line Utilities Reference
+================================
+
+.. toctree::
+
+   NLMeansFlow.rst
+   CombinedWorkflow.rst
+   MedianOtsuFlow.rst
+   MaskFlow.rst
+   ReconstDtiFlow.rst
+   ReconstDtiRestoreFlow.rst

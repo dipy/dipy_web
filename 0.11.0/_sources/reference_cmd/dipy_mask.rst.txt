@@ -1,0 +1,32 @@
+========================
+dipy_mask
+========================
+
+::
+
+  usage: dipy_mask [-h] [--ub float] [--out_dir str] [--out_mask str] [--force]
+                   [--out_strat string] [--mix_names] [--log_level string]
+                   [--log_file string]
+                   input_files lb
+  
+  positional arguments:
+    input_files         Path to image to be masked.
+    lb                  Lower bound value.
+  
+  optional arguments:
+    -h, --help          show this help message and exit
+    --ub float          Upper bound value (default Inf)
+    --force             Force overwriting output files.
+    --out_strat string  Strategy to manage output creation.
+    --mix_names         Prepend mixed input names to output names.
+    --log_level string  Log messsages display level
+    --log_file string   Log file to be saved.
+  
+  output arguments(optional):
+    --out_dir str       Output directory (default input file directory)
+    --out_mask str      Name of the masked file (default 'mask.nii.gz')
+  
+  References: 
+  Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.
+
+
