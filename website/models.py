@@ -1,5 +1,3 @@
-import datetime
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.cache import cache
@@ -23,12 +21,12 @@ allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
 
 
 class Profile(models.Model):
-    "Stores additional information about the user"
+    """ Stores additional information about the user """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class WebsiteSection(models.Model):
@@ -68,7 +66,7 @@ class WebsiteSection(models.Model):
         # bleach is used to filter html tags like <script> for security
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
-        self.modified = datetime.datetime.now()
+        self.modified = timezone.now()
 
         # clear the cache
         cache.clear()
@@ -96,7 +94,7 @@ class NewsPost(models.Model):
         # bleach is used to filter html tags like <script> for security
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
-        self.modified = datetime.datetime.now()
+        self.modified = timezone.now()
 
         # clear the cache
         cache.clear()
@@ -132,7 +130,7 @@ class Publication(models.Model):
     modified = models.DateTimeField(editable=False, auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        self.modified = datetime.datetime.now()
+        self.modified = timezone.now()
 
         # clear the cache
         cache.clear()
@@ -158,7 +156,7 @@ class CarouselImage(models.Model):
     modified = models.DateTimeField(editable=False, auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        self.modified = datetime.datetime.now()
+        self.modified = timezone.now()
 
         # clear the cache
         cache.clear()
@@ -177,3 +175,6 @@ class DocumentationLink(models.Model):
     version = models.CharField(max_length=20, unique=True)
     url = models.URLField(max_length=100)
     displayed = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.url
