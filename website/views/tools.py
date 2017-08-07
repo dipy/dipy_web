@@ -20,9 +20,9 @@ def get_website_section(requested_website_position_id):
 
     Parameters
     ----------
-    website_position_id : string
+    requested_website_position_id: string
 
-    Output
+    Return
     ------
     returns WebsiteSection object or None if not found
     """
@@ -42,7 +42,7 @@ def get_latest_news_posts(limit):
     ----------
     limit : string
 
-    Output
+    Return
     ------
     returns a list of NewsPost objects
     """
@@ -66,7 +66,7 @@ def has_commit_permission(access_token, repository_name):
                             params={'access_token': access_token})
     response_json = response.json()
     for repo in response_json:
-        if(repo["name"] == repository_name):
+        if repo["name"] == repository_name :
             permissions = repo["permissions"]
             if(permissions["admin"] and
                permissions["push"] and
@@ -178,7 +178,7 @@ def get_twitter_feed(screen_name, count):
     except KeyError:
         token = get_twitter_bearer_token()
     parms = (screen_name, str(count))
-    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % (parms)
+    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % parms
     headers = {'Authorization': 'Bearer %s' % (token,)}
     try:
         response = requests.get(url, headers=headers)
@@ -295,8 +295,7 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
 
     for li in li_tags:
         link = li.find("a")
-        if(link and link.get('href').startswith('../examples_built')):
-            example_dict = {}
+        if link and link.get('href').startswith('../examples_built'):
             # get images
             rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
             example_url = base_url + version + "/" + rel_url + ".fjson"
@@ -310,11 +309,9 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
 
             # extract title and all images
             example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
-            example_dict = {}
-            example_dict['title'] = example_title
-            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
-            example_dict['description'] = example_bs_doc.p.text
-            example_dict['images'] = []
+            example_dict = {'title': example_title,
+                            'link': '/documentation/' + version + "/" + path + "/" + link.get('href'),
+                            'description': example_bs_doc.p.text, 'images': []}
             for tag in list(example_bs_doc.find_all('img')):
                 example_dict['images'].append(str(tag))
             examples_list.append(example_dict)
@@ -427,7 +424,7 @@ def get_doc_examples_images():
 
     examples_list = []
     for link in all_links:
-        if(link.get('href').startswith('../examples_built')):
+        if link.get('href').startswith('../examples_built'):
             rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
             example_url = base_url + version + "/" + rel_url + ".fjson"
             example_response = requests.get(example_url)
@@ -440,8 +437,7 @@ def get_doc_examples_images():
 
             # extract title and all images
             example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
-            example_dict = {}
-            example_dict['title'] = example_title
+            example_dict = {'title': example_title}
             link_href = link.get('href').split("#")[0]
             example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link_href
             example_dict['description'] = example_bs_doc.p.text
