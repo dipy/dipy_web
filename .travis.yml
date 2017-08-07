@@ -2,6 +2,8 @@ language: python
 python:
   - "3.6"
   - "2.7"
+before_install:
+  - cp dipy_web/settings.py.example dipy_web/test_settings.py
 install:
   - pip install -r requirements.txt
   - pip install coverage
