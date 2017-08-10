@@ -88,6 +88,10 @@ def get_google_plus_activity(user_id, count):
     count : int
         Maximum number of activities to fetch.
     """
+    if not settings.GOOGLE_API_KEY:
+        # TODO: warn user via logging
+        return {}
+
     api_key = settings.GOOGLE_API_KEY
     url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + \
           "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key

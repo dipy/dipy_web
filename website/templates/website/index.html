@@ -12,7 +12,7 @@
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
         {% for image in all_carousel %}
-          <li data-target="#homeCarousel" data-slide-to="{{forloop.counter|add:"-1"}}" class="{% if forloop.first %}active{% endif %}"></li>
+          <li data-target="#homeCarousel" data-slide-to="{{forloop.counter|add:'-1'}}" class="{% if forloop.first %}active{% endif %}"></li>
         {% endfor %}
       </ol>
       <!-- Carousel items -->
@@ -56,7 +56,7 @@
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="/page/installation/">
           <div class="big-link">
-            <img src="{% static "images/download-logo.png" %}">
+            <img src="{% static 'images/download-logo.png' %}">
             <span>Install Now</span>
           </div>
         </a>
@@ -64,7 +64,7 @@
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="https://github.com/nipy/dipy" target="_blank">
           <div class="big-link">
-            <img src="{% static "images/github-logo.png" %}">
+            <img src="{% static 'images/github-logo.png' %}">
             <span>Fork on Github</span>
           </div>
         </a>
@@ -72,7 +72,7 @@
       <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
         <a href="/support">
           <div class="big-link">
-            <img src="{% static "images/gitter-logo.png" %}">
+            <img src="{% static 'images/gitter-logo.png' %}">
             <span>Get Support</span>
           </div>
         </a>

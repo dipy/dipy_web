@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render
-from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
 
 from .tools import *
@@ -24,13 +23,11 @@ def index(request):
     context['latest_news'] = latest_news
     context['highlighted_publications'] = highlighted_publications
     context['all_carousel'] = all_carousel
-
-    context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
-                                                     4)
+    context['gplus_feed'] = get_google_plus_activity("107763702707848478173", 4)
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
-
     context['meta'] = get_meta_tags_dict()
+
     return render(request, 'website/index.html', context)
 
 
