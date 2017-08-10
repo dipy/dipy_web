@@ -19,6 +19,7 @@ def get_website_section(requested_website_position_id):
     Fetch WebsiteSection with website_position_id
 
     Parameters
+
     ----------
     requested_website_position_id: string
 
@@ -40,7 +41,7 @@ def get_latest_news_posts(limit):
 
     Parameters
     ----------
-    limit : string
+    limit : int
 
     Return
     ------
@@ -66,7 +67,7 @@ def has_commit_permission(access_token, repository_name):
                             params={'access_token': access_token})
     response_json = response.json()
     for repo in response_json:
-        if repo["name"] == repository_name :
+        if repo["name"] == repository_name:
             permissions = repo["permissions"]
             if(permissions["admin"] and
                permissions["push"] and
@@ -88,7 +89,8 @@ def get_google_plus_activity(user_id, count):
         Maximum number of activities to fetch.
     """
     api_key = settings.GOOGLE_API_KEY
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + \
+          "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
     try:
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -275,7 +277,8 @@ def get_youtube_videos(channel_id, count):
     """
 
     parms = (channel_id, settings.GOOGLE_API_KEY)
-    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" % (parms)
+    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" \
+          % parms
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -323,6 +326,12 @@ def get_doc_examples():
     Fetch all examples (tutorials) in latest documentation
 
     """
+    # test if databases is empty
+    import time
+    start = time.time()
+    if not DocumentationLink.objects.all():
+        return []
+
     doc_examples = []
     doc = DocumentationLink.objects.filter(displayed=True)[0]
     version = doc.version
@@ -349,6 +358,8 @@ def get_doc_examples():
     all_major_sections = examples_div.find_all("div",
                                                class_="section",
                                                recursive=False)
+    print('DURATION {}s'.format(time.time() - start))
+    start = time.time()
 
     for major_section in all_major_sections:
         major_section_dict = {}
@@ -392,6 +403,7 @@ def get_doc_examples():
                     minor_section_dict["valid"] = False
                 major_section_dict["minor_sections"].append(minor_section_dict)
         doc_examples.append(major_section_dict)
+    print('DURATION {}s'.format(time.time() - start))
     return doc_examples
 
 
@@ -400,6 +412,9 @@ def get_doc_examples_images():
     Fetch all images in all examples in latest documentation
 
     """
+    if not DocumentationLink.objects.all():
+        return []
+
     doc = DocumentationLink.objects.filter(displayed=True)[0]
     version = doc.version
     path = 'examples_index'
