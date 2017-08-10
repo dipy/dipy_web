@@ -1,5 +1,6 @@
 bleach==1.4.2
-defusedxml==0.4.1
+defusedxml==0.4.1; python_version < '3.6'
+defusedxml==0.5.0rc1; python_version > '3.5'
 Django==1.9.6
 html5lib==0.9999999
 Markdown==2.6.6
@@ -23,4 +24,4 @@ pytest-django
 whitenoise==3.1
 dj-database-url==0.4.1
 gunicorn==19.5.0
-psycopg2==2.6.1
+psycopg2>=2.6.1
