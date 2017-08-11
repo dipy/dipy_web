@@ -279,6 +279,9 @@ def get_youtube_videos(channel_id, count):
     count : int
         Maximum number of videos to fetch.
     """
+    if not settings.GOOGLE_API_KEY:
+        # Todo: logger, add warning
+        return {}
 
     parms = (channel_id, settings.GOOGLE_API_KEY)
     url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" \
@@ -315,7 +318,7 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
                 "src=\"../", "src=\"" + url_dir)
 
             # extract title and all images
-            example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
+            example_bs_doc = BeautifulSoup(example_json['body'], "lxml")
             example_dict = {'title': example_title,
                             'link': '/documentation/' + version + "/" + path + "/" + link.get('href'),
                             'description': example_bs_doc.p.text, 'images': []}
@@ -356,7 +359,7 @@ def get_doc_examples():
 
     # parse the content to json
     response_json = response.json()
-    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="examples")
     all_major_sections = examples_div.find_all("div",
