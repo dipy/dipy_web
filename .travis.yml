@@ -2,6 +2,7 @@ language: python
 
 python:
   - "3.6"
+  - "2.7"
 
 before_install:
   - cp dipy_web/settings.py.example dipy_web/test_settings.py
@@ -12,6 +13,6 @@ install:
   - pip freeze
 
 script:
-  - pytest -svv
+  - py.test -svv
 
 after_success: coverage report
