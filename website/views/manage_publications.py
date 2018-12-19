@@ -82,7 +82,7 @@ def add_publication(request, method):
                 elif 'link' in bibInfo:
                     url = bibInfo['link']
                 elif 'doi' in bibInfo:
-                    url = "http://dx.doi.org/" + bibInfo['doi']
+                    url = "https://doi.org/" + bibInfo['doi']
                 else:
                     url = None
 
