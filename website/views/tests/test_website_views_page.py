@@ -1,4 +1,6 @@
+import pytest
 import website.views.pages as wvp
+import website.models as models
 from django.core.urlresolvers import reverse, resolve
 
 
@@ -14,8 +16,20 @@ def test_index(rf, client, admin_client):
         assert k in current_key_list
 
 
-def test_page():
-    pass
+@pytest.mark.django_db(transaction=False)
+def test_page(client):
+    response = client.post(reverse('section_page', args=('start 1', )), data={})
+    assert response.status_code == 400  # it should be a 404 error
+
+    section = models.WebsiteSection.objects.create(title='test1',
+                                                   body_markdown='useful test',
+                                                   website_position_id='start 1',
+                                                   section_type='page',
+                                                   show_in_nav=True)
+
+    response = client.post(reverse('section_page', args=('start 1', )), data={})
+    assert response.status_code == 200
+    assert response.context['section'].title == section.title
 
 
 def test_cite():

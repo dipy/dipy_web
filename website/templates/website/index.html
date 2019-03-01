@@ -4,11 +4,10 @@
 
 
 {% block content_body %}
+<div id="home_wrapper">
 <!-- Content -->
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-
-    <div id="homeCarousel" class="carousel slide">
+<div>
+    <div id="homeCarousel" class="carousel slide carousel-fade">
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
         {% for image in all_carousel %}
@@ -19,6 +18,7 @@
       <div class="carousel-inner">
         {% for image in all_carousel %}
           <div class="item {% if forloop.first %}active{% endif %}">
+             <!--<div class="overlay"></div>-->
             <img src="{{ image.image_url }}" alt="{{ image.image_caption }}">
             {% if image.display_description %}
             <a target="_blank" href="{% if image.target_url %}{{ image.target_url }}{% else %}#{% endif %}">
@@ -35,123 +35,201 @@
       <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
-
-  </div>
 </div>
 
+<section id="info-section">
+    <h1 class="orange text-center"><b>What is DIPY?</b></h1>
+    {% if home_description %}
+    {{ home_description|safe }}
+    {% else %}
+    <p class="text-center">DIPY is a free and open source software project for computational neuroanatomy, focusing mainly on diffusion magnetic resonance imaging (dMRI) analysis. It implements a broad range of algorithms for denoising, registration, reconstruction, tracking, clustering, visualization, and statistical analysis of MRI data.</p>
+    {% endif %}
+</section>
 
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <div class="content-card home-header">
-      {% if home_header %}
-      <h1>{{ home_header.title }}</h1>
-      <p>{{ home_header.body_html|youtube_embed_url|safe }}</p>
-      {% else %}
-      <p>home_header does not exist</p>
-      {% endif %}
+<section id="download-section">
+    <h2>DIPY is easy to install:</h2>
+    <p>DIPY runs on a huge range of devices and operating systems</p>
+    <p><span><b>pip install dipy </b></span><small>- or -</small><span><b>conda install -c conda-forge dipy</b></span></p>
+    <div>
+      <ul>
+        <li class="orange grow"><a href="/documentation/latest/installation/#windows" class=""><i class="fa fa-windows"></i><span class="text-center">Windows</span></a>
+        </li>
+        <li class="orange grow"><a href="/documentation/latest/installation/#osx" class=""><i class="fa fa-apple"></i><span class="text-center">OSX, iOS</span></a>
+        </li>
+        <li class="orange grow"><a href="/documentation/latest/installation/#linux" class=""><i class="fa fa-linux"></i><span class="text-center">Linux</span></a>
+        </li>
+        <!-- <li class="col-green-hover"><a href="/download" class="ext-link-processed"><i class="fa fa-android"></i><span class="text-center">Android</span></a>
+        </li>
+        <li class="col-red-hover"><a href="/download" class="ext-link-processed"><i class="fa fa-pi"></i><span class="text-center">Raspberry Pi</span></a>
+        </li> -->
+      </ul>
+    </div>
+</section>
+
+<section>
+  <div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Pre-Processing</h3>
+    <div class="orange-border">
+      <p>Denoising : NLmeans, Local PCA <br/>
+      Brain extraction</p>
+      <p>SNR estimation / Reslice Datasets</p>
+      <p><a href="{% url 'tutorials' %}"> More...</a></p>
     </div>
   </div>
-  <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <div id="bigLinksWrapper">
-      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
-        <a href="/page/installation/">
-          <div class="big-link">
-            <img src="{% static 'images/download-logo.png' %}">
-            <span>Install Now</span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
-        <a href="https://github.com/nipy/dipy" target="_blank">
-          <div class="big-link">
-            <img src="{% static 'images/github-logo.png' %}">
-            <span>Fork on Github</span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
-        <a href="/support">
-          <div class="big-link">
-            <img src="{% static 'images/gitter-logo.png' %}">
-            <span>Get Support</span>
-          </div>
-        </a>
-      </div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Registration</h3>
+    <div class="orange-border">
+      <p>Streamlines based Registration</p>
+      <p>Affine Registration</p>
+      <p>Diffeomorphic 2D/3D Registration</p>
+      <p><a href="{% url 'tutorials' %}"> More...</a></p>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Reconstruction Model</h3>
+    <div class="orange-border">
+      <p>Single Shell: DTI, CSD, SDT, SFM, Q-Ball CSA...</p>
+      <p>Multi Shell: GQI, DTI, DKI, SHORE and MAPMRI...</p>
+      <p><a href="{% url 'tutorials' %}"> More than 20 Models...</a></p>
+    </div>
+  </div>
+  <div class="clearfix visible-lg-block"></div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Tractography / Streamlines</h3>
+    <div class="orange-border">
+      <p>Tissue Classification</p>
+      <p>Many tracking algorithms</p>
+      <p>Apply different operations on streamlines </p>
+      <p>Simplify large datasets via streamlines clustering.</p>
+      <p>Calculate distances/correspondences between streamlines.</p>
+      <p><a href="{% url 'tutorials' %}"> More...</a></p>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Visualization</h3>
+    <div class="orange-border">
+      <p>Simple interactive visualization of ODFs</p>
+      <p>Streamlines interactive visualization </p>
+      <p>Advanced widget</p>
+      <p><a href="{% url 'tutorials' %}"> More...</a></p>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+    <h3>Command Line Interface</h3>
+    <div class="orange-border">
+      <p>Many algorithms available via command line</p>
+      <p>Create your owns command line!</p>
+      <p><a href="{% url 'tutorials' %}"> More...</a></p>
     </div>
   </div>
 </div>
+</section>
 
-<div class="row">
-  <div class="split-column-wrapper">
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-      <div class="row"> 
-        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-          <div class="content-card">
-            {% if getting_started %}
-            <div class="page-heading"><h1>{{ getting_started.title }}</h1></div>
-            <p>{{ getting_started.body_html|youtube_embed_url|safe }}</p>
-            {% else %}
-            <p>getting_started does not exist</p>
-            {% endif %}
-          </div>
-        </div>
-
-        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
-          <!-- News Feed -->
-          <div class="content-card">
-            <div class="page-heading"><h2>News</h2></div>
-            <table class="table">
-              {% for news in latest_news %}
-              <tr>
-                <td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td>
-                <td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}
-                <br>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ news.description }}" data-url="http://{{ request.get_host }}/news/{{news.id}}" data-via="dipymri" data-related="dipymri" data-show-count="false">Tweet</a>
-                <span data-href="http://{{ request.get_host }}/news/{{news.id}}" class="g-plus" data-action="share" data-annotation="none"></span>
-                <span class="fb-share-button" data-href="http://{{ request.get_host }}/news/{{news.id}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></span>
-                </td>
-              </tr>
-              {% endfor %}
-            </table>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
-          <!-- Twitter Feed -->
-          <div class="content-card">
-            <div class="page-heading"><h2>Tweets</h2></div>
-            <div>
-              <table class="table">
-                {% for tweet in tweets %}
-                <tr>
-                  <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ tweet.created_at|slice:":10" }}</p></td>
-                  <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ tweet.text|urlize }}</p></td>
-                </tr>
-                {% endfor %}
-              </table>
+<section class="bg-gray">
+      <div id="bigLinksWrapper">
+        <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+          <a href="{% url 'tutorials' %}">
+            <div class="big-link">
+              <img src="{% static 'images/download-logo.png' %}">
+              <span>Getting Started</span>
             </div>
-          </div>
+          </a>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-          <div class="content-card">
-            <div class="page-heading"><h2>Highlighted Publications</h2></div>
-            {% for publication in highlighted_publications %}
-            <div class="publicationInfo">
-              <b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>
-              <p>{{publication.author}}</p>
-              {% if publication.bibtex %}
-              <a href="#" class="bibtexShowButton">Bibtex</a>
-              <p class="publicationBibtex">{{publication.bibtex}}</p>
-              {% endif %}
+        <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+          <a href="https://github.com/nipy/dipy" target="_blank">
+            <div class="big-link">
+              <img src="{% static 'images/github-logo.png' %}">
+              <span>Fork on Github</span>
             </div>
-            {% endfor %}
-          </div>
+          </a>
         </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
+          <a href="/support">
+            <div class="big-link">
+              <img src="{% static 'images/gitter-logo.png' %}">
+              <span>Get Support</span>
+            </div>
+          </a>
+        </div>
+      </div>
+  </section>
+
+<section>
+  <div>
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+      <div class="text-center page-heading"><h2>Annoucements</h2></div>
+      <hr>
+      {{announcements|safe|truncatechars_html:1200}}
+      <!--<table class="table">-->
+        <!--{% for news in latest_news %}-->
+        <!--<tr>-->
+          <!--<td class="col-md-3 col-lg-3 col-sm-3">{{news.post_date}}</td>-->
+          <!--<td class="col-md-9 col-lg-9 col-sm-9">{{ news.body_html|safe }}-->
+          <!--<br>-->
+          <!--<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ news.description }}" data-url="http://{{ request.get_host }}/news/{{news.id}}" data-via="dipymri" data-related="dipymri" data-show-count="false">Tweet</a>-->
+          <!--<span data-href="http://{{ request.get_host }}/news/{{news.id}}" class="g-plus" data-action="share" data-annotation="none"></span>-->
+          <!--<span class="fb-share-button" data-href="http://{{ request.get_host }}/news/{{news.id}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></span>-->
+          <!--</td>-->
+        <!--</tr>-->
+        <!--{% endfor %}-->
+      <!--</table>-->
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+      <div class="text-center page-heading"><h2>Highlights</h2></div>
+      <hr>
+      {{highlights|safe|truncatechars_html:1200}}
+      <!--{% for publication in highlighted_publications %}-->
+      <!--<div class="publicationInfo">-->
+        <!--<b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>-->
+        <!--<p>{{publication.author}}</p>-->
+        <!--{% if publication.bibtex %}-->
+        <!--<a href="#" class="bibtexShowButton">Bibtex</a>-->
+        <!--<p class="publicationBibtex">{{publication.bibtex}}</p>-->
+        <!--{% endif %}-->
+      <!--</div>-->
+      <!--{% endfor %}-->
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+      <div class="text-center page-heading"><h2>Tweets</h2></div>
+      <div>
+        <table class="table">
+          {% for tweet in tweets %}
+          <tr>
+            <td class="col-md-3 col-lg-3 col-sm-3"><p>{{ tweet.created_at|slice:":10" }}</p></td>
+            <td class="col-md-9 col-lg-9 col-sm-9"><p>{{ tweet.text|urlize }}</p></td>
+          </tr>
+          {% endfor %}
+        </table>
       </div>
     </div>
   </div>
-</div>
+</section>
 
+<section id="cite-section" {% if all_sponsor %} class='bg-gray' {% endif%}>
+  <h2 class="text-center"><a class="orange" href="{% url 'latest_documentation' path='cite' %}"> Cite Us !</a></h2>
+
+    {{publications|safe}}
+  <!--<ul class="list-unstyled">-->
+    <!--{% for publication in highlighted_publications %}-->
+    <!--<li>-->
+      <!--<b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>-->
+      <!--<p>{{publication.author}}</p>-->
+    <!--</li>-->
+    <!--{% endfor %}-->
+  <!--</ul>-->
+</section>
+
+{% if all_sponsor %}
+<section>
+    <h2 class="text-center">Sponsors</a></h2>
+    {% for sponsor in all_sponsor%}
+    <div class="col-4"><img alt="{{sponsor.image_caption}}" src="{{sponsor.image_url}}"></div>
+    {% endfor %}
+</section>
+{% endif%}
+
+</div>
 {% endblock %}
 
 

@@ -1,0 +1,46 @@
+{% extends "website/dashboard_template.html" %}
+{% load staticfiles %}
+
+{% block extra_css %}
+<!-- Include simplemde markdown editor css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/simplemde.min.css' %}">
+{% endblock %}
+
+{% block dashboard_content_body %}
+
+{% if form %}
+	<form enctype="multipart/form-data" action="." method="post">
+    {% csrf_token %}
+    <fieldset class="fieldset">
+        {% if box_legend %}
+            <legend>{{ box_legend }}</legend>
+        {% endif %}
+        {% for field in form %}
+
+        <div class="form-item">
+
+            <div class="form-item-label">
+               {{ field.label_tag }}
+            </div>
+
+            <div class="form-item-input">
+                {{ field }}
+            </div>
+
+        </div>
+        {% endfor %}
+        <p><input class="button" type="submit" value="Save Changes"></p>
+    </fieldset>
+	</form>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Include and call simplemde markdown editor js-->
+<script type="text/javascript" src="{% static 'js/simplemde.min.js' %}"></script>
+<script>
+    var simplemde = new SimpleMDE({ element: $("#id_profile_page_markdown")[0], forceSync:true });
+</script>
+
+{% endblock %}

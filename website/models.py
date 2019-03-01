@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.cache import cache
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
+from django.conf import settings
 import markdown
 import bleach
 
@@ -23,10 +26,31 @@ allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
 class Profile(models.Model):
     """ Stores additional information about the user """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=100)
+    avatar = models.ImageField(upload_to='avatar_images/', blank=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.get_full_name()
+
+    def avatar_url(self):
+        """
+        Returns the URL of the image associated with this Object.
+        If an image hasn't been uploaded yet, it returns a stock image
+        :returns: str -- the image url
+        """
+        if self.avatar and hasattr(self.avatar, 'url'):
+            return self.avatar.url
+        else:
+            return "{0}{1}/{2}".format(settings.STATIC_URL, 'images', 'user-1633250_640.png')
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+        instance.profile.save()
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 
 class WebsiteSection(models.Model):
@@ -154,6 +178,7 @@ class CarouselImage(models.Model):
 
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
+    is_visible = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.modified = timezone.now()
@@ -163,6 +188,33 @@ class CarouselImage(models.Model):
 
         # Call the "real" save() method.
         super(CarouselImage, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.image_url
+
+
+class SponsorImage(models.Model):
+    """
+    Model for storing image links for sponsor.
+    """
+    image_caption = models.CharField(max_length=200)
+    image_description = models.TextField(blank=True, null=True)
+    target_url = models.URLField(blank=True, null=True)
+    image_url = models.URLField(max_length=200)
+    display_description = models.BooleanField(default=True)
+
+    created = models.DateTimeField(editable=False, auto_now_add=True)
+    modified = models.DateTimeField(editable=False, auto_now_add=True)
+    is_visible = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        self.modified = timezone.now()
+
+        # clear the cache
+        cache.clear()
+
+        # Call the "real" save() method.
+        super(SponsorImage, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.image_url

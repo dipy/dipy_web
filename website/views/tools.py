@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.html import strip_tags
+from django.core.files.base import ContentFile
 from meta.views import Meta
 
 from website.models import *
@@ -194,6 +195,19 @@ def get_twitter_feed(screen_name, count):
     return response_json
 
 
+def get_last_release():
+    """
+    Fetch latest Release number
+
+    """
+    # test if databases is empty
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')
+    return doc[0].version if len(doc) else '0.0.0'
+
+
 def update_documentations():
     """
     Check list of documentations from gh-pages branches of the dipy_web
@@ -289,9 +303,112 @@ def get_youtube_videos(channel_id, count):
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
+        print('connection Error')
+        return {}
+    except Exception as e:
+        print(e)
         return {}
     response_json = response.json()
+    if 'error' in response_json.keys():
+        print(response_json)
+        return {}
     return response_json['items']
+
+
+def get_dipy_intro():
+    """
+    Fetch Introduction information
+
+    """
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
+    version = doc.version
+    path = 'index'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "https://raw.githubusercontent.com/%s/%s/gh-pages/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
+
+    examples_div = bs_doc.find("div", id="diffusion-imaging-in-python")
+    intro_text_p = examples_div.find("p")
+    intro_text_p.attrs['class'] = 'text-center'
+    highlight_div = examples_div.find("div", id="highlights")
+    highlight_div.h2.decompose()
+    for link in highlight_div.find_all('a'):
+        l =  link.get('href')
+        if l.lower().startswith('#') or 'http:/' in l or 'https:/' in l:
+            continue
+        link['href'] = 'documentation/latest/{}'.format(l)
+
+    annoucement = examples_div.find("div", id="announcements")
+    annoucement.h2.decompose()
+    for link in annoucement.find_all('a'):
+        l =  link.get('href')
+        if l.lower().startswith('#') or 'http:/' in l.lower() or 'https:/' in l.lower():
+            continue
+        link['href'] = 'documentation/latest/{}'.format(l)
+
+    return str(intro_text_p), str(annoucement), str(highlight_div)
+
+
+def get_dipy_publications(count=3):
+    """
+        Fetch Publication information
+
+    Parameters
+    -----------
+    count: int, optional
+        maximal number of publications to fetch
+
+        """
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
+    version = doc.version
+    path = 'cite'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "https://raw.githubusercontent.com/%s/%s/gh-pages/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
+    publication_div = bs_doc.find("div", id="publications")
+    publication_div.h1.decompose()
+    publication = publication_div.find_all('p')
+    if publication:
+        publication = publication[:count]
+    return ''.join([str(p) for p in publication])
 
 
 def get_examples_list_from_li_tags(base_url, version, path, li_tags):
@@ -340,7 +457,9 @@ def get_doc_examples():
         return []
 
     doc_examples = []
-    doc = DocumentationLink.objects.filter(displayed=True)[0]
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
     version = doc.version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
@@ -359,6 +478,7 @@ def get_doc_examples():
 
     # parse the content to json
     response_json = response.json()
+    response_json['body'] = response_json['body'].replace("¶", "")
     bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="examples")
@@ -422,7 +542,9 @@ def get_doc_examples_images():
     if not DocumentationLink.objects.all():
         return []
 
-    doc = DocumentationLink.objects.filter(displayed=True)[0]
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
     version = doc.version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
@@ -468,3 +590,22 @@ def get_doc_examples_images():
                 example_dict['images'].append(str(tag))
             examples_list.append(example_dict)
     return examples_list
+
+
+def save_profile_picture(strategy, user, response, details,
+                         is_new=False,*args,**kwargs):
+
+    backend = kwargs.get('backend', '')
+
+    if backend and backend.name.lower() == 'github':
+        avatar_url = response.get('avatar_url', '')
+        first_name = details.get('first_name', '')
+        last_name = details.get('last_name', '')
+
+        if avatar_url:
+            user.profile.avatar.save("{}.png".format(user.username), ContentFile(requests.get(avatar_url).content))
+        if first_name:
+            user.first_name = first_name
+        if last_name:
+            user.last_name = last_name
+        user.profile.save()

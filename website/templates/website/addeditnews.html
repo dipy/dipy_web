@@ -1,4 +1,4 @@
-{% extends "website/base_template.html" %}
+{% extends "website/dashboard_template.html" %}
 {% load staticfiles %}
 
 {% block extra_css %}
@@ -7,13 +7,29 @@
 <link rel="stylesheet" type="text/css" href="{% static "css/jquery.datetimepicker.min.css" %}">
 {% endblock %}
 
-{% block content_body %}
-
+{% block dashboard_content_body %}
+    <h1 class="text-center">Add News</h1>
+<hr>
 {% if form %}
 <form action="." method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
+        {% for field in form %}
+                <div class="col-lg-offset-2 col-lg-8 form-group">
+                    <label class="col-lg-2"><strong>{{ field.label }} :</strong></label>
+                    {{ field }}
+                        {% if field.help_text %}
+                            <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                        {% endif %}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </div>
+        {% endfor %}
+    <br />
+    <div class="col-lg-offset-4 col-lg-4 form-actions">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+        <a href="{% url 'dashboard_news' %}"> Cancel </a>
+    </div>
 </form>
 {% endif %}
 

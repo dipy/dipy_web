@@ -29,7 +29,7 @@ SECRET_KEY = 'ne2(q$@8!6a+koxheg$!8uci1_tkcke%9!%tz5smysas!u!i5m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver', '*']
 
 
 # Application definition
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'meta',
     'website',
-    'github_visualization'
+    'github_visualization',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -57,6 +58,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'dipy_web.urls'
@@ -155,22 +157,13 @@ STATICFILES_DIRS = (
 # heroku settings for static files gzip
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-# Media files
-# example:
-# https://timmyomahony.com/blog/static-vs-media-and-root-vs-path-in-django/
-
-ENV_PATH = os.path.abspath(os.path.dirname(__file__))
-MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
-
-MEDIA_URL = '/media/'
-
 LOGIN_URL = '/dashboard/login'
 
 # Google Analytics
 GOOGLE_ANALYTICS_TRACKING_ID = ''
 
 # documentation repository settings
-DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
+DOCUMENTATION_REPO_OWNER = 'skoudoro'
 DOCUMENTATION_REPO_NAME = 'dipy_web'
 
 # facebook API keys
@@ -253,9 +246,6 @@ SOCIAL_AUTH_PIPELINE = (
 
     # Update the user record with any changed info from the auth service.
     'social.pipeline.user.user_details',
-
-    # Update image profile information
-    'website.views.tools.save_profile_picture',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -267,5 +257,5 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
-SOCIAL_AUTH_GITHUB_KEY = ''
-SOCIAL_AUTH_GITHUB_SECRET = ''
+SOCIAL_AUTH_GITHUB_KEY = '7e1ee2b1bde3b2785448'
+SOCIAL_AUTH_GITHUB_SECRET = 'cb9bf32eca008f274048589c2fa38255566f2b78'
