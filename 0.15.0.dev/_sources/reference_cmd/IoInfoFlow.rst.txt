@@ -1,0 +1,20 @@
+========================
+IoInfoFlow
+========================
+
+Provides useful information about different files used in
+medical imaging. Any number of input files can be provided. The
+program identifies the type of file by its extension.
+
+Parameters
+----------
+input_files : variable string
+    Any number of Nifti1, bvals or bvecs files.
+b0_threshold : float, optional
+    (default 50)
+bvecs_tol : float, optional
+    Threshold used to check that norm(bvec) = 1 +/- bvecs_tol
+    b-vectors are unit vectors (default 0.01)
+bshell_thr : float, optional
+    Threshold for distinguishing b-values in different shells
+    (default 100)

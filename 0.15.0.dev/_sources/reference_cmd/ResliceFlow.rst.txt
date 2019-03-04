@@ -1,0 +1,35 @@
+========================
+ResliceFlow
+========================
+
+Reslice data with new voxel resolution defined by ``new_vox_sz``
+
+Parameters
+----------
+input_files : string
+    Path to the input volumes. This path may contain wildcards to
+    process multiple inputs at once.
+new_vox_size : variable float
+    new voxel size
+order : int, optional
+    order of interpolation, from 0 to 5, for resampling/reslicing,
+    0 nearest interpolation, 1 trilinear etc.. if you don't want any
+    smoothing 0 is the option you need (default 1)
+mode : string, optional
+    Points outside the boundaries of the input are filled according
+    to the given mode 'constant', 'nearest', 'reflect' or 'wrap'
+    (default 'constant')
+cval : float, optional
+    Value used for points outside the boundaries of the input if
+    mode='constant' (default 0)
+num_processes : int, optional
+    Split the calculation to a pool of children processes. This only
+    applies to 4D `data` arrays. If a positive integer then it defines
+    the size of the multiprocessing pool that will be used. If 0, then
+    the size of the pool will equal the number of cores available.
+    (default 1)
+out_dir : string, optional
+    Output directory (default input file directory)
+out_resliced : string, optional
+    Name of the resliced dataset to be saved
+    (default 'resliced.nii.gz')

@@ -1,0 +1,23 @@
+========================
+ApplyAffineFlow
+========================
+
+Parameters
+----------
+static_image_file : string
+    Path of the static image file.
+
+moving_image_files : string
+    Path of the moving image(s). It can be a single image or a
+    folder containing multiple images.
+
+affine_matrix_file : string
+    The text file containing the affine matrix for transformation.
+
+out_dir : string, optional
+    Directory to save the transformed files (default '').
+
+out_file : string, optional
+    Name of the transformed file (default 'transformed.nii.gz').
+     It is recommended to use the flag --mix-names to
+      prevent the output files from being overwritten.

@@ -1,0 +1,590 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`io`
+=========
+.. automodule:: dipy.io
+
+.. currentmodule:: dipy.io
+.. autosummary::
+
+   Dpy
+   load_pickle
+   orientation_from_string
+   orientation_to_string
+   ornt_mapping
+   read_bvals_bvecs
+   read_bvec_file
+   reorient_on_axis
+   reorient_vectors
+   save_pickle
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.bvectxt`
+-------------------------
+.. automodule:: dipy.io.bvectxt
+
+.. currentmodule:: dipy.io.bvectxt
+.. autosummary::
+
+   orientation_from_string
+   orientation_to_string
+   ornt_mapping
+   read_bvec_file
+   reorient_on_axis
+   reorient_vectors
+   splitext
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.dpy`
+---------------------
+.. automodule:: dipy.io.dpy
+
+.. currentmodule:: dipy.io.dpy
+.. autosummary::
+
+   Dpy
+   Streamlines
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.gradients`
+---------------------------
+.. automodule:: dipy.io.gradients
+
+.. currentmodule:: dipy.io.gradients
+.. autosummary::
+
+   InTemporaryDirectory
+   read_bvals_bvecs
+   splitext
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.image`
+-----------------------
+.. automodule:: dipy.io.image
+
+.. currentmodule:: dipy.io.image
+.. autosummary::
+
+   load_nifti
+   save_nifti
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.peaks`
+-----------------------
+.. automodule:: dipy.io.peaks
+
+.. currentmodule:: dipy.io.peaks
+.. autosummary::
+
+   PeaksAndMetrics
+   Sphere
+   load_peaks
+   peaks_to_niftis
+   reshape_peaks_for_visualization
+   save_nifti
+   save_peaks
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.pickles`
+-------------------------
+.. automodule:: dipy.io.pickles
+
+.. currentmodule:: dipy.io.pickles
+.. autosummary::
+
+   load_pickle
+   save_pickle
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.streamline`
+----------------------------
+.. automodule:: dipy.io.streamline
+
+.. currentmodule:: dipy.io.streamline
+.. autosummary::
+
+   Dpy
+   Field
+   LazyTractogram
+   Streamlines
+   TckFile
+   Tractogram
+   TrkFile
+   partial
+   aff2axcodes
+   detect_format
+   load_dpy
+   load_tck
+   load_tractogram
+   load_trk
+   save_tractogram
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.trackvis`
+--------------------------
+.. automodule:: dipy.io.trackvis
+
+.. currentmodule:: dipy.io.trackvis
+.. autosummary::
+
+   save_trk
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.utils`
+-----------------------
+.. automodule:: dipy.io.utils
+
+.. currentmodule:: dipy.io.utils
+.. autosummary::
+
+   Nifti1Image
+   decfa
+   make5d
+   nifti1_symmat
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`io.vtk`
+---------------------
+.. automodule:: dipy.io.vtk
+
+.. currentmodule:: dipy.io.vtk
+.. autosummary::
+
+   load_polydata
+   optional_package
+   save_polydata
+   setup_module
+
+
+.. currentmodule:: dipy.io
+
+
+:class:`Dpy`
+~~~~~~~~~~~~
+
+
+.. autoclass:: Dpy
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+load_pickle
+~~~~~~~~~~~
+
+.. autofunction:: load_pickle
+
+orientation_from_string
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_from_string
+
+orientation_to_string
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_to_string
+
+ornt_mapping
+~~~~~~~~~~~~
+
+.. autofunction:: ornt_mapping
+
+read_bvals_bvecs
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_bvals_bvecs
+
+read_bvec_file
+~~~~~~~~~~~~~~
+
+.. autofunction:: read_bvec_file
+
+reorient_on_axis
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_on_axis
+
+reorient_vectors
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_vectors
+
+save_pickle
+~~~~~~~~~~~
+
+.. autofunction:: save_pickle
+
+
+.. currentmodule:: dipy.io.bvectxt
+
+orientation_from_string
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_from_string
+
+orientation_to_string
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_to_string
+
+ornt_mapping
+~~~~~~~~~~~~
+
+.. autofunction:: ornt_mapping
+
+read_bvec_file
+~~~~~~~~~~~~~~
+
+.. autofunction:: read_bvec_file
+
+reorient_on_axis
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_on_axis
+
+reorient_vectors
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_vectors
+
+splitext
+~~~~~~~~
+
+.. autofunction:: splitext
+
+
+.. currentmodule:: dipy.io.dpy
+
+
+:class:`Dpy`
+~~~~~~~~~~~~
+
+
+.. autoclass:: Dpy
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Streamlines`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Streamlines
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.io.gradients
+
+
+:class:`InTemporaryDirectory`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: InTemporaryDirectory
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+read_bvals_bvecs
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_bvals_bvecs
+
+splitext
+~~~~~~~~
+
+.. autofunction:: splitext
+
+
+.. currentmodule:: dipy.io.image
+
+load_nifti
+~~~~~~~~~~
+
+.. autofunction:: load_nifti
+
+save_nifti
+~~~~~~~~~~
+
+.. autofunction:: save_nifti
+
+
+.. currentmodule:: dipy.io.peaks
+
+
+:class:`PeaksAndMetrics`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: PeaksAndMetrics
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Sphere`
+~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Sphere
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+load_peaks
+~~~~~~~~~~
+
+.. autofunction:: load_peaks
+
+peaks_to_niftis
+~~~~~~~~~~~~~~~
+
+.. autofunction:: peaks_to_niftis
+
+reshape_peaks_for_visualization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: reshape_peaks_for_visualization
+
+save_nifti
+~~~~~~~~~~
+
+.. autofunction:: save_nifti
+
+save_peaks
+~~~~~~~~~~
+
+.. autofunction:: save_peaks
+
+
+.. currentmodule:: dipy.io.pickles
+
+load_pickle
+~~~~~~~~~~~
+
+.. autofunction:: load_pickle
+
+save_pickle
+~~~~~~~~~~~
+
+.. autofunction:: save_pickle
+
+
+.. currentmodule:: dipy.io.streamline
+
+
+:class:`Dpy`
+~~~~~~~~~~~~
+
+
+.. autoclass:: Dpy
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Field`
+~~~~~~~~~~~~~~
+
+
+.. autoclass:: Field
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`LazyTractogram`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LazyTractogram
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Streamlines`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Streamlines
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`TckFile`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TckFile
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Tractogram`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Tractogram
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`TrkFile`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TrkFile
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`partial`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: partial
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+aff2axcodes
+~~~~~~~~~~~
+
+.. autofunction:: aff2axcodes
+
+detect_format
+~~~~~~~~~~~~~
+
+.. autofunction:: detect_format
+
+load_dpy
+~~~~~~~~
+
+.. autofunction:: load_dpy
+
+load_tck
+~~~~~~~~
+
+.. autofunction:: load_tck
+
+load_tractogram
+~~~~~~~~~~~~~~~
+
+.. autofunction:: load_tractogram
+
+load_trk
+~~~~~~~~
+
+.. autofunction:: load_trk
+
+save_tractogram
+~~~~~~~~~~~~~~~
+
+.. autofunction:: save_tractogram
+
+
+.. currentmodule:: dipy.io.trackvis
+
+save_trk
+~~~~~~~~
+
+.. autofunction:: save_trk
+
+
+.. currentmodule:: dipy.io.utils
+
+
+:class:`Nifti1Image`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Nifti1Image
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+decfa
+~~~~~
+
+.. autofunction:: decfa
+
+make5d
+~~~~~~
+
+.. autofunction:: make5d
+
+nifti1_symmat
+~~~~~~~~~~~~~
+
+.. autofunction:: nifti1_symmat
+
+
+.. currentmodule:: dipy.io.vtk
+
+load_polydata
+~~~~~~~~~~~~~
+
+.. autofunction:: load_polydata
+
+optional_package
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: optional_package
+
+save_polydata
+~~~~~~~~~~~~~
+
+.. autofunction:: save_polydata
+
+setup_module
+~~~~~~~~~~~~
+
+.. autofunction:: setup_module
+

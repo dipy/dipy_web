@@ -1,0 +1,23 @@
+========================
+LabelsBundlesFlow
+========================
+
+Extract bundles using existing indices (labels)
+
+Parameters
+----------
+streamline_files : string
+    The path of streamline files where you want to recognize bundles
+labels_files : string
+    The path of model bundle files
+out_dir : string, optional
+    Output directory (default input file directory)
+out_bundle : string, optional
+    Recognized bundle in the space of the model bundle
+    (default 'recognized_orig.trk')
+
+References
+----------
+.. [Garyfallidis17] Garyfallidis et al. Recognition of white matter
+ bundles using local and global streamline-based registration and
+ clustering, Neuroimage, 2017.
