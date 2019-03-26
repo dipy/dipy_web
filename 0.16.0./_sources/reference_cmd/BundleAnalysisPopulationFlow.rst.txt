@@ -1,0 +1,33 @@
+========================
+BundleAnalysisPopulationFlow
+========================
+
+Workflow of bundle analytics.
+
+Applies statistical analysis on bundles of subjects and saves the
+results in a directory specified by ``out_dir``.
+
+Parameters
+----------
+
+model_bundle_folder : string
+    Path to the input model bundle files. This path may
+    contain wildcards to process multiple inputs at once.
+
+subject_folder : string
+    Path to the input subject folder. This path may contain
+    wildcards to process multiple inputs at once.
+
+no_disks : integer, optional
+    Number of disks used for dividing bundle into disks. (Default 100)
+
+out_dir : string, optional
+    Output directory (default input file directory)
+
+References
+----------
+.. [Chandio19] Chandio, B.Q., S. Koudoro, D. Reagan, J. Harezlak,
+E. Garyfallidis, Bundle Analytics: a computational and statistical
+analyses framework for tractometric studies, Proceedings of:
+International Society of Magnetic Resonance in Medicine (ISMRM),
+Montreal, Canada, 2019.

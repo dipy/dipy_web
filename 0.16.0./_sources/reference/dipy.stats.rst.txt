@@ -1,0 +1,138 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`stats`
+============
+.. automodule:: dipy.stats
+
+.. currentmodule:: dipy.stats
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`stats.analysis`
+-----------------------------
+.. automodule:: dipy.stats.analysis
+
+.. currentmodule:: dipy.stats.analysis
+.. autosummary::
+
+   AveragePointwiseEuclideanMetric
+   QuickBundles
+   Streamlines
+   cKDTree
+   bundle_analysis
+   dti_measures
+   load_nifti
+   load_peaks
+   load_trk
+   map_coordinates
+   optional_package
+   peak_values
+   set_number_of_points
+   transform_streamlines
+
+
+.. currentmodule:: dipy.stats
+
+
+.. currentmodule:: dipy.stats.analysis
+
+
+:class:`AveragePointwiseEuclideanMetric`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: AveragePointwiseEuclideanMetric
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`QuickBundles`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: QuickBundles
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Streamlines`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Streamlines
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`cKDTree`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: cKDTree
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+bundle_analysis
+~~~~~~~~~~~~~~~
+
+.. autofunction:: bundle_analysis
+
+dti_measures
+~~~~~~~~~~~~
+
+.. autofunction:: dti_measures
+
+load_nifti
+~~~~~~~~~~
+
+.. autofunction:: load_nifti
+
+load_peaks
+~~~~~~~~~~
+
+.. autofunction:: load_peaks
+
+load_trk
+~~~~~~~~
+
+.. autofunction:: load_trk
+
+map_coordinates
+~~~~~~~~~~~~~~~
+
+.. autofunction:: map_coordinates
+
+optional_package
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: optional_package
+
+peak_values
+~~~~~~~~~~~
+
+.. autofunction:: peak_values
+
+set_number_of_points
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: set_number_of_points
+
+transform_streamlines
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: transform_streamlines
+

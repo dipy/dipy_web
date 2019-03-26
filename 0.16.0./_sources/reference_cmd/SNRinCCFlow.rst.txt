@@ -1,0 +1,29 @@
+========================
+SNRinCCFlow
+========================
+
+Compute the signal-to-noise ratio in the corpus callosum.
+
+Parameters
+----------
+data_files : string
+    Path to the dwi.nii.gz file. This path may contain wildcards to
+    process multiple inputs at once.
+bvals_files : string
+    Path of bvals.
+bvecs_files : string
+    Path of bvecs.
+mask_files : string
+    Path of brain mask
+bbox_threshold : variable float, optional
+    Threshold for bounding box, values separated with commas for ex.
+    [0.6,1,0,0.1,0,0.1]. (default (0.6, 1, 0, 0.1, 0, 0.1))
+out_dir : string, optional
+    Where the resulting file will be saved. (default '')
+out_file : string, optional
+    Name of the result file to be saved. (default 'product.json')
+out_mask_cc : string, optional
+    Name of the CC mask volume to be saved (default 'cc.nii.gz')
+out_mask_noise : string, optional
+    Name of the mask noise volume to be saved
+    (default 'mask_noise.nii.gz')

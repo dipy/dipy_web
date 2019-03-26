@@ -1,0 +1,69 @@
+========================
+ReconstCSDFlow
+========================
+
+Constrained spherical deconvolution
+
+Parameters
+----------
+input_files : string
+    Path to the input volumes. This path may contain wildcards to
+    process multiple inputs at once.
+bvalues_files : string
+    Path to the bvalues files. This path may contain wildcards to use
+    multiple bvalues files at once.
+bvectors_files : string
+    Path to the bvectors files. This path may contain wildcards to use
+    multiple bvectors files at once.
+mask_files : string
+    Path to the input masks. This path may contain wildcards to use
+    multiple masks at once. (default: No mask used)
+b0_threshold : float, optional
+    Threshold used to find b=0 directions
+bvecs_tol : float, optional
+    Bvecs should be unit vectors. (default:0.01)
+roi_center : variable int, optional
+    Center of ROI in data. If center is None, it is assumed that it is
+    the center of the volume with shape `data.shape[:3]` (default None)
+roi_radius : int, optional
+    radius of cubic ROI in voxels (default 10)
+fa_thr : float, optional
+    FA threshold for calculating the response function (default 0.7)
+frf : variable float, optional
+    Fiber response function can be for example inputed as 15 4 4
+    (from the command line) or [15, 4, 4] from a Python script to be
+    converted to float and mutiplied by 10**-4 . If None
+    the fiber response function will be computed automatically
+    (default: None).
+extract_pam_values : bool, optional
+    Save or not to save pam volumes as single nifti files.
+sh_order : int, optional
+    Spherical harmonics order (default 6) used in the CSA fit.
+odf_to_sh_order : int, optional
+    Spherical harmonics order used for peak_from_model to compress
+    the ODF to spherical harmonics coefficients (default 8)
+out_dir : string, optional
+    Output directory (default input file directory)
+out_pam : string, optional
+    Name of the peaks volume to be saved (default 'peaks.pam5')
+out_shm : string, optional
+    Name of the shperical harmonics volume to be saved
+    (default 'shm.nii.gz')
+out_peaks_dir : string, optional
+    Name of the peaks directions volume to be saved
+    (default 'peaks_dirs.nii.gz')
+out_peaks_values : string, optional
+    Name of the peaks values volume to be saved
+    (default 'peaks_values.nii.gz')
+out_peaks_indices : string, optional
+    Name of the peaks indices volume to be saved
+    (default 'peaks_indices.nii.gz')
+out_gfa : string, optional
+    Name of the generalise fa volume to be saved (default 'gfa.nii.gz')
+
+
+References
+----------
+.. [1] Tournier, J.D., et al. NeuroImage 2007. Robust determination of
+   the fibre orientation distribution in diffusion MRI: Non-negativity
+   constrained super-resolved spherical deconvolution.

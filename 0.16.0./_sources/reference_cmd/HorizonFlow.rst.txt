@@ -1,0 +1,32 @@
+========================
+HorizonFlow
+========================
+
+Highly interactive visualization - invert the Horizon!
+
+Interact with any number of .trk, .tck or .dpy tractograms and anatomy
+files .nii or .nii.gz. Cluster streamlines on loading.
+
+Parameters
+----------
+input_files : variable string
+cluster : bool
+cluster_thr : float
+random_colors : bool
+length_lt : float
+length_gt : float
+clusters_lt : int
+clusters_gt : int
+native_coords : bool
+stealth : bool
+out_dir : string
+out_stealth_png : string
+
+
+References
+----------
+.. [Horizon_ISMRM19] Garyfallidis E., M-A. Cote, B.Q. Chandio,
+    S. Fadnavis, J. Guaje, R. Aggarwal, E. St-Onge, K.S. Juneja,
+    S. Koudoro, D. Reagan, DIPY Horizon: fast, modular, unified and
+    adaptive visualization, Proceedings of: International Society of
+    Magnetic Resonance in Medicine (ISMRM), Montreal, Canada, 2019.

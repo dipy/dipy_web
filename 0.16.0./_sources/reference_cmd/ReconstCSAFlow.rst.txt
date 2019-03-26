@@ -1,0 +1,54 @@
+========================
+ReconstCSAFlow
+========================
+
+Constant Solid Angle.
+
+Parameters
+----------
+input_files : string
+    Path to the input volumes. This path may contain wildcards to
+    process multiple inputs at once.
+bvalues_files : string
+    Path to the bvalues files. This path may contain wildcards to use
+    multiple bvalues files at once.
+bvectors_files : string
+    Path to the bvectors files. This path may contain wildcards to use
+    multiple bvectors files at once.
+mask_files : string
+    Path to the input masks. This path may contain wildcards to use
+    multiple masks at once. (default: No mask used)
+sh_order : int, optional
+    Spherical harmonics order (default 6) used in the CSA fit.
+odf_to_sh_order : int, optional
+    Spherical harmonics order used for peak_from_model to compress
+    the ODF to spherical harmonics coefficients (default 8)
+b0_threshold : float, optional
+    Threshold used to find b=0 directions
+bvecs_tol : float, optional
+    Threshold used so that norm(bvec)=1 (default 0.01)
+extract_pam_values : bool, optional
+    Wheter or not to save pam volumes as single nifti files.
+out_dir : string, optional
+    Output directory (default input file directory)
+out_pam : string, optional
+    Name of the peaks volume to be saved (default 'peaks.pam5')
+out_shm : string, optional
+    Name of the shperical harmonics volume to be saved
+    (default 'shm.nii.gz')
+out_peaks_dir : string, optional
+    Name of the peaks directions volume to be saved
+    (default 'peaks_dirs.nii.gz')
+out_peaks_values : string, optional
+    Name of the peaks values volume to be saved
+    (default 'peaks_values.nii.gz')
+out_peaks_indices : string, optional
+    Name of the peaks indices volume to be saved
+    (default 'peaks_indices.nii.gz')
+out_gfa : string, optional
+    Name of the generalise fa volume to be saved (default 'gfa.nii.gz')
+
+References
+----------
+.. [1] Aganj, I., et al. 2009. ODF Reconstruction in Q-Ball Imaging
+   with Solid Angle Consideration.

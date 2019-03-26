@@ -1,0 +1,72 @@
+========================
+ReconstMAPMRIFlow
+========================
+
+Workflow for fitting the MAPMRI model (with optional Laplacian
+regularization). Generates rtop, lapnorm, msd, qiv, rtap, rtpp,
+non-gaussian (ng), parallel ng, perpendicular ng saved in a nifti
+format in input files provided by `data_files` and saves the nifti
+files to an output directory specified by `out_dir`.
+
+In order for the MAPMRI workflow to work in the way
+intended either the laplacian or positivity or both must
+be set to True.
+
+Parameters
+----------
+data_files : string
+    Path to the input volume.
+bvals_files : string
+    Path to the bval files.
+bvecs_files : string
+    Path to the bvec files.
+small_delta : float
+    Small delta value used in generation of gradient table of provided
+    bval and bvec.
+big_delta : float
+    Big delta value used in generation of gradient table of provided
+    bval and bvec.
+b0_threshold : float, optional
+    Threshold used to find b=0 directions (default 0.0)
+laplacian : bool, optional
+    Regularize using the Laplacian of the MAP-MRI basis (default True)
+positivity : bool, optional
+    Constrain the propagator to be positive. (default True)
+bval_threshold : float, optional
+    Sets the b-value threshold to be used in the scale factor
+    estimation. In order for the estimated non-Gaussianity to have
+    meaning this value should set to a lower value (b<2000 s/mm^2)
+    such that the scale factors are estimated on signal points that
+    reasonably represent the spins at Gaussian diffusion.
+    (default: 2000)
+save_metrics : variable string, optional
+    List of metrics to save.
+    Possible values: rtop, laplacian_signal, msd, qiv, rtap, rtpp,
+    ng, perng, parng
+    (default: [] (all))
+laplacian_weighting : float, optional
+    Weighting value used in fitting the MAPMRI model in the laplacian
+    and both model types. (default: 0.05)
+radial_order : unsigned int, optional
+    Even value used to set the order of the basis
+    (default: 6)
+out_dir : string, optional
+    Output directory (default: input file directory)
+out_rtop : string, optional
+    Name of the rtop to be saved
+out_lapnorm : string, optional
+    Name of the norm of laplacian signal to be saved
+out_msd : string, optional
+    Name of the msd to be saved
+out_qiv : string, optional
+    Name of the qiv to be saved
+out_rtap : string, optional
+    Name of the rtap to be saved
+out_rtpp : string, optional
+    Name of the rtpp to be saved
+out_ng : string, optional
+    Name of the Non-Gaussianity to be saved
+out_perng :  string, optional
+    Name of the Non-Gaussianity perpendicular to be saved
+out_parng : string, optional
+    Name of the Non-Gaussianity parallel to be saved

@@ -1,0 +1,65 @@
+========================
+RecoBundlesFlow
+========================
+
+Recognize bundles
+
+Parameters
+----------
+streamline_files : string
+    The path of streamline files where you want to recognize bundles
+model_bundle_files : string
+    The path of model bundle files
+greater_than : int, optional
+    Keep streamlines that have length greater than
+    this value (default 50) in mm.
+less_than : int, optional
+    Keep streamlines have length less than this value
+    (default 1000000) in mm.
+no_slr : bool, optional
+    Don't enable local Streamline-based Linear
+    Registration (default False).
+clust_thr : float, optional
+    MDF distance threshold for all streamlines (default 15)
+reduction_thr : float, optional
+    Reduce search space by (mm) (default 15)
+reduction_distance : string, optional
+    Reduction distance type can be mdf or mam (default mdf)
+model_clust_thr : float, optional
+    MDF distance threshold for the model bundles (default 2.5)
+pruning_thr : float, optional
+    Pruning after matching (default 8).
+pruning_distance : string, optional
+    Pruning distance type can be mdf or mam (default mdf)
+slr_metric : string, optional
+    Options are None, symmetric, asymmetric or diagonal
+    (default symmetric).
+slr_transform : string, optional
+    Transformation allowed. translation, rigid, similarity or scaling
+    (Default 'similarity').
+slr_matrix : string, optional
+    Options are 'nano', 'tiny', 'small', 'medium', 'large', 'huge'
+    (default 'small')
+refine : bool, optional
+    Enable refine recognized bunle (default False)
+r_reduction_thr : float, optional
+    Refine reduce search space by (mm) (default 12)
+r_pruning_thr : float, optional
+    Refine pruning after matching (default 6).
+no_r_slr : bool, optional
+    Don't enable Refine local Streamline-based Linear
+    Registration (default False).
+out_dir : string, optional
+    Output directory (default input file directory)
+out_recognized_transf : string, optional
+    Recognized bundle in the space of the model bundle
+    (default 'recognized.trk')
+out_recognized_labels : string, optional
+    Indices of recognized bundle in the original tractogram
+    (default 'labels.npy')
+
+References
+----------
+.. [Garyfallidis17] Garyfallidis et al. Recognition of white matter
+ bundles using local and global streamline-based registration and
+ clustering, Neuroimage, 2017.
