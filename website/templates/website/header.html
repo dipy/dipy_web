@@ -1,53 +1,76 @@
 {% load staticfiles %}
 
-<nav class="navbar navbar-default" id="websiteNavbar">
-  <div class="container-fluid">
-  	<div class="container">
-    <div class="inner-wrapper">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">
-      	<img id="websiteHeaderLogo" src="{% static "images/dipy-logo.png" %}"/>
-      </a>
-    </div>
+<nav class="navbar navbar-default navbar-fixed-top" id="websiteNavbar"> <!-- id="websiteNavbar"> -->
+    <div class="container">
+        <div>
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#basic-navbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img id="websiteHeaderLogo" src="{% static 'images/dipy-logo.png' %}"/>
+                    </a>
+                </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/">Home</a></li>
-        {% for page in pages_in_nav %}
-        <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
-        {% endfor %}
-        <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/tutorials">Tutorials</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            {% for doc in all_doc_displayed %}
-            <li><a href="/documentation/{{ doc.version }}/documentation">{{ doc.version }}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-        <li><a href="/cite">Cite</a></li>
-        <li><a href="/support">Support</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/follow">Follow Us</a></li>
-            <li><a href="/contributors">Developers</a></li>
-            <li><a href="http://nipy.org/">Nipy Projects</a></li>
-            <li><a href="/dashboard">Admin Panel</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-    </div>
-    </div>
-  </div><!-- /.container-fluid -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="basic-navbar"> <!-- id="bs-example-navbar-collapse-1"> -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        {% for page in pages_in_nav %}
+                        <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
+                        {% endfor %}
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Documentation<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+                                <li><a href="{% url 'latest_documentation' path='documentation' %}">Manual Guide</a></li>
+                                <li><a href="{% url 'tutorials' %}">Tutorials</a></li>
+                                <li><a href="{% url 'latest_documentation' path='faq' %}">FAQ</a></li>
+                                <!--<li><a href="{% url 'latest_documentation' path='theory/index' %}">Theory and Concept</a></li>-->
+                                <li><a href="{% url 'latest_documentation' path='reference/index' %}">API</a></li>
+                                <li role="presentation" class="divider"></li>
+                                {% for doc in all_doc_displayed %}
+                                <li><a tabindex="-1" href="/documentation/{{ doc.version }}/documentation">Manual {{ doc.version }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Community<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'contributors' %}">Developers</a></li>
+                                <li><a href="{% url 'support' %}">Support</a></li>
+                                <li><a href="{% url 'follow_us' %}">Follow Us</a></li>
+                                <li><a href="{% url 'latest_documentation' path='cite' %}">Cite</a></li>
+                            </ul>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'dashboard' %}" itemprop="url">
+                            <img alt="" class="img-circle" width="21" height="21" src="{{user.profile.avatar_url}}">
+                        </a></li>
+                        {% else %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Login</a>
+                            <ul class="dropdown-menu">
+                                {% for backend in backends.backends %}
+                                {% if next %}
+                                <li><a href="{% url 'social:begin' backend %}?next={{next}}" itemprop="url"><span itemprop="name"> {{backend}}</span></a></li>
+                                {% else %}
+                                <li><a href="{% url 'social:begin' backend %}?next={% url 'dashboard' %}" itemprop="url"><span itemprop="name"> {{backend}}</span></a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>

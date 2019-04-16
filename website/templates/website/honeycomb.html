@@ -24,6 +24,8 @@
 
 
   </div>
+
+  {% if all_youtube_videos %}
   <div class="youtube-gallery">
     <h2>Youtube Gallery</h2>
     {% for video in all_youtube_videos %}
@@ -34,8 +36,9 @@
     {% endif %}
     {% endfor %}
   </div>
-
+  {% endif %}
 </div>
+
 {% endblock %}
 
 

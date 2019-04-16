@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.views import logout
 from . import views
 
@@ -37,7 +38,14 @@ urlpatterns = [
     # Admin Panel Login Page
     url(r'^dashboard/login/?$', views.dashboard_login, name='dashboard_login'),
 
+    # logout url
+    url(r'^dashboard/logout/$', logout,
+        {'next_page': reverse_lazy('index')}, name='dashboard_logout'),
+
     # Documentation Pages
+    url(r'^documentation/latest/(?P<path>.*?)/$',
+        views.latest_documentation, name='latest_documentation'),
+
     url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
         views.documentation, name='documentation'),
 
@@ -82,17 +90,19 @@ urlpatterns = [
     url(r'^dashboard/carousel/delete/(?P<carousel_image_id>.*?)/$',
         views.delete_carousel_image, name='delete_carousel_image'),
 
+    # sponsor Management
+    url(r'^dashboard/sponsor/$', views.dashboard_sponsor,
+        name='dashboard_sponsor'),
+    url(r'^dashboard/sponsor/edit/(?P<sponsor_image_id>.*?)/$',
+        views.edit_sponsor_image, name='edit_sponsor_image'),
+    url(r'^dashboard/sponsor/add/$', views.add_sponsor_image,
+        name='add_sponsor_image'),
+    url(r'^dashboard/sponsor/delete/(?P<sponsor_image_id>.*?)/$',
+        views.delete_sponsor_image, name='delete_sponsor_image'),
+
     # Documentation Management
     url(r'^dashboard/documentation/$', views.dashboard_documentation,
         name='dashboard_documentation'),
     url(r'^dashboard/documentation/update/$', views.update_documentation,
         name='update_documentation'),
-
-    # social login urls
-    url('', include('social.apps.django_app.urls', namespace='social')),
-
-    # logout url
-    url(r'^dashboard/logout/$', logout,
-        {'next_page': '/'})
-
 ]

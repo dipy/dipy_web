@@ -1,11 +1,9 @@
-{% extends "website/base_template.html" %}
+{% extends "website/dashboard_template.html" %}
 
-{% block content_body %}
+{% block dashboard_content_body %}
 
-<div class="row">
+	<a href="{% url 'update_documentation' %}"><div class="dashboard-button btn btn-default col-xs-11 col-sm-11 col-md-11 col-lg-11">Update Documentation List</div></a>
 	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-		<div class="content-card">
-			<a href="/dashboard/documentation/update"><div class="btn btn-default dashboard-button">Update Doc List</div></a>
 			<hr>
 			<h2>Check documentations that will be displayed:</h2>
 
@@ -18,8 +16,5 @@
 
 				<input type="submit" value="Submit">
 			</form>
-
-		</div>
 	</div>
-</div>
 {% endblock %}

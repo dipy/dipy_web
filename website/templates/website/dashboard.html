@@ -1,18 +1,18 @@
-{% extends "website/base_template.html" %}
-{% block content_body %}
+{% extends "website/dashboard_template.html" %}
 
-<div class="row">
-	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-		<div class="content-card">
-			<div class="page-heading"><h1>Admin Panel</h1></div>
-			<a href="/dashboard/sections/fixed/"><div class="dashboard-button btn btn-default">Edit Fixed Sections</div></a>
-			<a href="/dashboard/sections/page/"><div class="dashboard-button btn btn-default">Add / Edit Pages</div></a>
-			<a href="/dashboard/news/"><div class="dashboard-button btn btn-default">Add / Edit News</div></a>
-			<a href="/dashboard/publications/"><div class="dashboard-button btn btn-default">Add / Edit Publications</div></a>
-			<a href="/dashboard/carousel/"><div class="dashboard-button btn btn-default">Add / Edit Carousel Images</div></a>
-			<a href="/dashboard/documentation/"><div class="dashboard-button btn btn-default">Manage Documentation</div></a>
-			<a href="/dashboard/logout/"><div class="dashboard-button btn btn-default logout">Logout</div></a>
-		</div>
+
+{% block content_body %}
+<section>
+	<div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sections' section_type_requested='fixed' %}"><p class="dashboard-button btn btn-default">Edit Fixed Sections</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sections'  section_type_requested='page' %}"><p class="dashboard-button btn btn-default">Add / Edit Pages</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_news' %}"><p class="dashboard-button btn btn-default">Add / Edit News</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_publications' %}"><p class="dashboard-button btn btn-default">Add / Edit Publications</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_carousel' %}"><p class="dashboard-button btn btn-default">Add / Edit Carousel Images</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sponsor' %}"><p class="dashboard-button btn btn-default">Add / Edit Sponsor Images</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_documentation' %}"><p class="dashboard-button btn btn-default">Manage Documentation</p></a></div>
+		<div class="col-12"><a href="{% url 'dashboard_logout' %}"><p class="dashboard-button btn btn-default logout">Logout</p></a></div>
 	</div>
-</div>
+</section>
+
 {% endblock %}

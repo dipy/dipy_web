@@ -1,0 +1,66 @@
+{% extends "website/base_template.html" %}
+{% load staticfiles %}
+
+
+{% block nav %}
+<div id="dashboard_header">
+    <div class="container">
+        <div id="dashboard_header_inner">
+            {% if user.get_full_name|length > 0 %}
+
+                <h2>Welcome to the admin dashboard {{user.get_full_name}}</h2>
+
+			{% else %}
+
+                <h2>Welcome to the Admin Dashboard {{user.username}}</h2>
+
+			{% endif %}
+            <p>Manage news, carousel, documentations ...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_body %}
+<!-- Dashboard Menu -->
+    	<div class="bg-white">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li><a href="{% url 'dashboard_sections' section_type_requested='fixed' %}" >Sections</a></li>
+                            <li><a href="{% url 'dashboard_sections' section_type_requested='page' %}" >Pages</a></li>
+                            <li><a href="{% url 'dashboard_news' %}" >News</a></li>
+                            <li><a href="{% url 'dashboard_publications' %}" >Publications</a></li>
+                            <li><a href="{% url 'dashboard_carousel' %}" >Carousel</a></li>
+                            <li><a href="{% url 'dashboard_sponsor' %}" >Sponsor</a></li>
+                            <li><a href="{% url 'dashboard_documentation' %}" >Documentation</a></li>
+                            <li><a href="{% url 'dashboard_logout' %}" >Logout</a></li>
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                         <div class="row">
+			                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="messageModal">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                                {% block dashboard_content_body %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+
+{% if messages %}
+{% block extra_js_bottom %}
+<script>
+    // Show the message modal
+    $('#messageModal').hide().fadeIn(200).delay(2000).fadeOut(1000, function () { $(this).remove(); });
+</script>
+{% endblock %}
+{% endif %}

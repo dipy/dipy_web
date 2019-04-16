@@ -1,32 +1,27 @@
-{% extends "website/base_template.html" %}
+{% extends "website/dashboard_template.html" %}
 {% load customfilters %}
-{% block content_body %}
+{% block dashboard_content_body %}
 
-<div class="row">
-	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-		<div class="content-card">
-			<div class="page-heading"><h1>Admin Panel</h1></div>
-
-			<h3>Edit Website {% if type == "page" %} Pages{% else %} Sections {% endif %}</h3>
-			<hr>
-			{% if type == "page" %}
-			<a href="/dashboard/sections/add/"><div class="btn btn-success">Add Page</div></a>
-			<hr>
-			{% endif %}
-
-			{% for section in sections %}
-			<h3>{{section}}</h3>
-			{{ section.body_markdown|truncatechars:400|markdown_to_html|youtube_embed_url|safe }}
-			<hr>
-			<a href="/dashboard/sections/edit/{{ section.section_type }}/{{section.website_position_id}}/"><div class="btn btn-primary">Edit</div></a>
-			{% if type == "page" %}
-			<a class="pageDeleteLink" href="/dashboard/sections/delete/{{section.website_position_id}}/"><div class="btn btn-primary">Delete</div></a>
-			{% endif %}
-			<hr class="post-separator"></hr>
-			{% endfor %}
-		</div>
-	</div>
+<h3 class="text-center">Edit Website {% if type == "page" %} Pages{% else %} Sections {% endif %}</h3>
+{% if type == "page" %}
+<div class="text-center">
+	<a href="{% url 'add_website_page' %}"><div class="btn btn-success">Add Page</div></a>
 </div>
+{% endif %}
+
+{% for section in sections %}
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<hr>
+	<h3><strong>Title : </strong>{{section}}</h3>
+	{{ section.body_markdown|truncatechars:400|markdown_to_html|youtube_embed_url|safe }}
+	<hr>
+	<a href="{% url 'edit_website_section' section_type_requested=section.section_type position_id=section.website_position_id %} "><div class="btn btn-primary">Edit</div></a>
+	{% if type == "page" %}
+	<a class="pageDeleteLink" href="{% url 'delete_website_page' position_id=section.website_position_id%}"><div class="btn btn-primary">Delete</div></a>
+	{% endif %}
+	<hr>
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block extra_js_bottom %}
