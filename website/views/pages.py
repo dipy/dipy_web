@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render
-from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
 
 from .tools import *
@@ -9,28 +8,31 @@ from website.models import *
 
 
 # Definition of views:
-
+#Temporary disable the cache
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
-    home_header = get_website_section('home_header')
-    getting_started = get_website_section('getting_started')
+    home_description, announcements, highlights = get_dipy_intro()
+    publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
-    highlighted_publications = Publication.objects.filter(is_highlighted=True)
-    all_carousel = CarouselImage.objects.filter()
+    highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
+    all_carousel = CarouselImage.objects.filter(is_visible=True)
+    all_sponsor = SponsorImage.objects.filter(is_visible=True)
 
-    context['home_header'] = home_header
-    context['getting_started'] = getting_started
+
+    context['home_description'] = home_description
+    context['announcements'] = announcements
+    context['highlights'] = highlights
+    context['publications'] = publications
     context['latest_news'] = latest_news
     context['highlighted_publications'] = highlighted_publications
     context['all_carousel'] = all_carousel
-
-    context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
-                                                     4)
+    context['all_sponsor'] = all_sponsor
+    context['gplus_feed'] = get_google_plus_activity("107763702707848478173", 4)
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
-
     context['meta'] = get_meta_tags_dict()
+
     return render(request, 'website/index.html', context)
 
 
@@ -53,18 +55,17 @@ def cite(request):
     context['meta'] = get_meta_tags_dict(title="DIPY - Publications")
     return render(request, 'website/cite.html', context)
 
-
+#Temporary disable the cache
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
     context = {}
-    context['all_youtube_videos'] = get_youtube_videos(
-        'UCHnEuCRDGFOR5cfEo0nD3pw', 100)
+    context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
     context['all_documentation_examples'] = get_doc_examples_images()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 
-
+#Temporary disable the cache
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
     context = {}
@@ -79,7 +80,7 @@ def support(request):
     context['meta'] = get_meta_tags_dict(title="DIPY - Support")
     return render(request, 'website/support.html', context)
 
-
+#Temporary disable the cache
 @cache_page(60 * 5)  # cache the view for 5 minutes
 def follow_us(request):
     context = {}
@@ -106,7 +107,7 @@ def news_page(request, news_id):
                                          description=news_post.description)
     return render(request, 'website/news.html', context)
 
-
+#Temporary disable the cache
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def contributors(request):
     context = {}

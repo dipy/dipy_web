@@ -1,0 +1,51 @@
+
+
+def test_settings_variable(settings):
+    """ Check if all important variable are present
+    """
+    # Todo: Make difference between production settings variable, local settings variable, tests settings variable
+    assert hasattr(settings, 'SECRET_KEY')
+    assert hasattr(settings, 'INSTALLED_APPS')
+    assert hasattr(settings, 'MIDDLEWARE_CLASSES')
+    assert hasattr(settings, 'ROOT_URLCONF')
+    assert hasattr(settings, 'TEMPLATES')
+    assert hasattr(settings, 'WSGI_APPLICATION')
+    assert hasattr(settings, 'DATABASES')
+    assert hasattr(settings, 'AUTH_PASSWORD_VALIDATORS')
+    assert hasattr(settings, 'CACHES')
+    assert hasattr(settings, 'LANGUAGE_CODE')
+    assert hasattr(settings, 'TIME_ZONE')
+    assert hasattr(settings, 'USE_I18N')
+    assert hasattr(settings, 'USE_L10N')
+    assert hasattr(settings, 'USE_TZ')
+    assert hasattr(settings, 'STATIC_ROOT')
+    assert hasattr(settings, 'STATIC_URL')
+    assert hasattr(settings, 'STATICFILES_DIRS')
+    assert hasattr(settings, 'LOGIN_URL')
+    assert hasattr(settings, 'GOOGLE_ANALYTICS_TRACKING_ID')
+    assert hasattr(settings, 'DOCUMENTATION_REPO_OWNER')
+    assert hasattr(settings, 'DOCUMENTATION_REPO_NAME')
+    assert hasattr(settings, 'FACEBOOK_APP_ID')
+    assert hasattr(settings, 'FACEBOOK_APP_SECRET')
+    assert hasattr(settings, 'TWITTER_CONSUMER_KEY')
+    assert hasattr(settings, 'TWITTER_CONSUMER_SECRET')
+    assert hasattr(settings, 'GOOGLE_API_KEY')
+    assert hasattr(settings, 'GITHUB_VIZ_CLIENT_ID')
+    assert hasattr(settings, 'GITHUB_VIZ_CLIENT_SECRET')
+    assert hasattr(settings, 'DEFAULT_TITLE')
+    assert hasattr(settings, 'DEFAULT_DESCRIPTION')
+    assert hasattr(settings, 'DEFAULT_LOGO_URL')
+    assert hasattr(settings, 'DEFAULT_KEYWORDS')
+    assert hasattr(settings, 'META_SITE_PROTOCOL')
+    assert hasattr(settings, 'META_SITE_DOMAIN')
+    assert hasattr(settings, 'SOCIAL_AUTH_LOGIN_REDIRECT_URL')
+    assert hasattr(settings, 'SOCIAL_AUTH_LOGIN_URL')
+    assert hasattr(settings, 'SOCIAL_AUTH_PIPELINE')
+    assert hasattr(settings, 'AUTHENTICATION_BACKENDS')
+    assert hasattr(settings, 'SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+    assert hasattr(settings, 'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+    assert hasattr(settings, 'SOCIAL_AUTH_GITHUB_KEY')
+    assert hasattr(settings, 'SOCIAL_AUTH_GITHUB_SECRET')
+
+
+# Todo: Check if variable are empty and theirs values

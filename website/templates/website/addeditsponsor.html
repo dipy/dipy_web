@@ -4,7 +4,7 @@
 {% block dashboard_content_body %}
 
 {% if form %}
-    <h1 class="text-center">Add Carousel Image</h1>
+    <h1 class="text-center">Add Sponsor Image</h1>
 <hr>
 <form action="." method="post">
     {% csrf_token %}
@@ -23,7 +23,7 @@
     <br />
     <div class="col-lg-offset-4 col-lg-4 form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
-        <a href="{% url 'dashboard_carousel' %}"> Cancel </a>
+        <a href="{% url 'dashboard_sponsor' %}"> Cancel </a>
     </div>
 </form>
 {% endif %}

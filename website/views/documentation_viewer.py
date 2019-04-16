@@ -4,12 +4,16 @@ import requests
 
 from django.conf import settings
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
 
-from .tools import get_meta_tags_dict
+from .tools import get_meta_tags_dict, get_last_release
 
+
+def latest_documentation(request, path):
+    latest_version = get_last_release()
+    return redirect('documentation', version=latest_version, path=path)
 
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def documentation(request, version, path):
@@ -35,6 +39,14 @@ def documentation(request, version, path):
     response_json['body'] = response_json['body'].replace("src=\"",
                                                           "src=\"" + url_dir)
 
+    response_json['body'] = response_json['body'].replace("¶", "")
+    if response_json['parents']:
+        if 'documentation' in response_json['parents'][0]['title'].lower():
+            response_json['parents'][0]['title'] += ' {}'.format(version)
+
+    if 'documentation' in response_json['title'].lower():
+        response_json['title'] += ' {}'.format(version)
+
     # set title of the json doc as the title of the page
     page_title = "DIPY : Docs %s - %s" % (version,
                                           strip_tags(response_json['title']),)
@@ -43,7 +55,6 @@ def documentation(request, version, path):
 
     # try to get first p tag to set as description meta tag
     bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
-
     first_p = bs_doc.p
     if(first_p):
         first_p_text = first_p.text
@@ -53,4 +64,5 @@ def documentation(request, version, path):
                                                  description=first_p_text)
 
     context['doc'] = response_json
+    context['version'] = version
     return render(request, 'website/documentation_page.html', context)

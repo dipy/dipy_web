@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.html import strip_tags
+from django.core.files.base import ContentFile
 from meta.views import Meta
 
 from website.models import *
@@ -19,10 +20,11 @@ def get_website_section(requested_website_position_id):
     Fetch WebsiteSection with website_position_id
 
     Parameters
-    ----------
-    website_position_id : string
 
-    Output
+    ----------
+    requested_website_position_id: string
+
+    Return
     ------
     returns WebsiteSection object or None if not found
     """
@@ -40,9 +42,9 @@ def get_latest_news_posts(limit):
 
     Parameters
     ----------
-    limit : string
+    limit : int
 
-    Output
+    Return
     ------
     returns a list of NewsPost objects
     """
@@ -66,7 +68,7 @@ def has_commit_permission(access_token, repository_name):
                             params={'access_token': access_token})
     response_json = response.json()
     for repo in response_json:
-        if(repo["name"] == repository_name):
+        if repo["name"] == repository_name:
             permissions = repo["permissions"]
             if(permissions["admin"] and
                permissions["push"] and
@@ -87,8 +89,13 @@ def get_google_plus_activity(user_id, count):
     count : int
         Maximum number of activities to fetch.
     """
+    if not settings.GOOGLE_API_KEY:
+        # TODO: warn user via logging
+        return {}
+
     api_key = settings.GOOGLE_API_KEY
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
+    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + \
+          "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
     try:
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -178,7 +185,7 @@ def get_twitter_feed(screen_name, count):
     except KeyError:
         token = get_twitter_bearer_token()
     parms = (screen_name, str(count))
-    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % (parms)
+    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%s" % parms
     headers = {'Authorization': 'Bearer %s' % (token,)}
     try:
         response = requests.get(url, headers=headers)
@@ -186,6 +193,19 @@ def get_twitter_feed(screen_name, count):
         return {}
     response_json = response.json()
     return response_json
+
+
+def get_last_release():
+    """
+    Fetch latest Release number
+
+    """
+    # test if databases is empty
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    return doc[0].version if len(doc) else '0.0.0'
 
 
 def update_documentations():
@@ -273,15 +293,130 @@ def get_youtube_videos(channel_id, count):
     count : int
         Maximum number of videos to fetch.
     """
+    if not settings.GOOGLE_API_KEY:
+        # Todo: logger, add warning
+        return {}
 
     parms = (channel_id, settings.GOOGLE_API_KEY)
-    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" % (parms)
+    url = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=%s&maxResults=25&key=%s" \
+          % parms
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
+        print('connection Error')
+        return {}
+    except Exception as e:
+        print(e)
         return {}
     response_json = response.json()
+    if 'error' in response_json.keys():
+        print(response_json)
+        return {}
     return response_json['items']
+
+
+def get_docs():
+    """Returns documentation object"""
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('-version')
+    if not doc:
+        print("Documentation not found")
+        return []
+
+
+    return doc
+
+def get_dipy_intro():
+    """
+    Fetch Introduction information
+
+    """
+    if not DocumentationLink.objects.all():
+        return ['', '', '']
+
+    doc = get_docs()
+    version = doc[0].version
+    path = 'index'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "https://raw.githubusercontent.com/%s/%s/gh-pages/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
+
+    examples_div = bs_doc.find("div", id="diffusion-imaging-in-python")
+    intro_text_p = examples_div.find("p")
+    intro_text_p.attrs['class'] = 'text-center'
+    highlight_div = examples_div.find("div", id="highlights")
+    highlight_div.h2.decompose()
+    for link in highlight_div.find_all('a'):
+        l =  link.get('href')
+        if l.lower().startswith('#') or 'http:/' in l or 'https:/' in l:
+            continue
+        link['href'] = 'documentation/latest/{}'.format(l)
+
+    annoucement = examples_div.find("div", id="announcements")
+    annoucement.h2.decompose()
+    for link in annoucement.find_all('a'):
+        l =  link.get('href')
+        if l.lower().startswith('#') or 'http:/' in l.lower() or 'https:/' in l.lower():
+            continue
+        link['href'] = 'documentation/latest/{}'.format(l)
+
+    return str(intro_text_p), str(annoucement), str(highlight_div)
+
+
+def get_dipy_publications(count=3):
+    """
+        Fetch Publication information
+
+    Parameters
+    -----------
+    count: int, optional
+        maximal number of publications to fetch
+
+        """
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = get_docs()
+    version = doc[0].version
+    path = 'cite'
+    repo_info = (settings.DOCUMENTATION_REPO_OWNER,
+                 settings.DOCUMENTATION_REPO_NAME)
+    base_url = "https://raw.githubusercontent.com/%s/%s/gh-pages/" % repo_info
+    url = base_url + version + "/" + path + ".fjson"
+    response = requests.get(url)
+    if response.status_code == 404:
+        url = base_url + version + "/" + path + "/index.fjson"
+        response = requests.get(url)
+        if response.status_code == 404:
+            return []
+    url_dir = url
+    if url_dir[-1] != "/":
+        url_dir += "/"
+
+    # parse the content to json
+    response_json = response.json()
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
+    publication_div = bs_doc.find("div", id="publications")
+    publication_div.h1.decompose()
+    publication = publication_div.find_all('p')
+    if publication:
+        publication = publication[:count]
+    return ''.join([str(p) for p in publication])
 
 
 def get_examples_list_from_li_tags(base_url, version, path, li_tags):
@@ -295,8 +430,7 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
 
     for li in li_tags:
         link = li.find("a")
-        if(link and link.get('href').startswith('../examples_built')):
-            example_dict = {}
+        if link and link.get('href').startswith('../examples_built'):
             # get images
             rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
             example_url = base_url + version + "/" + rel_url + ".fjson"
@@ -309,12 +443,10 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
                 "src=\"../", "src=\"" + url_dir)
 
             # extract title and all images
-            example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
-            example_dict = {}
-            example_dict['title'] = example_title
-            example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link.get('href')
-            example_dict['description'] = example_bs_doc.p.text
-            example_dict['images'] = []
+            example_bs_doc = BeautifulSoup(example_json['body'], "lxml")
+            example_dict = {'title': example_title,
+                            'link': '/documentation/' + version + "/" + path + "/" + link.get('href'),
+                            'description': example_bs_doc.p.text, 'images': []}
             for tag in list(example_bs_doc.find_all('img')):
                 example_dict['images'].append(str(tag))
             examples_list.append(example_dict)
@@ -326,9 +458,15 @@ def get_doc_examples():
     Fetch all examples (tutorials) in latest documentation
 
     """
+    # test if databases is empty
+    import time
+    start = time.time()
+    if not DocumentationLink.objects.all():
+        return []
+
     doc_examples = []
-    doc = DocumentationLink.objects.filter(displayed=True)[0]
-    version = doc.version
+    doc = get_docs()
+    version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
@@ -346,12 +484,15 @@ def get_doc_examples():
 
     # parse the content to json
     response_json = response.json()
-    bs_doc = BeautifulSoup(response_json['body'], 'html.parser')
+    response_json['body'] = response_json['body'].replace("¶", "")
+    bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="examples")
     all_major_sections = examples_div.find_all("div",
                                                class_="section",
                                                recursive=False)
+    print('DURATION {}s'.format(time.time() - start))
+    start = time.time()
 
     for major_section in all_major_sections:
         major_section_dict = {}
@@ -395,6 +536,7 @@ def get_doc_examples():
                     minor_section_dict["valid"] = False
                 major_section_dict["minor_sections"].append(minor_section_dict)
         doc_examples.append(major_section_dict)
+    print('DURATION {}s'.format(time.time() - start))
     return doc_examples
 
 
@@ -403,8 +545,11 @@ def get_doc_examples_images():
     Fetch all images in all examples in latest documentation
 
     """
-    doc = DocumentationLink.objects.filter(displayed=True)[0]
-    version = doc.version
+    if not DocumentationLink.objects.all():
+        return []
+
+    doc = get_docs()
+    version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
@@ -427,7 +572,7 @@ def get_doc_examples_images():
 
     examples_list = []
     for link in all_links:
-        if(link.get('href').startswith('../examples_built')):
+        if link.get('href').startswith('../examples_built'):
             rel_url = "/".join(link.get('href')[3:].split("/")[:-1])
             example_url = base_url + version + "/" + rel_url + ".fjson"
             example_response = requests.get(example_url)
@@ -440,8 +585,7 @@ def get_doc_examples_images():
 
             # extract title and all images
             example_bs_doc = BeautifulSoup(example_json['body'], 'html.parser')
-            example_dict = {}
-            example_dict['title'] = example_title
+            example_dict = {'title': example_title}
             link_href = link.get('href').split("#")[0]
             example_dict['link'] = '/documentation/' + version + "/" + path + "/" + link_href
             example_dict['description'] = example_bs_doc.p.text
@@ -450,3 +594,22 @@ def get_doc_examples_images():
                 example_dict['images'].append(str(tag))
             examples_list.append(example_dict)
     return examples_list
+
+
+def save_profile_picture(strategy, user, response, details,
+                         is_new=False,*args,**kwargs):
+
+    backend = kwargs.get('backend', '')
+
+    if backend and backend.name.lower() == 'github':
+        avatar_url = response.get('avatar_url', '')
+        first_name = details.get('first_name', '')
+        last_name = details.get('last_name', '')
+
+        if avatar_url:
+            user.profile.avatar.save("{}.png".format(user.username), ContentFile(requests.get(avatar_url).content))
+        if first_name:
+            user.first_name = first_name
+        if last_name:
+            user.last_name = last_name
+        user.profile.save()

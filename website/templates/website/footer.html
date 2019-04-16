@@ -1,4 +1,5 @@
-<div class="container" id="footerContainer">
+{% load staticfiles %}
+<!-- <div class="container-fluid" id="footerContainer">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 footer-col">
       <div id="footerContentContainer">
@@ -10,4 +11,53 @@
       </div>
     </div>
   </div>
+</div>
+                       <li><a href="http://nipy.org/">Nipy Projects</a></li>-->
+<div class="container">
+<section class=" bg-gray" id="footer">
+		<div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<h5>About</h5>
+			<ul class="list-unstyled quick-links">
+				<li><a href="{% url 'contributors' %}"><i class="fa fa-angle-double-right"></i>Developers</a></li>
+				<li><a href="{% url 'support' %}"><i class="fa fa-angle-double-right"></i>Support</a></li>
+				<li><a href="/documentation/latest/installation"><i class="fa fa-angle-double-right"></i>Download</a></li>
+				<li><a href="{% url 'tutorials' %}"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+				<li><a href="{% url 'tutorials' %}"><i class="fa fa-angle-double-right"></i>Tutorial</a></li>
+				<li><a href="{% url 'gallery' %}"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<h5>Friends</h5>
+			<ul class="list-unstyled quick-links">
+				<li><a href="http://nipy.org"><i class="fa fa-angle-double-right"></i>Nipy Projects</a></li>
+				<li><a href="http://fury.gl"><i class="fa fa-angle-double-right"></i>Fury</a></li>
+				<li><a href="http://nipy.org/nibabel"><i class="fa fa-angle-double-right"></i>Nibabel</a></li>
+				<li><a href="https://science.nichd.nih.gov/confluence/display/nihpd/TORTOISE"><i class="fa fa-angle-double-right"></i>Tortoise</a></li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<h5>Support</h5>
+			<ul class="list-unstyled quick-links">
+				<li><a href="https://engineering.indiana.edu/"><i class="fa fa-angle-double-right"></i>The department of Intelligent Systems Engineering of Indiana University</a></li>
+				<li><a href="https://www.nibib.nih.gov/"><i class="fa fa-angle-double-right"></i>The National Institute of Biomedical Imaging and Bioengineering, NIH</a></li>
+				<li><a href="https://escience.washington.edu/tag/alfred-p-sloan-foundation/"><i class="fa fa-angle-double-right"></i>The Gordon and Betty Moore Foundation and the Alfred P. Sloan Foundation, through the University of Washington eScience Institute Data Science Environment</a></li>
+				<li><a href="https://summerofcode.withgoogle.com/"><i class="fa fa-angle-double-right"></i>Google supported DIPY through the Google Summer of Code Program during Summer 2015, 2016, 2018</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+			<ul class="list-unstyled list-inline social text-center">
+				<li class="list-inline-item"><a href="https://www.facebook.com/diffusionimaginginpython/"><i class="fa fa-facebook"></i></a></li>
+				<li class="list-inline-item"><a href="https://twitter.com/dipymri"><i class="fa fa-twitter"></i></a></li>
+				<li class="list-inline-item"><a href="https://plus.google.com/107763702707848478173"><i class="fa fa-google-plus"></i></a></li>
+				<li class="list-inline-item"><a href="https://mail.python.org/archives/list/dipy@python.org/" target="_blank"><i class="fa fa-envelope"></i></a></li>
+			</ul>
+		</div>
+		</hr>
+		<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+			<p class="h6">&copy Copyright 2008-{% now "Y" %}, <a class="text-green ml-2" href="http://www.dipy.org" target="_blank">DIPY</a> developers. Created using Django and Bootstrap.</p>
+		</div>
+		</hr>
+</section>
 </div>
