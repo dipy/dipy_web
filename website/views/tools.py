@@ -204,7 +204,7 @@ def get_last_release():
     if not DocumentationLink.objects.all():
         return []
 
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     return doc[0].version if len(doc) else '0.0.0'
 
 
@@ -315,18 +315,28 @@ def get_youtube_videos(channel_id, count):
     return response_json['items']
 
 
+def get_docs():
+    """Returns documentation object"""
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    if not doc:
+        doc = DocumentationLink.objects.filter(displayed=True).order_by('-version')
+    if not doc:
+        print("Documentation not found")
+        return []
+
+
+    return doc
+
 def get_dipy_intro():
     """
     Fetch Introduction information
 
     """
     if not DocumentationLink.objects.all():
-        return []
+        return ['', '', '']
 
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
-    if not doc:
-        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
-    version = doc.version
+    doc = get_docs()
+    version = doc[0].version
     path = 'index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
@@ -381,10 +391,8 @@ def get_dipy_publications(count=3):
     if not DocumentationLink.objects.all():
         return []
 
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
-    if not doc:
-        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
-    version = doc.version
+    doc = get_docs()
+    version = doc[0].version
     path = 'cite'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
@@ -457,10 +465,8 @@ def get_doc_examples():
         return []
 
     doc_examples = []
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
-    if not doc:
-        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
-    version = doc.version
+    doc = get_docs()
+    version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
@@ -542,10 +548,8 @@ def get_doc_examples_images():
     if not DocumentationLink.objects.all():
         return []
 
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('version')[0]
-    if not doc:
-        doc = DocumentationLink.objects.filter(displayed=True).order_by('version')[0]
-    version = doc.version
+    doc = get_docs()
+    version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
                  settings.DOCUMENTATION_REPO_NAME)
