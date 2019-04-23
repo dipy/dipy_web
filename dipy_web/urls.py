@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^', include('website.urls')),
     url(r'^', include('github_visualization.urls')),
     # social login urls
-    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('social_django.urls', namespace='social')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
