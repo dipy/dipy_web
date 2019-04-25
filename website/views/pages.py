@@ -28,7 +28,6 @@ def index(request):
     context['highlighted_publications'] = highlighted_publications
     context['all_carousel'] = all_carousel
     context['all_sponsor'] = all_sponsor
-    context['gplus_feed'] = get_google_plus_activity("107763702707848478173", 4)
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
     context['meta'] = get_meta_tags_dict()
@@ -85,8 +84,6 @@ def support(request):
 def follow_us(request):
     context = {}
     context['latest_news'] = get_latest_news_posts(5)
-    context['gplus_feed'] = get_google_plus_activity("107763702707848478173",
-                                                     4)
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
 
