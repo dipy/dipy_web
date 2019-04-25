@@ -71,11 +71,6 @@ def test_has_commit_permission():
     # assert not has_permission
 
 
-def test_get_google_plus_activity():
-    # Todo: define a random public user activity
-    pass
-
-
 def test_get_facebook_page_feed():
     # Todo: get a random public user page
     pass
@@ -112,7 +107,6 @@ def test_get_meta_tags_dict(settings):
     assert default_meta.use_og
     assert default_meta.use_twitter
     assert default_meta.use_facebook
-    assert default_meta.use_googleplus
     assert default_meta.use_title_tag
 
     new_meta = tools.get_meta_tags_dict(title="my meta",

@@ -8,8 +8,9 @@ def test_index(rf, client, admin_client):
     response = client.post(reverse('index'), data={})
     assert response.status_code == 200
 
-    defaults_key_list = ['home_header', 'getting_started', 'latest_news', 'highlighted_publications', 'all_carousel',
-                         'gplus_feed', 'fb_posts', 'tweets', 'meta']
+    defaults_key_list = ['home_header', 'getting_started', 'latest_news',
+                         'highlighted_publications', 'all_carousel',
+                         'fb_posts', 'tweets', 'meta']
 
     current_key_list = response.context.keys()
     for k in defaults_key_list:

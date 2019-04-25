@@ -77,37 +77,6 @@ def has_commit_permission(access_token, repository_name):
     return False
 
 
-def get_google_plus_activity(user_id, count):
-    """
-    Fetch google plus activity list of a user
-
-    Parameters
-    ----------
-    user_id : string
-        The ID of the user to get activities for.
-
-    count : int
-        Maximum number of activities to fetch.
-    """
-    if not settings.GOOGLE_API_KEY:
-        # TODO: warn user via logging
-        return {}
-
-    api_key = settings.GOOGLE_API_KEY
-    url = "https://www.googleapis.com/plus/v1/people/" + user_id + "/activities/public?maxResults=" + str(count) + \
-          "&fields=etag%2Cid%2Citems%2Ckind%2CnextLink%2CnextPageToken%2CselfLink%2Ctitle%2Cupdated&key=" + api_key
-    try:
-        r = requests.get(url)
-    except requests.exceptions.ConnectionError:
-        return {}
-    json_response = r.json()
-    if 'error' not in json_response:
-        return json_response['items']
-    else:
-        print(json_response)
-        return {}
-
-
 def get_facebook_page_feed(page_id, count):
     """
     Fetch the feed of posts published by this page, or by others on this page.
@@ -276,7 +245,7 @@ def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
                 image=image,
                 object_type=object_type,
                 use_og=True, use_twitter=True, use_facebook=True,
-                use_googleplus=True, use_title_tag=True)
+                use_title_tag=True)
     return meta
 
 

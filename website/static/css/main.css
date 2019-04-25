@@ -428,34 +428,6 @@ div.codehilite, .highlight {
 #twitter-feed {
   padding-top: 2em; }
 
-.gplus_attachments_wrapper {
-  padding: 1em;
-  background: #f6f6f6;
-  box-shadow: 0px 0px 6px #dadada; }
-
-.gplus_content_body {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.94);
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  padding: 2em;
-  margin-top: 4em;
-  overflow: auto; }
-
-.gplus_inner_wrapper {
-  max-width: 1024px;
-  margin: 0 auto;
-  margin-bottom: 2em; }
-
-.gplus_close_link {
-  float: right;
-  display: block;
-  font-size: 1.4em; }
-
 .login-button {
   background-repeat: no-repeat;
   display: block;
