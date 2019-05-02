@@ -31,6 +31,17 @@
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}
 </body>
+
 {% block extra_js_bottom %}{% endblock %}
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+      room: 'nipy/dipy'    
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
 {{ google_analytics|safe }}
+
 </html>
