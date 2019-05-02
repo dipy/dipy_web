@@ -48,15 +48,19 @@
 
 <section id="download-section">
     <h2>DIPY is easy to install:</h2>
-    <p>DIPY runs on a huge range of devices and operating systems</p>
-    <p><span><b>pip install dipy </b></span><small>- or -</small><span><b>conda install -c conda-forge dipy</b></span></p>
+    <div id="banner-start">    
+      <span id="banner-start-command" class="txt-rotate"
+      data-period="2000"
+      data-rotate='["pip install dipy", "conda install -c conda-forge dipy"]'></span>
+    </div>
+    <p>Available on many operating systems</p>
     <div>
       <ul>
-        <li class="orange grow"><a href="/documentation/latest/installation/#windows" class=""><i class="fa fa-windows"></i><span class="text-center">Windows</span></a>
+        <li class="orange grow"><a href="/documentation/latest/installation/#windows" class=""><i class="fa fa-windows"></i></a>
         </li>
-        <li class="orange grow"><a href="/documentation/latest/installation/#osx" class=""><i class="fa fa-apple"></i><span class="text-center">OSX, iOS</span></a>
+        <li class="orange grow"><a href="/documentation/latest/installation/#osx" class=""><i class="fa fa-apple"></i></a>
         </li>
-        <li class="orange grow"><a href="/documentation/latest/installation/#linux" class=""><i class="fa fa-linux"></i><span class="text-center">Linux</span></a>
+        <li class="orange grow"><a href="/documentation/latest/installation/#linux" class=""><i class="fa fa-linux"></i></a>
         </li>
         <!-- <li class="col-green-hover"><a href="/download" class="ext-link-processed"><i class="fa fa-android"></i><span class="text-center">Android</span></a>
         </li>
@@ -208,9 +212,10 @@
 
 <section id="cite-section" {% if all_sponsor %} class='bg-gray' {% endif%}>
   <h2 class="text-center"><a class="orange" href="{% url 'latest_documentation' path='cite' %}"> Cite Us !</a></h2>
-
-    {{publications|safe}}
-  <!--<ul class="list-unstyled">-->
+  <br/>
+  <p>Garyfallidis E, Brett M, Amirbekian B, Rokem A, van der Walt S, Descoteaux M, Nimmo-Smith I and Dipy Contributors (2014). <a class="reference external" href="http://journal.frontiersin.org/Journal/10.3389/fninf.2014.00008/abstract">DIPY, a library for the analysis of diffusion MRI data.</a> Frontiers in Neuroinformatics, vol.8, no.8.<p>
+  <!--  {{publications|safe}}
+  <ul class="list-unstyled">-->
     <!--{% for publication in highlighted_publications %}-->
     <!--<li>-->
       <!--<b><p><a href="{{ publication.url }}">{{publication.title}}</a></p></b>-->
