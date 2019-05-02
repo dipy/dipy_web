@@ -13,7 +13,7 @@ from website.models import *
 def index(request):
     context = {}
     home_description, announcements, highlights = get_dipy_intro()
-    publications = get_dipy_publications()
+    # publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
     all_carousel = CarouselImage.objects.filter(is_visible=True)
@@ -23,7 +23,7 @@ def index(request):
     context['home_description'] = home_description
     context['announcements'] = announcements
     context['highlights'] = highlights
-    context['publications'] = publications
+    # context['publications'] = publications
     context['latest_news'] = latest_news
     context['highlighted_publications'] = highlighted_publications
     context['all_carousel'] = all_carousel
