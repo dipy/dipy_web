@@ -170,6 +170,24 @@ section .section-title {
 .grow:hover {
   transform: scale(1.1); }
 
+#banner-start {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 18px;
+  }
+#banner-start-command {
+  background: #ff8c00;
+  color: white;
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, monospace;
+  /* display: inline-block; */
+  padding: 15px 20px;
+}
+#banner-start-command:before {
+  content: "$";
+  opacity: 0.5;
+  padding-right: 10px;
+}
+
 /*****************************
 *  color
 ******************************/
@@ -203,11 +221,10 @@ section#download-section {
     margin: 25px;
     display: inline-block;
     float: left;
-    font-size: 1.5em;
   }
-  section#download-section span {
+  /* section#download-section span {
     display: block;
-    margin: 5px; }
+    margin: 5px; } */
   section#download-section i {
     font-size: 4em;
     margin: 5px; }

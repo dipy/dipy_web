@@ -293,14 +293,11 @@ def get_docs():
         print("Documentation not found")
         return []
 
-
     return doc
 
-def get_dipy_intro():
-    """
-    Fetch Introduction information
 
-    """
+def get_dipy_intro():
+    """Fetch Introduction information."""
     if not DocumentationLink.objects.all():
         return ['', '', '']
 
@@ -339,10 +336,15 @@ def get_dipy_intro():
     annoucement = examples_div.find("div", id="announcements")
     annoucement.h2.decompose()
     for link in annoucement.find_all('a'):
-        l =  link.get('href')
+        l = link.get('href')
         if l.lower().startswith('#') or 'http:/' in l.lower() or 'https:/' in l.lower():
             continue
         link['href'] = 'documentation/latest/{}'.format(l)
+    for link in annoucement.find_all('img'):
+        l = link.get('src')
+        if 'http:/' in l.lower() or 'https:/' in l.lower():
+            continue
+        link['src'] = base_url + version + "/" + l
 
     return str(intro_text_p), str(annoucement), str(highlight_div)
 
