@@ -33,7 +33,7 @@
                                 <li><a href="{% url 'tutorials' %}">Tutorials</a></li>
                                 <li><a href="{% url 'latest_documentation' path='faq' %}">FAQ</a></li>
                                 <!--<li><a href="{% url 'latest_documentation' path='theory/index' %}">Theory and Concept</a></li>-->
-                                <li><a href="{% url 'latest_documentation' path='reference/index' %}">API</a></li>
+                                <li><a href="{% url 'latest_documentation' path='reference' %}">API</a></li>
                                 <li role="presentation" class="divider"></li>
                                 {% for doc in all_doc_displayed %}
                                 <li><a tabindex="-1" href="/documentation/{{ doc.version }}/documentation">Manual {{ doc.version }}</a></li>
