@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.conf import settings
 import markdown
 import bleach
+import json
 
 # markdown allowed tags that are not filtered by bleach
 
@@ -227,6 +228,27 @@ class DocumentationLink(models.Model):
     version = models.CharField(max_length=20, unique=True)
     url = models.URLField(max_length=100)
     displayed = models.BooleanField(default=True)
+    tutorials = models.CharField(max_length=10000, blank=True, null=True)
+    gallery = models.CharField(max_length=10000, blank=True, null=True)
+    intro = models.CharField(max_length=10000, blank=True, null=True)
 
     def __str__(self):
         return self.url
+
+    def set_tutorials(self, x):
+        self.tutorials = json.dumps(x)
+
+    def get_tutorials(self):
+        return json.loads(self.tutorials)
+
+    def set_gallery(self, x):
+        self.gallery = json.dumps(x)
+
+    def get_gallery(self):
+        return json.loads(self.gallery)
+
+    def set_intro(self, x):
+        self.intro = json.dumps(x)
+
+    def get_intro(self):
+        return json.loads(self.intro)
