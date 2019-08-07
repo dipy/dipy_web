@@ -2,7 +2,6 @@ import base64
 import os
 import requests
 
-
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -213,14 +212,14 @@ def update_documentations():
         if doc.version not in all_versions_in_github:
             doc.delete()
 
-
-        doc.tutorials = get_doc_examples(doc.version)
-        doc.save()
-        doc.gallery = get_doc_examples_images(doc.version)
-        doc.save()
-        doc.intro = get_dipy_intro(doc.version)
-        doc.save()
-        print("done with ", doc.version)
+        if doc.displayed:
+            doc.tutorials = get_doc_examples(doc.version)
+            doc.save()
+            doc.gallery = get_doc_examples_images(doc.version)
+            doc.save()
+            doc.intro = get_dipy_intro(doc.version)
+            doc.save()
+            print("updating ", doc.version)
 
 
 def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
@@ -429,7 +428,7 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
             # extract title and all images
             example_bs_doc = BeautifulSoup(example_json['body'], "lxml")
             example_dict = {"title": example_title,
-                            "link": '/documentation/' + version + "/" + path + "/" + link.get('href'),
+                            "link": "/documentation/" + version + "/" + path + "/" + link.get('href'),
                             "description": example_bs_doc.p.text,
                             "images": []}
             for tag in list(example_bs_doc.find_all('img')):
@@ -479,7 +478,6 @@ def get_doc_examples(version=None):
                                                recursive=False)
     print('DURATION {}s'.format(time.time() - start))
     start = time.time()
-
     for major_section in all_major_sections:
         major_section_dict = {}
         major_section_title = major_section.find("h2")
@@ -502,7 +500,6 @@ def get_doc_examples(version=None):
             # check if there is no tutorial in major section:
             if len(major_section_dict["examples_list"]) == 0:
                 major_section_dict["valid"] = False
-
         else:
             for minor_section in all_minor_sections:
                 minor_section_dict = {}
@@ -523,7 +520,6 @@ def get_doc_examples(version=None):
                 major_section_dict["minor_sections"].append(minor_section_dict)
         doc_examples.append(major_section_dict)
     print('DURATION {}s'.format(time.time() - start))
-
     return doc_examples
 
 
