@@ -48,7 +48,7 @@
 
 <section id="download-section">
     <h2>DIPY is easy to install:</h2>
-    <div id="banner-start">    
+    <div id="banner-start">
       <span id="banner-start-command" class="txt-rotate"
       data-period="2000"
       data-rotate='["pip install dipy", "conda install -c conda-forge dipy"]'></span>
@@ -226,11 +226,13 @@
 </section>
 
 {% if all_sponsor %}
-<section>
-    <h2 class="text-center">Sponsors</a></h2>
-    {% for sponsor in all_sponsor%}
-    <div class="col-4"><img alt="{{sponsor.image_caption}}" src="{{sponsor.image_url}}"></div>
-    {% endfor %}
+<section id="sponsors">
+    <h2 class="text-center">Sponsors</a></h2><br/>
+    <div class="container">
+      {% for sponsor in all_sponsor%}
+      <div class="col-md-4 auto-resize-square" align="center"><img alt="{{sponsor.image_caption}}" src="{{sponsor.image_url}}"></div>
+      {% endfor %}
+    </div>
 </section>
 {% endif%}
 

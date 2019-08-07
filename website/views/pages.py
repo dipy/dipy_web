@@ -12,7 +12,12 @@ from website.models import *
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
-    home_description, announcements, highlights = get_dipy_intro()
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    intro = eval(doc[0].intro) if doc else []
+    if len(intro) == 3:
+        home_description, announcements, highlights = intro[0], intro[1], intro[2]
+    else:
+        home_description, announcements, highlights = '', '', ''
     # publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
@@ -59,16 +64,19 @@ def cite(request):
 def honeycomb(request):
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
-    context['all_documentation_examples'] = get_doc_examples_images()
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    # import ipdb; ipdb.set_trace()
+    context['all_documentation_examples'] = eval(doc[0].gallery) if doc else []  # get_doc_examples_images()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 
-#Temporary disable the cache
+# Temporary disable the cache
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
     context = {}
-    context['all_documentation_examples'] = get_doc_examples()
+    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    context['all_documentation_examples'] = eval(doc[0].tutorials) if doc else []  # get_doc_examples()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
     return render(request, 'website/tutorials.html', context)

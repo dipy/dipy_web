@@ -2,7 +2,6 @@ import base64
 import os
 import requests
 
-
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -213,6 +212,15 @@ def update_documentations():
         if doc.version not in all_versions_in_github:
             doc.delete()
 
+        if doc.displayed:
+            doc.tutorials = get_doc_examples(doc.version)
+            doc.save()
+            doc.gallery = get_doc_examples_images(doc.version)
+            doc.save()
+            doc.intro = get_dipy_intro(doc.version)
+            doc.save()
+            print("updating ", doc.version)
+
 
 def get_meta_tags_dict(title=settings.DEFAULT_TITLE,
                        description=settings.DEFAULT_DESCRIPTION,
@@ -284,9 +292,13 @@ def get_youtube_videos(channel_id, count):
     return response_json['items']
 
 
-def get_docs():
+def get_docs(version=None):
     """Returns documentation object"""
-    doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    if version is None:
+        doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    else:
+        doc = DocumentationLink.objects.filter(version=version)
+
     if not doc:
         doc = DocumentationLink.objects.filter(displayed=True).order_by('-version')
     if not doc:
@@ -296,12 +308,12 @@ def get_docs():
     return doc
 
 
-def get_dipy_intro():
+def get_dipy_intro(version=None):
     """Fetch Introduction information."""
     if not DocumentationLink.objects.all():
         return ['', '', '']
 
-    doc = get_docs()
+    doc = get_docs(version)
     version = doc[0].version
     path = 'index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
@@ -346,7 +358,7 @@ def get_dipy_intro():
             continue
         link['src'] = base_url + version + "/" + l
 
-    return str(intro_text_p), str(annoucement), str(highlight_div)
+    return [str(intro_text_p), str(annoucement), str(highlight_div)]
 
 
 def get_dipy_publications(count=3):
@@ -415,16 +427,18 @@ def get_examples_list_from_li_tags(base_url, version, path, li_tags):
 
             # extract title and all images
             example_bs_doc = BeautifulSoup(example_json['body'], "lxml")
-            example_dict = {'title': example_title,
-                            'link': '/documentation/' + version + "/" + path + "/" + link.get('href'),
-                            'description': example_bs_doc.p.text, 'images': []}
+            example_dict = {"title": example_title,
+                            "link": "/documentation/" + version + "/" + path + "/" + link.get('href'),
+                            "description": example_bs_doc.p.text,
+                            "images": []}
             for tag in list(example_bs_doc.find_all('img')):
-                example_dict['images'].append(str(tag))
+                example_dict["images"].append(str(tag))
             examples_list.append(example_dict)
+
     return examples_list
 
 
-def get_doc_examples():
+def get_doc_examples(version=None):
     """
     Fetch all examples (tutorials) in latest documentation
 
@@ -436,7 +450,7 @@ def get_doc_examples():
         return []
 
     doc_examples = []
-    doc = get_docs()
+    doc = get_docs(version)
     version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
@@ -464,7 +478,6 @@ def get_doc_examples():
                                                recursive=False)
     print('DURATION {}s'.format(time.time() - start))
     start = time.time()
-
     for major_section in all_major_sections:
         major_section_dict = {}
         major_section_title = major_section.find("h2")
@@ -487,7 +500,6 @@ def get_doc_examples():
             # check if there is no tutorial in major section:
             if len(major_section_dict["examples_list"]) == 0:
                 major_section_dict["valid"] = False
-
         else:
             for minor_section in all_minor_sections:
                 minor_section_dict = {}
@@ -511,7 +523,7 @@ def get_doc_examples():
     return doc_examples
 
 
-def get_doc_examples_images():
+def get_doc_examples_images(version=None):
     """
     Fetch all images in all examples in latest documentation
 
@@ -519,7 +531,7 @@ def get_doc_examples_images():
     if not DocumentationLink.objects.all():
         return []
 
-    doc = get_docs()
+    doc = get_docs(version)
     version = doc[0].version
     path = 'examples_index'
     repo_info = (settings.DOCUMENTATION_REPO_OWNER,
