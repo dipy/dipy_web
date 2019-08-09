@@ -231,6 +231,7 @@ class DocumentationLink(models.Model):
     tutorials = models.CharField(max_length=10000, blank=True, null=True)
     gallery = models.CharField(max_length=10000, blank=True, null=True)
     intro = models.CharField(max_length=10000, blank=True, null=True)
+    is_updated = models.BooleanField(blank=False, default=False)
 
     def __str__(self):
         return self.url

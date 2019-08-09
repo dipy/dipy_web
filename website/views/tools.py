@@ -1,6 +1,7 @@
 import base64
 import os
 import requests
+import threading
 
 from bs4 import BeautifulSoup
 from django.conf import settings
@@ -207,19 +208,35 @@ def update_documentations():
                 d.save()
     all_doc_links = DocumentationLink.objects.all()
 
-    # remove deleted docs from database
+   # remove deleted docs from database
     for doc in all_doc_links:
         if doc.version not in all_versions_in_github:
             doc.delete()
+        doc.is_updated = False
+        doc.save()
 
-        if doc.displayed:
-            doc.tutorials = get_doc_examples(doc.version)
-            doc.save()
-            doc.gallery = get_doc_examples_images(doc.version)
-            doc.save()
-            doc.intro = get_dipy_intro(doc.version)
-            doc.save()
-            print("updating ", doc.version)
+    displayed_doc = DocumentationLink.objects.filter(displayed=True)
+    displayed_id = [doc.id for doc in displayed_doc]
+    # print(displayed_id)
+
+    t = threading.Thread(target=update_doc_informations,
+                         args=[displayed_id],
+                         daemon=True)
+    t.start()
+    return {'ids': '_'.join(map(str, displayed_id))}
+
+
+def update_doc_informations(ids):
+    for doc in DocumentationLink.objects.filter(id__in=ids):
+        doc.tutorials = get_doc_examples(doc.version)
+        doc.save()
+        doc.gallery = get_doc_examples_images(doc.version)
+        doc.save()
+        doc.intro = get_dipy_intro(doc.version)
+        doc.is_updated = True
+        doc.save()
+        print("updating ", doc.version)
+    print("update Done")
 
 
 def get_meta_tags_dict(title=settings.DEFAULT_TITLE,

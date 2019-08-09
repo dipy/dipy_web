@@ -8,24 +8,24 @@
         this.tick();
         this.isDeleting = false;
       };
-      
+
       TxtRotate.prototype.tick = function() {
         var i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
-      
+
         if (this.isDeleting) {
           this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
           this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
-      
+
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-      
+
         var that = this;
         var delta = 300 - Math.random() * 100;
-      
+
         if (this.isDeleting) { delta /= 2; }
-      
+
         if (!this.isDeleting && this.txt === fullTxt) {
           delta = this.period;
           this.isDeleting = true;
@@ -34,12 +34,12 @@
           this.loopNum++;
           delta = 500;
         }
-      
+
         setTimeout(function() {
           that.tick();
         }, delta);
       };
-      
+
       window.onload = function() {
         var elements = document.getElementsByClassName('txt-rotate');
         for (var i=0; i<elements.length; i++) {
@@ -56,7 +56,7 @@
         document.body.appendChild(css);
       };
   })();
-  
+
 $(window).scroll(function (event) {
 	var scroll = $(window).scrollTop();
 	if(scroll > 100 && window.matchMedia('(min-width: 1200px)').matches){
@@ -78,3 +78,47 @@ $(window).scroll(function (event) {
 		}
 	}
 });
+$(document).ready(function(){
+  $('#startThread').on('click',function(){
+    $('#startThread').on('click',function(){
+      $.ajax({
+          type: "GET",
+          cache: false,
+          url: "/dashboard/documentation/start_update",
+          success: function(data) {
+              console.log(data.ids)
+              $('#startThread').addClass("dashboard-button-isdisabled")
+              $('#thread_msg').text("Updating doc. Please wait, it can take few minutes (4-5min)...")
+              var i = 0;
+              var threadInterval = setInterval(function(){
+                  checkTask("/dashboard/documentation/check_update/" + data.ids, function(check){
+                      if(check.is_done){
+                          $('#startThread').removeClass("dashboard-button-isdisabled")
+                          $('#thread_msg').text('')
+                          window.clearInterval(threadInterval)
+                      }
+                      if(++i === 1000){
+                          $('#startThread').removeClass("dashboard-button-isdisabled")
+                          $('#thread_msg').text('Update failed. Please restart.')
+                          window.clearInterval(threadInterval)
+                      }
+                  })
+              },1000)
+          }
+      })
+  })
+  function checkTask(url,cb){
+      $.ajax({
+          type: "GET",
+          cache: false,
+          url: url,
+          dataType: "json",
+          success: function(data) {
+              cb(data)
+          }
+      })
+  }
+
+  })
+})
+
