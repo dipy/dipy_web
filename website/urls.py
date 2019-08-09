@@ -103,6 +103,10 @@ urlpatterns = [
     # Documentation Management
     url(r'^dashboard/documentation/$', views.dashboard_documentation,
         name='dashboard_documentation'),
-    url(r'^dashboard/documentation/update/$', views.update_documentation,
+    url(r'^dashboard/documentation/start_update/$',
+        views.start_update_documentation,
         name='update_documentation'),
+    url(r'^dashboard/documentation/check_update/(?P<ids>.*?)/$',
+        views.check_update_documentation,
+        name='check_update_documentation'),
 ]

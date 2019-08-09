@@ -2,7 +2,12 @@
 
 {% block dashboard_content_body %}
 
-	<a href="{% url 'update_documentation' %}"><div class="dashboard-button btn btn-default col-xs-11 col-sm-11 col-md-11 col-lg-11">Update Documentation List</div></a>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<a id='startThread' {% if button_state %}class={{button_state}}{% endif %} ><div class="dashboard-button btn btn-default col-xs-11 col-sm-11 col-md-11 col-lg-11">Update Documentation List</div></a>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div id='thread_msg' align='center' class='animated infinite flash'>{{waiting_text}}</div>
+	</div>
 	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
 			<hr>
 			<h2>Check documentations that will be displayed:</h2>
