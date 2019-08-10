@@ -37,6 +37,12 @@ td {
       color: #ff7f00;
       font-weight: bold;
 }
+
+.center-div {
+ margin-left: auto;
+ margin-right: auto;
+}
+
 /*****************************
 *  Nav bar section
 ******************************/

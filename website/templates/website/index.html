@@ -136,7 +136,7 @@
           <a href="{% url 'tutorials' %}">
             <div class="big-link">
               <img src="{% static 'images/download-logo.png' %}">
-              <span>Getting Started</span>
+              <span>Start</span>
             </div>
           </a>
         </div>
@@ -144,7 +144,7 @@
           <a href="https://github.com/nipy/dipy" target="_blank">
             <div class="big-link">
               <img src="{% static 'images/github-logo.png' %}">
-              <span>Fork on Github</span>
+              <span>Fork</span>
             </div>
           </a>
         </div>
@@ -152,7 +152,7 @@
           <a href="/support">
             <div class="big-link">
               <img src="{% static 'images/gitter-logo.png' %}">
-              <span>Get Support</span>
+              <span>Support</span>
             </div>
           </a>
         </div>
@@ -228,7 +228,7 @@
 {% if all_sponsor %}
 <section id="sponsors">
     <h2 class="text-center">Sponsors</a></h2><br/>
-    <div class="container">
+    <div class="center-div">
       {% for sponsor in all_sponsor%}
       <div class="col-md-4 auto-resize-square" align="center"><img alt="{{sponsor.image_caption}}" src="{{sponsor.image_url}}"></div>
       {% endfor %}
