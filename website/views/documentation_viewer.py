@@ -1,9 +1,10 @@
+import os
 from bs4 import BeautifulSoup
 import requests
 
 
 from django.conf import settings
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
@@ -14,6 +15,7 @@ from .tools import get_meta_tags_dict, get_last_release
 def latest_documentation(request, path):
     latest_version = get_last_release()
     return redirect('documentation', version=latest_version, path=path)
+
 
 @cache_page(60 * 30)  # cache the view for 30 minutes
 def documentation(request, version, path):
@@ -27,7 +29,19 @@ def documentation(request, version, path):
         url = base_url + version + "/" + path + "/index.fjson"
         response = requests.get(url)
         if response.status_code == 404:
-            raise Http404("Page not found")
+            url = base_url + version + "/" + path
+            response = requests.get(url)
+            if response.status_code == 404:
+                raise Http404("Page not found")
+            else:
+                django_response = HttpResponse(
+                    content=response.content,
+                    status=response.status_code,
+                    content_type=response.headers['Content-Type'])
+                django_response['Content-Disposition'] = 'inline;'
+                django_response['Content-Disposition'] += ' filename=' + os.path.basename(url)
+                return django_response
+
     url_dir = url
     if url_dir[-1] != "/":
         url_dir += "/"
