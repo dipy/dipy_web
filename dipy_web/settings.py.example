@@ -170,7 +170,7 @@ LOGIN_URL = '/dashboard/login'
 GOOGLE_ANALYTICS_TRACKING_ID = ''
 
 # documentation repository settings
-DOCUMENTATION_REPO_OWNER = 'ghoshbishakh'
+DOCUMENTATION_REPO_OWNER = 'dipy'
 DOCUMENTATION_REPO_NAME = 'dipy_web'
 
 # facebook API keys

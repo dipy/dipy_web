@@ -64,7 +64,7 @@ def has_commit_permission(access_token, repository_name):
     """
     if access_token == '':
         return False
-    response = requests.get('https://api.github.com/orgs/nipy/repos',
+    response = requests.get('https://api.github.com/orgs/dipy/repos',
                             params={'access_token': access_token})
     response_json = response.json()
     for repo in response_json:
