@@ -21,16 +21,17 @@
                 <div class="collapse navbar-collapse" id="basic-navbar"> <!-- id="bs-example-navbar-collapse-1"> -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="https://workshop.dipy.org">Workshop</a></li>
                         {% for page in pages_in_nav %}
                         <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
                         {% endfor %}
+                        <li><a href="{% url 'tutorials' %}">Tutorials</a></li>
                         <li><a href="{% url 'gallery' %}">Gallery</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Documentation<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
                                 <li><a href="{% url 'latest_documentation' path='documentation' %}">Manual Guide</a></li>
-                                <li><a href="{% url 'tutorials' %}">Tutorials</a></li>
                                 <li><a href="{% url 'latest_documentation' path='faq' %}">FAQ</a></li>
                                 <!--<li><a href="{% url 'latest_documentation' path='theory/index' %}">Theory and Concept</a></li>-->
                                 <li><a href="{% url 'latest_documentation' path='reference' %}">API</a></li>
