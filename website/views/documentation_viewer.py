@@ -42,16 +42,8 @@ def documentation(request, version, path):
                 django_response['Content-Disposition'] += ' filename=' + os.path.basename(url)
                 return django_response
 
-    url_dir = url
-    if url_dir[-1] != "/":
-        url_dir += "/"
-
     # parse the content to json
     response_json = response.json()
-
-    # replace all image urls to absolute urls
-    response_json['body'] = response_json['body'].replace("src=\"",
-                                                          "src=\"" + url_dir)
 
     response_json['body'] = response_json['body'].replace("¶", "")
     if response_json['parents']:

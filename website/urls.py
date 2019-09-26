@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.views import logout
+from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
@@ -48,6 +49,13 @@ urlpatterns = [
 
     url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
         views.documentation, name='documentation'),
+
+    # Redirect some Pages
+    url(r'^reference_cmd/$', RedirectView.as_view(url='/documentation/latest/reference_cmd/')),
+    url(r'^reference/$', RedirectView.as_view(url='/documentation/latest/reference/')),
+    url(r'^examples_built/$', RedirectView.as_view(url='/documentation/latest/examples_built/')),
+    url(r'^examples_index/$', RedirectView.as_view(url='/documentation/latest/examples_index/')),
+    url(r'^api_changes/$', RedirectView.as_view(url='/documentation/latest/api_changes/')),
 
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
