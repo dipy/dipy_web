@@ -27,4 +27,4 @@ pytest-django
 whitenoise==3.1
 dj-database-url==0.4.1
 gunicorn==19.5.0
-psycopg2>=2.6.1
+# psycopg2>=2.6.1
