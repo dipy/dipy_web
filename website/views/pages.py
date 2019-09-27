@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_page
 
 from .tools import *
@@ -144,3 +144,8 @@ def custom500(request):
     context = {}
     context['meta'] = get_meta_tags_dict(title="DIPY - 500 Error Occured")
     return render(request, 'website/error_pages/404.html', context, status=400)
+
+
+def redirect_old_url(request, path):
+    new_path = request.path.replace('.html', '')[1:-1]
+    return redirect('latest_documentation', path=new_path)
