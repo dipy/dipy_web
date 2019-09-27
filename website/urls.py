@@ -44,10 +44,10 @@ urlpatterns = [
         {'next_page': reverse_lazy('index')}, name='dashboard_logout'),
 
     # Documentation Pages
-    url(r'^documentation/latest/(?P<path>.*?)$',
+    url(r'^documentation/latest/(?P<path>.*?)/$',
         views.latest_documentation, name='latest_documentation'),
 
-    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)$',
+    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
         views.documentation, name='documentation'),
 
     # Redirect some Pages
@@ -56,6 +56,7 @@ urlpatterns = [
     url(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
     url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
     url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
 
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
