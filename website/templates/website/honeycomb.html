@@ -9,7 +9,19 @@
 
 <!-- Content -->
 <div class="content-card">
-  <div class="page-heading"><h2>Gallery</h2></div>
+  {% if all_youtube_videos %}
+  <h2>Youtube Gallery</h2>
+  <div class="col-sm-12 youtube-gallery">
+    {% for video in all_youtube_videos %}
+    <div class="col-md-6 youtube-card">
+      <p class="youtube-heading">{{ video.snippet.title }}</p>
+      <p>{{ video.snippet.description }}</p>
+      <div class="youtube-wrapper"><iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.id.videoId }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <h2 class="col-sm-12">Gallery</h2>
   <div class="honeycombs">
     {% for example in all_documentation_examples %}
     {% with example.images|last as image %}
@@ -21,22 +33,7 @@
       {% endif %}
     {% endwith %}
     {% endfor %}
-
-
   </div>
-
-  {% if all_youtube_videos %}
-  <div class="youtube-gallery">
-    <h2>Youtube Gallery</h2>
-    {% for video in all_youtube_videos %}
-    {% if video.id.kind == "youtube#video" %}
-    <h3>{{ video.snippet.title }}</h3>
-    <p>{{ video.snippet.description }}</p>
-    <div class="youtube-wrapper"><iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.id.videoId }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe></div>
-    {% endif %}
-    {% endfor %}
-  </div>
-  {% endif %}
 </div>
 
 {% endblock %}
@@ -44,7 +41,7 @@
 
 {% block extra_js_bottom %}
 <!-- honycomb visualisation script-->
-<script src="{% static "js/jquery.homeycombs.js" %}"></script> 
+<script src="{% static "js/jquery.homeycombs.js" %}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('.honeycombs').honeycombs({combWidth: 200, margin: 4});

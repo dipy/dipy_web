@@ -306,7 +306,10 @@ def get_youtube_videos(channel_id, count):
     if 'error' in response_json.keys():
         print(response_json)
         return {}
-    return response_json['items']
+
+    videos = [items for items in response_json['items']
+              if items['id']['kind'] == "youtube#video"]
+    return videos
 
 
 def get_docs(version=None):

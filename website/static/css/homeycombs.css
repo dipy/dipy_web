@@ -43,7 +43,7 @@
 	-ms-transform: rotate(60deg);
 	-o-transform: rotate(60deg);
 	-webkit-transform: rotate(60deg);
-	
+
 	transform: rotate(60deg);
 }
 
@@ -53,7 +53,7 @@
 	-ms-transform: rotate(-120deg);
 	-o-transform: rotate(-120deg);
 	-webkit-transform: rotate(-120deg);
-	
+
 	transform: rotate(-120deg);
 }
 
@@ -64,15 +64,15 @@
 	-ms-transform: rotate(60deg);
 	-o-transform: rotate(60deg);
 	-webkit-transform: rotate(60deg);
-	
+
 	transform: rotate(60deg);
-	
+
 	background-position: center;
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
-	
+
 	cursor: pointer;
-	
+
 }
