@@ -44,18 +44,18 @@ urlpatterns = [
         {'next_page': reverse_lazy('index')}, name='dashboard_logout'),
 
     # Documentation Pages
-    url(r'^documentation/latest/(?P<path>.*?)/$',
+    url(r'^documentation/latest/(?P<path>.*?)$',
         views.latest_documentation, name='latest_documentation'),
 
-    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
+    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)$',
         views.documentation, name='documentation'),
 
     # Redirect some Pages
-    url(r'^reference_cmd/$', RedirectView.as_view(url='/documentation/latest/reference_cmd/')),
-    url(r'^reference/$', RedirectView.as_view(url='/documentation/latest/reference/')),
-    url(r'^examples_built/$', RedirectView.as_view(url='/documentation/latest/examples_built/')),
-    url(r'^examples_index/$', RedirectView.as_view(url='/documentation/latest/examples_index/')),
-    url(r'^api_changes/$', RedirectView.as_view(url='/documentation/latest/api_changes/')),
+    url(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
 
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
