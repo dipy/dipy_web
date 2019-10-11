@@ -57,6 +57,7 @@ urlpatterns = [
     url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
     url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
     url(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^(?P<path>.*?)/$', views.redirect_old_url),
 
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
