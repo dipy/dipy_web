@@ -622,6 +622,16 @@ code {
 .fb_iframe_widget {
   vertical-align: top; }
 
+/*
+Other
+*/
+.expand-all{
+  color: black;
+}
+.expand-all:hover{
+  color: #ff8c00;
+}
+
 @media (max-width: 1200px) {
   #websiteNavbar {
     min-height: 60px;

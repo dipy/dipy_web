@@ -7,6 +7,7 @@
 <div>
 <div class="content-card">
   <div class="page-heading"><h1>Tutorials</h1></div>
+  <div class="expand-all"><a>[expand all]</a></div>
   <div class="tutorials-container">
 
     {% for major_section in all_documentation_examples %}
@@ -83,6 +84,17 @@ $( ".minor_section > h3" ).click(function( event ) {
   event.preventDefault();
   $(this).siblings("div.tutorials_section").slideToggle(400);
 });
+
+$("div.expand-all").click(function(event) {
+  event.preventDefault();
+  $( "div.minor_section").slideToggle(400);
+  $("div.tutorials_section").slideToggle(400);
+  if ( $(this).text() == '[expand all]' )
+    $(this).text('[hide all]');
+  else
+    $(this).text('[expand all]');
+});
+
 </script>
 
 <!-- math rendering script-->
