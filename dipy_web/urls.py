@@ -20,10 +20,10 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('website.urls')),
-    url(r'^', include('github_visualization.urls')),
     # social login urls
     url('', include('social_django.urls', namespace='social')),
+    url(r'^', include('github_visualization.urls')),
+    url(r'^', include('website.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

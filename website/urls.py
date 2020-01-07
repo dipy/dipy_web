@@ -50,15 +50,6 @@ urlpatterns = [
     url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
         views.documentation, name='documentation'),
 
-    # Redirect some Pages
-    url(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^(?P<path>.*?)/$', views.redirect_old_url),
-
     # Section and Page Management
     url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
         views.edit_website_section, name='edit_website_section'),
@@ -119,4 +110,13 @@ urlpatterns = [
     url(r'^dashboard/documentation/check_update/(?P<ids>.*?)/$',
         views.check_update_documentation,
         name='check_update_documentation'),
+
+    # Redirect some Pages
+    url(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
+    url(r'^(?P<path>.*?)/$', views.redirect_old_url),
 ]
