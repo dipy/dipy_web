@@ -1,0 +1,70 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`nn`
+=========
+.. automodule:: dipy.nn
+
+.. currentmodule:: dipy.nn
+.. autosummary::
+
+   bench
+   test
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.model`
+-----------------------
+.. automodule:: dipy.nn.model
+
+.. currentmodule:: dipy.nn.model
+.. autosummary::
+
+   LooseVersion
+   SingleLayerPerceptron
+   optional_package
+
+
+.. currentmodule:: dipy.nn
+
+bench
+~~~~~
+
+.. autofunction:: bench
+
+test
+~~~~
+
+.. autofunction:: test
+
+
+.. currentmodule:: dipy.nn.model
+
+
+:class:`LooseVersion`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LooseVersion
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`SingleLayerPerceptron`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SingleLayerPerceptron
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+optional_package
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: optional_package
+
