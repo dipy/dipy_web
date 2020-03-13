@@ -53,7 +53,7 @@ def get_latest_news_posts(limit):
 
 def has_commit_permission(access_token, repository_name):
     """
-    Determine if user has commit access to the repository in nipy organisation.
+    Determine if user has commit access to the repository in dipy organisation.
 
     Parameters
     ----------

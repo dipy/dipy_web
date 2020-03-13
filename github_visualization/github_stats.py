@@ -130,15 +130,15 @@ class GithubStatFetcher:
             { 'response_code': 200,
               'repo_name': 'dipy',
               'repo_description': 'Diffusion MR Imaging in Python',
-              'html_url': 'https://github.com/nipy/dipy',
+              'html_url': 'https://github.com/dipy/dipy',
               'subscribers': 41,
               'forks': 142,
-              'forks_url': 'https://github.com/nipy/dipy/network'
+              'forks_url': 'https://github.com/dipy/dipy/network'
               'watchers': 94,
               'open_issues': 154,
               'is_private': False,
               'stars': 94,
-              'stars_url': 'https://github.com/nipy/dipy/stargazers'
+              'stars_url': 'https://github.com/dipy/dipy/stargazers'
             }
 
         '''
