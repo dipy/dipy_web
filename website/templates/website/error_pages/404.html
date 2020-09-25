@@ -2,13 +2,16 @@
 {% extends "website/base_template.html" %}
 
 {% block content_body %}
-<link href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap' rel='stylesheet' type='text/css'>
-{% block extra_css %}{% endblock %}
-<link rel="stylesheet" type="text/css" href="{% static "css/styles404.css" %}">
 
- 
+{% block extra_css %}
+<link href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="{% static "css/styles404.css" %}">
+{% endblock %}
+
+
+{% block extra_js_top %}
 <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
-{% block extra_js_top %}{% endblock %}
+{% endblock %}
 
 <div class="mainbox">
 <div class="err">4</div>
