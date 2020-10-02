@@ -1,2 +1,3 @@
 # dipy_web
-Website generation and content management tools for dipy.org
+
+This website developed for website generation and content management tools for dipy.org
