@@ -1,9 +1,9 @@
 body {
-    background-color: #95c2de;
+    background-color: #ffffff;
   }
   
   .mainbox {
-    background-color: #95c2de;
+    background-color: #ffffff;
     margin: auto;
     height: 600px;
     width: 600px;
@@ -11,7 +11,7 @@ body {
   }
   
     .err {
-      color: #ffffff;
+      color: black;
       font-family: 'Nunito Sans', sans-serif;
       font-size: 11rem;
       position:absolute;
@@ -24,11 +24,11 @@ body {
     font-size: 8.5rem;
     left: 42%;
     top: 15%;
-    color: #ffffff;
+    color: black;
   }
   
    .err2 {
-      color: #ffffff;
+      color: black;
       font-family: 'Nunito Sans', sans-serif;
       font-size: 11rem;
       position:absolute;
@@ -48,7 +48,7 @@ body {
   
   a {
     text-decoration: none;
-    color: white;
+    color: black;
   }
   
   a:hover {
