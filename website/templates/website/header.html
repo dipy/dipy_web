@@ -56,6 +56,7 @@
                             <img alt="" class="img-circle" width="21" height="21" src="{{user.profile.avatar_url}}">
                         </a></li>
                         {% else %}
+                        {% if backends.backends|length == 0 %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Login</a>
@@ -69,6 +70,7 @@
                                 {% endfor %}
                             </ul>
                         </li>
+                        {% endif %}
                         {% endif %}
                     </ul>
                 </div>
