@@ -571,7 +571,7 @@ div.codehilite, .highlight {
     padding-left: 1em; }
 
 code {
-  padding: 0px 4px; }
+  padding: 0px 0px; }
 
 .documentation-parent-links {
   border-bottom: 1px solid #eceaea;
