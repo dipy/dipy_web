@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_visualization_sg_execution_times:
+
+Computation times
+=================
+**00:32.859** total execution time for **examples_built_visualization** files:
+
++------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_visualization_viz_roi_contour.py` (``viz_roi_contour.py``) | 00:19.541 | 0.0 MB |
++------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_visualization_viz_bundles.py` (``viz_bundles.py``)         | 00:05.786 | 0.0 MB |
++------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_visualization_viz_advanced.py` (``viz_advanced.py``)       | 00:03.767 | 0.0 MB |
++------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_visualization_viz_slice.py` (``viz_slice.py``)             | 00:03.765 | 0.0 MB |
++------------------------------------------------------------------------------------------+-----------+--------+

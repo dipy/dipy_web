@@ -1,0 +1,358 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_streamlines_analysis_streamline_length.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_streamlines_analysis_streamline_length.py:
+
+
+====================================
+Streamline length and size reduction
+====================================
+
+This example shows how to calculate the lengths of a set of streamlines and
+also how to compress the streamlines without considerably reducing their
+lengths or overall shape.
+
+A streamline in DIPY_ is represented as a numpy array of size
+:math:`(N       imes 3)` where each row of the array represents a 3D point of the
+streamline. A set of streamlines is represented with a list of
+numpy arrays of size :math:`(N_i        imes 3)` for :math:`i=1:M` where $M$ is the
+number of streamlines in the set.
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    from dipy.tracking.distances import approx_polygon_track
+    from dipy.tracking.streamline import set_number_of_points
+    from dipy.tracking.utils import length
+    import matplotlib.pyplot as plt
+    from dipy.viz import window, actor
+
+
+
+
+
+
+
+
+Let's first create a simple simulation of a bundle of streamlines using
+a cosine function.
+
+
+.. code-block:: default
+
+
+
+    def simulated_bundles(no_streamlines=50, n_pts=100):
+        t = np.linspace(-10, 10, n_pts)
+
+        bundle = []
+        for i in np.linspace(3, 5, no_streamlines):
+            pts = np.vstack((np.cos(2 * t/np.pi), np.zeros(t.shape) + i, t)).T
+            bundle.append(pts)
+
+        start = np.random.randint(10, 30, no_streamlines)
+        end = np.random.randint(60, 100, no_streamlines)
+
+        bundle = [10 * streamline[start[i]:end[i]]
+                  for (i, streamline) in enumerate(bundle)]
+        bundle = [np.ascontiguousarray(streamline) for streamline in bundle]
+
+        return bundle
+
+
+    bundle = simulated_bundles()
+
+    print('This bundle has %d streamlines' % len(bundle))
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    This bundle has 50 streamlines
+
+
+
+
+This bundle has 50 streamlines.
+
+Using the ``length`` function we can retrieve the lengths of each streamline.
+Below we show the histogram of the lengths of the streamlines.
+
+
+.. code-block:: default
+
+
+    lengths = list(length(bundle))
+
+    fig_hist, ax = plt.subplots(1)
+    ax.hist(lengths, color='burlywood')
+    ax.set_xlabel('Length')
+    ax.set_ylabel('Count')
+    # plt.show()
+    plt.legend()
+    plt.savefig('length_histogram.png')
+
+
+
+
+.. image:: /examples_built/streamlines_analysis/images/sphx_glr_streamline_length_001.png
+    :alt: streamline length
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: length_histogram.png
+   :align: center
+
+   **Histogram of lengths of the streamlines**
+
+``Length`` will return the length in the units of the coordinate system that
+streamlines are currently. So, if the streamlines are in world coordinates
+then the lengths will be in millimeters (mm). If the streamlines are for
+example in native image coordinates of voxel size 2mm isotropic then you will
+need to multiply the lengths by 2 if you want them to correspond to mm. In
+this example we process simulated data without units, however this
+information is good to have in mind when you calculate lengths with real
+data.
+
+Next, let's find the number of points that each streamline has.
+
+
+.. code-block:: default
+
+
+    n_pts = [len(streamline) for streamline in bundle]
+
+
+
+
+
+
+
+
+Often, streamlines are represented with more points than what is actually
+necessary for specific applications. Also, sometimes every streamline has
+different number of points which could be of a trouble for some algorithms.
+The function ``set_number_of_points`` can be used to set the number of points
+of a streamline at a specific number and at the same time enforce that all
+the segments of the streamline will have equal length.
+
+
+.. code-block:: default
+
+
+    bundle_downsampled = set_number_of_points(bundle, 12)
+    n_pts_ds = [len(s) for s in bundle_downsampled]
+
+
+
+
+
+
+
+
+Alternatively, the function ``approx_polygon_track`` allows to reduce the
+number of points so that they are more points in curvy regions and less
+points in less curvy regions. In contrast with ``set_number_of_points`` it
+does not enforce that segments should be of equal size.
+
+
+.. code-block:: default
+
+
+    bundle_downsampled2 = [approx_polygon_track(s, 0.25) for s in bundle]
+    n_pts_ds2 = [len(streamline) for streamline in bundle_downsampled2]
+
+
+
+
+
+
+
+
+Both, ``set_number_of_points`` and ``approx_polygon_track`` can be thought as
+methods for lossy compression of streamlines.
+
+
+.. code-block:: default
+
+
+    # Enables/disables interactive visualization
+    interactive = False
+
+    scene = window.Scene()
+    scene.SetBackground(*window.colors.white)
+    bundle_actor = actor.streamtube(bundle, window.colors.red, linewidth=0.3)
+
+    scene.add(bundle_actor)
+
+    bundle_actor2 = actor.streamtube(bundle_downsampled, window.colors.red,
+                                     linewidth=0.3)
+    bundle_actor2.SetPosition(0, 40, 0)
+
+    bundle_actor3 = actor.streamtube(bundle_downsampled2, window.colors.red,
+                                     linewidth=0.3)
+    bundle_actor3.SetPosition(0, 80, 0)
+
+    scene.add(bundle_actor2)
+    scene.add(bundle_actor3)
+
+    scene.set_camera(position=(0, 0, 0), focal_point=(30, 0, 0))
+    window.record(scene, out_path='simulated_cosine_bundle.png', size=(900, 900))
+    if interactive:
+        window.show(scene)
+
+
+
+
+.. image:: /examples_built/streamlines_analysis/images/sphx_glr_streamline_length_002.png
+    :alt: streamline length
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /Users/koudoro/miniconda3/envs/dipy-env-37/lib/python3.7/site-packages/vtkmodules/util/numpy_support.py:66: DeprecationWarning: Converting `np.character` to a dtype is deprecated. The current result is `np.dtype(np.str_)` which is not strictly correct. Note that `np.character` is generally deprecated and 'S1' should be used.
+      if numpy_array_type == key or \
+    /Users/koudoro/miniconda3/envs/dipy-env-37/lib/python3.7/site-packages/vtkmodules/util/numpy_support.py:68: DeprecationWarning: Converting `np.character` to a dtype is deprecated. The current result is `np.dtype(np.str_)` which is not strictly correct. Note that `np.character` is generally deprecated and 'S1' should be used.
+      numpy_array_type == numpy.dtype(key):
+    /Users/koudoro/miniconda3/envs/dipy-env-37/lib/python3.7/site-packages/fury/utils.py:97: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+      data = np.array(data)
+
+
+
+
+.. figure:: simulated_cosine_bundle.png
+   :align: center
+
+   Initial bundle (down), downsampled at 12 equidistant points (middle),
+   downsampled not equidistantly (up).
+
+From the figure above we can see that all 3 bundles look quite similar.
+However, when we plot the histogram of the number of points used for each
+streamline, it becomes obvious that we have managed to reduce in a great
+amount the size of the initial dataset.
+
+
+.. code-block:: default
+
+
+    fig_hist, ax = plt.subplots(1)
+    ax.hist(n_pts, color='r', histtype='step', label='initial')
+    ax.hist(n_pts_ds, color='g', histtype='step',
+            label='set_number_of_points (12)')
+    ax.hist(n_pts_ds2, color='b', histtype='step',
+            label='approx_polygon_track (0.25)')
+    ax.set_xlabel('Number of points')
+    ax.set_ylabel('Count')
+
+    # plt.show()
+    plt.legend()
+    plt.savefig('n_pts_histogram.png')
+
+
+
+
+.. image:: /examples_built/streamlines_analysis/images/sphx_glr_streamline_length_003.png
+    :alt: streamline length
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: n_pts_histogram.png
+   :align: center
+
+   Histogram of the number of points of the streamlines.
+
+Finally, we can also show that the lengths of the streamlines haven't changed
+considerably after applying the two methods of downsampling.
+
+
+.. code-block:: default
+
+
+    lengths_downsampled = list(length(bundle_downsampled))
+    lengths_downsampled2 = list(length(bundle_downsampled2))
+
+    fig, ax = plt.subplots(1)
+    ax.plot(lengths, color='r', label='initial')
+    ax.plot(lengths_downsampled, color='g', label='set_number_of_points (12)')
+    ax.plot(lengths_downsampled2, color='b', label='approx_polygon_track (0.25)')
+    ax.set_xlabel('Streamline ID')
+    ax.set_ylabel('Length')
+
+    # plt.show()
+    plt.legend()
+    plt.savefig('lengths_plots.png')
+
+
+
+
+.. image:: /examples_built/streamlines_analysis/images/sphx_glr_streamline_length_004.png
+    :alt: streamline length
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: lengths_plots.png
+   :align: center
+
+   Lengths of each streamline for every one of the 3 bundles.
+
+.. include:: ../links_names.inc
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  0.634 seconds)
+
+
+.. _sphx_glr_download_examples_built_streamlines_analysis_streamline_length.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: streamline_length.py <streamline_length.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: streamline_length.ipynb <streamline_length.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

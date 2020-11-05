@@ -1,0 +1,24 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_segmentation_sg_execution_times:
+
+Computation times
+=================
+**00:24.388** total execution time for **examples_built_segmentation** files:
+
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_segment_brain_extraction_dwi.py` (``segment_brain_extraction_dwi.py``)                     | 00:24.388 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_bundle_extraction.py` (``bundle_extraction.py``)                                           | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_segment_clustering_features.py` (``segment_clustering_features.py``)                       | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_segment_clustering_metrics.py` (``segment_clustering_metrics.py``)                         | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_segment_extending_clustering_framework.py` (``segment_extending_clustering_framework.py``) | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_segment_quickbundles.py` (``segment_quickbundles.py``)                                     | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_segmentation_tissue_classification.py` (``tissue_classification.py``)                                   | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+

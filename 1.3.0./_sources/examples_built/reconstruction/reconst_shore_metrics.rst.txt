@@ -1,0 +1,319 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_reconstruction_reconst_shore_metrics.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_reconstruction_reconst_shore_metrics.py:
+
+
+===========================
+Calculate SHORE scalar maps
+===========================
+
+We show how to calculate two SHORE-based scalar maps: return to origin
+probability (RTOP) [Descoteaux2011]_ and mean square displacement (MSD)
+[Wu2007]_, [Wu2008]_ on your data. SHORE can be used with any multiple b-value
+dataset like multi-shell or DSI.
+
+First import the necessary modules:
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from dipy.core.gradients import gradient_table
+    from dipy.data import get_fnames
+    from dipy.io.gradients import read_bvals_bvecs
+    from dipy.io.image import load_nifti
+    from dipy.reconst.shore import ShoreModel
+
+
+
+
+
+
+
+
+Download and get the data filenames for this tutorial.
+
+
+.. code-block:: default
+
+
+    fraw, fbval, fbvec = get_fnames('taiwan_ntu_dsi')
+
+
+
+
+
+
+
+
+img contains a nibabel Nifti1Image object (data) and gtab contains a
+GradientTable object (gradient information e.g. b-values). For example, to
+read the b-values it is possible to write print(gtab.bvals).
+
+Load the raw diffusion data and the affine.
+
+
+.. code-block:: default
+
+
+    data, affine = load_nifti(fraw)
+    bvals, bvecs = read_bvals_bvecs(fbval, fbvec)
+    bvecs[1:] = (bvecs[1:] /
+                 np.sqrt(np.sum(bvecs[1:] * bvecs[1:], axis=1))[:, None])
+    gtab = gradient_table(bvals, bvecs)
+    print('data.shape (%d, %d, %d, %d)' % data.shape)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    data.shape (96, 96, 60, 203)
+
+
+
+
+Instantiate the Model.
+
+
+.. code-block:: default
+
+
+    asm = ShoreModel(gtab)
+
+
+
+
+
+
+
+
+Let's just use only one slice only from the data.
+
+
+.. code-block:: default
+
+
+    dataslice = data[30:70, 20:80, data.shape[2] // 2]
+
+
+
+
+
+
+
+
+Fit the signal with the model and calculate the SHORE coefficients.
+
+
+.. code-block:: default
+
+
+    asmfit = asm.fit(dataslice)
+
+
+
+
+
+
+
+
+Calculate the analytical RTOP on the signal
+that corresponds to the integral of the signal.
+
+
+.. code-block:: default
+
+
+    print('Calculating... rtop_signal')
+    rtop_signal = asmfit.rtop_signal()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Calculating... rtop_signal
+
+
+
+
+Now we calculate the analytical RTOP on the propagator,
+that corresponds to its central value.
+
+
+.. code-block:: default
+
+
+    print('Calculating... rtop_pdf')
+    rtop_pdf = asmfit.rtop_pdf()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Calculating... rtop_pdf
+
+
+
+
+In theory, these two measures must be equal,
+to show that we calculate the mean square error on this two measures.
+
+
+.. code-block:: default
+
+
+    mse = np.sum((rtop_signal - rtop_pdf) ** 2) / rtop_signal.size
+    print("MSE = %f" % mse)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    MSE = 0.000000
+
+
+
+
+MSE = 0.000000
+
+Let's calculate the analytical mean square displacement on the propagator.
+
+
+.. code-block:: default
+
+
+    print('Calculating... msd')
+    msd = asmfit.msd()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Calculating... msd
+
+
+
+
+Show the maps and save them to a file.
+
+
+.. code-block:: default
+
+
+    fig = plt.figure(figsize=(6, 6))
+    ax1 = fig.add_subplot(2, 2, 1, title='rtop_signal')
+    ax1.set_axis_off()
+    ind = ax1.imshow(rtop_signal.T, interpolation='nearest', origin='lower')
+    plt.colorbar(ind)
+    ax2 = fig.add_subplot(2, 2, 2, title='rtop_pdf')
+    ax2.set_axis_off()
+    ind = ax2.imshow(rtop_pdf.T, interpolation='nearest', origin='lower')
+    plt.colorbar(ind)
+    ax3 = fig.add_subplot(2, 2, 3, title='msd')
+    ax3.set_axis_off()
+    ind = ax3.imshow(msd.T, interpolation='nearest', origin='lower', vmin=0)
+    plt.colorbar(ind)
+    plt.savefig('SHORE_maps.png')
+
+
+
+
+.. image:: /examples_built/reconstruction/images/sphx_glr_reconst_shore_metrics_001.png
+    :alt: reconst shore metrics
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: SHORE_maps.png
+   :align: center
+
+   RTOP and MSD calculated using the SHORE model.
+
+References
+----------
+
+.. [Descoteaux2011] Descoteaux M. et al., "Multiple q-shell diffusion
+   propagator imaging", Medical Image Analysis, vol 15, No. 4, p. 603-621,
+   2011.
+
+.. [Wu2007] Wu Y. et al., "Hybrid diffusion imaging", NeuroImage, vol 36, p.
+   617-629, 2007.
+
+.. [Wu2008] Wu Y. et al., "Computation of Diffusion Function Measures in
+   q-Space Using Magnetic Resonance Hybrid Diffusion Imaging", IEEE
+   TRANSACTIONS ON MEDICAL IMAGING, vol. 27, No. 6, p. 858-865, 2008.
+
+.. include:: ../links_names.inc
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  8.337 seconds)
+
+
+.. _sphx_glr_download_examples_built_reconstruction_reconst_shore_metrics.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: reconst_shore_metrics.py <reconst_shore_metrics.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: reconst_shore_metrics.ipynb <reconst_shore_metrics.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

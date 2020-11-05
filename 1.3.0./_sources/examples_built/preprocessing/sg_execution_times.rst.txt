@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_preprocessing_sg_execution_times:
+
+Computation times
+=================
+**00:25.466** total execution time for **examples_built_preprocessing** files:
+
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_preprocessing_brain_extraction_dwi.py` (``brain_extraction_dwi.py``) | 00:25.466 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_preprocessing_gradients_spheres.py` (``gradients_spheres.py``)       | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_preprocessing_reslice_datasets.py` (``reslice_datasets.py``)         | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_preprocessing_snr_in_cc.py` (``snr_in_cc.py``)                       | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+

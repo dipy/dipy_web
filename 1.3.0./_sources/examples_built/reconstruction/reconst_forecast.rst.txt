@@ -1,0 +1,306 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_reconstruction_reconst_forecast.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_reconstruction_reconst_forecast.py:
+
+
+==============================================================
+Crossing invariant fiber response function with FORECAST model
+==============================================================
+
+We show how to obtain a voxel specific response function in the form of
+axially symmetric tensor and the fODF using the FORECAST model from
+[Anderson2005]_ , [Kaden2016]_ and [Zucchelli2017]_.
+
+First import the necessary modules:
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from dipy.reconst.forecast import ForecastModel
+    from dipy.viz import actor, window
+    from dipy.data import fetch_cenir_multib, read_cenir_multib, get_sphere
+
+
+
+
+
+
+
+
+Download and read the data for this tutorial.
+Our implementation of FORECAST requires multi-shell data.
+fetch_cenir_multib() provides data acquired using the shells at b-values
+1000, 2000, and 3000 (see MAPMRI example for more information on this
+dataset).
+
+
+.. code-block:: default
+
+
+    fetch_cenir_multib(with_raw=False)
+
+    bvals = [1000, 2000, 3000]
+    img, gtab = read_cenir_multib(bvals)
+    data = np.asarray(img.dataobj)
+
+
+
+
+
+
+
+
+Let us consider only a single slice for the FORECAST fitting
+
+
+.. code-block:: default
+
+
+    data_small = data[18:87, 51:52, 10:70]
+    mask_small = data_small[..., 0] > 1000
+
+
+
+
+
+
+
+
+Instantiate the FORECAST Model.
+
+"sh_order" is the spherical harmonics order used for the fODF.
+
+dec_alg is the spherical deconvolution algorithm used for the FORECAST basis
+fitting, in this case we used the Constrained Spherical Deconvolution (CSD)
+algorithm.
+
+
+.. code-block:: default
+
+
+    fm = ForecastModel(gtab, sh_order=6, dec_alg='CSD')
+
+
+
+
+
+
+
+
+Fit the FORECAST to the data
+
+
+.. code-block:: default
+
+
+    f_fit = fm.fit(data_small, mask_small)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /Users/koudoro/miniconda3/envs/dipy-env-37/lib/python3.7/site-packages/scipy/optimize/minpack.py:475: RuntimeWarning: Number of calls to function has reached maxfev = 600.
+      warnings.warn(errors[info][0], RuntimeWarning)
+
+
+
+
+Calculate the crossing invariant tensor indices [Kaden2016]_ : the parallel
+diffusivity, the perpendicular diffusivity, the fractional anisotropy and the
+mean diffusivity.
+
+
+.. code-block:: default
+
+
+    d_par = f_fit.dpar
+    d_perp = f_fit.dperp
+    fa = f_fit.fractional_anisotropy()
+    md = f_fit.mean_diffusivity()
+
+
+
+
+
+
+
+
+Show the indices and save them in FORECAST_indices.png.
+
+
+.. code-block:: default
+
+
+    fig = plt.figure(figsize=(6, 6))
+    ax1 = fig.add_subplot(2, 2, 1, title='parallel diffusivity')
+    ax1.set_axis_off()
+    ind = ax1.imshow(d_par[:, 0, :].T, interpolation='nearest',
+                     origin='lower', cmap=plt.cm.gray)
+    plt.colorbar(ind, shrink=0.6)
+    ax2 = fig.add_subplot(2, 2, 2, title='perpendicular diffusivity')
+    ax2.set_axis_off()
+    ind = ax2.imshow(d_perp[:, 0, :].T, interpolation='nearest',
+                     origin='lower', cmap=plt.cm.gray)
+    plt.colorbar(ind, shrink=0.6)
+    ax3 = fig.add_subplot(2, 2, 3, title='fractional anisotropy')
+    ax3.set_axis_off()
+    ind = ax3.imshow(fa[:, 0, :].T, interpolation='nearest',
+                     origin='lower', cmap=plt.cm.gray)
+    plt.colorbar(ind, shrink=0.6)
+    ax4 = fig.add_subplot(2, 2, 4, title='mean diffusivity')
+    ax4.set_axis_off()
+    ind = ax4.imshow(md[:, 0, :].T, interpolation='nearest',
+                     origin='lower', cmap=plt.cm.gray)
+    plt.colorbar(ind, shrink=0.6)
+    plt.savefig('FORECAST_indices.png', dpi=300, bbox_inches='tight')
+
+
+
+
+.. image:: /examples_built/reconstruction/images/sphx_glr_reconst_forecast_001.png
+    :alt: reconst forecast
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: FORECAST_indices.png
+   :align: center
+
+   **FORECAST scalar indices**.
+
+
+Load an ODF reconstruction sphere
+
+
+.. code-block:: default
+
+
+    sphere = get_sphere('repulsion724')
+
+
+
+
+
+
+
+
+Compute the fODFs.
+
+
+.. code-block:: default
+
+
+    odf = f_fit.odf(sphere)
+    print('fODF.shape (%d, %d, %d, %d)' % odf.shape)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    fODF.shape (69, 1, 60, 724)
+
+
+
+
+Display a part of the fODFs
+
+
+.. code-block:: default
+
+
+    odf_actor = actor.odf_slicer(odf[16:36, :, 30:45], sphere=sphere,
+                                 colormap='plasma', scale=0.6)
+    odf_actor.display(y=0)
+    odf_actor.RotateX(-90)
+    scene = window.Scene()
+    scene.add(odf_actor)
+    window.record(scene, out_path='fODFs.png', size=(600, 600), magnification=4)
+
+
+
+
+.. image:: /examples_built/reconstruction/images/sphx_glr_reconst_forecast_002.png
+    :alt: reconst forecast
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. figure:: fODFs.png
+   :align: center
+
+   **Fiber Orientation Distribution Functions, in a small ROI of the brain**.
+
+References
+----------
+
+.. [Anderson2005] Anderson A. W., "Measurement of Fiber Orientation
+       Distributions Using High Angular Resolution Diffusion Imaging",
+       Magnetic Resonance in Medicine, 2005.
+
+.. [Kaden2016] Kaden E. et al., "Quantitative Mapping of the Per-Axon
+       Diffusion Coefficients in Brain White Matter", Magnetic Resonance in
+       Medicine, 2016.
+
+.. [Zucchelli2017] Zucchelli E. et al., "A generalized SMT-based framework
+       for Diffusion MRI microstructural model estimation", MICCAI Workshop
+       on Computational DIFFUSION MRI (CDMRI), 2017.
+
+.. include:: ../links_names.inc
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 1 minutes  18.568 seconds)
+
+
+.. _sphx_glr_download_examples_built_reconstruction_reconst_forecast.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: reconst_forecast.py <reconst_forecast.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: reconst_forecast.ipynb <reconst_forecast.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

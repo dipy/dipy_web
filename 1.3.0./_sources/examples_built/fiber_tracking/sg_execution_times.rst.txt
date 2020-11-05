@@ -1,0 +1,26 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_fiber_tracking_sg_execution_times:
+
+Computation times
+=================
+**00:00.007** total execution time for **examples_built_fiber_tracking** files:
+
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_linear_fascicle_evaluation.py` (``linear_fascicle_evaluation.py``)   | 00:00.007 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_bootstrap_peaks.py` (``tracking_bootstrap_peaks.py``)       | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_deterministic.py` (``tracking_deterministic.py``)           | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_introduction_eudx.py` (``tracking_introduction_eudx.py``)   | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_pft.py` (``tracking_pft.py``)                               | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_probabilistic.py` (``tracking_probabilistic.py``)           | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_sfm.py` (``tracking_sfm.py``)                               | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_fiber_tracking_tracking_stopping_criterion.py` (``tracking_stopping_criterion.py``) | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+

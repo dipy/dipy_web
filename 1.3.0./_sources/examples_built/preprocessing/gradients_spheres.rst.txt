@@ -1,0 +1,481 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_preprocessing_gradients_spheres.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_preprocessing_gradients_spheres.py:
+
+
+=====================
+Gradients and Spheres
+=====================
+
+This example shows how you can create gradient tables and sphere objects using
+DIPY_.
+
+Usually, as we saw in :ref:`example_quick_start`, you load your b-values and
+b-vectors from disk and then you can create your own gradient table. But
+this time let's say that you are an MR physicist and you want to design a new
+gradient scheme or you are a scientist who wants to simulate many different
+gradient schemes.
+
+Now let's assume that you are interested in creating a multi-shell
+acquisition with 2-shells, one at b=1000 $s/mm^2$ and one at b=2500 $s/mm^2$.
+For both shells let's say that we want a specific number of gradients (64) and
+we want to have the points on the sphere evenly distributed.
+
+This is possible using the ``disperse_charges`` which is an implementation of
+electrostatic repulsion [Jones1999]_.
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    from dipy.core.sphere import disperse_charges, Sphere, HemiSphere
+
+
+
+
+
+
+
+
+We can first create some random points on a ``HemiSphere`` using spherical
+polar coordinates.
+
+
+.. code-block:: default
+
+
+    n_pts = 64
+    theta = np.pi * np.random.rand(n_pts)
+    phi = 2 * np.pi * np.random.rand(n_pts)
+    hsph_initial = HemiSphere(theta=theta, phi=phi)
+
+
+
+
+
+
+
+
+Next, we call ``disperse_charges`` which will iteratively move the points so
+that the electrostatic potential energy is minimized.
+
+
+.. code-block:: default
+
+
+    hsph_updated, potential = disperse_charges(hsph_initial, 5000)
+
+
+
+
+
+
+
+
+In ``hsph_updated`` we have the updated ``HemiSphere`` with the points nicely
+distributed on the hemisphere. Let's visualize them.
+
+
+.. code-block:: default
+
+
+    from dipy.viz import window, actor
+
+    # Enables/disables interactive visualization
+    interactive = False
+
+    scene = window.Scene()
+    scene.SetBackground(1, 1, 1)
+
+    scene.add(actor.point(hsph_initial.vertices, window.colors.red,
+                          point_radius=0.05))
+    scene.add(actor.point(hsph_updated.vertices, window.colors.green,
+                          point_radius=0.05))
+
+    print('Saving illustration as initial_vs_updated.png')
+    window.record(scene, out_path='initial_vs_updated.png', size=(300, 300))
+    if interactive:
+        window.show(scene)
+
+
+
+
+.. image:: /examples_built/preprocessing/images/sphx_glr_gradients_spheres_001.png
+    :alt: gradients spheres
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Saving illustration as initial_vs_updated.png
+
+
+
+
+.. figure:: initial_vs_updated.png
+   :align: center
+
+   Illustration of electrostatic repulsion of red points which become
+   green points.
+
+We can also create a sphere from the hemisphere and show it in the
+following way.
+
+
+.. code-block:: default
+
+
+    sph = Sphere(xyz=np.vstack((hsph_updated.vertices, -hsph_updated.vertices)))
+
+    scene.clear()
+    scene.add(actor.point(sph.vertices, window.colors.green, point_radius=0.05))
+
+    print('Saving illustration as full_sphere.png')
+    window.record(scene, out_path='full_sphere.png', size=(300, 300))
+    if interactive:
+        window.show(scene)
+
+
+
+
+.. image:: /examples_built/preprocessing/images/sphx_glr_gradients_spheres_002.png
+    :alt: gradients spheres
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Saving illustration as full_sphere.png
+
+
+
+
+.. figure:: full_sphere.png
+   :align: center
+
+   Full sphere.
+
+It is time to create the Gradients. For this purpose we will use the
+function ``gradient_table`` and fill it with the ``hsph_updated`` vectors
+that we created above.
+
+
+.. code-block:: default
+
+
+    from dipy.core.gradients import gradient_table
+
+    vertices = hsph_updated.vertices
+    values = np.ones(vertices.shape[0])
+
+
+
+
+
+
+
+
+We need two stacks of ``vertices``, one for every shell, and we need two sets
+of b-values, one at 1000 $s/mm^2$, and one at 2500 $s/mm^2$, as we discussed
+previously.
+
+
+.. code-block:: default
+
+
+    bvecs = np.vstack((vertices, vertices))
+    bvals = np.hstack((1000 * values, 2500 * values))
+
+
+
+
+
+
+
+
+We can also add some b0s. Let's add one at the beginning and one at the end.
+
+
+.. code-block:: default
+
+
+    bvecs = np.insert(bvecs, (0, bvecs.shape[0]), np.array([0, 0, 0]), axis=0)
+    bvals = np.insert(bvals, (0, bvals.shape[0]), 0)
+
+    print(bvals)
+
+    print(bvecs)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [   0. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000.
+     1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000.
+     1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000.
+     1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000.
+     1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000. 1000.
+     1000. 1000. 1000. 1000. 1000. 2500. 2500. 2500. 2500. 2500. 2500. 2500.
+     2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500.
+     2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500.
+     2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500.
+     2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500.
+     2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500. 2500.    0.]
+    [[ 0.          0.          0.        ]
+     [ 0.51033693 -0.61447812  0.6016418 ]
+     [-0.17914891  0.94200616  0.28377818]
+     [-0.28132     0.76023095  0.58558343]
+     [-0.06893916 -0.79510605  0.60253942]
+     [ 0.57434595  0.40405028  0.7119481 ]
+     [-0.68451328 -0.17843255  0.70682628]
+     [ 0.80738632  0.53831642  0.24154245]
+     [-0.57547693  0.14717937  0.80446538]
+     [ 0.74665691 -0.45991813  0.48060251]
+     [ 0.26813731  0.33290478  0.90403362]
+     [-0.00852612  0.65014162  0.75976521]
+     [-0.64012747  0.42355894  0.64096385]
+     [-0.41228899 -0.09520317  0.9060652 ]
+     [-0.35099487  0.52243341  0.77708811]
+     [-0.87597919 -0.11503153  0.46843165]
+     [-0.81569092 -0.57131453  0.09081865]
+     [-0.79103945  0.15866206  0.59083241]
+     [ 0.18372187  0.04311276  0.98203236]
+     [ 0.13732968  0.96847408  0.20784254]
+     [-0.94987103  0.30710648  0.05857169]
+     [ 0.42032807  0.87498329  0.24026767]
+     [ 0.5010206   0.108022    0.85866735]
+     [-0.58095401  0.65450357  0.48385691]
+     [ 0.41218752 -0.18962309  0.89114787]
+     [-0.79275806  0.54149503  0.27985315]
+     [-0.31944689 -0.85167979  0.41544582]
+     [ 0.82788392 -0.55159664  0.10173184]
+     [-0.46354624  0.83866143  0.28595785]
+     [-0.66181669  0.74774606  0.05361434]
+     [-0.86244256 -0.38453112  0.32913319]
+     [ 0.62182112 -0.29203744  0.72667229]
+     [-0.98031309 -0.06750873  0.18555005]
+     [ 0.10688594 -0.9936951   0.03384447]
+     [ 0.31579761  0.79075582  0.52438259]
+     [ 0.03058684 -0.94169877  0.33506399]
+     [ 0.79475262  0.36214842  0.48704906]
+     [ 0.9938639  -0.03214617  0.1058356 ]
+     [-0.9069284   0.24715542  0.34116723]
+     [ 0.59507377  0.6492993   0.47360071]
+     [-0.66274623 -0.47707997  0.57720199]
+     [ 0.9156523  -0.29515297  0.27288383]
+     [-0.16827189 -0.31141116  0.93525807]
+     [ 0.36182755 -0.87268705  0.32786909]
+     [ 0.23420726 -0.77106659  0.59211762]
+     [-0.03413824  0.38474427  0.92239169]
+     [-0.37872032 -0.65754031  0.65131533]
+     [ 0.28806127 -0.52487643  0.80095283]
+     [ 0.73339361  0.09098736  0.6736877 ]
+     [ 0.02243786  0.85786684  0.51338195]
+     [-0.1077015   0.01443281  0.99407851]
+     [ 0.92963233  0.13982398  0.34092959]
+     [-0.30822728  0.24860414  0.91825483]
+     [-0.06130921 -0.57895572  0.81305071]
+     [ 0.31377662  0.5873548   0.74602853]
+     [-0.64332416 -0.67929423  0.35311949]
+     [-0.49262046 -0.85682472  0.15223823]
+     [-0.21648677 -0.97080414  0.10330922]
+     [ 0.84170536 -0.13237037  0.52345982]
+     [ 0.64205174  0.76097028  0.09324056]
+     [ 0.13133147 -0.29880876  0.94523297]
+     [-0.44035914 -0.40088238  0.80335369]
+     [ 0.95040747  0.30853857  0.03911002]
+     [ 0.40657439 -0.9131515   0.0291823 ]
+     [ 0.63190309 -0.71487373  0.29942283]
+     [ 0.51033693 -0.61447812  0.6016418 ]
+     [-0.17914891  0.94200616  0.28377818]
+     [-0.28132     0.76023095  0.58558343]
+     [-0.06893916 -0.79510605  0.60253942]
+     [ 0.57434595  0.40405028  0.7119481 ]
+     [-0.68451328 -0.17843255  0.70682628]
+     [ 0.80738632  0.53831642  0.24154245]
+     [-0.57547693  0.14717937  0.80446538]
+     [ 0.74665691 -0.45991813  0.48060251]
+     [ 0.26813731  0.33290478  0.90403362]
+     [-0.00852612  0.65014162  0.75976521]
+     [-0.64012747  0.42355894  0.64096385]
+     [-0.41228899 -0.09520317  0.9060652 ]
+     [-0.35099487  0.52243341  0.77708811]
+     [-0.87597919 -0.11503153  0.46843165]
+     [-0.81569092 -0.57131453  0.09081865]
+     [-0.79103945  0.15866206  0.59083241]
+     [ 0.18372187  0.04311276  0.98203236]
+     [ 0.13732968  0.96847408  0.20784254]
+     [-0.94987103  0.30710648  0.05857169]
+     [ 0.42032807  0.87498329  0.24026767]
+     [ 0.5010206   0.108022    0.85866735]
+     [-0.58095401  0.65450357  0.48385691]
+     [ 0.41218752 -0.18962309  0.89114787]
+     [-0.79275806  0.54149503  0.27985315]
+     [-0.31944689 -0.85167979  0.41544582]
+     [ 0.82788392 -0.55159664  0.10173184]
+     [-0.46354624  0.83866143  0.28595785]
+     [-0.66181669  0.74774606  0.05361434]
+     [-0.86244256 -0.38453112  0.32913319]
+     [ 0.62182112 -0.29203744  0.72667229]
+     [-0.98031309 -0.06750873  0.18555005]
+     [ 0.10688594 -0.9936951   0.03384447]
+     [ 0.31579761  0.79075582  0.52438259]
+     [ 0.03058684 -0.94169877  0.33506399]
+     [ 0.79475262  0.36214842  0.48704906]
+     [ 0.9938639  -0.03214617  0.1058356 ]
+     [-0.9069284   0.24715542  0.34116723]
+     [ 0.59507377  0.6492993   0.47360071]
+     [-0.66274623 -0.47707997  0.57720199]
+     [ 0.9156523  -0.29515297  0.27288383]
+     [-0.16827189 -0.31141116  0.93525807]
+     [ 0.36182755 -0.87268705  0.32786909]
+     [ 0.23420726 -0.77106659  0.59211762]
+     [-0.03413824  0.38474427  0.92239169]
+     [-0.37872032 -0.65754031  0.65131533]
+     [ 0.28806127 -0.52487643  0.80095283]
+     [ 0.73339361  0.09098736  0.6736877 ]
+     [ 0.02243786  0.85786684  0.51338195]
+     [-0.1077015   0.01443281  0.99407851]
+     [ 0.92963233  0.13982398  0.34092959]
+     [-0.30822728  0.24860414  0.91825483]
+     [-0.06130921 -0.57895572  0.81305071]
+     [ 0.31377662  0.5873548   0.74602853]
+     [-0.64332416 -0.67929423  0.35311949]
+     [-0.49262046 -0.85682472  0.15223823]
+     [-0.21648677 -0.97080414  0.10330922]
+     [ 0.84170536 -0.13237037  0.52345982]
+     [ 0.64205174  0.76097028  0.09324056]
+     [ 0.13133147 -0.29880876  0.94523297]
+     [-0.44035914 -0.40088238  0.80335369]
+     [ 0.95040747  0.30853857  0.03911002]
+     [ 0.40657439 -0.9131515   0.0291823 ]
+     [ 0.63190309 -0.71487373  0.29942283]
+     [ 0.          0.          0.        ]]
+
+
+
+
+Both b-values and b-vectors look correct. Let's now create the
+``GradientTable``.
+
+
+.. code-block:: default
+
+
+    gtab = gradient_table(bvals, bvecs)
+
+    scene.clear()
+
+
+
+
+
+
+
+
+We can also visualize the gradients. Let's color the first shell blue and
+the second shell cyan.
+
+
+.. code-block:: default
+
+
+    colors_b1000 = window.colors.blue * np.ones(vertices.shape)
+    colors_b2500 = window.colors.cyan * np.ones(vertices.shape)
+    colors = np.vstack((colors_b1000, colors_b2500))
+    colors = np.insert(colors, (0, colors.shape[0]), np.array([0, 0, 0]), axis=0)
+    colors = np.ascontiguousarray(colors)
+
+    scene.add(actor.point(gtab.gradients, colors, point_radius=100))
+
+    print('Saving illustration as gradients.png')
+    window.record(scene, out_path='gradients.png', size=(300, 300))
+    if interactive:
+        window.show(scene)
+
+
+
+
+.. image:: /examples_built/preprocessing/images/sphx_glr_gradients_spheres_003.png
+    :alt: gradients spheres
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Saving illustration as gradients.png
+
+
+
+
+.. figure:: gradients.png
+   :align: center
+
+   Diffusion gradients.
+
+References
+----------
+
+.. [Jones1999] Jones, DK. et al. Optimal strategies for measuring diffusion
+   in anisotropic systems by magnetic resonance imaging, Magnetic Resonance
+   in Medicine, vol 42, no 3, 515-525, 1999.
+
+.. include:: ../links_names.inc
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  3.765 seconds)
+
+
+.. _sphx_glr_download_examples_built_preprocessing_gradients_spheres.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: gradients_spheres.py <gradients_spheres.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: gradients_spheres.ipynb <gradients_spheres.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

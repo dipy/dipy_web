@@ -1,0 +1,235 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_reconstruction_reconst_csa_parallel.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_reconstruction_reconst_csa_parallel.py:
+
+
+====================================
+Parallel reconstruction using Q-Ball
+====================================
+
+We show an example of parallel reconstruction using a Q-Ball Constant Solid
+Angle model (see Aganj et al. (MRM 2010)) and `peaks_from_model`.
+
+Import modules, fetch and read data, and compute the mask.
+
+
+.. code-block:: default
+
+
+    import time
+    from dipy.core.gradients import gradient_table
+    from dipy.data import get_fnames, get_sphere
+    from dipy.io.gradients import read_bvals_bvecs
+    from dipy.io.image import load_nifti
+    from dipy.reconst.shm import CsaOdfModel
+    from dipy.direction import peaks_from_model
+    from dipy.segment.mask import median_otsu
+
+
+    hardi_fname, hardi_bval_fname, hardi_bvec_fname = get_fnames('stanford_hardi')
+
+    data, affine = load_nifti(hardi_fname)
+
+    bvals, bvecs = read_bvals_bvecs(hardi_bval_fname, hardi_bvec_fname)
+    gtab = gradient_table(bvals, bvecs)
+
+    maskdata, mask = median_otsu(data, vol_idx=range(10, 50), median_radius=3,
+                                 numpass=1, autocrop=True, dilate=2)
+
+
+
+
+
+
+
+
+We instantiate our CSA model with spherical harmonic order of 4
+
+
+.. code-block:: default
+
+
+    csamodel = CsaOdfModel(gtab, 4)
+
+
+
+
+
+
+
+
+`Peaks_from_model` is used to calculate properties of the ODFs (Orientation
+Distribution Function) and return for
+example the peaks and their indices, or GFA which is similar to FA but for
+ODF based models. This function mainly needs a reconstruction model, the data
+and a sphere as input. The sphere is an object that represents the spherical
+discrete grid where the ODF values will be evaluated.
+
+
+.. code-block:: default
+
+
+    sphere = get_sphere('repulsion724')
+
+    start_time = time.time()
+
+
+
+
+
+
+
+
+We will first run `peaks_from_model` using parallelism with 2 processes. If
+`nbr_processes` is None (default option) then this function will find the
+total number of processors from the operating system and use this number as
+`nbr_processes`. Sometimes it makes sense to use only a few of the processes
+in order to allow resources for other applications. However, most of the
+times using the default option will be sufficient.
+
+
+.. code-block:: default
+
+
+    csapeaks_parallel = peaks_from_model(model=csamodel,
+                                         data=maskdata,
+                                         sphere=sphere,
+                                         relative_peak_threshold=.5,
+                                         min_separation_angle=25,
+                                         mask=mask,
+                                         return_odf=False,
+                                         normalize_peaks=True,
+                                         npeaks=5,
+                                         parallel=True,
+                                         nbr_processes=2)
+
+    time_parallel = time.time() - start_time
+    print("peaks_from_model using 2 processes ran in : " +
+          str(time_parallel) + " seconds")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    peaks_from_model using 2 processes ran in : 51.986101150512695 seconds
+
+
+
+
+peaks_from_model using 2 process ran in  : 114.333221912 seconds, using 2
+process
+
+If we don't use parallelism then we need to set `parallel=False`:
+
+
+.. code-block:: default
+
+
+    start_time = time.time()
+    csapeaks = peaks_from_model(model=csamodel,
+                                data=maskdata,
+                                sphere=sphere,
+                                relative_peak_threshold=.5,
+                                min_separation_angle=25,
+                                mask=mask,
+                                return_odf=False,
+                                normalize_peaks=True,
+                                npeaks=5,
+                                parallel=False,
+                                nbr_processes=None)
+
+    time_single = time.time() - start_time
+    print("peaks_from_model ran in : " + str(time_single) + " seconds")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    peaks_from_model ran in : 69.29912424087524 seconds
+
+
+
+
+peaks_from_model ran in : 196.872478008 seconds
+
+
+.. code-block:: default
+
+
+    print("Speedup factor : " + str(time_single / time_parallel))
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Speedup factor : 1.3330317663222528
+
+
+
+
+Speedup factor : 1.72191839533
+
+Under Windows if you get a runtime error about frozen executable please start
+your script by adding your code above in a ``main`` function and use::
+
+    if __name__ == '__main__':
+        import multiprocessing
+        multiprocessing.freeze_support()
+        main()
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 2 minutes  4.978 seconds)
+
+
+.. _sphx_glr_download_examples_built_reconstruction_reconst_csa_parallel.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: reconst_csa_parallel.py <reconst_csa_parallel.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: reconst_csa_parallel.ipynb <reconst_csa_parallel.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

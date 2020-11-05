@@ -1,0 +1,338 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_built_reconstruction_reconst_gqi.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_built_reconstruction_reconst_gqi.py:
+
+
+===============================================
+Reconstruct with Generalized Q-Sampling Imaging
+===============================================
+
+We show how to apply Generalized Q-Sampling Imaging [Yeh2010]_
+to diffusion MRI datasets. You can think of GQI as an analytical version of
+DSI orientation distribution function (ODF) (Garyfallidis, PhD thesis, 2012).
+
+First import the necessary modules:
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    from dipy.core.gradients import gradient_table
+    from dipy.data import get_fnames, get_sphere
+    from dipy.io.gradients import read_bvals_bvecs
+    from dipy.io.image import load_nifti
+    from dipy.reconst.gqi import GeneralizedQSamplingModel
+    from dipy.direction import peaks_from_model
+
+
+
+
+
+
+
+
+Download and get the data filenames for this tutorial.
+
+
+.. code-block:: default
+
+
+    fraw, fbval, fbvec = get_fnames('taiwan_ntu_dsi')
+
+
+
+
+
+
+
+
+img contains a nibabel Nifti1Image object (data) and gtab contains a
+``GradientTable`` object (gradient information e.g. b-values). For example to
+read the b-values it is possible to write::
+
+   print(gtab.bvals)
+
+Load the raw diffusion data and the affine.
+
+
+.. code-block:: default
+
+
+    data, affine, voxel_size = load_nifti(fraw, return_voxsize=True)
+    bvals, bvecs = read_bvals_bvecs(fbval, fbvec)
+    bvecs[1:] = (bvecs[1:] /
+                 np.sqrt(np.sum(bvecs[1:] * bvecs[1:], axis=1))[:, None])
+    gtab = gradient_table(bvals, bvecs)
+    print('data.shape (%d, %d, %d, %d)' % data.shape)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    data.shape (96, 96, 60, 203)
+
+
+
+
+data.shape ``(96, 96, 60, 203)``
+
+This dataset has anisotropic voxel sizes, therefore reslicing is necessary.
+
+Instantiate the model and apply it to the data.
+
+
+.. code-block:: default
+
+
+    gqmodel = GeneralizedQSamplingModel(gtab, sampling_length=3)
+
+
+
+
+
+
+
+
+The parameter ``sampling_length`` is used here to
+
+Lets just use one slice only from the data.
+
+
+.. code-block:: default
+
+
+    dataslice = data[:, :, data.shape[2] // 2]
+
+    mask = dataslice[..., 0] > 50
+
+    gqfit = gqmodel.fit(dataslice, mask=mask)
+
+
+
+
+
+
+
+
+Load an ODF reconstruction sphere
+
+
+.. code-block:: default
+
+
+    sphere = get_sphere('repulsion724')
+
+
+
+
+
+
+
+
+Calculate the ODFs with this specific sphere
+
+
+.. code-block:: default
+
+
+    ODF = gqfit.odf(sphere)
+
+    print('ODF.shape (%d, %d, %d)' % ODF.shape)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    ODF.shape (96, 96, 724)
+
+
+
+
+ODF.shape ``(96, 96, 724)``
+
+Using ``peaks_from_model`` we can find the main peaks of the ODFs and other
+properties.
+
+
+.. code-block:: default
+
+
+    gqpeaks = peaks_from_model(model=gqmodel,
+                               data=dataslice,
+                               sphere=sphere,
+                               relative_peak_threshold=.5,
+                               min_separation_angle=25,
+                               mask=mask,
+                               return_odf=False,
+                               normalize_peaks=True)
+
+    gqpeak_values = gqpeaks.peak_values
+
+
+
+
+
+
+
+
+``gqpeak_indices`` show which sphere points have the maximum values.
+
+
+.. code-block:: default
+
+
+    gqpeak_indices = gqpeaks.peak_indices
+
+
+
+
+
+
+
+
+It is also possible to calculate GFA.
+
+
+.. code-block:: default
+
+
+    GFA = gqpeaks.gfa
+
+    print('GFA.shape (%d, %d)' % GFA.shape)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    GFA.shape (96, 96)
+
+
+
+
+With parameter ``return_odf=True`` we can obtain the ODF using
+``gqpeaks.ODF``
+
+
+.. code-block:: default
+
+
+    gqpeaks = peaks_from_model(model=gqmodel,
+                               data=dataslice,
+                               sphere=sphere,
+                               relative_peak_threshold=.5,
+                               min_separation_angle=25,
+                               mask=mask,
+                               return_odf=True,
+                               normalize_peaks=True)
+
+
+
+
+
+
+
+
+This ODF will be of course identical to the ODF calculated above as long as
+the same data and mask are used.
+
+
+.. code-block:: default
+
+
+    np.sum(gqpeaks.odf != ODF) == 0
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+
+    True
+
+
+
+True
+
+The advantage of using ``peaks_from_model`` is that it calculates the ODF
+only once and saves it or deletes if it is not necessary to keep.
+
+ References
+ ----------
+
+.. [Yeh2010] Yeh, F-C et al., Generalized Q-sampling imaging, IEEE
+   Transactions on Medical Imaging, vol 29, no 9, 2010.
+
+
+.. code-block:: default
+
+
+    # .. include:: ../links_names.inc
+
+
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  8.393 seconds)
+
+
+.. _sphx_glr_download_examples_built_reconstruction_reconst_gqi.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: reconst_gqi.py <reconst_gqi.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: reconst_gqi.ipynb <reconst_gqi.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

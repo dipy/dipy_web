@@ -1,0 +1,14 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_simulations_sg_execution_times:
+
+Computation times
+=================
+**00:00.002** total execution time for **examples_built_simulations** files:
+
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_simulations_simulate_multi_tensor.py` (``simulate_multi_tensor.py``) | 00:00.002 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_simulations_simulate_dki.py` (``simulate_dki.py``)                   | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+

@@ -1,0 +1,14 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_contextual_enhancement_sg_execution_times:
+
+Computation times
+=================
+**04:42.495** total execution time for **examples_built_contextual_enhancement** files:
+
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_contextual_enhancement_fiber_to_bundle_coherence.py` (``fiber_to_bundle_coherence.py``) | 04:42.495 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_contextual_enhancement_contextual_enhancement.py` (``contextual_enhancement.py``)       | 00:00.000 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+

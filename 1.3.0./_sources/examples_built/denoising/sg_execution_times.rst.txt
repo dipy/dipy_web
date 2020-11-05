@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_denoising_sg_execution_times:
+
+Computation times
+=================
+**17:39.856** total execution time for **examples_built_denoising** files:
+
++----------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_denoising_denoise_mppca.py` (``denoise_mppca.py``)       | 13:20.149 | 0.0 MB |
++----------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_denoising_denoise_localpca.py` (``denoise_localpca.py``) | 02:54.364 | 0.0 MB |
++----------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_denoising_denoise_gibbs.py` (``denoise_gibbs.py``)       | 01:21.643 | 0.0 MB |
++----------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_denoising_denoise_nlmeans.py` (``denoise_nlmeans.py``)   | 00:03.701 | 0.0 MB |
++----------------------------------------------------------------------------------------+-----------+--------+
