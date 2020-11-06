@@ -623,8 +623,45 @@ code {
   vertical-align: top; }
 
 /*********
+Features
+**********/
+.row.equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.features-box {
+  background-color: lightgray;
+  border: solid 2px #ff8c00;
+  border-radius: 2em;
+  margin: 1em;
+  padding: 1em 0;
+  height: 90%;
+}
+
+.features-title {
+  text-align: center;
+  color: #ff8c00;
+  font-weight: bold;
+  font-size: 2em;
+
+}
+
+.features-content {
+  text-align: center;
+}
+
+/*********
 Other
 **********/
+#examples > div.section:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: 5em;
+  margin-top: -5em
+}
+
 dl.citation > * > span.brackets, span.fn-backref {
   color: #337ab7;
 }

@@ -71,53 +71,117 @@
 </section>
 
 <section>
-  <div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/preprocessing.png' %}" width= 75%>
-      </a>
+  <div class="container-fluid">
+  <div class="row equal">
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/cli-icon.png' %}" width=25%>
+        <h3 class="features-title">Command-Line Interfaces</h3>
+        <div class="features-content">
+          <p>All Agorithms available via CLI</p>
+          <p>Create your Own</p>
+          <p><a href="documentation/latest/interfaces"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/registration.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/statistical-analysis-icon.png' %}" width=25%>
+        <h3 class="features-title">Statistical Analysis</h3>
+        <div class="features-content">
+          <p>BUAN</p>
+          <p>AFQ</p>
+          <p>K-Fold cross validation</p>
+          <p><a href="documentation/latest/examples_index/#streamline-analysis-and-connectivity"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/reconstruction.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/reconstruction-icon.png' %}" width=25%>
+        <h3 class="features-title">Reconstruction</h3>
+        <div class="features-content">
+          <p>Single Shell: DTI, CSA, SFM, SDT, Q-Ball, CSD, ... </p>
+          <p>Multi-Shell: GQI, DTI, DKI, SHORE, MAPMRI, MSMT-CSD, ...</p>
+          <p><a href="documentation/latest/examples_index/#reconstruction"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/tractography.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/registration-icon.png' %}" width=50%>
+        <h3 class="features-title">Registration</h3>
+        <div class="features-content">
+          <p>Affine Registration</p>
+          <p>Diffeomorphic 2D/3D Registration</p>
+          <p>Streamlines based Registration</p>
+          <p><a href="documentation/latest/examples_index/#registration"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/visualization.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/tractography-icon.png' %}" width=25%>
+        <h3 class="features-title">Tractography</h3>
+        <div class="features-content">
+          <p>Probabilistic Tracking</p>
+          <p>Deterministic Tracking</p>
+          <p>PFT Tracking</p>
+          <p><a href="documentation/latest/examples_index/#fiber-tracking"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/cli.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/datasets-icon.png' %}" width=25%>
+        <h3 class="features-title">Datasets</h3>
+        <div class="features-content">
+          <p>HCP Tractogram</p>
+          <p>CFIN Datasets</p>
+          <p>High resolution DWI</p>
+          <p><a href="documentation/latest/data"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/statistical-analysis.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/denoising-icon.png' %}" width=25%>
+        <h3 class="features-title">Denoising</h3>
+        <div class="features-content">
+          <p>Patch2self</p>
+          <p>Gibbs Unringing</p>
+          <p>LPCA - MPPCA</p>
+          <p>Non Local Means</p>
+          <p><a href="documentation/latest/examples_index/#denoising"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/datasets.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/visualization-icon.png' %}" width=25%>
+        <h3 class="features-title">Visualization</h3>
+        <div class="features-content">
+          <p>ODFs visualization</p>
+          <p>interactive tractogram visualization</p>
+          <p>Advanced UI and Shaders</p>
+          <p><a href="documentation/latest/examples_index/#visualization"> More...</a></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 form-group">
-      <a href="{% url 'tutorials' %}">
-        <img src="{% static 'images/denoising.png' %}" width= 75%>
-      </a>
+    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+      <div class="features-box">
+        <img src="{% static 'images/preprocessing-icon.png' %}" width=25%>
+        <h3 class="features-title">Pre-Processing</h3>
+        <div class="features-content">
+          <p>Brain extraction</p>
+          <p>SNR estimation</p>
+          <p>Reslice Datasets</p>
+          <p><a href="documentation/latest/examples_index/#preprocessing"> More...</a></p>
+        </div>
+      </div>
     </div>
 </div>
+  </div>
 </section>
 
 <section class="bg-gray">
