@@ -55,7 +55,10 @@ coverage.xml
 # Django stuff:
 *.log
 *.sqlite3
+*.old
 settings.py
+staticfiles/
+migrations/
 
 # Sphinx documentation
 docs/build/

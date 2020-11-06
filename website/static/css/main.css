@@ -571,7 +571,7 @@ div.codehilite, .highlight {
     padding-left: 1em; }
 
 code {
-  padding: 0px 4px; }
+  padding: 0px 0px; }
 
 .documentation-parent-links {
   border-bottom: 1px solid #eceaea;
@@ -622,9 +622,91 @@ code {
 .fb_iframe_widget {
   vertical-align: top; }
 
-/*
+/*********
+Features
+**********/
+.row.equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.features-box {
+  background-color: lightgray;
+  border: solid 2px #ff8c00;
+  border-radius: 2em;
+  margin: 1em;
+  padding: 1em 0;
+  height: 90%;
+}
+
+.features-title {
+  text-align: center;
+  color: #ff8c00;
+  font-weight: bold;
+  font-size: 2em;
+
+}
+
+.features-content {
+  text-align: center;
+}
+
+/*********
 Other
-*/
+**********/
+#examples > div.section:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: 5em;
+  margin-top: -5em
+}
+
+dl.citation > * > span.brackets, span.fn-backref {
+  color: #337ab7;
+}
+dl.citation > * > span.brackets::before{
+  content: "[ ";
+}
+
+dl.citation > * > span.brackets::after{
+  content: " ]  ";
+}
+
+dl.citation {
+  display: inline-block;
+}
+
+dl.citation dt {
+  float:left;
+  font-weight:bold;
+  margin-right:10px;
+  width: 20%;
+  padding: 1% 1%;
+  margin-top: 0;
+}
+
+dl.citation dd {
+  float: left;
+  margin-bottom: 20px;
+  width: 70%;
+  padding: 0 1%;
+}
+
+dl.citation dd p {
+  margin: 0px;
+};
+
+div.admonition-example-source-code.admonition {
+  padding: 0 2%;
+  border: 2px solid rgba(46, 168, 209, 0.16);
+  border-left: 4px solid rgba(46, 168, 209, 0.16);
+}
+
+p.admonition-title {
+  text-decoration: underline;
+}
+
 .expand-all{
   color: black;
 }
