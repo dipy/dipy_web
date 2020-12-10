@@ -54,7 +54,7 @@ class AddEditPublicationForm(ModelForm):
 class AddEditCarouselImageForm(ModelForm):
     class Meta:
         model = CarouselImage
-        fields = ['image_url', 'image_caption', 'is_visible',
+        fields = ['image_url', 'image_caption', 'is_visible', 'priority',
                   'image_description', 'target_url']
 
     def __init__(self, *args, **kwargs):

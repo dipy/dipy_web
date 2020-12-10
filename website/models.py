@@ -180,6 +180,12 @@ class CarouselImage(models.Model):
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
     is_visible = models.BooleanField(default=True)
+    priority = models.PositiveSmallIntegerField(default=0,
+                                                help_text="Carousel Images are "
+                                                          "ordered by priority "
+                                                          "level. the highest "
+                                                          "priority is displayed "
+                                                          "first")
 
     def save(self, *args, **kwargs):
         self.modified = timezone.now()
