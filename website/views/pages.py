@@ -21,7 +21,7 @@ def index(request):
     # publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
-    all_carousel = CarouselImage.objects.filter(is_visible=True)
+    all_carousel = CarouselImage.objects.filter(is_visible=True).order_by('-priority')
     all_sponsor = SponsorImage.objects.filter(is_visible=True)
 
 
