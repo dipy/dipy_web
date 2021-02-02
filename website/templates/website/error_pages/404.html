@@ -1,5 +1,5 @@
 {% extends "website/base_template.html" %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block extra_css %}
@@ -18,6 +18,6 @@
 <div class="err">4</div>
 <i class="far fa-question-circle fa-spin"></i>
 <div class="err2">4</div>
-<div class="msg">Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first place?<p>Let's go <a href="{% url 'index' %}">Home</a> and try from there.</p></div>
+<div class="msg">Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first place?<p>Let's go <a href="{% url 'website:index' %}">Home</a> and try from there.</p></div>
 {% endblock %}
 

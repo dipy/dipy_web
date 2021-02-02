@@ -1,122 +1,134 @@
-from django.conf.urls import include, url
-from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.views import logout
-from django.views.generic import RedirectView
+"""Workshop URL Configuration."""
+
+from django.urls import reverse_lazy, path, re_path
+from django.contrib.auth import logout
 from . import views
+
+app_name = 'website'
 
 urlpatterns = [
     # Home Page
-    url(r'^$', views.index, name='index'),
+    path('', views.index, name='index'),
 
     # Section Page
-    url(r'^page/(?P<position_id>.*?)/$', views.page,
-        name='section_page'),
+    re_path(r'^page/(?P<position_id>.*?)/$', views.page,
+            name='section_page'),
 
     # Cite Page for publications
-    url(r'^cite/$', views.cite, name='cite'),
+    path('cite/', views.cite, name='cite'),
 
     # News Post display page
-    url(r'^news/(?P<news_id>.*?)/$', views.news_page, name='news_page'),
+    re_path(r'^news/(?P<news_id>.*?)/$', views.news_page, name='news_page'),
 
     # Honeycomb gallery
-    url(r'^gallery/$', views.honeycomb, name='gallery'),
+    path('gallery/', views.honeycomb, name='gallery'),
 
     # Tutorials page
-    url(r'^tutorials/$', views.tutorials, name='tutorials'),
+    path('tutorials/', views.tutorials, name='tutorials'),
 
     # Support Page
-    url(r'^support/$', views.support, name='support'),
+    path('support/', views.support, name='support'),
 
     # Follow us page for social feeds
-    url(r'^follow/$', views.follow_us, name='follow_us'),
+    path('follow/', views.follow_us, name='follow_us'),
 
     # Contributors page for github stats
-    url(r'^contributors/$', views.contributors, name='contributors'),
+    path('contributors/', views.contributors, name='contributors'),
 
     # Admin Panel Dash Board
-    url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 
     # Admin Panel Login Page
-    url(r'^dashboard/login/?$', views.dashboard_login, name='dashboard_login'),
+    path('dashboard/login/', views.dashboard_login, name='dashboard_login'),
 
     # logout url
-    url(r'^dashboard/logout/$', logout,
-        {'next_page': reverse_lazy('index')}, name='dashboard_logout'),
+    path('dashboard/logout/', logout,
+         {'next_page': reverse_lazy('website:index')}, name='dashboard_logout'),
 
     # Documentation Pages
-    url(r'^documentation/latest/(?P<path>.*?)/$',
-        views.latest_documentation, name='latest_documentation'),
+    re_path(r'^documentation/latest/(?P<path>.*?)/$',
+            views.latest_documentation, name='latest_documentation'),
 
-    url(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
-        views.documentation, name='documentation'),
+    re_path(r'^documentation/(?P<version>.*?)/(?P<path>.*?)/$',
+            views.documentation, name='documentation'),
 
     # Section and Page Management
-    url(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
-        views.edit_website_section, name='edit_website_section'),
-    url(r'^dashboard/sections/add/$',
-        views.add_website_page, name='add_website_page'),
-    url(r'^dashboard/sections/delete/(?P<position_id>.*?)/$',
-        views.delete_website_page, name='delete_website_page'),
-    url(r'^dashboard/sections/(?P<section_type_requested>.*?)/$',
-        views.dashboard_sections, name='dashboard_sections'),
+    re_path(r'^dashboard/sections/edit/(?P<section_type_requested>.*?)/(?P<position_id>.*?)/$',
+            views.edit_website_section, name='edit_website_section'),
+    re_path(r'^dashboard/sections/add/$',
+            views.add_website_page, name='add_website_page'),
+    re_path(r'^dashboard/sections/delete/(?P<position_id>.*?)/$',
+            views.delete_website_page, name='delete_website_page'),
+    re_path(r'^dashboard/sections/(?P<section_type_requested>.*?)/$',
+            views.dashboard_sections, name='dashboard_sections'),
 
     # News Management
-    url(r'^dashboard/news/$', views.dashboard_news, name='dashboard_news'),
-    url(r'^dashboard/news/edit/(?P<news_id>.*?)/$',
-        views.edit_news_post, name='edit_news_post'),
-    url(r'^dashboard/news/add/$', views.add_news_post,
-        name='add_news_post'),
-    url(r'^dashboard/news/delete/(?P<news_id>.*?)/$',
-        views.delete_news_post, name='delete_news_post'),
+    path('dashboard/news/', views.dashboard_news, name='dashboard_news'),
+    re_path(r'^dashboard/news/edit/(?P<news_id>.*?)/$',
+            views.edit_news_post, name='edit_news_post'),
+    re_path(r'^dashboard/news/add/$', views.add_news_post,
+            name='add_news_post'),
+    re_path(r'^dashboard/news/delete/(?P<news_id>.*?)/$',
+            views.delete_news_post, name='delete_news_post'),
 
     # Publication Management
-    url(r'^dashboard/publications/$', views.dashboard_publications,
-        name='dashboard_publications'),
-    url(r'^dashboard/publications/edit/(?P<publication_id>.*?)/$',
-        views.edit_publication, name='edit_publication'),
-    url(r'^dashboard/publications/add/(?P<method>.*?)/$',
-        views.add_publication, name='add_publication'),
-    url(r'^dashboard/publications/delete/(?P<publication_id>.*?)/$',
-        views.delete_publication, name='delete_publication'),
-    url(r'^dashboard/publications/highlight/$',
-        views.highlight_publications, name='highlight_publications'),
+    path('dashboard/publications/', views.dashboard_publications,
+         name='dashboard_publications'),
+    re_path(r'^dashboard/publications/edit/(?P<publication_id>.*?)/$',
+            views.edit_publication, name='edit_publication'),
+    re_path(r'^dashboard/publications/add/(?P<method>.*?)/$',
+            views.add_publication, name='add_publication'),
+    re_path(r'^dashboard/publications/delete/(?P<publication_id>.*?)/$',
+            views.delete_publication, name='delete_publication'),
+    path('dashboard/publications/highlight/',
+         views.highlight_publications, name='highlight_publications'),
 
     # Carousel Management
-    url(r'^dashboard/carousel/$', views.dashboard_carousel,
-        name='dashboard_carousel'),
-    url(r'^dashboard/carousel/edit/(?P<carousel_image_id>.*?)/$',
-        views.edit_carousel_image, name='edit_carousel_image'),
-    url(r'^dashboard/carousel/add/$', views.add_carousel_image,
-        name='add_carousel_image'),
-    url(r'^dashboard/carousel/delete/(?P<carousel_image_id>.*?)/$',
-        views.delete_carousel_image, name='delete_carousel_image'),
+    path('dashboard/carousel/', views.dashboard_carousel,
+         name='dashboard_carousel'),
+    re_path(r'^dashboard/carousel/edit/(?P<carousel_image_id>.*?)/$',
+            views.edit_carousel_image, name='edit_carousel_image'),
+    path('dashboard/carousel/add/', views.add_carousel_image,
+         name='add_carousel_image'),
+    re_path(r'^dashboard/carousel/delete/(?P<carousel_image_id>.*?)/$',
+            views.delete_carousel_image, name='delete_carousel_image'),
 
     # sponsor Management
-    url(r'^dashboard/sponsor/$', views.dashboard_sponsor,
-        name='dashboard_sponsor'),
-    url(r'^dashboard/sponsor/edit/(?P<sponsor_image_id>.*?)/$',
-        views.edit_sponsor_image, name='edit_sponsor_image'),
-    url(r'^dashboard/sponsor/add/$', views.add_sponsor_image,
-        name='add_sponsor_image'),
-    url(r'^dashboard/sponsor/delete/(?P<sponsor_image_id>.*?)/$',
-        views.delete_sponsor_image, name='delete_sponsor_image'),
+    path('dashboard/sponsor/', views.dashboard_sponsor,
+         name='dashboard_sponsor'),
+    re_path(r'^dashboard/sponsor/edit/(?P<sponsor_image_id>.*?)/$',
+            views.edit_sponsor_image, name='edit_sponsor_image'),
+    path('dashboard/sponsor/add/', views.add_sponsor_image,
+         name='add_sponsor_image'),
+    re_path(r'^dashboard/sponsor/delete/(?P<sponsor_image_id>.*?)/$',
+            views.delete_sponsor_image, name='delete_sponsor_image'),
 
     # Documentation Management
-    url(r'^dashboard/documentation/$', views.dashboard_documentation,
-        name='dashboard_documentation'),
-    url(r'^dashboard/documentation/start_update/$',
-        views.start_update_documentation,
-        name='update_documentation'),
-    url(r'^dashboard/documentation/check_update/(?P<ids>.*?)/$',
-        views.check_update_documentation,
-        name='check_update_documentation'),
+    path('dashboard/documentation/', views.dashboard_documentation,
+         name='dashboard_documentation'),
+    path('dashboard/documentation/start_update/',
+         views.start_update_documentation,
+         name='update_documentation'),
+    re_path(r'^dashboard/documentation/check_update/(?P<ids>.*?)/$',
+            views.check_update_documentation,
+            name='check_update_documentation'),
+
+    # Worskhop Management
+    path('dashboard/workshops/', views.dashboard_workshops,
+         name='dashboard_workshops'),
+    path('dashboard/workshops/add/', views.add_workshop,
+         name='add_workshop'),
+    re_path(r'^dashboard/workshops/edit/(?P<workshop_id>.*?)/$',
+            views.edit_workshop, name='edit_workshop'),
+    re_path(r'^dashboard/workshops/delete/(?P<workshop_id>.*?)/$',
+            views.delete_workshop, name='delete_workshop'),
 
     # Redirect some Pages
-    url(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
-    url(r'^(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^examples_built/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^examples_index/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^api_changes/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^release_notes/(?P<path>.*?)/$', views.redirect_old_url),
+    re_path(r'^(?P<path>.*?)/$', views.redirect_old_url),
 ]

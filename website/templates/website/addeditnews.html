@@ -1,5 +1,5 @@
 {% extends "website/dashboard_template.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block extra_css %}
 <!-- Include simplemde markdown editor css-->
@@ -28,7 +28,7 @@
     <br />
     <div class="col-lg-offset-4 col-lg-4 form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
-        <a href="{% url 'dashboard_news' %}"> Cancel </a>
+        <a href="{% url 'website:dashboard_news' %}"> Cancel </a>
     </div>
 </form>
 {% endif %}

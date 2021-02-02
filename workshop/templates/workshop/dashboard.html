@@ -1,0 +1,39 @@
+{% extends "workshop/dashboard_template.html" %}
+{% load customfilters %}
+{% block dashboard_content_body %}
+
+<h3 class="text-center">Edit Website {% if type == "page" %} Pages{% else %} Sections {% endif %}</h3>
+{% if type == "page" %}
+<div class="text-center">
+	<a href="{% url 'website:add_website_page' %}"><div class="btn btn-success">Add Page</div></a>
+</div>
+{% endif %}
+
+{% for section in sections %}
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<hr>
+	<h3><strong>Title : </strong>{{section}}</h3>
+	{{ section.body_markdown|truncatechars:400|markdown_to_html|youtube_embed_url|safe }}
+	<hr>
+	<a href="{% url 'website:edit_website_section' section_type_requested=section.section_type position_id=section.website_position_id %} "><div class="btn btn-primary">Edit</div></a>
+	{% if type == "page" %}
+	<a class="pageDeleteLink" href="{% url 'website:delete_website_page' position_id=section.website_position_id%}"><div class="btn btn-primary">Delete</div></a>
+	{% endif %}
+	<hr>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block extra_js_bottom %}
+<!-- Script to show confirmation box before deleting -->
+<script>
+	$( ".pageDeleteLink" ).click(function( event ) {
+		event.preventDefault();
+		var r = confirm("Are you sure you want to delete the page?");
+		if (r == true) {
+			window.location.href = $(this).attr('href');
+		}
+	});
+</script>
+{% endblock %}
+

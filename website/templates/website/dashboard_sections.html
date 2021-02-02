@@ -5,7 +5,7 @@
 <h3 class="text-center">Edit Website {% if type == "page" %} Pages{% else %} Sections {% endif %}</h3>
 {% if type == "page" %}
 <div class="text-center">
-	<a href="{% url 'add_website_page' %}"><div class="btn btn-success">Add Page</div></a>
+	<a href="{% url 'website:add_website_page' %}"><div class="btn btn-success">Add Page</div></a>
 </div>
 {% endif %}
 
@@ -15,9 +15,9 @@
 	<h3><strong>Title : </strong>{{section}}</h3>
 	{{ section.body_markdown|truncatechars:400|markdown_to_html|youtube_embed_url|safe }}
 	<hr>
-	<a href="{% url 'edit_website_section' section_type_requested=section.section_type position_id=section.website_position_id %} "><div class="btn btn-primary">Edit</div></a>
+	<a href="{% url 'website:edit_website_section' section_type_requested=section.section_type position_id=section.website_position_id %} "><div class="btn btn-primary">Edit</div></a>
 	{% if type == "page" %}
-	<a class="pageDeleteLink" href="{% url 'delete_website_page' position_id=section.website_position_id%}"><div class="btn btn-primary">Delete</div></a>
+	<a class="pageDeleteLink" href="{% url 'website:delete_website_page' position_id=section.website_position_id%}"><div class="btn btn-primary">Delete</div></a>
 	{% endif %}
 	<hr>
 </div>

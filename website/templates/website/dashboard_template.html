@@ -1,5 +1,5 @@
 {% extends "website/base_template.html" %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block nav %}
@@ -27,14 +27,14 @@
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
-                            <li><a href="{% url 'dashboard_sections' section_type_requested='fixed' %}" >Sections</a></li>
-                            <li><a href="{% url 'dashboard_sections' section_type_requested='page' %}" >Pages</a></li>
-                            <li><a href="{% url 'dashboard_news' %}" >News</a></li>
-                            <li><a href="{% url 'dashboard_publications' %}" >Publications</a></li>
-                            <li><a href="{% url 'dashboard_carousel' %}" >Carousel</a></li>
-                            <li><a href="{% url 'dashboard_sponsor' %}" >Sponsor</a></li>
-                            <li><a href="{% url 'dashboard_documentation' %}" >Documentation</a></li>
-                            <li><a href="{% url 'dashboard_logout' %}" >Logout</a></li>
+                            <li><a href="{% url 'website:dashboard_sections' section_type_requested='fixed' %}" >Sections</a></li>
+                            <li><a href="{% url 'website:dashboard_sections' section_type_requested='page' %}" >Pages</a></li>
+                            <li><a href="{% url 'website:dashboard_news' %}" >News</a></li>
+                            <li><a href="{% url 'website:dashboard_publications' %}" >Publications</a></li>
+                            <li><a href="{% url 'website:dashboard_carousel' %}" >Carousel</a></li>
+                            <li><a href="{% url 'website:dashboard_sponsor' %}" >Sponsor</a></li>
+                            <li><a href="{% url 'website:dashboard_documentation' %}" >Documentation</a></li>
+                            <li><a href="{% url 'website:dashboard_logout' %}" >Logout</a></li>
                         </ul>
                 </div>
                 <div class="panel-body">

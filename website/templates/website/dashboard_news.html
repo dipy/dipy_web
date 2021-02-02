@@ -8,7 +8,7 @@
 <h3 class="text-center">Add / Edit News</h3>
 
 <div class="text-center">
-	<a href="{% url 'add_news_post' %}"><div class="btn btn-success">Add News</div></a>
+	<a href="{% url 'website:add_news_post' %}"><div class="btn btn-success">Add News</div></a>
 </div>
 
 {% for post in all_news_posts %}
@@ -16,7 +16,7 @@
 	<hr>
 	<p class="text-center"> {{post}}</p><br>
 	<p>{{post.body_html|safe}}</p>
-	<a href="{% url 'edit_news_post' news_id=post.id %}"><span class="btn btn-primary">Edit</span></a> | <a class="newsDeleteLink btn btn-primary" href="{% url 'delete_news_post' news_id=post.id %}"><span>Delete</span></a>
+	<a href="{% url 'website:edit_news_post' news_id=post.id %}"><span class="btn btn-primary">Edit</span></a> | <a class="newsDeleteLink btn btn-primary" href="{% url 'website:delete_news_post' news_id=post.id %}"><span>Delete</span></a>
 	<hr>
 </div>
 {% endfor %}

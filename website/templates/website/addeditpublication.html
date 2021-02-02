@@ -1,5 +1,5 @@
 {% extends "website/dashboard_template.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block dashboard_content_body %}
     <h1 class="text-center">Add Publication manually</h1>
@@ -22,7 +22,7 @@
     <br />
     <div class="col-lg-offset-4 col-lg-4 form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
-        <a href="{% url 'dashboard_publications' %}"> Cancel </a>
+        <a href="{% url 'website:dashboard_publications' %}"> Cancel </a>
     </div>
 </form>
 {% endif %}

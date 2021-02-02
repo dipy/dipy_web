@@ -14,7 +14,7 @@ from .tools import get_meta_tags_dict, get_last_release
 
 def latest_documentation(request, path):
     latest_version = get_last_release()
-    return redirect('documentation', version=latest_version, path=path)
+    return redirect('website:documentation', version=latest_version, path=path)
 
 
 @cache_page(60 * 30)  # cache the view for 30 minutes
