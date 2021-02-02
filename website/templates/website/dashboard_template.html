@@ -27,6 +27,7 @@
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
+                            <li><a href="{% url 'website:dashboard' %}" >Home</a></li>
                             <li><a href="{% url 'website:dashboard_sections' section_type_requested='fixed' %}" >Sections</a></li>
                             <li><a href="{% url 'website:dashboard_sections' section_type_requested='page' %}" >Pages</a></li>
                             <li><a href="{% url 'website:dashboard_news' %}" >News</a></li>
@@ -34,6 +35,7 @@
                             <li><a href="{% url 'website:dashboard_carousel' %}" >Carousel</a></li>
                             <li><a href="{% url 'website:dashboard_sponsor' %}" >Sponsor</a></li>
                             <li><a href="{% url 'website:dashboard_documentation' %}" >Documentation</a></li>
+                            <li><a href="{% url 'website:dashboard_workshops' %}" >Workshops</a></li>
                             <li><a href="{% url 'website:dashboard_logout' %}" >Logout</a></li>
                         </ul>
                 </div>

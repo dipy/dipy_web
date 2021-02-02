@@ -16,7 +16,7 @@ from workshop.models import Workshop
 @github_permission_required
 def dashboard_workshops(request):
     all_workshops = Workshop.objects.all()
-    context = {'all_workshop': all_workshops}
+    context = {'all_workshops': all_workshops}
     return render(request, 'website/dashboard_workshops.html', context)
 
 
