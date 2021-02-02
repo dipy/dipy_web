@@ -2,7 +2,8 @@
 
 __all__ = ['index', 'page', 'cite', 'honeycomb', 'tutorials', 'support',
            'follow_us', 'news_page', 'contributors', 'dashboard',
-           'dashboard_login', 'custom404', 'custom500', 'redirect_old_url']
+           'dashboard_login', 'custom403', 'custom404', 'custom500',
+           'redirect_old_url']
 
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -10,6 +11,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_page
 
 from .tools import *
+from .decorator import github_permission_required
 from website.models import *
 
 
@@ -134,6 +136,7 @@ def contributors(request):
 
 
 @login_required
+@github_permission_required
 def dashboard(request):
     context = {}
     context['workshop_years'] = [2021, 2020, 2019]
@@ -150,6 +153,13 @@ def dashboard_login(request):
     return render(request, 'website/dashboard_login.html', context)
 
 
+def custom403(request, exception):
+    context = {}
+    context['workshop_years'] = [2021, 2020, 2019]
+    context['meta'] = get_meta_tags_dict(title="DIPY - 403 Page Not Found")
+    return render(request, 'website/error_pages/403.html', context, status=400)
+
+
 def custom404(request, exception):
     context = {}
     context['workshop_years'] = [2021, 2020, 2019]
@@ -161,7 +171,7 @@ def custom500(request):
     context = {}
     context['workshop_years'] = [2021, 2020, 2019]
     context['meta'] = get_meta_tags_dict(title="DIPY - 500 Error Occured")
-    return render(request, 'website/error_pages/404.html', context, status=400)
+    return render(request, 'website/error_pages/500.html', context, status=500)
 
 
 def redirect_old_url(request, path):

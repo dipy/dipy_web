@@ -4,7 +4,7 @@
 
 {% block extra_css %}
 <link href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="{% static "css/styles404.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles404.css' %}">
 {% endblock %}
 
 
@@ -15,14 +15,16 @@
 
 {% block content_body %}
 <div class="content-card">
+
     <div class="row"><div class="col-md-3 col-md-offset-4">
         <span class="err">4</span>
         <i class="far fa-question-circle fa-spin"></i>
-        <span class="err2">4</span>
+        <span class="err2">3</span>
     </div></div>
     <div class="col-12 msg">
-        <p>Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first place?</p>
-        <p>Let's go <a href="{% url 'website:index' %}">Home</a> and try from there.</p>
+        <p><strong>Forbidden.</strong></p>
+        <p>If you are part of DIPY CORE TEAM, you should request access to this space.</p>
+        <p>Return <a href="{% url 'website:index' %}">Home</a></p>
     </div>
 </div>
 {% endblock %}
