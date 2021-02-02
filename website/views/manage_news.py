@@ -23,7 +23,7 @@ def dashboard_news(request):
 @login_required
 @github_permission_required
 def add_news_post(request):
-    context = {}
+    context = {'title': 'Add'}
     if request.method == 'POST':
         submitted_form = AddEditNewsPostForm(request.POST)
         if submitted_form.is_valid():
@@ -46,7 +46,7 @@ def edit_news_post(request, news_id):
     except Exception:
         raise Http404("Website Section does not exist")
 
-    context = {}
+    context = {'title': 'Edit'}
     if request.method == 'POST':
         submitted_form = AddEditNewsPostForm(request.POST,
                                              instance=news_post)

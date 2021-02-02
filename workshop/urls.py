@@ -8,5 +8,5 @@ app_name = 'workshop'
 urlpatterns = [
     # Home Page
     path('<int:year>', views.index, name='index'),
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('eventspace/', views.eventspace, name='eventspace'),
 ]

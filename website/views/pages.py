@@ -1,3 +1,9 @@
+"""Main pages Management."""
+
+__all__ = ['index', 'page', 'cite', 'honeycomb', 'tutorials', 'support',
+           'follow_us', 'news_page', 'contributors', 'dashboard',
+           'dashboard_login', 'custom404', 'custom500', 'redirect_old_url']
+
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, redirect
@@ -14,16 +20,16 @@ def index(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     intro = eval(doc[0].intro) if doc else []
+
+    home_description, announcements, highlights = '', '', ''
     if len(intro) == 3:
         home_description, announcements, highlights = intro[0], intro[1], intro[2]
-    else:
-        home_description, announcements, highlights = '', '', ''
+
     # publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
     all_carousel = CarouselImage.objects.filter(is_visible=True).order_by('-priority')
     all_sponsor = SponsorImage.objects.filter(is_visible=True)
-
 
     context['home_description'] = home_description
     context['announcements'] = announcements

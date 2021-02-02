@@ -2,9 +2,10 @@
 {% load static %}
 
 {% block dashboard_content_body %}
-    <h1 class="text-center">{{title}} Publication manually</h1>
-<hr>
+
 {% if form %}
+    <h1 class="text-center">{{title}} Workshop</h1>
+<hr>
 <form action="." method="post">
     {% csrf_token %}
         {% for field in form %}
@@ -22,9 +23,10 @@
     <br />
     <div class="col-lg-offset-4 col-lg-4 form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
-        <a href="{% url 'website:dashboard_publications' %}"> Cancel </a>
+        <a href="{% url 'website:dashboard_workshops' %}"> Cancel </a>
     </div>
 </form>
 {% endif %}
+
 
 {% endblock %}

@@ -1,11 +1,17 @@
+"""Workshop Model definitions."""
+
+__all__ = ['Speakers', 'Workshop', 'Pricing', ]
+
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
+from django.utils import timezone
 
 
 class Speakers(models.Model):
     fullname = models.CharField(max_length=300)
-    department = models.CharField(max_length=300)
-    university = models.CharField(max_length=300)
+    title = models.CharField(max_length=300)
+    affiliation = models.CharField(max_length=300)
     avatar = models.ImageField(upload_to='speaker_images/', blank=True,
                                null=True)
 
@@ -24,22 +30,38 @@ class Speakers(models.Model):
             return "{0}{1}/{2}".format(settings.STATIC_URL, 'images', 'user-1633250_640.png')
 
 
+# TODO:
+# Add Grant Model
+# Add Location/address Model
 class Workshop(models.Model):
     code_name = models.CharField(max_length=200)
-    start_date = models.DateTimeField(editable=True)
-    end_date = models.DateTimeField(editable=True)
-    registration_start_date = models.DateTimeField(editable=True)
-    registration_end_date = models.DateTimeField(editable=True)
-    speakers = models.ManyToManyField(Speakers, related_name="workshops")
-    body_markdown = models.TextField()
-    body_html = models.TextField(editable=False)
-    description = models.CharField(max_length=140)
+    start_date = models.DateTimeField(editable=True, default=timezone.now)
+    end_date = models.DateTimeField(editable=True, default=timezone.now)
+    registration_start_date = models.DateTimeField(editable=True,
+                                                   default=timezone.now)
+    registration_end_date = models.DateTimeField(editable=True,
+                                                 default=timezone.now)
+    speakers = models.ManyToManyField(Speakers, related_name="workshops",
+                                      blank=True)
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
-    is_online = models.BooleanField(default=True)
+    is_in_person = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
 
-    # def __str__(self):
-    #     return f'DIPY WORKSHOP {self.year}'
+    @property
+    def year(self):
+        return self.end_date.year
+
+    def __str__(self):
+        return f'DIPY WORKSHOP {self.year}'
+
+    def save(self, *args, **kwargs):
+        self.modified = timezone.now()
+        # clear the cache
+        cache.clear()
+
+        # Call the "real" save() method.
+        super(Workshop, self).save(*args, **kwargs)
 
 
 class Pricing(models.Model):

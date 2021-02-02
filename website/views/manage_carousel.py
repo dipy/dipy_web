@@ -48,7 +48,7 @@ def add_carousel_image(request):
 
 
 def _add_image(request, model_form, path, template):
-    context = {}
+    context = {'title': 'Add'}
     if request.method == 'POST':
         submitted_form = model_form(request.POST)
         if submitted_form.is_valid():
@@ -85,7 +85,7 @@ def _edit_image(request, carousel_image_id, model, model_form, path, template):
     except Exception:
         raise Http404("Website Section does not exist")
 
-    context = {}
+    context = {'title': 'Edit'}
     if request.method == 'POST':
         submitted_form = model_form(request.POST, instance=carousel_image)
         if submitted_form.is_valid():

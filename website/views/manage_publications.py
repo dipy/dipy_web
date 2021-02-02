@@ -25,7 +25,7 @@ def dashboard_publications(request):
 @github_permission_required
 def add_publication(request, method):
     if(method == "manual"):
-        context = {}
+        context = {'title': 'Add'}
         if request.method == 'POST':
             submitted_form = AddEditPublicationForm(request.POST)
             if submitted_form.is_valid():
@@ -110,7 +110,7 @@ def edit_publication(request, publication_id):
     except Exception:
         raise Http404("Publication does not exist")
 
-    context = {}
+    context = {'title': 'Edit'}
     if request.method == 'POST':
         submitted_form = AddEditPublicationForm(request.POST,
                                                 instance=publication)

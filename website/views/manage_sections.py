@@ -37,7 +37,7 @@ def edit_website_section(request, section_type_requested, position_id):
     if(section.section_type != section_type_requested):
         raise Http404("Section does not exist")
 
-    context = {}
+    context = {'title': 'Edit'}
     if request.method == 'POST':
         if(section_type_requested == "page"):
             submitted_form = AddEditPageSectionForm(request.POST,
@@ -71,7 +71,7 @@ def edit_website_section(request, section_type_requested, position_id):
 @login_required
 @github_permission_required
 def add_website_page(request):
-    context = {}
+    context = {'title': 'Add'}
     if request.method == 'POST':
         submitted_form = AddEditPageSectionForm(request.POST)
         if submitted_form.is_valid():

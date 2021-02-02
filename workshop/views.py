@@ -12,6 +12,6 @@ def index(request, year):
     return render(request, 'workshop/index.html', context)
 
 
-def dashboard(request):
+def eventspace(request):
     context = {}
-    return render(request, 'workshop/dashboard.html', context)
+    return render(request, 'workshop/eventspace.html', context)
