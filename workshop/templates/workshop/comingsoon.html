@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>DIPY WORKSHOP {{workshop.year}}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8">
+	<meta name="author" content="Serge Koudoro" />
+    <meta name="description" content="DIPY Workshop {{workshop_year}} Bloomington" />
+    <meta name="keywords"  content="Workshop, neuroimaging, dti, diffusion imaging" />
+    <meta name="Resource-type" content="Document" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<!--  -->
+	<div class="simpleslide100">
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/buan.png');background-size: auto;"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/patch2self_1.png');"></div>
+		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/dipy_odf_vs_2018-10-03.png');"></div> -->
+		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/patch2self.gif');background-size: auto;"></div> -->
+		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/CST.png');"></div> -->
+		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/mtms-csd.png');"></div> -->
+	</div>
+
+	<div class="size1 overlay1">
+		<!--  -->
+		<div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+			<h3 class="l1-txt1 txt-center p-b-5">DIPY WORKSHOP  {{workshop.year}}</h3>
+			<h5 class="m2-txt4 txt-right p-b-25"> {{workshop.codename|title}} Edition</h5>
+			<p class="m2-txt3">15th - 19th March 2021</p>
+			<p class="m2-txt1 txt-center p-b-48">Bloomington - Indiana</p>
+
+			<small class="m2-txt1 txt-center p-b-25"> <b class="m2-txt2">Registration</b> will open in</small>
+			<div class="flex-w flex-c-m cd100 p-b-33">
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 days">0</span>
+					<span class="s2-txt1">Days</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 hours">0</span>
+					<span class="s2-txt1">Hours</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 minutes">0</span>
+					<span class="s2-txt1">Minutes</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 seconds">0</span>
+					<span class="s2-txt1">Seconds</span>
+				</div>
+			</div>
+
+			<button class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1" onclick="window.location.href='https://mail.python.org/mailman3/lists/dipy.python.org/'">Keep me Updated</button>
+			<p class="s2-txt3 txt-center p-t-48">
+				DIPY Workshop {{workshop.year}} is supported by NIH/NIBIB (1R01EB027585) and Indiana University
+			</p>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'workshop/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/countdowntime/moment.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/countdowntime.js' %}"></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: {{ workshop.registration_start_date.year }},
+			endtimeMonth: {{ workshop.registration_start_date.month }},
+			endtimeDate: {{ workshop.registration_start_date.day }},
+			endtimeHours: {{ workshop.registration_start_date.hour }},
+			endtimeMinutes: {{ workshop.registration_start_date.minute }},
+			endtimeSeconds: {{ workshop.registration_start_date.second }},
+			timeZone: "America/Indiana/Indianapolis"
+			// ex:  timeZone: "America/New_York"
+			//go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+<script src="{% static 'workshop/js/main.js' %}"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148819013-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-148819013-2');
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ from .models import *
 class AddEditWorkshopForm(ModelForm):
     class Meta:
         model = Workshop
-        fields = ['code_name', 'start_date', 'end_date',
+        fields = ['codename', 'start_date', 'end_date',
                   'registration_start_date', 'registration_end_date',
                   'speakers', 'is_in_person', 'is_published']
 

@@ -34,7 +34,7 @@ class Speakers(models.Model):
 # Add Grant Model
 # Add Location/address Model
 class Workshop(models.Model):
-    code_name = models.CharField(max_length=200)
+    codename = models.CharField(max_length=200)
     start_date = models.DateTimeField(editable=True, default=timezone.now)
     end_date = models.DateTimeField(editable=True, default=timezone.now)
     registration_start_date = models.DateTimeField(editable=True,

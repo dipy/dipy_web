@@ -13,6 +13,7 @@ from django.views.decorators.cache import cache_page
 from .tools import *
 from .decorator import github_permission_required
 from website.models import *
+from workshop.models import Workshop
 
 
 # Definition of views:
@@ -32,6 +33,7 @@ def index(request):
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
     all_carousel = CarouselImage.objects.filter(is_visible=True).order_by('-priority')
     all_sponsor = SponsorImage.objects.filter(is_visible=True)
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
 
     context['home_description'] = home_description
     context['announcements'] = announcements
@@ -41,7 +43,7 @@ def index(request):
     context['highlighted_publications'] = highlighted_publications
     context['all_carousel'] = all_carousel
     context['all_sponsor'] = all_sponsor
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
     context['meta'] = get_meta_tags_dict()
@@ -55,8 +57,9 @@ def page(request, position_id):
     if not section:
         raise Http404("Page does not exist")
 
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context['section'] = section
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     page_title = "DIPY - %s" % (section.title,)
     context['meta'] = get_meta_tags_dict(title=page_title)
     return render(request, 'website/section_page.html', context)
@@ -65,20 +68,22 @@ def page(request, position_id):
 def cite(request):
     context = {}
     all_publications = Publication.objects.all()
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context['all_publications'] = all_publications
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - Publications")
     return render(request, 'website/cite.html', context)
 
 #Temporary disable the cache
 # @cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     # import ipdb; ipdb.set_trace()
     context['all_documentation_examples'] = eval(doc[0].gallery) if doc else []  # get_doc_examples_images()
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
@@ -86,25 +91,28 @@ def honeycomb(request):
 # Temporary disable the cache
 # @cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     context['all_documentation_examples'] = eval(doc[0].tutorials) if doc else []  # get_doc_examples()
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
     return render(request, 'website/tutorials.html', context)
 
 
 def support(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - Support")
     return render(request, 'website/support.html', context)
 
 #Temporary disable the cache
 # @cache_page(60 * 5)  # cache the view for 5 minutes
 def follow_us(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['latest_news'] = get_latest_news_posts(5)
     context['fb_posts'] = get_facebook_page_feed("diffusionimaginginpython", 5)
     context['tweets'] = get_twitter_feed('dipymri', 5)
@@ -119,8 +127,9 @@ def news_page(request, news_id):
         news_post = NewsPost.objects.get(id=news_id)
     except ObjectDoesNotExist:
         raise Http404("News Post does not exist")
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context['news_post'] = news_post
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     news_title = news_post.title
     meta_title = "DIPY - %s" % (news_title, )
     context['meta'] = get_meta_tags_dict(title=meta_title,
@@ -130,24 +139,28 @@ def news_page(request, news_id):
 #Temporary disable the cache
 # @cache_page(60 * 30)  # cache the view for 30 minutes
 def contributors(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     return render(request, 'website/contributors.html', context)
 
 
 @login_required
 @github_permission_required
 def dashboard(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict()
     return render(request, 'website/dashboard.html', context)
 
 
 def dashboard_login(request):
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     context = {}
     next_url = request.GET.get('next')
-    context['workshop_years'] = [2021, 2020, 2019]
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
+    context['all_workshops'] = all_workshops
     context['next'] = next_url
     context['meta'] = get_meta_tags_dict()
     return render(request, 'website/dashboard_login.html', context)
@@ -155,21 +168,24 @@ def dashboard_login(request):
 
 def custom403(request, exception):
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - 403 Page Not Found")
     return render(request, 'website/error_pages/403.html', context, status=400)
 
 
 def custom404(request, exception):
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - 404 Page Not Found")
     return render(request, 'website/error_pages/404.html', context, status=400)
 
 
 def custom500(request):
     context = {}
-    context['workshop_years'] = [2021, 2020, 2019]
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
+    context['all_workshops'] = all_workshops
     context['meta'] = get_meta_tags_dict(title="DIPY - 500 Error Occured")
     return render(request, 'website/error_pages/500.html', context, status=500)
 
