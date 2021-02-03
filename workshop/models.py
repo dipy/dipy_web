@@ -1,6 +1,6 @@
 """Workshop Model definitions."""
 
-__all__ = ['Speakers', 'Workshop', 'Pricing', ]
+__all__ = ['Speaker', 'Workshop', 'Pricing', 'BackgroundImage', ]
 
 from django.conf import settings
 from django.core.cache import cache
@@ -8,12 +8,60 @@ from django.db import models
 from django.utils import timezone
 
 
-class Speakers(models.Model):
+class BackgroundImage(models.Model):
+    """
+    Model for storing background image in index.html or commingsoon.html.
+    """
+    image = models.ImageField(upload_to='bg_images/', blank=True,
+                              default=f"{settings.STATIC_URL,}workshop/images/dipy_odf_vs_2018-10-03.png")
+    image_caption = models.CharField(max_length=200, default=None,
+                                     help_text="Use for alt_text", blank=False)
+    image_description = models.TextField(blank=True)
+    position = models.PositiveSmallIntegerField(default=0,
+                                                help_text="Background Image "
+                                                        "are ordered by "
+                                                        "position level. the "
+                                                        "lowest priority is "
+                                                        "displayed first")
+
+    created = models.DateTimeField(editable=False, auto_now_add=True)
+    modified = models.DateTimeField(editable=False, auto_now_add=True)
+
+    class Meta:
+        ordering = ['position']
+
+    def save(self, *args, **kwargs):
+        self.modified = timezone.now()
+
+        # clear the cache
+        cache.clear()
+
+        # Call the "real" save() method.
+        super(BackgroundImage, self).save(*args, **kwargs)
+
+    @property
+    def url(self):
+        return self.image.url
+
+    def __str__(self):
+        return self.image_caption
+
+
+class Speaker(models.Model):
     fullname = models.CharField(max_length=300)
     title = models.CharField(max_length=300)
     affiliation = models.CharField(max_length=300)
     avatar = models.ImageField(upload_to='speaker_images/', blank=True,
                                null=True)
+    position = models.PositiveSmallIntegerField(default=0,
+                                                help_text="Speakers are "
+                                                          "ordered by position"
+                                                          " level. the lowest"
+                                                          "priority is "
+                                                          "displayed first")
+
+    class Meta:
+        ordering = ['position']
 
     def __str__(self):
         return self.fullname
@@ -26,8 +74,9 @@ class Speakers(models.Model):
         """
         if self.avatar and hasattr(self.avatar, 'url'):
             return self.avatar.url
-        else:
-            return "{0}{1}/{2}".format(settings.STATIC_URL, 'images', 'user-1633250_640.png')
+
+        return "{0}{1}/{2}".format(settings.STATIC_URL, 'images',
+                                   'user-1633250_640.png')
 
 
 # TODO:
@@ -41,12 +90,18 @@ class Workshop(models.Model):
                                                    default=timezone.now)
     registration_end_date = models.DateTimeField(editable=True,
                                                  default=timezone.now)
-    speakers = models.ManyToManyField(Speakers, related_name="workshops",
+    speakers = models.ManyToManyField(Speaker, related_name="workshops",
                                       blank=True)
+    bg_images = models.ManyToManyField(BackgroundImage,
+                                       related_name="workshops",
+                                       blank=True)
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(editable=False, auto_now_add=True)
     is_in_person = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-start_date']
 
     @property
     def year(self):

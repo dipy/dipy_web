@@ -29,12 +29,14 @@
 
 	<!--  -->
 	<div class="simpleslide100">
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/buan.png');background-size: auto;"></div>
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/patch2self_1.png');"></div>
-		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/dipy_odf_vs_2018-10-03.png');"></div> -->
-		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/patch2self.gif');background-size: auto;"></div> -->
-		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/CST.png');"></div> -->
-		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/mtms-csd.png');"></div> -->
+		{% if workshop.bg_images.all %}
+		{% for bg in workshop.bg_images.all %}
+		<div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
+		{% endfor %}
+		{% else %}
+		<div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+		{% endif %}
 	</div>
 
 	<div class="size1 overlay1">

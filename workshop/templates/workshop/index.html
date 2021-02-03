@@ -52,9 +52,14 @@
 <div id="fullpage">
     <div class="section" id="section_1">
         	<div class="simpleslide100">
-                    <div class="simpleslide100-item bg-img1" style="background-image: url('../images/dipy_odf_vs_2018-10-03.png');"></div>
-                    <div class="simpleslide100-item bg-img1" style="background-image: url('../images/CST.png');"></div>
-                    <div class="simpleslide100-item bg-img1" style="background-image: url('../images/msd_odfs.png');"></div>
+                {% if workshop.bg_images.all %}
+                {% for bg in workshop.bg_images.all %}
+                <div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
+                {% endfor %}
+                {% else %}
+                <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+                <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+                {% endif %}
             </div>
             <div class="size1 overlay1">
                 <!--  -->
@@ -79,65 +84,14 @@
     <div class="section" id="section_2">
         <div class="container p-t-60">
             <div class="row">
+                {% for speaker in workshop.speakers.all %}
                 <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/garyfallidis.jpg" alt="Garyfallidis"
-                            width="140" height="140">
-                    <h3 class="m2-txt4">Eleftherios Garyfallidis</h3>
-                    <p class="color-black">Chair, DIPY Founder & Lead Developer</p>
-                    <p class="color-black">Indiana University</p>
+                    <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="140" height="140">
+                    <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
+                    <p class="color-black">{{speaker.title}}</p>
+                    <p class="color-black">{{speaker.affiliation}}</p>
                 </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/rokem.jpg" alt="rokem"
-                            width="140" height="140">
-                    <h3 class="m2-txt4">Ariel Rokem</h3>
-                    <p class="color-black">Associate DIPY Lead</p>
-                    <p class="color-black">eScience Institute, University of Washington, Seattle</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/descoteaux.jpeg"
-                            alt="Descoteaux" width="140" height="140">
-                    <h3 class="m2-txt4">Maxime Descoteaux</h3>
-		            <p class="color-black">DIPY Scientific Advisor</p>
-                    <p class="color-black">University of Sherbrooke, QC, CA</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/ragini.jpg"
-                            alt="jarek" width="140" height="140">
-                    <h3 class="m2-txt4">Ragini Verma</h3>
-                    <p class="color-black">University of Pennsylvania, Philadelphia</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/jarek.jpeg"
-                            alt="jarek" width="140" height="140">
-                    <h3 class="m2-txt4">Jaroslaw Harezlak</h3>
-		            <p class="color-black">DIPY Advisor on Statistics</p>
-                    <p class="color-black">Indiana University</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/houde.png"
-                            alt="houde" width="140" height="140">
-                    <h3 class="m2-txt4">Jean Christophe Houde</h3>
-                    <p class="color-black">University of Sherbrooke, QC, CA and Imeka, Sherbrooke, QC, CA</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/girard.png"
-                            alt="girard" width="140" height="140">
-                    <h3 class="m2-txt4">Gabriel Girard</h3>
-                    <p class="color-black">Swiss Federal Institute of Technology (EPFL), Lausanne, CH</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/henriques.jpeg"
-                            alt="henriques" width="140" height="140">
-                    <h3 class="m2-txt4">Raphael Neto Henriques</h3>
-                    <p class="color-black">Champalimaud Neuroscience Programme, Champalimaud Centre for the Unknown, PT </p>
-                </div>
-                <div class="col-lg-4 col-sm-6 p-b-50">
-                    <img class="rounded-circle" src="../images/keshavan.jpg"
-                            alt="keshavan" width="140" height="140">
-                    <h3 class="m2-txt4"></h3>
-                    <p class="m2-txt4">Anisha Keshavan</p>
-                    <p class="color-black">eScience Institute, University of Washington, Seattle</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -410,7 +364,7 @@
                     <hr class="bgorange">
                     <i class="fa fa-4x fa-envelope-o"></i>
                     <p class="m2-txt2-dark p-t-20">Contact us for more information by sending an email at <strong>dipy -at- python.org</strong></p>
-                    <p class="m2-txt2-dark p-t-20">or joining our interactive chatroom at <a href="https://gitter.im/nipy/dipy"><strong>https://gitter.im/nipy/dipy</strong></a></p>
+                    <p class="m2-txt2-dark p-t-20">or joining our interactive chatroom at <a href="https://gitter.im/dipy/dipy"><strong>https://gitter.im/dipy/dipy</strong></a></p>
 
                 </div>
             </div>
