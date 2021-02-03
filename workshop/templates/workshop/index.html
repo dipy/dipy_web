@@ -3,14 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <title>DIPY WORKSHOP {{workshop.year}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>DIPY - Workshop</title>
+    <meta charset="UTF-8">
     <meta name="author" content="Serge Koudoro" />
     <meta name="description" content="DIPY Workshop {{workshop_year}} Bloomington" />
     <meta name="keywords"  content="Workshop, neuroimaging, dti, diffusion imaging" />
-    <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
     <meta name="Resource-type" content="Document" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--===============================================================================================-->
@@ -38,12 +39,14 @@
                 <li data-menuanchor="Workshops"><a href="#Workshops">Workshops</a></li>
                 <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
                 <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
+                {% if workshop.is_in_person %}
                 <li data-menuanchor="Lodging"><a href="#Lodging">Lodging</a></li>
                 <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
+                {% endif %}
                 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
             </ul>
         </div>
-        <div class="col-md-1"><img class="" src="../images/iu_trident_web_reverse.png"></div>
+        <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
     </div>
 <div id="fullpage">
@@ -57,46 +60,19 @@
                 <!--  -->
                 <div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
                     <h3 class="l1-txt1 txt-center p-b-5">DIPY WORKSHOP {{workshop_year}}</h3>
-                    <h5 class="m2-txt4 txt-right p-b-25">Titanium Edition</h5>
-                    <p class="m2-txt3">11 - 15th March 2019</p>
+                    <h5 class="m2-txt4 txt-right p-b-25">{{workshop.codename|title}} Edition</h5>
+                    {% if workshop.start_date.year !=  workshop.end_date.year %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS F Y"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% elif workshop.start_date.month !=  workshop.end_date.month %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS F"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% else %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% endif %}
                     <p class="m2-txt1 txt-center p-b-48">Bloomington - Indiana</p>
-
-                    <!-- <small class="m2-txt1 txt-center p-b-25"> <b class="m2-txt2">The workshop</b> starts in</small>
-                    <div class="flex-w flex-c-m cd100 p-b-33">
-                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
-                            <span class="l2-txt1 p-b-9 days">35</span>
-                            <span class="s2-txt1">Days</span>
-                        </div>
-
-                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
-                            <span class="l2-txt1 p-b-9 hours">17</span>
-                            <span class="s2-txt1">Hours</span>
-                        </div>
-
-                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
-                            <span class="l2-txt1 p-b-9 minutes">50</span>
-                            <span class="s2-txt1">Minutes</span>
-                        </div>
-
-                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
-                            <span class="l2-txt1 p-b-9 seconds">39</span>
-                            <span class="s2-txt1">Seconds</span>
-                        </div>
-                    </div> -->
                     <div class="col-lg-4 p-b-25">
                         <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
-                        <!--<form action="https://formspree.io/skoudoro@iu.edu" method="POST" class="w-full flex-w flex-c-m validate-form" >
-
-                            <div class="wrap-input100 validate-input where1" data-validate = "Valid email is required: ex@abc.xyz">
-                                <input class="input100 placeholder0 s2-txt2" type="text" name="email" placeholder="Enter Email Address">
-                                <span class="focus-input100"></span>
-                            </div>
-
-
-                            <input class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1" type="submit" value="Keep me Updated">
-                        </form>-->
                     </div>
-                    <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="../images/go-down.png" style="width: 75%;"></div>
+                    <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>
                 </div>
             </div>
     </div>
@@ -237,6 +213,9 @@
             </div>
         </div>
     </div>
+
+{% if workshop.is_in_person %}
+
     <div class="section" id="section_6">
         <div class="apply-section">
             <div class="container">
@@ -246,7 +225,7 @@
                 </div>
                 <div class="row p-t-20">
 	                <div class="col-12 col-sm-6 p-b-100">
-	                    <img class="rounded-circle" src="../images/IMU.jpg"
+	                    <img class="rounded-circle" src="{% static 'workshop/images/IMU.jpg' %}"
 	                            alt="IMU" width="280" height="280">
 	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union </a></h2>
                         <p class="color-white">900 E 7th St, Bloomington, IN 47405</p>
@@ -267,7 +246,7 @@
 
 	                </div>
 	                <div class="col-12 col-sm-6 p-b-100">
-	                    <img class="rounded-circle" src="../images/graduate.jpg"
+	                    <img class="rounded-circle" src="{% static 'workshop/images/graduate.jpg' %}"
 	                            alt="graduate" width="280" height="280">
 	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Graduate Hotel Bloomington </a></h2>
                         <p class="color-white">210 E Kirkwood Ave, Bloomington, IN 47408</p>
@@ -325,7 +304,7 @@
                             <br/>
                             <div>
                                 <img class="col" alt="500x500" style="width: 300px; height: 150px;"
-                                        src="../images/luddy_hall.jpg">
+                                        src="{% static 'workshop/images/luddy_hall.jpg' %}">
                             </div>
                             <div class="col" style="padding: 2%;font-size: 0.8em;">
                                 <br/>
@@ -420,6 +399,9 @@
             </div>
         </div>
     </div>
+
+{% endif %}
+
     <div class="section" id="section_8">
         <div class="container">
             <div class="row">
@@ -438,10 +420,10 @@
                     <h2>Sponsors</h2>
                     <hr class="bgorange">
                     <div class="row">
-                        <div class="col-6 col-md-3 p-t-40"><img style="width: 98%;" src="../images/NIH_NIBIB_Master_Logo_2Color.jpg"></div>
-                        <div class="col-6 col-md-3"><img style="width: 75%;" src="../images/sice.png"></div>
-                        <div class="col-6 col-md-3 p-t-50"><img style="width: 60%;" src="../images/ise.png"></div>
-                        <div class="col-6 col-md-3 p-t-50"><img style="width: 70%;" src="../images/dipy-logo.png"></div>
+                        <div class="col-6 col-md-3 p-t-40"><img style="width: 98%;" src="{% static 'workshop/images/NIH_NIBIB_Master_Logo_2Color.jpg' %}"></div>
+                        <div class="col-6 col-md-3"><img style="width: 75%;" src="{% static 'workshop/images/sice.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 60%;" src="{% static 'workshop/images/ise.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 70%;" src="{% static 'workshop/images/dipy-logo.png' %}"></div>
                     </div>
 
                 </div>
@@ -470,26 +452,6 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
     <!--===============================================================================================-->
-    <script src="{% static 'workshop/vendor/countdowntime/moment.min.js' %}"></script>
-	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone.min.js' %}"></script>
-	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
-	<script src="{% static 'workshop/vendor/countdowntime/countdowntime.js' %}"></script>
-	<script>
-		$('.cd100').countdown100({
-			/*Set Endtime here*/
-			/*Endtime must be > current time*/
-			endtimeYear: 2019,
-			endtimeMonth: 3,
-			endtimeDate: 11,
-			endtimeHours: 8,
-			endtimeMinutes: 0,
-			endtimeSeconds: 0,
-			timeZone: "America/Indiana/Indianapolis"
-			// ex:  timeZone: "America/New_York"
-			//go to " http://momentjs.com/timezone/ " to get timezone
-		});
-	</script>
-    <!--===============================================================================================-->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
@@ -500,7 +462,9 @@
                 navigation: false,
                 navigationPosition: 'right',
                 continuousVertical: false,
-                anchors: ["Home", "Speakers", "Workshops", "Schedule", "Registration", "Lodging", "Venue", "Contact"],
+                anchors: ["Home", "Speakers", "Workshops", "Schedule", "Registration",
+                          {% if workshop.is_in_person %} "Lodging", "Venue", {% endif %}
+                          "Contact"],
 
                 menu: '#menu-wrap',
 
@@ -539,6 +503,15 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
     <!--===============================================================================================-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148819013-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148819013-2');
+    </script>
 </body>
 </html>
 
