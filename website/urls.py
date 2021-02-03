@@ -1,7 +1,6 @@
 """Workshop URL Configuration."""
 
 from django.urls import reverse_lazy, path, re_path
-from django.contrib.auth import logout
 from . import views
 
 app_name = 'website'
@@ -42,8 +41,7 @@ urlpatterns = [
     path('dashboard/login/', views.dashboard_login, name='dashboard_login'),
 
     # logout url
-    path('dashboard/logout/', logout,
-         {'next_page': reverse_lazy('website:index')}, name='dashboard_logout'),
+    path('dashboard/logout/', views.dashboard_logout, name='dashboard_logout'),
 
     # Documentation Pages
     re_path(r'^documentation/latest/(?P<path>.*?)/$',

@@ -3,9 +3,10 @@
 __all__ = ['index', 'page', 'cite', 'honeycomb', 'tutorials', 'support',
            'follow_us', 'news_page', 'contributors', 'dashboard',
            'dashboard_login', 'custom403', 'custom404', 'custom500',
-           'redirect_old_url']
+           'redirect_old_url', 'dashboard_logout']
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_page
@@ -164,6 +165,11 @@ def dashboard_login(request):
     context['next'] = next_url
     context['meta'] = get_meta_tags_dict()
     return render(request, 'website/dashboard_login.html', context)
+
+
+def dashboard_logout(request):
+    logout(request)
+    return redirect('website:index')
 
 
 def custom403(request, exception):

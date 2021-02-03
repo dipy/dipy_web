@@ -1,7 +1,9 @@
 import re
 
 from django import template
+from django.conf import settings
 import markdown
+from website.views.tools import has_commit_permission
 
 register = template.Library()
 
@@ -25,3 +27,18 @@ def youtube_embed_url(value):
 def markdown_to_html(value):
     processed_str = markdown.markdown(value, extensions=['codehilite'])
     return processed_str
+
+
+@register.filter(name='has_gh_permission')
+def gh_permission(user):
+    try:
+        social = user.social_auth.get(provider='github')
+        access_token = social.extra_data['access_token']
+    except Exception:
+        access_token = ''
+
+    has_permission = has_commit_permission(access_token,
+                                           settings.DOCUMENTATION_REPO_NAME)
+    return has_permission
+
+
