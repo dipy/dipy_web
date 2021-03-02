@@ -1,6 +1,8 @@
 {% load static %}
 {% load customfilters %}
+{% load workshop_tags %}
 
+{% load user_tags %}
 <nav class="navbar navbar-default navbar-fixed-top" id="websiteNavbar"> <!-- id="websiteNavbar"> -->
     <div class="container">
         <div>
@@ -22,17 +24,7 @@
                 <div class="collapse navbar-collapse" id="basic-navbar"> <!-- id="bs-example-navbar-collapse-1"> -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'website:index' %}">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">Workshops<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                {% for w in all_workshops %}
-                                <li><a href="{% url 'workshop:index' workshop_id=w.id %}">{{w.year}}</a></li>
-                                {% endfor %}
-                                <li><a href="{% url 'workshop:index_static' year=2020 %}">2020</a></li>
-                                <li><a href="{% url 'workshop:index_static' year=2019 %}">2019</a></li>
-                            </ul>
-                        </li>
+                        {% show_workshop_menu %}
                         {% for page in pages_in_nav %}
                         <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
                         {% endfor %}
@@ -66,7 +58,7 @@
                         {% if user.is_authenticated %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false"><img alt="" class="img-circle" width="21" height="21" src="{{user.profile.avatar_url}}"></a>
+                               aria-haspopup="true" aria-expanded="false"><img alt="" class="img-circle" width="21" height="21" src="{{user.avatar_url}}"></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'website:contributors' %}">Profile</a></li>
                                 <li><a href="{% url 'website:support' %}">Workshop Courses</a></li>
@@ -77,19 +69,7 @@
                             </ul>
                         </li>
                         {% else %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">Login</a>
-                            <ul class="dropdown-menu">
-                                {% for backend in backends.backends %}
-                                {% if next %}
-                                <li><a href="{% url 'social:begin' backend %}?next={{next}}" itemprop="url"><span itemprop="name"> {{backend}}</span></a></li>
-                                {% else %}
-                                <li><a href="{% url 'social:begin' backend %}?next={% url 'website:dashboard' %}" itemprop="url"><span itemprop="name"> {{backend}}</span></a></li>
-                                {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </li>
+                        <li><a href="{% url 'users:login' %}">Login</a></li>
                         {% endif %}
                     </ul>
                 </div>

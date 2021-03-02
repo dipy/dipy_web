@@ -31,7 +31,8 @@ allowed_attrs = ['href', 'class', 'rel', 'alt', 'class', 'src']
 
 class Profile(models.Model):
     """ Stores additional information about the user """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatar_images/', blank=True,
                                null=True)
 
@@ -50,16 +51,16 @@ class Profile(models.Model):
             return "{0}{1}/{2}".format(settings.STATIC_URL, 'images', 'user-1633250_640.png')
 
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-        instance.profile.save()
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+#         instance.profile.save()
 
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
 
 class WebsiteSection(models.Model):
