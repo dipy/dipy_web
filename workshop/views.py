@@ -15,7 +15,6 @@ def index_static(request, year):
     return render(request, f'workshop/index_{year}.html', {})
 
 
-@login_required
 def index(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
     if not workshop:

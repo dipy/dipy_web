@@ -30,17 +30,17 @@
             {% if pricing.price == 0 %}
             <div class="row omb_row-sm-offset-5 omb_socialButtons">
                 <div class="col-lg-4">
-                    <a href="{# url 'social:begin' 'github' #}?action_type=register&next={# url 'website:index' #}" class="btn btn-lg btn-block omb_btn-github">
+                    <a href="{% url 'social:begin' 'github' %}?action_type=register&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-github">
                         <i class="fa fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-linkedin">
+                    <a href="{% url 'social:begin' 'linkedin-oauth2' %}?action_type=register&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-linkedin">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}?action_type=register&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-google">
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>

@@ -27,12 +27,12 @@
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-linkedin">
+                    <a href="{% url 'social:begin' 'linkedin-oauth2' %}?action_type=login&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-linkedin">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}?action_type=login&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-google">
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>

@@ -45,7 +45,7 @@
 
                 <h3>LinkedIn</h3>
                 {% if linkedin_login %}
-                <p>Connected as <a href="https://linkedin.com/{{ linkedin_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ linkedin_login.extra_data.access_token.screen_name }}</a></p>
+                <p>Connected as <a href="https://linkedin.com/{{ linkedin_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ linkedin_login.extra_data.first_name}}</a></p>
                 {% if can_disconnect %}
                     <form method="post" action="{% url 'social:disconnect' 'linkedin' %}">
                     {% csrf_token %}
@@ -56,7 +56,7 @@
                     <p style="color: red">You must <a href="{% url 'users:password' %}">define a password</a> for your account before disconnecting from LinkedIn.</p>
                 {% endif %}
                 {% else %}
-                <a href="{% url 'social:begin' 'linkedin' %}">Connect to LinkedIn</a>
+                <a href="{% url 'social:begin' 'linkedin-oauth2' %}">Connect to LinkedIn</a>
                 {% endif %}
 
                 <div class="row omb_row-sm-offset-3 omb_loginOr">
@@ -70,7 +70,7 @@
                 {% if google_login %}
                 <p>Connected as <a href="https://google.com/{{ google_login.extra_data.id }}/" target="_blank">{{ google_login.extra_data.id }}</a></p>
                 {% if can_disconnect %}
-                    <form method="post" action="{% url 'social:disconnect' 'google' %}">
+                    <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
                     {% csrf_token %}
                     <button type="submit">Disconnect from Google</button>
                     </form>
@@ -79,7 +79,7 @@
                     <p style="color: red">You must <a href="{% url 'users:password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
                 {% endif %}
                 {% else %}
-                <a href="{% url 'social:begin' 'google' %}">Connect to Google</a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
                 {% endif %}
             </div>
         </div>

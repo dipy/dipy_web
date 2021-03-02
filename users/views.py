@@ -75,12 +75,12 @@ def profile_settings(request):
         github_login = None
 
     try:
-        linkedin_login = user.social_auth.get(provider='linkedin')
+        linkedin_login = user.social_auth.get(provider='linkedin-oauth2')
     except UserSocialAuth.DoesNotExist:
         linkedin_login = None
 
     try:
-        google_login = user.social_auth.get(provider='google')
+        google_login = user.social_auth.get(provider='google-oauth2')
     except UserSocialAuth.DoesNotExist:
         google_login = None
 
