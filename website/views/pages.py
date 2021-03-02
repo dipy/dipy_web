@@ -1,29 +1,38 @@
+"""Main pages Management."""
+
+__all__ = ['index', 'page', 'cite', 'honeycomb', 'tutorials', 'support',
+           'follow_us', 'news_page', 'contributors', 'dashboard',
+           'dashboard_login', 'custom403', 'custom404', 'custom500',
+           'redirect_old_url', 'dashboard_logout']
+
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_page
 
 from .tools import *
+from .decorator import github_permission_required
 from website.models import *
 
 
 # Definition of views:
-#Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+# Temporary disable the cache
+# @cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     intro = eval(doc[0].intro) if doc else []
+
+    home_description, announcements, highlights = '', '', ''
     if len(intro) == 3:
         home_description, announcements, highlights = intro[0], intro[1], intro[2]
-    else:
-        home_description, announcements, highlights = '', '', ''
+
     # publications = get_dipy_publications()
     latest_news = get_latest_news_posts(5)
     highlighted_publications = Publication.objects.all()[:3]  #.filter(is_highlighted=True)
     all_carousel = CarouselImage.objects.filter(is_visible=True).order_by('-priority')
     all_sponsor = SponsorImage.objects.filter(is_visible=True)
-
 
     context['home_description'] = home_description
     context['announcements'] = announcements
@@ -60,7 +69,7 @@ def cite(request):
     return render(request, 'website/cite.html', context)
 
 #Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+# @cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
@@ -72,12 +81,11 @@ def honeycomb(request):
     return render(request, 'website/honeycomb.html', context)
 
 # Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+# @cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
     context['all_documentation_examples'] = eval(doc[0].tutorials) if doc else []  # get_doc_examples()
-
     context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
     return render(request, 'website/tutorials.html', context)
 
@@ -88,7 +96,7 @@ def support(request):
     return render(request, 'website/support.html', context)
 
 #Temporary disable the cache
-@cache_page(60 * 5)  # cache the view for 5 minutes
+# @cache_page(60 * 5)  # cache the view for 5 minutes
 def follow_us(request):
     context = {}
     context['latest_news'] = get_latest_news_posts(5)
@@ -113,13 +121,14 @@ def news_page(request, news_id):
     return render(request, 'website/news.html', context)
 
 #Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+# @cache_page(60 * 30)  # cache the view for 30 minutes
 def contributors(request):
     context = {}
     return render(request, 'website/contributors.html', context)
 
 
 @login_required
+@github_permission_required
 def dashboard(request):
     context = {}
     context['meta'] = get_meta_tags_dict()
@@ -134,7 +143,18 @@ def dashboard_login(request):
     return render(request, 'website/dashboard_login.html', context)
 
 
-def custom404(request):
+def dashboard_logout(request):
+    logout(request)
+    return redirect('website:index')
+
+
+def custom403(request, exception):
+    context = {}
+    context['meta'] = get_meta_tags_dict(title="DIPY - 403 Page Not Found")
+    return render(request, 'website/error_pages/403.html', context, status=400)
+
+
+def custom404(request, exception):
     context = {}
     context['meta'] = get_meta_tags_dict(title="DIPY - 404 Page Not Found")
     return render(request, 'website/error_pages/404.html', context, status=400)
@@ -143,9 +163,9 @@ def custom404(request):
 def custom500(request):
     context = {}
     context['meta'] = get_meta_tags_dict(title="DIPY - 500 Error Occured")
-    return render(request, 'website/error_pages/404.html', context, status=400)
+    return render(request, 'website/error_pages/500.html', context, status=500)
 
 
 def redirect_old_url(request, path):
     new_path = request.path.replace('.html', '')[1:-1]
-    return redirect('latest_documentation', path=new_path)
+    return redirect('website:latest_documentation', path=new_path)

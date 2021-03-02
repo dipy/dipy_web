@@ -1,0 +1,750 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DIPY - Workshop</title>
+    <meta name="author" content="Serge Koudoro" />
+    <meta name="description" content="DIPY Workshop 2020 Bloomington" />
+    <meta name="keywords"  content="Workshop, neuroimaging, dti, diffusion imaging" />
+    <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
+    <meta name="Resource-type" content="Document" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/fullpage/css/jquery.fullpage.css' %}" />
+    <!--========================================Project CSS============================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
+    <!--======================================Custom Fonts=============================================-->
+   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<div id="menu-wrap" class="">
+    <div class="row" style="max-height: 100%;">
+        <div class="col-md-1 hamburger"><a href="javascript:void(0);" class="icon" onclick="openCloseMenu()"><i class="fa fa-bars color-dipy"></i></a></div>
+        <div class="col-md-10" id="menu">
+            <ul>
+                <li data-menuanchor="Home"><a href="#Home">Home</a></li>
+                <li data-menuanchor="Coronavirus"><a href="#Coronavirus">COVID-19</a></li>
+                <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
+                <li data-menuanchor="Workshops"><a href="#Workshops">Workshops</a></li>
+                <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
+                <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
+                <li data-menuanchor="Lodging"><a href="#Lodging">Housing & Travel</a></li>
+                <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
+                <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="col-md-1">
+            <!-- <img class="" width= 30% src="{% static 'images/dipy-favicon.png' %}"> -->
+            <img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}">
+        </div>
+
+    </div>
+    </div>
+<div id="fullpage">
+    <div class="section" id="section_1">
+        	<div class="simpleslide100">
+                    <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshopimages/CST3.png' %});"></div>
+                    <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+                    <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+            </div>
+            <div class="size1 overlay1">
+                <!--  -->
+                <div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+                    <h3 class="l1-txt1 txt-center p-b-5">DIPY WORKSHOP 2020</h3>
+                    <h5 class="m2-txt4 txt-right p-b-25">(COVID-19) Edition</h5>
+                    <p class="m2-txt3">16 - 20th March 2020</p>
+                    <p class="m2-txt1 txt-center p-b-48">Bloomington - Indiana</p>
+
+                    <!-- <small class="m2-txt1 txt-center p-b-25"> <b class="m2-txt2">The workshop</b> starts in</small>
+                    <div class="flex-w flex-c-m cd100 p-b-33">
+                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+                            <span class="l2-txt1 p-b-9 days">35</span>
+                            <span class="s2-txt1">Days</span>
+                        </div>
+
+                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+                            <span class="l2-txt1 p-b-9 hours">17</span>
+                            <span class="s2-txt1">Hours</span>
+                        </div>
+
+                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+                            <span class="l2-txt1 p-b-9 minutes">50</span>
+                            <span class="s2-txt1">Minutes</span>
+                        </div>
+
+                        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+                            <span class="l2-txt1 p-b-9 seconds">39</span>
+                            <span class="s2-txt1">Seconds</span>
+                        </div>
+                    </div> -->
+                    <div class="promo--intro col-9 offset-1">
+                        <h2 class="promo--heading">The DIPY WORKSHOP 2020 is Canceled</h2>
+                        <div class="promo--content">
+                            <p>Due to rapidly escalating health concerns relating to the spread of the coronavirus disease (COVID-19), <span class="color-dipy">DIPY Workshop 2020 in Bloomington, IN, has been canceled.</span></p>
+                        </div>
+                        <p class="p-t-50 p-b-30"><a href="#Coronavirus" role="button" class="btn btn-lg btn-block btn-outline-secondary"><b>Learn More</b></a></p>
+                        <!-- <p><a href="/about/coronavirus" class="btn btn-lg btn--hi-vis">Learn More</a></p> -->
+                    </div>
+
+                    <!--   Registration part
+                    <div class="col-lg-4 p-b-25">
+                        <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
+                        <!--<form action="https://formspree.io/skoudoro@iu.edu" method="POST" class="w-full flex-w flex-c-m validate-form" >
+
+                            <div class="wrap-input100 validate-input where1" data-validate = "Valid email is required: ex@abc.xyz">
+                                <input class="input100 placeholder0 s2-txt2" type="text" name="email" placeholder="Enter Email Address">
+                                <span class="focus-input100"></span>
+                            </div>
+
+
+                            <input class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1" type="submit" value="Keep me Updated">
+                        </form>
+                    </div>
+                    <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>-->
+                </div>
+            </div>
+    </div>
+    <div class="section" id="section_coronavirus">
+        <div class="container p-t-60">
+            <h1 class="m-t-50 m-b-70"><b>Coronavirus(COVID-19) Informations</b></h1>
+            <div class="row">
+                <div class="col-6">
+                    <div class="custom-box">The DIPY WORKSHOP Cancellation</div>
+                    <div class="p-t-20">
+                        <p class="s2-txt2-dark" align="left">It is with <b>deep regret</b> that we are informing you of the <b><span class="color-dipy">cancellation of the DIPY Workshop 2020 in Bloomington, Indiana</span></b>. DIPY Team has been monitoring the spread of the coronavirus disease (COVID-19) constantly. The decision to cancel was based on the latest scientific data being reported, and the fact that some attendees at this meeting are coming from outside the US, including countries where the CDC upgraded its warning to level 3 as recently. Furthermore, the warning level has been upgraded for some US states too.</p>
+                        <br/>
+                        <p class="s2-txt2-dark" align="left">We recognize that the timing of this decision has significantly inconvenienced many of you. However, this decision was made out of deep concern for the health and well-being of our registrants, staff, vendors, the Bloomington community.</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12 p-b-10">
+                        <div class="custom-box">Refund Information</div>
+                        <div class="p-t-20">
+                            <p class="s2-txt2-dark" align="left">We are actively working with our vendors to process refunds for all registration fees. As we learn more about the timing, we will provide you with additional updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 p-t-20">
+                        <div class="custom-box">Resources</div>
+                        <div class="p-t-20">
+                            <ul style="text-align: left;">
+                                <li><a class="s2-txt2-dark" href="https://www.cdc.gov/coronavirus/">1. Center for Disease Control & Prevention</a></li>
+                                <li><a class="s2-txt2-dark" href="https://www.who.int/health-topics/coronavirus">2. World Health Organization (WHO)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section_2">
+        <div class="container p-t-60">
+            <h1 class="m-t-50 m-b-70"><b>SPEAKERS</b></h1>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/garyfallidis.jpg' %}" alt="Garyfallidis"
+                            width="140" height="140">
+                    <h3 class="m2-txt4">Eleftherios Garyfallidis</h3>
+                    <p class="color-black">Chair, DIPY Founder & Lead Developer</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/rokem.jpg' %}" alt="rokem"
+                            width="140" height="140">
+                    <h3 class="m2-txt4">Ariel Rokem</h3>
+                    <p class="color-black">Associate DIPY Lead</p>
+                    <p class="color-black">eScience Institute, University of Washington, Seattle</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/descoteaux.jpeg' %}"
+                            alt="Descoteaux" width="140" height="140">
+                    <h3 class="m2-txt4">Maxime Descoteaux</h3>
+		            <p class="color-black">DIPY Scientific Advisor</p>
+                    <p class="color-black">University of Sherbrooke, QC, CA</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://profiles.stanford.edu/proxy/api/cap/profiles/33929/resources/profilephoto/350x350.1509521754593.jpg"
+                            alt="jarek" width="140" height="140">
+                    <h3 class="m2-txt4">Jennifer A McNab</h3>
+                    <p class="color-black">Department of Radiology, Stanford University, Stanford, California, USA</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/girard.png' %}"
+                            alt="girard" width="140" height="140">
+                    <h3 class="m2-txt4">Gabriel Girard</h3>
+                    <p class="color-black">CIBM & CHUV & EPFL</p>
+                    <p class="color-black">Lausanne, CH</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="http://www.nmr.mgh.harvard.edu/files/images/mr-pig/huang_headshot_100.jpg"
+                            alt="houde" width="140" height="140">
+                    <h3 class="m2-txt4">Susie Yi Huang, </h3>
+                    <p class="color-black">Department of Radiology, Massachusetts General Hospital, Boston, USA</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/jarek.jpeg' %}"
+                            alt="jarek" width="140" height="140">
+                    <h3 class="m2-txt4">Jaroslaw Harezlak</h3>
+		            <p class="color-black">DIPY Advisor on Statistics</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/eduardo_pic.jpg' %}"
+                            alt="Eduardo castro" width="140" height="140">
+                    <h3 class="m2-txt4">Eduardo Castro</h3>
+		            <p class="color-black">Healthcare and Life Sciences Research</p>
+                    <p class="color-black">IBM T.J. Watson Research Center</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/henriques.jpeg' %}"
+                            alt="henriques" width="140" height="140">
+                    <h3 class="m2-txt4">Rafael Neto Henriques</h3>
+                    <p class="color-black">Champalimaud Research</p>
+                    <p class="color-black">Champalimaud Centre for the Unknown, PT </p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://psych.indiana.edu/images/profiles/profiles-768x768/cheng.jpg"
+                            alt="Hu Cheng" width="140" height="140">
+                    <h3 class="m2-txt4">Hu Cheng</h3>
+                    <p class="color-black">Psychological and Brain Sciences</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/moyer.jpg' %}"
+                            alt="Daniel Moyer" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">Daniel Moyer</p>
+                    <p class="color-black">CSAIL, Massachusetts Institute of Technology, MA</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="data:image/jpeg;base64,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"
+                            alt="François Rheault" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">François Rheault</p>
+                    <p class="color-black">University of Sherbrooke Connectivity Imaging Lab</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{% static 'workshop/images/JHLegarreta.jpg' %}"
+                            alt="François Rheault" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">John Haitz Legarreta Gorrono</p>
+                    <p class="color-black">University of Sherbrooke Connectivity Imaging Lab</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://grg.sice.indiana.edu/media/avatar_images/id-sk-photo.png"
+                            alt="Serge Koudoro" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">Serge Koudoro</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://grg.sice.indiana.edu/media/avatar_images/prof_pic.jpg"
+                            alt="Shreyas Fadnavis" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">Shreyas Fadnavis</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://grg.sice.indiana.edu/media/avatar_images/DSC_0055_SvZJMws.JPG"
+                            alt="Bramsh Qamar Chandio" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">Bramsh Qamar Chandio</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="https://grg.sice.indiana.edu/media/avatar_images/Photo.png"
+                            alt="Javier Guaje" width="140" height="140">
+                    <h3 class="m2-txt4"></h3>
+                    <p class="m2-txt4">Javier Guaje</p>
+                    <p class="color-black">Indiana University</p>
+                </div>
+            </div>
+            <!-- <h3 class="m-t-5 m-b-30">More speakers to be announced...</h3> -->
+        </div>
+    </div>
+    <div class="section" id="section_3">
+        <div class="container">
+            <h1 class="m-t-80 m-b-30"><b>TUTORIALS</b></h1>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Diffusion MRI 101</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Fundamental Neuroanatomy</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Macrostructure, 10 Models</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Microstructure, 10 Models</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Tractography on steroids </div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Deep learning for tumor segmentation</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Automated segmentation of tracts</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Process human and animal data</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">DIPY interfaces and API</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Horizon, stunning visualizations</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">First principles of diffusion statistics</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced preprocessing/denoising</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">How to combine multiple modalities </div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced connectivity analysis</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Data harmonization</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Applications of quality transfer</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced tractometry with examples</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Clinical uses in neurosurgery</div></div>
+
+            </div><br\>
+            <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. More than 15 DIPY developers will be available this year on site to help. All tutorials will run on 3 levels: novice, intermediate and advanced. The workshop will include social events and activities. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
+        </div>
+    </div>
+    <div class="section" id="section_4">
+        <div class="p-t-60">
+            <h1 class="m-t-20 m-b-20"><b>SCHEDULE</b></h1>
+            <div class="row">
+                <div class="col-xs-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2">
+                    <img class="" src="{% static 'workshop/images/Schedule_V4.png' %}" alt="henriques" style="max-height: 100%; max-width: 100%;">
+                    <!-- <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS7EbAPHiln5maLp_s5c1f3bIRH2_WuohIePqOEhSfWf6VAmG-kqvsJP21sc-ZCELir1jjxSCPaHfX5/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="section" id="section_5">
+        <div class="apply-section">
+            <div class="container">
+                <div class="col-10 offset-1">
+                    <h1 class="color-dipy intro p-b-25">Registration for 2020 is now open!</h1>
+                    <p class="p-b-25 m2-txt2"><strike>Early Birds deadline: November 15th, 2019</strike></p>
+                    <p class="p-b-25 m2-txt2">Registration deadline: March 10th, 2020</p>
+                </div>
+                <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col txt-center"></th>
+                            <th scope="col txt-center"></th>
+                            <th scope="col">Student</th>
+                            <th scope="col">Academic</th>
+                            <th scope="col">Professional</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th rowspan="2" scope="col txt-center"><strike>Early Birds</strike></th>
+                            <th scope="row"> 3 days</th>
+                            <td class="m2-txt2"><strike>$600*</strike></td>
+                            <td class="m2-txt2"><strike>$700*</strike></td>
+                            <td class="m2-txt2"><strike>$1000*</strike></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">5 Days</th>
+                            <td class="m2-txt2"><strike>$700*</strike></td>
+                            <td class="m2-txt2"><strike>$800*</strike></td>
+                            <td class="m2-txt2"><strike>$1200*</strike></td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <th rowspan="2" scope="col txt-center">Standard</th>
+                                <th scope="row"> 3 days</th>
+                                <td class="m2-txt2">$750*</td>
+                                <td class="m2-txt2">$850*</td>
+                                <td class="m2-txt2">$1100*</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5 Days</th>
+                                <td class="m2-txt2">$850*</td>
+                                <td class="m2-txt2">$950*</td>
+                                <td class="m2-txt2">$1300*</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                <!-- <a href="https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=9410&AppCode=REG&CC=119081511072" role="button" class="btn btn-lg btn-block btn-outline-secondary"><b>Register</b></a> -->
+                <p class="intro m-t-25 m2-txt1">* Includes registration fees, breakfast, lunch, social events </p>
+                <p class="intro m-t-5 m2-txt1">* To use your accomodation discount code, see <b class="color-white"><a href="#Lodging" class="color-white">Housing & Travel</a></b> section</p>
+                <p class="intro m-t-5 m2-txt1">* Want to attend second time? Contact us via <a class="color-white" href="https://dipy.slack.com/">our slack channel</a> for promo code.</p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section_6">
+        <div class="apply-section">
+            <div class="container">
+
+                <div class="col-10 offset-1">
+                    <h1 class="color-dipy intro p-b-25 p-t-25">HOUSING & TRAVEL</h1>
+                </div>
+                <div class="row p-t-20 p-b-20">
+                    <div class="col-md-6, col-lg-6">
+                        <h2 class="m2-txt2 p-b-25 txt-center">Getting to Bloomington</h2>
+                        <div class="row p-b-5">
+                            <div class="col-6" align="left"><p><b class="color-dipy">Flying: </b></br>The closest airport to Bloomington, IN is the Indianapolis International Airport, located 50 miles north.</p></div>
+                            <div class="col-6" align="left"><p><b class="color-dipy">Car Services: </b></br>The Indianapolis Airport Authority offers eight car rental options at the Ground Transportation Center, located on the first floor of the Terminal Garage.</p></div>
+                        </div>
+                        <div class="row p-b-5">
+                            <div class="col-6" align="left"><p><b class="color-dipy">Shuttle: </b></br>Go Express (800) 589-6004 or (812) 332-6004. Go Express offers shuttle services to Bloomington and is located at the
+                                Indianapolis International Airport (IND). The shuttle loading area is at the Ground Transportation Center located directly
+                                across from the baggage claim area on the lower level of the main terminal. A customer service representative is located
+                                at the service desk in the Ground Transportation Center between the hours of 8am-11pm. For your return trip please
+                                reference the website for a suggested pick up time.</p></div>
+                            <div class="col-6" align="left"><p><b class="color-dipy">Highway Access: </b></br>Bloomington can be accessed from two major state highways; Indiana Highway 37, which runs north-south from
+                                Indianapolis in the north to Interstate 64 in the south and Indiana Highway 46, which runs east-west from Columbus in
+                                the east to Terre Haute in the west. Several Interstates are easily accessed from these two highways. Get driving
+                                directions here.</p></div>
+                        </div>
+                        <div class="row p-b-5">
+                            <div class="col-6" align="left"><p><b class="color-dipy">Arriving to Bloomington: </b></br>Visit Bloomington (812) 856-4648 - The Indiana University Visitor Information Center is located inside the Indiana
+                                Memorial Union. Here, you can pick up a campus map and campus resources.
+                                </p></div>
+                            <div class="col-6" align="left"><p><b class="color-dipy">Bus Service: </b></br>Bloomington Transit  (812) 336-7433  - Find bus schedules here.
+                                IU Campus Bus Service (812) 855-8384 - Campus Bus Service operates weekdays from 7:30 am to 12 Midnight, Saturdays
+                                from 8:40 am to 11:30 pm and Sunday 10:30 am to 11:30 pm. This is a free service. For more information on bus
+                                schedules and maps, click here.
+                                </p></div>
+                        </div>
+                        <div class="row p-b-5">
+                            <div class="col-6" align="left"><p><b class="color-dipy">Hotels near IU: </b></br>There&#39;s only one IU hotel, the Biddle Hotel located at the Indiana Memorial Union, which puts you right in the heart of
+                                campus. But there are also a number of local lodging properties that get you close to the campus. Find hotels here
+                                </p></div>
+                            <div class="col-6" align="left"><p><b class="color-dipy">Need more info? </b></br>Click on these useful information links: IU Bloomington Campus Map, Virtual Visitors Guides, IMU Map.
+                                Sources: The Visit Bloomington website https://www.visitbloomington.com and The Indianapolis Airport Authority
+                                https://www.ind.com.
+                                </p></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="m2-txt2 p-b-25 txt-center">VISA to USA</h2>
+                        <p class="txt-left p-b-10">Conference attendees are personally responsible for making their own visa arrangements.</p>
+                        <p class="txt-left p-b-10">Visitors to the USA must present a valid passport and a valid visa issued by a US Consular Official,unless the visitor is a citizen of a country eligible for the Visa Waiver Program.</p>
+                        <p class="txt-left p-b-10">Please familiarize yourself with visa requirements well in advance of the conference.</p>
+                        <p class="txt-left p-b-10"><b class="color-dipy">PLEASE NOTE:</b> We will not be providing “Letters of Invitation” to the conference; however, “Letters of Confirmation” (acknowledging that you will be attending the conference) can be requested. According to the Indiana University policy, you have to be first registered for the NAME
+                                conference in order to receive the "Letter of Confirmation".</p>
+                        <div class="txt-left p-b-30">
+                            <p class="p-b-5">To request the "Letter of Confirmation" please email iuconfs@iu.edu and include below info:</p>
+                            <ol type="1" class="p-l-45">
+                                <li>1. Legal name (as it appears in your passport)</li>
+                                <li>2. Legal address</li>
+                                <li>3. Source of funding for the conference</li>
+                                <li>4.  Proof of paid NAME conference registration</li>
+                            </ol>
+                        </div>
+                        <p class="txt-left p-b-30"><b class="color-dipy">Please note</b> that as of <b>DATE NO REFUNDS</b> of the registration fees are provided.</p>
+                        <p class="txt-left p-b-10">Please visit the website of the U.S. Department of State for more information about traveling to the
+                                USA and visa requirements. The U.S. Department of State notes: <b class="color-dipy">We strongly recommend that
+                                applicants do not purchase airplane tickets or make non-refundable travel arrangements until they
+                                have actually received their visa; visa applicants should never assume their application will be
+                                automatically approved.</b>
+                                </p>
+                    </div>
+
+                </div>
+                <div class="row p-t-20">
+                    <div class="col-10 offset-1">
+                        <p class="p-b-25 m2-txt2">We recommend you to book your hotel at <a class="color-dipy" href="https://www.hyatt.com/en-US/hotel/indiana/hyatt-place-bloomington/bmgzb">Hyatt Place</a><br/> If this is booked you can also try <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union</a></p>
+                    </div>
+	                <div class="col-12 col-sm-6 p-b-100">
+                        <img class="rounded-circle" src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2015/11/12/1157/Hyatt-Place-Bloomington-P030-Exterior-Night.jpg/Hyatt-Place-Bloomington-P030-Exterior-Night.16x9.jpg"
+                                alt="graduate" width="280" height="280">
+                        <h2 class="m2-txt4 p-t-20 p-b-10"><a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Hyatt Place </a></h2>
+                        <p class="color-white">217 W Kirkwood Ave, Bloomington, IN 47404</p>
+                        <br/>
+                        <div class="txt-left p-l-55">
+                            <p>- 1.1 miles - 20min walk, 5min drive to Luddy Hall.</p>
+                            <p>- .02 miles from Sample Gates (IU's Gateway to the universiy) a straight shot right up Kirkwood Avenue</p>
+                            <p>- Rate of $109.00 + sales tax per room, per night - includes Parking (normally $12.00 per night value) and Breakfast($14.00 value)</p>
+                            <p>- Rooms are equiped with mini-fridge</p>
+                            <p>- Starbucks located on property</p>
+                            <p>- Large indoor pool</p>
+                            <p>- Fitness room with elliptical machines, treadmills, free weights and more.</p>
+                            <p>- Located downtown in the heart of the Bloomington square surrounded by restaurants and the night life</p>
+                            <p>- To make reservation: </p>
+                            <ol type="1" class="p-l-65">
+                                <li>1. Call at (812) 339 5950</li>
+                                <li>2. Mention Indiana University Rate</li>
+                            </ol>
+                        </div>
+                    </div>
+	                <div class="col-12 col-sm-6 p-b-100">
+	                    <img class="rounded-circle" src="{% static 'workshop/images/IMU.jpg' %}"
+	                            alt="IMU" width="280" height="280">
+	                    <h2 class="m2-txt4 p-t-20 p-b-10"><a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union </a></h2>
+                        <p class="color-white">900 E 7th St, Bloomington, IN 47405</p>
+                        <br/>
+                        <div class="txt-left p-l-55">
+                            <p>- Rate Range of $94.00 to $124.00 + sales tax per room, per night.</p>
+                            <p>- To make reservation: </p>
+                            <ol type="1" class="p-l-65">
+                                <li>1. Go to <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">www.imu.indiana.edu</a></li>
+                                <li>2. Select Dates</li>
+                                <li>3. Select # of rooms</li>
+                            </ol>
+                            <p><b class="color-dipy">OR</b> call 800-209-8145 or 812-855-2536</p>
+                        </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section venue" id="section_7">
+        <div class="container-fluid" id="map_wrapper">
+            <div class="map_canvas">
+                <div class="gmap_canvas">
+                    <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="map_info">
+            <div class="col-md-5 col-sm-7 m-l-50" id="tab_container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active text-center" data-toggle="tab" href="#location" role="tab"
+                            aria-controls="location">
+                            <h4 class="fa fa-compass"></h4><br/>Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel">
+                            <h4 class="fa fa-home"></h4><br/>Hotel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#flight" role="tab" aria-controls="flight">
+                            <h4 class="fa fa-plane"></h4><br/>Flight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#road" role="tab" aria-controls="road">
+                            <h4 class="fa fa-road"></h4><br/>Road</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="location" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <div>
+                                <img class="col" alt="500x500" style="width: 300px; height: 150px;"
+                                        src="{% static 'workshop/images/luddy_hall.jpg' %}">
+                            </div>
+                            <div class="col" style="padding: 2%;font-size: 0.8em;">
+                                <br/>
+                                <h3>Luddy Hall <br/>700 N Woodlawn Ave<br/>Bloomington, IN 47408</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="hotel" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>On Campus Hotel: Indiana Memorial Union (IMU)</b>
+                            </h3>
+                            <p>
+                                The Indiana Memorial Union (IMU) is located in the center of campus and is in easy
+                                walking
+                                distance to many of Bloomington’s downtown shops, cafes and restaurants.<br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.imu.indiana.edu/hotel/index.shtml">more informations...</a>
+                            </p>
+                            <br/>
+                            <h3><b>Off Campus Accommodations</b>
+                            </h3>
+                            <br/>
+                            <p>
+                                There are many hotel options outside of the IU Bloomington campus. Some hotels are
+                                located within walking distance; some are a short drive from campus. Check out
+                                the Visit Bloomington web site for off campus lodging (<a target="_blank"
+                                                                                            rel="noopener noreferrer"
+                                                                                            href="https://www.visitbloomington.com/visitors/hotels">https://www.visitbloomington.com/visitors/hotels</a>).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="flight" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>Air Travel to IU Bloomington</b>
+                            </h3>
+                            <p>Airport Symbol: <strong>IND</strong><br/>
+                                Location: 50 miles north of Bloomington, IN
+                            </p>
+                            <h3>
+                                <b>Airport to Campus</b>
+                            </h3>
+                            <p><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.soashuttle.com/locations/bloomington-to-indianapolis">Star of America
+                                - Shuttle Service</a>
+                                <br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.goexpresstravel.com/airport_shuttle_schedule">Go Express Travel -
+                                    Shuttle Service</a>
+                                <br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://classictouchlimo.com">Limousine Service - Classic Touch Limousine</a>
+                                <br/>
+                            </p>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="road" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>Driving to IU Bloomington</b>
+                            </h3>
+                            <p>
+                                We suggest that you consult Mapquest or Google maps for the best directions to
+                                Bloomington
+                                and return or use GPS to guide you. Driving to and from the airport to campus
+                                is simple and direct. Driving time from the airport to camps is approximately
+                                50 minutes.
+                            </p>
+                            <br/>
+                            <h3><b>Car Rental - Bus, Taxis</b>
+                            </h3>
+                            <br/>
+                            <p>
+                                Most major car rental companies provide service at the airport. Car Rental companies
+                                are located in the Ground Transportation Center on the lower level of the terminal,
+                                outside Baggage Claim.
+                            </p>
+                            <p>
+                                There is no convenient bus service from the Indianapolis Airport to IU Bloomington.
+                            </p>
+                            <p>
+                                Taxis service is available, but is very expensive and not recommended.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section_8">
+        <div class="container">
+            <div class="row">
+                <div class="text-center mx-auto p-t-100">
+                    <h2>GET IN TOUCH!</h2>
+                    <hr class="bgorange">
+                    <i class="fa fa-4x fa-envelope-o"></i>
+                    <p class="m2-txt2-dark p-t-20">Contact us for more information by sending an email at <strong>dipy -at- python.org</strong></p>
+                    <p class="m2-txt2-dark p-t-20">or joining our interactive chatroom at <a href="https://gitter.im/dipy/dipy"><strong>https://gitter.im/dipy/dipy</strong></a></p>
+
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+                <div class="text-center mx-auto">
+                    <h2>Sponsors</h2>
+                    <hr class="bgorange">
+                    <div class="row">
+                        <div class="col-6 col-md-3 p-t-40"><img style="width: 98%;" src="{% static 'workshop/images/NIH_NIBIB_Master_Logo_2Color.jpg' %}"></div>
+                        <div class="col-6 col-md-3"><img style="width: 75%;" src="{% static 'workshop/images/sice.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 60%;" src="{% static 'workshop/images/ise.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 70%;" src="{% static 'workshop/images/dipy-logo.png' %}"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+   <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+    <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/vendor/scrolloverflow.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'workshop/vendor/bootstrap/js/popper.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'workshop/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'workshop/vendor/countdowntime/moment.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
+	<script src="{% static 'workshop/vendor/countdowntime/countdowntime.js' %}"></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: 2019,
+			endtimeMonth: 3,
+			endtimeDate: 11,
+			endtimeHours: 8,
+			endtimeMinutes: 0,
+			endtimeSeconds: 0,
+			timeZone: "America/Indiana/Indianapolis"
+			// ex:  timeZone: "America/New_York"
+			//go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+    <!--===============================================================================================-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //easingcss3: linear,
+                autoScrolling: true,
+                scrollOverflow: true,
+                fitToSection: true,
+                navigation: false,
+                navigationPosition: 'right',
+                continuousVertical: false,
+                anchors: ["Home", "Coronavirus", "Speakers", "Workshops", "Schedule", "Registration", "Lodging", "Venue", "Contact"],
+
+                menu: '#menu-wrap',
+
+				onLeave: function(index, newIndex, direction){
+					if (index == 1 && direction == 'down'){
+						$('#menu-wrap').fadeIn(600);
+					}
+					else if(newIndex == 1 && direction == 'up'){
+						$('#menu-wrap').hide();
+                    }
+                    else if(index == 2 && direction == 'down'){
+                        //alert("test");
+                        $('div.custom-box').addClass('animated bounce delay-4s slower');
+                    }
+                    else if(index == 3){
+                        $('div.custom-box').removeClass('animated bounce delay-4s slower');
+                    }
+                    else if(index == 4 && direction == 'up'){
+                        //alert("test");
+                        $('div.custom-box').addClass('animated bounce delay-4s slower');
+                    }
+
+				},
+            });
+            $('#menu-wrap').hide();
+        });
+        function openCloseMenu() {
+                var x = document.getElementById("menu");
+                if (x.className.includes("responsive")) {
+                    x.className = "col-md-10"
+                } else {
+                    x.className = "responsive";
+                }
+            }
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
+    <!--===============================================================================================-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148819013-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148819013-2');
+    </script>
+</body>
+</html>
+

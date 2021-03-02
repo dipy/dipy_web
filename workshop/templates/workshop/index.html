@@ -1,0 +1,652 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>DIPY WORKSHOP {{workshop.year}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="author" content="Serge Koudoro" />
+    <meta name="description" content="DIPY Workshop {{workshop_year}} Bloomington" />
+    <meta name="keywords"  content="Workshop, neuroimaging, dti, diffusion imaging" />
+    <meta name="Resource-type" content="Document" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/fullpage/css/jquery.fullpage.css' %}" />
+    <!--========================================Project CSS============================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
+    <!--======================================Custom Fonts=============================================-->
+   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+   <!--====================================== Stripe =============================================-->
+   <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+<body>
+
+<div id="menu-wrap" class="">
+    <div class="row" style="max-height: 100%;">
+        <div class="col-md-1 hamburger"><a href="javascript:void(0);" class="icon" onclick="openCloseMenu()"><i class="fa fa-bars color-dipy"></i></a></div>
+        <div class="col-md-10" id="menu">
+            <ul>
+                <li data-menuanchor="Home"><a href="#Home">Home</a></li>
+                <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
+                <li data-menuanchor="Workshops"><a href="#Workshops">Workshops</a></li>
+                <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
+                <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
+                {% if workshop.is_in_person %}
+                <li data-menuanchor="Lodging"><a href="#Lodging">Lodging</a></li>
+                <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
+                {% endif %}
+                <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
+    </div>
+    </div>
+<div id="fullpage">
+    <div class="section" id="section_1">
+        	<div class="simpleslide100">
+                {% if workshop.bg_images.all %}
+                {% for bg in workshop.bg_images.all %}
+                <div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
+                {% endfor %}
+                {% else %}
+                <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+                <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+                {% endif %}
+            </div>
+            <div class="size1 overlay1">
+                <!--  -->
+                <div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+                    <h3 class="l1-txt1 txt-center p-b-5">DIPY WORKSHOP {{workshop_year}}</h3>
+                    <h5 class="m2-txt4 txt-right p-b-25">{{workshop.codename|title}} Edition</h5>
+                    {% if workshop.start_date.year !=  workshop.end_date.year %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS F Y"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% elif workshop.start_date.month !=  workshop.end_date.month %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS F"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% else %}
+                    <p class="m2-txt3">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
+                    {% endif %}
+                    <p class="m2-txt1 txt-center p-b-48">Bloomington - Indiana</p>
+                    <div class="col-lg-4 p-b-25">
+                        <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
+                    </div>
+                    <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>
+                </div>
+            </div>
+    </div>
+    <div class="section" id="section_2">
+        <div class="container p-t-60">
+            <div class="row">
+                {% for speaker in workshop.speakers.all %}
+                <div class="col-lg-4 col-sm-6 p-b-50">
+                    <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="140" height="140">
+                    <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
+                    <p class="color-black">{{speaker.title}}</p>
+                    <p class="color-black">{{speaker.affiliation}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section_3">
+        <div class="container">
+            <h1 class="m-t-80 m-b-30"><b>TUTORIALS</b></h1>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Diffusion MRI 101</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Fundamental Neuroanatomy</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Macrostructure, 10 Models</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Microstructure, 10 Models</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Tractography on steroids </div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Deep learning for tumor segmentation</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Automated segmentation of tracts</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Process human and animal data</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">DIPY interfaces and API</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Horizon, stunning visualizations</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">First principles of diffusion statistics</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced preprocessing/denoising</div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">How to combine multiple modalities </div></div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced connectivity analysis</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Data harmonization</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Applications of quality transfer</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Advanced tractometry with examples</div></div>
+		<div class="col-12 col-md-4 col-lg-4 col-xl-4 m-t-5 m-b-5"><div class="custom-box">Clinical uses in neurosurgery</div></div>
+
+            </div><br\>
+            <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. More than 15 DIPY developers will be available this year on site to help. All tutorials will run on 3 levels: novice, intermediate and advanced. The workshop will include social events and activities. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
+        </div>
+    </div>
+    <div class="section" id="section_calendar">
+        <div class="container">
+            <div class="row with-padding-10">
+                    <div class="col-lg-4 p-b-20">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="">Day 1 - Monday, March 15</h4>
+                                <hr style="border:2px solid" class="color-dipy">
+                                <ul>
+                                    <li class="p-b-10"><p class="color-black"><strong>Overview & Introduction to new Interfaces</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis & Javier Guaje</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Diffusion Tensor Imaging</strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Diffusion Kurtosing Imaging</strong></p><p><small class="text-muted">by Raphaël Neto Henriques</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Denoising</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
+                                </ul>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-b-20">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="">Day 2 - Tuesday, March 16 </h4>
+                                <hr style="border:2px solid" class="color-dipy">
+                                <ul>
+                                    <li class="p-b-10"><p class="color-black"><strong>A tour of spherical harmonics-based local reconstruction techniques in DIPY</strong></p><p><small class="text-muted">by Maxime Descoteaux</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Microstructure modeling theory and practice</strong></p><p><small class="text-muted">by Raphaël Neto Henriques</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Dictionary based methods for brain microstructure estimation</strong></p><p><small class="text-muted">by Alonso Ramirez</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Motion Correction & Image Registration</strong></p><p><small class="text-muted">by Serge Koudoro</small></p></li>
+                                </ul>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-b-20">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="">Day 3 - Wednesday, March 17 </h4>
+                                <hr style="border:2px solid" class="color-dipy">
+                                <ul>
+                                    <li class="p-b-10"><p class="color-black"><strong>Introduction to Tractography</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>State-of-the-Art Streamline Tractography Methods</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Structural Connectivity Analysis</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Multidimensional Diffusion Encodings</strong></p><p><small class="text-muted">by Jennifer A McNab</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Deep Learning in Medical Imaging (Intro, Segmentation, Registration)</strong></p><p><small class="text-muted">by Jon Legaratta, Javier Guaje, Bramsh Qamar, Jong Sung, Shreyas Fadnavis</small></p></li>
+                                </ul>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-b-20">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="">Day 4 - Thursday, March 17 </h4>
+                                <hr style="border:2px solid" class="color-dipy">
+                                <ul>
+                                    <li class="p-b-10"><p class="color-black"><strong>Automatic segmentation of bundles</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Tractometry</strong></p><p><small class="text-muted">by Bramsh Qamar</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Statistical analysis and group analysis</strong></p><p><small class="text-muted">by Jaroslaw Harezlak</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Acquisitions and High Field Diffusion MRI HCP 2.0</strong></p><p><small class="text-muted">by Susie Huang</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Tissue classification</strong></p><p><small class="text-muted">by Hu Cheng</small></p></li>
+                                </ul>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-b-20">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="">Day 5 - Friday, March 18 </h4>
+                                <hr style="border:2px solid" class="color-dipy">
+                                <ul>
+                                    <li class="p-b-10"><p class="color-black"><strong>IVIM and stochastic optimization</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Data harmonization</strong></p><p><small class="text-muted">by Daniel Moyer</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Tractometry II </strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>GPU Acceleration</strong></p><p><small class="text-muted">by Gregory R Lee</small></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>Clinical Insights from Brain Imaging using Predictive Modeling: Huntington’s Disease as a Case Study</strong></p><p><small class="text-muted">by Eduardo Castro</small></p></li>
+                                </ul>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div>
+                <p class="text-center"><strong>*Scientific Panel Q/A, group discussion, coding sprint, and community support are included everyday.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section_5">
+        <div class=" pricing-table">
+            <div class="container">
+                <div class="block-heading">
+                    {% if workshop.is_past_due_registration%}
+                    <h2 class="color-dipy intro p-b-25">Registration for DIPY WORKSHOP {{workshop.year}} <b>is closed.</b></h2>
+                    {% else %}
+                    <h2 class="color-dipy intro p-b-25">Registration for DIPY WORKSHOP {{workshop.year}} is now open!</h2>
+                    {% endif %}
+					<p class="p-b-25 m2-txt2">Registration deadline: {{workshop.registration_end_date|date:"dS F Y"}}</p>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+                            <div class="ribbon">Best Value</div>
+							<div class="heading">
+								<h3 class="p-t-15 p-b-15">FREE</h3>
+							</div>
+							<p class="p-b-10">DIPY Workshop is free</p>
+							<div class="features m-b-50">
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$0</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <a class="btn btn-block btn-primary" href="{% url 'users:register' workshop_slug=workshop.slug pricing_slug='free' %}">Register</a>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Bronze Sponsor</h3>
+							</div>
+							<p class="p-b-10">Add DIPY Bronze Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">1 month</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$399</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="399">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+                    <div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Silver Sponsor</h3>
+							</div>
+							<p class="p-b-10">Add DIPY Silver Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">2 months</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$799</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="799">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Gold Sponsor</h3>
+							</div>
+							<p class="p-b-10">DIPY Gold Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">4 months</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$1490</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="1499">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+                <div><p class="text-center color-white"><b>* Post Workshop Exclusive Support</b></p></div>
+                <div id="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+{% if workshop.is_in_person %}
+
+    <div class="section" id="section_6">
+        <div class="apply-section">
+            <div class="container">
+                <div class=".col-8 .col-sm-6">
+                    <h1 class="color-dipy intro p-b-25 p-t-25">Accommodations</h1>
+                    <p class="p-b-25 m2-txt2">We recommend you to book your hotel at <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union</a><br/> If this is booked you can also try <a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Graduate Hotel Bloomington </a></p>
+                </div>
+                <div class="row p-t-20">
+	                <div class="col-12 col-sm-6 p-b-100">
+	                    <img class="rounded-circle" src="{% static 'workshop/images/IMU.jpg' %}"
+	                            alt="IMU" width="280" height="280">
+	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union </a></h2>
+                        <p class="color-white">900 E 7th St, Bloomington, IN 47405</p>
+                        <br/>
+                        <div class="txt-left p-l-55">
+                            <p>- Rate Range of $94.00 to $124.00 + sales tax per room, per night.</p>
+                            <p>- <b>Block will be released 2/10/19</b></p>
+                            <p>- To make reservation: </p>
+                            <ol type="1" class="p-l-65">
+                                <li>1. Go to <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">www.imu.indiana.edu</a></li>
+                                <li>2. Select Dates</li>
+                                <li>3. Select # of rooms</li>
+                                <li>4. Select More Options</li>
+                                <li>5. Enter Group Code: <b class="color-dipy">DIPY19</b> (enter group code again if new dates are selected)</li>
+                            </ol>
+                            <p><b class="color-dipy">OR</b> call 800-209-8145 or 812-855-2536</p>
+                        </div>
+
+	                </div>
+	                <div class="col-12 col-sm-6 p-b-100">
+	                    <img class="rounded-circle" src="{% static 'workshop/images/graduate.jpg' %}"
+	                            alt="graduate" width="280" height="280">
+	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Graduate Hotel Bloomington </a></h2>
+                        <p class="color-white">210 E Kirkwood Ave, Bloomington, IN 47408</p>
+                        <br/>
+                        <div class="txt-left p-l-55">
+                            <p>- Rate of $94.00 + sales tax per room, per night</p>
+                            <p>- To make reservation: </p>
+                            <ol type="1" class="p-l-65">
+                                <li>1. Go to <a class="color-dipy" href="https://gc.synxis.com/rez.aspx?Hotel=3251&Chain=21643&arrive=3/11/2019&depart=3/15/2019&adult=1&child=0&group=190311DIPY">www.graduatehotels.com/bloomington/</a></li>
+                                <li>2. Check/Enter Group Code: <b class="color-dipy">190311DIPY</b> (enter group code again if new dates are selected)</li>
+                                <li>3. Check/Select Dates</li>
+                                <li>4. Select # of rooms</li>
+                                <li>5. Select More Options</li>
+                            </ol>
+                        </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section venue" id="section_7">
+        <div class="container-fluid" id="map_wrapper">
+            <div class="map_canvas">
+                <div class="gmap_canvas">
+                    <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="map_info">
+            <div class="col-md-5 col-sm-7 m-l-50" id="tab_container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active text-center" data-toggle="tab" href="#location" role="tab"
+                            aria-controls="location">
+                            <h4 class="fa fa-compass"></h4><br/>Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel">
+                            <h4 class="fa fa-home"></h4><br/>Hotel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#flight" role="tab" aria-controls="flight">
+                            <h4 class="fa fa-plane"></h4><br/>Flight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#road" role="tab" aria-controls="road">
+                            <h4 class="fa fa-road"></h4><br/>Road</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="location" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <div>
+                                <img class="col" alt="500x500" style="width: 300px; height: 150px;"
+                                        src="{% static 'workshop/images/luddy_hall.jpg' %}">
+                            </div>
+                            <div class="col" style="padding: 2%;font-size: 0.8em;">
+                                <br/>
+                                <h3>Luddy Hall <br/>700 N Woodlawn Ave<br/>Bloomington, IN 47408</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="hotel" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>On Campus Hotel: Indiana Memorial Union (IMU)</b>
+                            </h3>
+                            <p>
+                                The Indiana Memorial Union (IMU) is located in the center of campus and is in easy
+                                walking
+                                distance to many of Bloomington’s downtown shops, cafes and restaurants.<br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.imu.indiana.edu/hotel/index.shtml">more informations...</a>
+                            </p>
+                            <br/>
+                            <h3><b>Off Campus Accommodations</b>
+                            </h3>
+                            <br/>
+                            <p>
+                                There are many hotel options outside of the IU Bloomington campus. Some hotels are
+                                located within walking distance; some are a short drive from campus. Check out
+                                the Visit Bloomington web site for off campus lodging (<a target="_blank"
+                                                                                            rel="noopener noreferrer"
+                                                                                            href="https://www.visitbloomington.com/visitors/hotels">https://www.visitbloomington.com/visitors/hotels</a>).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="flight" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>Air Travel to IU Bloomington</b>
+                            </h3>
+                            <p>Airport Symbol: <strong>IND</strong><br/>
+                                Location: 50 miles north of Bloomington, IN
+                            </p>
+                            <h3>
+                                <b>Airport to Campus</b>
+                            </h3>
+                            <p><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.soashuttle.com/locations/bloomington-to-indianapolis">Star of America
+                                - Shuttle Service</a>
+                                <br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.goexpresstravel.com/airport_shuttle_schedule">Go Express Travel -
+                                    Shuttle Service</a>
+                                <br/>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://classictouchlimo.com">Limousine Service - Classic Touch Limousine</a>
+                                <br/>
+                            </p>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="road" role="tabpanel">
+                        <div class="col-9 offset-3">
+                            <br/>
+                            <h3>
+                                <b>Driving to IU Bloomington</b>
+                            </h3>
+                            <p>
+                                We suggest that you consult Mapquest or Google maps for the best directions to
+                                Bloomington
+                                and return or use GPS to guide you. Driving to and from the airport to campus
+                                is simple and direct. Driving time from the airport to camps is approximately
+                                50 minutes.
+                            </p>
+                            <br/>
+                            <h3><b>Car Rental - Bus, Taxis</b>
+                            </h3>
+                            <br/>
+                            <p>
+                                Most major car rental companies provide service at the airport. Car Rental companies
+                                are located in the Ground Transportation Center on the lower level of the terminal,
+                                outside Baggage Claim.
+                            </p>
+                            <p>
+                                There is no convenient bus service from the Indianapolis Airport to IU Bloomington.
+                            </p>
+                            <p>
+                                Taxis service is available, but is very expensive and not recommended.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+    <div class="section" id="section_8">
+        <div class="container">
+            <div class="row">
+                <div class="text-center mx-auto p-t-100">
+                    <h2>Get In Touch!</h2>
+                    <hr class="bgorange">
+                    <i class="fa fa-4x fa-envelope-o"></i>
+                    <p class="m2-txt2-dark p-t-20">Contact us for more information by sending an email at <strong>dipy -at- python.org</strong></p>
+                    <p class="m2-txt2-dark p-t-20">or joining our interactive chatroom at <a href="https://gitter.im/dipy/dipy"><strong>https://gitter.im/dipy/dipy</strong></a></p>
+
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+                <div class="text-center mx-auto">
+                    <h2>Sponsors</h2>
+                    <hr class="bgorange">
+                    <div class="row">
+                        <div class="col-6 col-md-3 p-t-40"><img style="width: 98%;" src="{% static 'workshop/images/NIH_NIBIB_Master_Logo_2Color.jpg' %}"></div>
+                        <div class="col-6 col-md-3"><img style="width: 75%;" src="{% static 'workshop/images/sice.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 60%;" src="{% static 'workshop/images/ise.png' %}"></div>
+                        <div class="col-6 col-md-3 p-t-50"><img style="width: 70%;" src="{% static 'workshop/images/dipy-logo.png' %}"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ {% csrf_token %}
+</div>
+
+   <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+    <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/vendor/scrolloverflow.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'workshop/vendor/bootstrap/js/popper.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'workshop/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+	<script src="{% static 'workshop/vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //easingcss3: linear,
+                autoScrolling: true,
+                scrollOverflow: true,
+                fitToSection: true,
+                navigation: false,
+                navigationPosition: 'right',
+                continuousVertical: false,
+                anchors: ["Home", "Speakers", "Workshops", "Schedule", "Registration",
+                          {% if workshop.is_in_person %} "Lodging", "Venue", {% endif %}
+                          "Contact"],
+
+                menu: '#menu-wrap',
+
+				onLeave: function(index, newIndex, direction){
+					if (index == 1 && direction == 'down'){
+						$('#menu-wrap').fadeIn(600);
+					}
+					else if(newIndex == 1 && direction == 'up'){
+						$('#menu-wrap').hide();
+                    }
+                    else if(index == 2 && direction == 'down'){
+                        //alert("test");
+                        $('div.custom-box').addClass('animated bounce delay-4s slower');
+                    }
+                    else if(index == 3){
+                        $('div.custom-box').removeClass('animated bounce delay-4s slower');
+                    }
+                    else if(index == 4 && direction == 'up'){
+                        //alert("test");
+                        $('div.custom-box').addClass('animated bounce delay-4s slower');
+                    }
+
+				},
+            });
+            $('#menu-wrap').hide();
+        });
+        function openCloseMenu() {
+                var x = document.getElementById("menu");
+                if (x.className.includes("responsive")) {
+                    x.className = "col-md-10"
+                } else {
+                    x.className = "responsive";
+                }
+            }
+    </script>
+    <script type="text/javascript">
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+        document.querySelectorAll('.checkout-button').forEach(item => {
+            var price_id = item.value; //"price_1IMJdjBb8w8pGcaIpK77vGAM"; //
+            item.addEventListener("click", function () {
+                console.log(price_id)
+                var url_mask = "{% url 'payment:create-checkout-session' workshop_id=workshop.id pricing_id=1234 %}".replace(/1234/g, price_id.toString());
+                console.log(url_mask)
+            fetch(url_mask, {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': csrftoken
+                    }
+            })
+                .then(function (response) {
+                return response.json();
+                })
+                .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function (result) {
+                // If redirectToCheckout fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using error.message.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+                })
+                .catch(function (error) {
+                console.error("Error:", error);
+                });
+            });
+        });
+      </script>
+
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
+    <!--===============================================================================================-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148819013-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148819013-2');
+    </script>
+</body>
+</html>
+

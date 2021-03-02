@@ -9,7 +9,7 @@
 
 <h3 class="text-center">Add / Edit Carousel</h3>
 
-<div class="text-center"><a href="{% url 'add_carousel_image' %}">Add New Image</a></div>
+<div class="text-center"><a href="{% url 'website:add_carousel_image' %}">Add New Image</a></div>
 
 {% for image in all_carousel_images %}
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -18,7 +18,7 @@
     <p><strong>URL:  </strong>{{ image.image_url }}</p>
     <p><strong>Caption:  </strong>{{ image.image_caption }}</p><br/>
     <p><strong>Priority:  </strong>{{ image.priority }}</p><br/>
-    <p><a href="{% url 'edit_carousel_image' carousel_image_id=image.id %} ">Edit</a> | <a class="carouselImageDeleteLink" href="{% url 'delete_carousel_image' carousel_image_id=image.id %} ">Delete</a></p>
+    <p><a href="{% url 'website:edit_carousel_image' carousel_image_id=image.id %} ">Edit</a> | <a class="carouselImageDeleteLink" href="{% url 'website:delete_carousel_image' carousel_image_id=image.id %} ">Delete</a></p>
     <hr>
 </div>
 {% endfor %}

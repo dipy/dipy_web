@@ -1,9 +1,11 @@
-from django.conf.urls import include, url
+"""Github Stats URL Configuration."""
+
+from django.urls import path
 from . import views
+
+app_name = 'github_visualization'
 
 urlpatterns = [
     # Home Page
-    url(r'^githubstats/$', views.github_stats_visualization,
-        name='github_stats_visualization'),
-
+    path('', views.github_stats_visualization, name='gh_stats_visualization'),
 ]

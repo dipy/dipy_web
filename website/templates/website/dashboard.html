@@ -4,14 +4,15 @@
 {% block content_body %}
 <section>
 	<div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sections' section_type_requested='fixed' %}"><p class="dashboard-button btn btn-default">Edit Fixed Sections</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sections'  section_type_requested='page' %}"><p class="dashboard-button btn btn-default">Add / Edit Pages</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_news' %}"><p class="dashboard-button btn btn-default">Add / Edit News</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_publications' %}"><p class="dashboard-button btn btn-default">Add / Edit Publications</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_carousel' %}"><p class="dashboard-button btn btn-default">Add / Edit Carousel Images</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_sponsor' %}"><p class="dashboard-button btn btn-default">Add / Edit Sponsor Images</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'dashboard_documentation' %}"><p class="dashboard-button btn btn-default">Manage Documentation</p></a></div>
-		<div class="col-12"><a href="{% url 'dashboard_logout' %}"><p class="dashboard-button btn btn-default logout">Logout</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_sections' section_type_requested='fixed' %}"><p class="dashboard-button btn btn-default">Edit Fixed Sections</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_sections'  section_type_requested='page' %}"><p class="dashboard-button btn btn-default">Add / Edit Pages</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_news' %}"><p class="dashboard-button btn btn-default">Add / Edit News</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_publications' %}"><p class="dashboard-button btn btn-default">Add / Edit Publications</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_carousel' %}"><p class="dashboard-button btn btn-default">Add / Edit Carousel Images</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_sponsor' %}"><p class="dashboard-button btn btn-default">Add / Edit Sponsor Images</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_documentation' %}"><p class="dashboard-button btn btn-default">Manage Documentation</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_workshops' %}"><p class="dashboard-button btn btn-default">Add / Edit Workshops information</p></a></div>
+		<div class="col-12"><a href="{% url 'website:dashboard_logout' %}"><p class="dashboard-button btn btn-default logout">Logout</p></a></div>
 	</div>
 </section>
 

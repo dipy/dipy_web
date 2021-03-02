@@ -1,0 +1,11 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+       aria-haspopup="true" aria-expanded="false">Workshops<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        {% for w in all_workshops %}
+        <li><a href="{% url 'workshop:index' workshop_slug=w.slug %}">{{w.year}}</a></li>
+        {% endfor %}
+        <li><a href="{% url 'workshop:index_static' year=2020 %}">2020</a></li>
+        <li><a href="{% url 'workshop:index_static' year=2019 %}">2019</a></li>
+    </ul>
+</li>

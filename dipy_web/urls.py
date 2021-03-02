@@ -13,20 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     # social login urls
-    url('', include('social_django.urls', namespace='social')),
-    url(r'^', include('github_visualization.urls')),
-    url(r'^', include('website.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('users/', include("users.urls", namespace='users')),
+    path('githubstats/', include('github_visualization.urls',
+                                 namespace='githubstats')),
+    path('workshops/', include('workshop.urls', namespace='workshop')),
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('', include('website.urls')),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
+handler403 = 'website.views.custom403'
 handler404 = 'website.views.custom404'
 handler500 = 'website.views.custom500'

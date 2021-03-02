@@ -1,5 +1,5 @@
 {% extends "website/base_template.html" %}
-{% load staticfiles %}
+{% load static %}
 {% load customfilters %}
 
 
@@ -80,7 +80,7 @@
         <div class="features-content">
           <p>All Agorithms available via CLI</p>
           <p>Create your Own</p>
-          <p><a href="{% url 'latest_documentation' path='interfaces' %}"> More...</a></p>
+          <p><a href="{% url 'website:latest_documentation' path='interfaces' %}"> More...</a></p>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
 <section class="bg-gray">
       <div id="bigLinksWrapper">
         <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 big-link-col">
-          <a href="{% url 'tutorials' %}">
+          <a href="{% url 'website:tutorials' %}">
             <div class="big-link">
               <img src="{% static 'images/download-logo.png' %}">
               <span>Start</span>
@@ -265,7 +265,7 @@
 </section>
 
 <section id="cite-section" {% if all_sponsor %} class='bg-gray' {% endif%}>
-  <h2 class="text-center"><a class="orange" href="{% url 'latest_documentation' path='cite' %}"> Cite Us !</a></h2>
+  <h2 class="text-center"><a class="orange" href="{% url 'website:latest_documentation' path='cite' %}"> Cite Us !</a></h2>
   <br/>
   <p>Garyfallidis E, Brett M, Amirbekian B, Rokem A, van der Walt S, Descoteaux M, Nimmo-Smith I and Dipy Contributors (2014). <a class="reference external" href="http://journal.frontiersin.org/Journal/10.3389/fninf.2014.00008/abstract">DIPY, a library for the analysis of diffusion MRI data.</a> Frontiers in Neuroinformatics, vol.8, no.8.<p>
   <!--  {{publications|safe}}

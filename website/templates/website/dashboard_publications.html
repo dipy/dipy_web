@@ -8,9 +8,9 @@
 <h3 class="text-center">Add / Edit Publications</h3>
 
 <div class="text-center">
-	<a href="{% url 'add_publication' method='bibtex' %}"><div class="btn btn-success">Add Publication from bibtex</div></a>
-	<a href="{% url 'add_publication' method='manual' %}"><div class="btn btn-success">Add Publication manually</div></a>
-	<a href="{% url 'highlight_publications' %}"><div class="btn btn-success">Highlight Publications</div></a>
+	<a href="{% url 'website:add_publication' method='bibtex' %}"><div class="btn btn-success">Add Publication from bibtex</div></a>
+	<a href="{% url 'website:add_publication' method='manual' %}"><div class="btn btn-success">Add Publication manually</div></a>
+	<a href="{% url 'website:highlight_publications' %}"><div class="btn btn-success">Highlight Publications</div></a>
 </div>
 
 <hr>
@@ -24,8 +24,8 @@
 	{% if publication.is_highlighted %}</b>{% endif %}
 	<br>
 	{{publication.author}}<br>
-	<a href="{% url 'edit_publication' publication_id='publication.id' %}"><div class="btn btn-primary">Edit</div></a> |
-	<a class="publicationDeleteLink" href="{% url 'delete_publication' publication_id='publication.id' %}"><div class="btn btn-primary">Delete</div></a>
+	<a href="{% url 'website:edit_publication' publication_id='publication.id' %}"><div class="btn btn-primary">Edit</div></a> |
+	<a class="publicationDeleteLink" href="{% url 'website:delete_publication' publication_id='publication.id' %}"><div class="btn btn-primary">Delete</div></a>
 	<hr>
 </div>
 {% endfor %}

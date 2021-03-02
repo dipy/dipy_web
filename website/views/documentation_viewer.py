@@ -10,11 +10,12 @@ from django.utils.html import strip_tags
 from django.views.decorators.cache import cache_page
 
 from .tools import get_meta_tags_dict, get_last_release
+from workshop.models import Workshop
 
 
 def latest_documentation(request, path):
     latest_version = get_last_release()
-    return redirect('documentation', version=latest_version, path=path)
+    return redirect('website:documentation', version=latest_version, path=path)
 
 
 @cache_page(60 * 30)  # cache the view for 30 minutes
@@ -71,4 +72,6 @@ def documentation(request, version, path):
 
     context['doc'] = response_json
     context['version'] = version
+    all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
+    context['all_workshops'] = all_workshops
     return render(request, 'website/documentation_page.html', context)

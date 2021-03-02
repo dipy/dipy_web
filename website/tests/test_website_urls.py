@@ -102,10 +102,10 @@ def test_dashboard_page_url(client, admin_client):
 #
 # @pytest.mark.django_db(transaction=False)
 # def test_tutorials_page_url(client, admin_client):
-#     response = admin_client.get(reverse('tutorials'))
+#     response = admin_client.get(reverse('website:tutorials'))
 #     assert response.status_code == 200
 #
-#     response = client.get(reverse('tutorials'))
+#     response = client.get(reverse('website:tutorials'))
 #     assert response.status_code == 200
 #
 #     assert resolve('/tutorials/').view_name == 'tutorials'
@@ -185,7 +185,7 @@ def test_news_management_url(client, admin_client):
     response = admin_client.get(reverse('add_news_post'))
     assert response.status_code == 403  # Forbidden -> not in github super user
 
-    response = client.get(reverse('add_news_post'))
+    response = client.get(reverse('website:add_news_post'))
     assert response.status_code == 302  # redirect to login page
 
     assert resolve('/dashboard/news/add/').view_name == 'add_news_post'

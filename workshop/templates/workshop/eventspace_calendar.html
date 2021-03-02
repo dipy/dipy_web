@@ -1,0 +1,103 @@
+{% extends "workshop/eventspace_template.html" %}
+{% load customfilters %}
+{% block dashboard_content_body %}
+
+<h3 class="text-center p-b-20">Calendar</h3>
+<div class="col-lg-12 p-b-20">
+    <p><strong>Notes:</strong></p>
+    <p>Video link, Zoom link and hours are coming soon...</p>
+    <p>Starts at 10am EST</p>
+</div>
+<div class="col-lg-12">
+    <div class="row with-padding-10">
+            <div class="col-lg-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">Day 1 - Monday, March 15</h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <ul>
+                            <li class="p-b-10"><p class="color-black"><strong>Overview & Introduction to new Interfaces</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis & Javier Guaje</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Diffusion Tensor Imaging</strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Diffusion Kurtosing Imaging</strong></p><p><small class="text-muted">by Raphaël Neto Henriques</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Denoising</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">Day 2 - Tuesday, March 16 </h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <ul>
+                            <li class="p-b-10"><p class="color-black"><strong>A tour of spherical harmonics-based local reconstruction techniques in DIPY</strong></p><p><small class="text-muted">by Maxime Descoteaux</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Microstructure modeling theory and practice</strong></p><p><small class="text-muted">by Raphaël Neto Henriques</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Dictionary based methods for brain microstructure estimation</strong></p><p><small class="text-muted">by Alonso Ramirez</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Motion Correction & Image Registration</strong></p><p><small class="text-muted">by Serge Koudoro</small></p></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">Day 3 - Wednesday, March 17 </h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <ul>
+                            <li class="p-b-10"><p class="color-black"><strong>Introduction to Tractography</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>State-of-the-Art Streamline Tractography Methods</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Structural Connectivity Analysis</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Multidimensional Diffusion Encodings</strong></p><p><small class="text-muted">by Jennifer A McNab</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Deep Learning in Medical Imaging (Intro, Segmentation, Registration)</strong></p><p><small class="text-muted">by Jon Legaratta, Javier Guaje, Bramsh Qamar, Jong Sung, Shreyas Fadnavis</small></p></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">Day 4 - Thursday, March 17 </h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <ul>
+                            <li class="p-b-10"><p class="color-black"><strong>Automatic segmentation of bundles</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Tractometry</strong></p><p><small class="text-muted">by Bramsh Qamar</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Statistical analysis and group analysis</strong></p><p><small class="text-muted">by Jaroslaw Harezlak</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Acquisitions and High Field Diffusion MRI HCP 2.0</strong></p><p><small class="text-muted">by Susie Huang</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Tissue classification</strong></p><p><small class="text-muted">by Hu Cheng</small></p></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">Day 5 - Friday, March 18 </h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <ul>
+                            <li class="p-b-10"><p class="color-black"><strong>IVIM and stochastic optimization</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Data harmonization</strong></p><p><small class="text-muted">by Daniel Moyer</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Tractometry II </strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>GPU Acceleration</strong></p><p><small class="text-muted">by Gregory R Lee</small></p></li>
+                            <li class="p-b-10"><p class="color-black"><strong>Clinical Insights from Brain Imaging using Predictive Modeling: Huntington’s Disease as a Case Study</strong></p><p><small class="text-muted">by Eduardo Castro</small></p></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div>
+        <p class="text-center"><strong>*Scientific Panel Q/A, group discussion, coding sprint, and community support are included everyday.</strong></p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js_bottom %}
+
+{% endblock %}
+

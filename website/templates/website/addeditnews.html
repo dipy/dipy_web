@@ -1,5 +1,5 @@
 {% extends "website/dashboard_template.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block extra_css %}
 <!-- Include simplemde markdown editor css-->
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block dashboard_content_body %}
-    <h1 class="text-center">Add News</h1>
+    <h1 class="text-center">{{title}} News</h1>
 <hr>
 {% if form %}
 <form action="." method="post">
@@ -28,7 +28,7 @@
     <br />
     <div class="col-lg-offset-4 col-lg-4 form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
-        <a href="{% url 'dashboard_news' %}"> Cancel </a>
+        <a href="{% url 'website:dashboard_news' %}"> Cancel </a>
     </div>
 </form>
 {% endif %}

@@ -1,0 +1,88 @@
+{% extends "website/base_template.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style type="text/css">
+.loginbox {
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}
+
+
+{% block content_body %}
+<div class="content-card">
+    <div class="row">
+        <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
+            <div class="col-lg-12 omb_login p-b-10 loginbox">
+                <!-- https://simpleisbetterthancomplex.com/tutorial/2016/10/24/how-to-add-social-login-to-django.html -->
+                <h2 class="text-center"><strong>Settings</strong></h2>
+
+                <h3>GitHub</h3>
+                {% if github_login %}
+                <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+                {% if can_disconnect %}
+                    <form method="post" action="{% url 'social:disconnect' 'github' %}">
+                    {% csrf_token %}
+                    <button type="submit">Disconnect from GitHub</button>
+                    </form>
+                {% else %}
+                    <button type="button" disabled>Disconnect from GitHub</button>
+                    <p style="color: red">You must <a href="{% url 'users:password' %}">define a password</a> for your account before disconnecting from Github.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+                {% endif %}
+
+                <div class="row omb_row-sm-offset-3 omb_loginOr">
+                    <div class="col-lg-12">
+                        <hr class="omb_hrOr">
+                    </div>
+                </div>
+
+                <h3>LinkedIn</h3>
+                {% if linkedin_login %}
+                <p>Connected as <a href="https://linkedin.com/{{ linkedin_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ linkedin_login.extra_data.first_name}}</a></p>
+                {% if can_disconnect %}
+                    <form method="post" action="{% url 'social:disconnect' 'linkedin' %}">
+                    {% csrf_token %}
+                    <button type="submit">Disconnect from LinkedIn</button>
+                    </form>
+                {% else %}
+                    <button type="button" disabled>Disconnect from Linkedin</button>
+                    <p style="color: red">You must <a href="{% url 'users:password' %}">define a password</a> for your account before disconnecting from LinkedIn.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'linkedin-oauth2' %}">Connect to LinkedIn</a>
+                {% endif %}
+
+                <div class="row omb_row-sm-offset-3 omb_loginOr">
+                    <div class="col-lg-12">
+                        <hr class="omb_hrOr">
+                    </div>
+                </div>
+
+
+                <h3>Google</h3>
+                {% if google_login %}
+                <p>Connected as <a href="https://google.com/{{ google_login.extra_data.id }}/" target="_blank">{{ google_login.extra_data.id }}</a></p>
+                {% if can_disconnect %}
+                    <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+                    {% csrf_token %}
+                    <button type="submit">Disconnect from Google</button>
+                    </form>
+                {% else %}
+                    <button type="button" disabled>Disconnect from Google</button>
+                    <p style="color: red">You must <a href="{% url 'users:password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
