@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
     <!--======================================Custom Fonts=============================================-->
    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+   <!--====================================== Stripe =============================================-->
+   <script src="https://js.stripe.com/v3/"></script>
 
 </head>
 <body>
@@ -131,39 +133,100 @@
 
     </div>
     <div class="section" id="section_5">
-        <div class="apply-section">
+        <div class=" pricing-table">
             <div class="container">
-                <div class=".col-8 .col-md-6 .col-sm-6">
-                    <h1 class="color-dipy intro p-b-25">Registration for {{workshop_year}} is now open!</h1>
-                    <p class="p-b-25 m2-txt2">Registration deadline: March 10th, {{workshop_year}}</p>
-                </div>
-                <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col txt-center"></th>
-                            <th scope="col">Student</th>
-                            <th scope="col">Academic</th>
-                            <th scope="col">Professional</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row"> 3 days</th>
-                            <td class="m2-txt2">$700*</td>
-                            <td class="m2-txt2">$800*</td>
-                            <td class="m2-txt2">$1000*</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">5 Days</th>
-                            <td class="m2-txt2">$800*</td>
-                            <td class="m2-txt2">$900*</td>
-                            <td class="m2-txt2">$1200*</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                <a href="https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=8995&AppCode=REG&CC=118121334373" role="button" class="btn btn-lg btn-block btn-outline-secondary"><b>Register</b></a>
-                <p class="intro m-t-25 m2-txt1">* Includes registration fees, breakfast, lunch, social events </p>
-                <p class="intro m-t-5 m2-txt1">* To use your accomodation discount code, see <b class="color-white"><a href="#Lodging" class="color-white">Lodging</a></b> section</p>
+                <div class="block-heading">
+                    {% if workshop.is_past_due_registration%}
+                    <h2 class="color-dipy intro p-b-25">Registration for DIPY WORKSHOP {{workshop.year}} <b>is closed.</b></h2>
+                    {% else %}
+                    <h2 class="color-dipy intro p-b-25">Registration for DIPY WORKSHOP {{workshop.year}} is now open!</h2>
+                    {% endif %}
+					<p class="p-b-25 m2-txt2">Registration deadline: {{workshop.registration_end_date|date:"dS F Y"}}</p>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+                            <div class="ribbon">Best Value</div>
+							<div class="heading">
+								<h3 class="p-t-15 p-b-15">FREE</h3>
+							</div>
+							<p class="p-b-10">DIPY Workshop is free</p>
+							<div class="features m-b-50">
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$0</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <a class="btn btn-block btn-primary" href="{% url 'users:register' workshop_slug=workshop.slug pricing_slug='free' %}">Register</a>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Bronze Sponsor</h3>
+							</div>
+							<p class="p-b-10">Add DIPY Bronze Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">1 month</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$399</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="399">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+                    <div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Silver Sponsor</h3>
+							</div>
+							<p class="p-b-10">Add DIPY Silver Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">2 months</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$799</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="799">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-3">
+						<div class="item">
+							<div class="heading">
+								<h3>FREE + Gold Sponsor</h3>
+							</div>
+							<p class="p-b-10">DIPY Gold Sponsor</p>
+							<div class="features">
+                                <h4><span class="feature">Support*</span> : <span class="value">4 months</span></h4>
+                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Acces to all materials</span> : <span class="value">Yes</span></h4>
+                                <h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+							</div>
+							<div class="price">
+								<h4>$1490</h4>
+                            </div>
+                            {% if not workshop.is_past_due_registration%}
+                            <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="1499">Register & Sponsor Event</button>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+                <div><p class="text-center color-white"><b>* Post Workshop Support</b></p></div>
+                <div id="error-message"></div>
             </div>
         </div>
     </div>
@@ -384,6 +447,7 @@
             </div>
         </div>
     </div>
+ {% csrf_token %}
 </div>
 
    <!--[if IE]>
@@ -454,6 +518,43 @@
                 }
             }
     </script>
+    <script type="text/javascript">
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+        document.querySelectorAll('.checkout-button').forEach(item => {
+            var price_id = item.value; //"price_1IMJdjBb8w8pGcaIpK77vGAM"; //
+            item.addEventListener("click", function () {
+                console.log(price_id)
+                var url_mask = "{% url 'payment:create-checkout-session' workshop_id=workshop.id pricing_id=1234 %}".replace(/1234/g, price_id.toString());
+                console.log(url_mask)
+            fetch(url_mask, {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': csrftoken
+                    }
+            })
+                .then(function (response) {
+                return response.json();
+                })
+                .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function (result) {
+                // If redirectToCheckout fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using error.message.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+                })
+                .catch(function (error) {
+                console.error("Error:", error);
+                });
+            });
+        });
+      </script>
+
     <!--===============================================================================================-->
     <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
     <!--===============================================================================================-->

@@ -1,12 +1,27 @@
 """Workshop Model definitions."""
 
-__all__ = ['Speaker', 'Workshop', 'Pricing', 'BackgroundImage', ]
+__all__ = ['Speaker', 'Workshop', 'BackgroundImage', ]
 
 from django.conf import settings
 from django.core.cache import cache
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 
+
+User = get_user_model()
+
+
+def generate_unique_slug(instance, new_slug=None):
+    slug = new_slug or instance.name
+    unique_slug = slugify(slug)
+    # Klass = instance.__class__
+    num = 1
+    while instance.objects.filter(slug=unique_slug).exists():
+        unique_slug = '{}-{}'.format(unique_slug, num)
+        num += 1
+    return unique_slug
 
 class BackgroundImage(models.Model):
     """
@@ -79,11 +94,32 @@ class Speaker(models.Model):
                                    'user-1633250_640.png')
 
 
+class Pricing(models.Model):
+    name = models.CharField(max_length=100)  # Basic / Pro / Premium
+    slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
+    stripe_price_id = models.CharField(max_length=50)
+    price = models.DecimalField(decimal_places=2, max_digits=6)
+    currency = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = generate_unique_slug(Pricing, self.name.lower())
+
+        # Call the "real" save() method.
+        super(Pricing, self).save(*args, **kwargs)
+
+    def get_stripe_price(self):
+        return int(self.price * 100)
+
 # TODO:
 # Add Grant Model
 # Add Location/address Model
 class Workshop(models.Model):
     codename = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
     start_date = models.DateTimeField(editable=True, default=timezone.now)
     end_date = models.DateTimeField(editable=True, default=timezone.now)
     registration_start_date = models.DateTimeField(editable=True,
@@ -92,6 +128,9 @@ class Workshop(models.Model):
                                                  default=timezone.now)
     speakers = models.ManyToManyField(Speaker, related_name="workshops",
                                       blank=True)
+    members = models.ManyToManyField(User, related_name="workshops",
+                                     blank=True)
+    pricing_tiers = models.ManyToManyField(Pricing, blank=True)
     bg_images = models.ManyToManyField(BackgroundImage,
                                        related_name="workshops",
                                        blank=True)
@@ -107,10 +146,17 @@ class Workshop(models.Model):
     def year(self):
         return self.end_date.year
 
+    @property
+    def is_past_due_registration(self):
+        return timezone.now() > self.registration_end_date
+
     def __str__(self):
         return f'DIPY WORKSHOP {self.year}'
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = generate_unique_slug(Workshop, self.__str__().lower())
+
         self.modified = timezone.now()
         # clear the cache
         cache.clear()
@@ -119,31 +165,21 @@ class Workshop(models.Model):
         super(Workshop, self).save(*args, **kwargs)
 
 
-class Pricing(models.Model):
-    name = models.CharField(max_length=100)  # Basic / Pro / Premium
-    slug = models.SlugField()
-    stripe_price_id = models.CharField(max_length=50)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
-    currency = models.CharField(max_length=50)
+class Subscription(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE,
+                                related_name='subscriptions')
+    created = models.DateTimeField(auto_now_add=True)
+    stripe_session_id = models.CharField(max_length=200, blank=True)
+    payment_intent_id = models.CharField(max_length=200, blank=True)
+    status = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.user.email
 
-
-# class Subscription(models.Model):
-#     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE, related_name='subscriptions')
-#     created = models.DateTimeField(auto_now_add=True)
-#     stripe_subscription_id = models.CharField(max_length=50)
-#     status = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.user.email
-
-#     @property
-#     def is_active(self):
-#         return self.status == "active" or self.status == "trialing"
-
+    @property
+    def is_active(self):
+        return self.status == "active" or self.status == "trialing"
 
 # class Course(models.Model):
 #     pricing_tiers = models.ManyToManyField(Pricing, blank=True)

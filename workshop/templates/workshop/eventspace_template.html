@@ -8,11 +8,11 @@
         <div id="dashboard_header_inner">
             {% if user.get_full_name|length > 0 %}
 
-                <h2>Welcome to the DIPY WORKSHOP</h2>
+                <h2>Welcome to the DIPY Workshop {{workshop.year}}</h2>
 
 			{% else %}
 
-                <h2>Welcome to the DIPY WORKSHOP</h2>
+                <h2>Welcome to the DIPY Worshop {{workshop.year}}</h2>
 
 			{% endif %}
             <p>Learn, Code,  Share ...</p>
@@ -27,7 +27,7 @@
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
-                            <li><a href="{% url 'workshop:dashboard' %}" >Home</a></li>
+                            <li><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}" >Home</a></li>
                             <li><a href="" >Calendar</a></li>
                             <li><a href="" >Courses</a></li>
                             <li><a href="" >Publications</a></li>
