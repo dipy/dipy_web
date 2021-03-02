@@ -28,13 +28,13 @@
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}" >Home</a></li>
-                            <li><a href="" >Calendar</a></li>
-                            <li><a href="" >Courses</a></li>
-                            <li><a href="" >Publications</a></li>
-                            <li><a href="" >Chat</a></li>
-                            <li><a href="" >Sponsor</a></li>
-                            <li><a href="" >Help</a></li>
-                            <li><a href="" >Logout</a></li>
+                            <li><a href="{% url 'workshop:eventspace_calendar' workshop_slug=workshop.slug %}" >Calendar</a></li>
+                            <li><a href="{% url 'workshop:eventspace_courses' workshop_slug=workshop.slug %}" >Courses</a></li>
+                            <!-- <li><a href="" >Publications</a></li> -->
+                            <li><a href="{% url 'workshop:eventspace_chat' workshop_slug=workshop.slug %}" >Chat</a></li>
+                            <!-- <li><a href="{# url 'workshop:eventspace_sponsor' workshop_slug=workshop.slug #}" >Sponsor</a></li> -->
+                            <!-- <li><a href="{# url 'workshop:eventspace_help' workshop_slug=workshop.slug #}" >Help</a></li> -->
+                            <li><a href="{% url 'website:dashboard_logout' %}" >Logout</a></li>
                         </ul>
                 </div>
                 <div class="panel-body">
