@@ -199,6 +199,8 @@ META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = 'dipy.herokuapp.com'
 
 # python-social-auth settings
+FIELDS_STORED_IN_SESSION = ['action_type']
+
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_URL = '/login'
 

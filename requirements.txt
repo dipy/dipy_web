@@ -17,6 +17,7 @@ beautifulsoup4>=4.9.3
 lxml
 django-meta>=2.0.0
 pillow
+stripe
 
 # Unittest
 pytest

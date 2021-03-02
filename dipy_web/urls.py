@@ -21,14 +21,17 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     # social login urls
-    path('', include('social_django.urls', namespace='social')),
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('users/', include("users.urls", namespace='users')),
     path('githubstats/', include('github_visualization.urls',
                                  namespace='githubstats')),
     path('workshops/', include('workshop.urls', namespace='workshop')),
+    path('payment/', include('payment.urls', namespace='payment')),
     path('', include('website.urls')),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
 handler403 = 'website.views.custom403'
 handler404 = 'website.views.custom404'
