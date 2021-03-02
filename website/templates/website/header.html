@@ -2,7 +2,6 @@
 {% load customfilters %}
 {% load workshop_tags %}
 
-{% load user_tags %}
 <nav class="navbar navbar-default navbar-fixed-top" id="websiteNavbar"> <!-- id="websiteNavbar"> -->
     <div class="container">
         <div>
@@ -60,8 +59,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false"><img alt="" class="img-circle" width="21" height="21" src="{{user.avatar_url}}"></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{% url 'website:contributors' %}">Profile</a></li>
-                                <li><a href="{% url 'website:support' %}">Workshop Courses</a></li>
+                                <li><a href="{% url 'users:profile' %}">Profile Settings</a></li>
+                                <li><a href="{% url 'workshop:courses' %}">Workshop Courses</a></li>
                                 {% if user|has_gh_permission %}
                                 <li><a href="{% url 'website:dashboard' %}">Dashboard</a></li>
                                 {% endif %}

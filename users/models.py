@@ -1,5 +1,7 @@
 """More info in
 https://www.caktusgroup.com/blog/2019/04/26/how-switch-custom-django-user-model-mid-project
+https://simpleisbetterthancomplex.com/series/2017/09/25/a-complete-beginners-guide-to-django-part-4.html
+
 """
 
 from django.conf import settings
