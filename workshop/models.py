@@ -23,6 +23,7 @@ def generate_unique_slug(instance, new_slug=None):
         num += 1
     return unique_slug
 
+
 class BackgroundImage(models.Model):
     """
     Model for storing background image in index.html or commingsoon.html.
