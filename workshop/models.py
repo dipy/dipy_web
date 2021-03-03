@@ -29,9 +29,10 @@ class BackgroundImage(models.Model):
     Model for storing background image in index.html or commingsoon.html.
     """
     image = models.ImageField(upload_to='bg_images/', blank=True,
-                              default=f"{settings.STATIC_URL,}workshop/images/dipy_odf_vs_2018-10-03.png",
+                              default=f"{settings.STATIC_URL}/workshop/images/dipy_odf_vs_2018-10-03.png",
                               help_text="upload image to the server. If external_image_url is empty, this image is selected")
-    external_image_url = models.URLField(max_length=300, blank=True, help_text='Preferred option. define avatar url.'),
+    external_image_url = models.URLField(max_length=300, blank=True, default='',
+                                         help_text='Preferred option. define avatar url.')
     image_caption = models.CharField(max_length=200, default=None,
                                      help_text="Use for alt_text", blank=False)
     image_description = models.TextField(blank=True)
@@ -72,7 +73,8 @@ class Speaker(models.Model):
     affiliation = models.CharField(max_length=300, blank=True)
     avatar = models.ImageField(upload_to='speaker_images/', blank=True,
                                help_text='upload and define profile picture. We recommend using external_avatar_url instead')
-    external_avatar_url = models.URLField(max_length=300, blank=True, help_text='Preferred option. define avatar url.'),
+    external_avatar_url = models.URLField(max_length=300, blank=True, default='',
+                                          help_text='Preferred option. define avatar url.')
     position = models.PositiveSmallIntegerField(default=0,
                                                 help_text="Speakers are "
                                                           "ordered by position"
