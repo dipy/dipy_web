@@ -18,7 +18,7 @@ from website.models import *
 
 # Definition of views:
 # Temporary disable the cache
-# @cache_page(60 * 30)  # cache the view for 30 minutes
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def index(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
@@ -69,7 +69,7 @@ def cite(request):
     return render(request, 'website/cite.html', context)
 
 #Temporary disable the cache
-# @cache_page(60 * 30)  # cache the view for 30 minutes
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def honeycomb(request):
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
@@ -81,7 +81,7 @@ def honeycomb(request):
     return render(request, 'website/honeycomb.html', context)
 
 # Temporary disable the cache
-# @cache_page(60 * 30)  # cache the view for 30 minutes
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def tutorials(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
@@ -96,7 +96,7 @@ def support(request):
     return render(request, 'website/support.html', context)
 
 #Temporary disable the cache
-# @cache_page(60 * 5)  # cache the view for 5 minutes
+@cache_page(60 * 5)  # cache the view for 5 minutes
 def follow_us(request):
     context = {}
     context['latest_news'] = get_latest_news_posts(5)
@@ -121,7 +121,7 @@ def news_page(request, news_id):
     return render(request, 'website/news.html', context)
 
 #Temporary disable the cache
-# @cache_page(60 * 30)  # cache the view for 30 minutes
+@cache_page(60 * 30)  # cache the view for 30 minutes
 def contributors(request):
     context = {}
     return render(request, 'website/contributors.html', context)
