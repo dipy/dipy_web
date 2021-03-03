@@ -1,0 +1,28 @@
+{% extends "website/base_template.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style type="text/css">
+.loginbox {
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}
+
+
+{% block content_body %}
+<div class="content-card">
+    <div class="row">
+      <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
+        <div class="col-lg-12 omb_login p-b-10 loginbox">
+          <h2>Access Denied</h2>
+            <p style="color: red">You must be registered in an DIPY Workshop or be a Core Contributor</p>
+            <p>If you think that it is a mistake. Please, contact us.</p>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
