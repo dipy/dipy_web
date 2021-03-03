@@ -11,7 +11,7 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class MyUserManager(BaseUserManager):
 
-    def create_user(self, username, email=None, password=None):
+    def create_user(self, username, email=None, password=None, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
@@ -27,8 +27,7 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
-    def create_user_via_email(self, email, password=None):
+    def create_user_via_email(self, email, password=None, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
@@ -37,23 +36,44 @@ class MyUserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
+            password=password,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser_via_email(self, email=None, password=None):
+    def create_superuser_via_email(self, email=None, password=None, **extra_fields):
         """
         Creates and saves a superuser with the given email and password.
         """
         user = self.create_user(
-            email,
+            self.normalize_email(email),
             password=password,
+            extra_fields=extra_fields
         )
         user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
+
+    def create_superuser(self, username, email=None, password=None, **extra_fields):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
+        user = self.create_user(
+            username=username,
+            email=self.normalize_email(email),
+            password=password,
+            extra_fields=extra_fields
+        )
+        user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
+
 
 
 class User(AbstractUser):
