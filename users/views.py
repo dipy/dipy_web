@@ -29,6 +29,11 @@ def login_view(request):
     return render(request, 'users/login.html', context)
 
 
+def register_success(request, workshop_slug):
+    return render(request, 'users/register_success.html',
+                  {'workshop_slug': workshop_slug})
+
+
 def register(request, workshop_slug, pricing_slug):
     session_id = request.GET.get('session_id', None)
     initial_data = {}
@@ -56,7 +61,7 @@ def register(request, workshop_slug, pricing_slug):
             subscription.payment_intent_id = session["payment_intent"]
         subscription.save()
         workshop.members.add(user)
-        return redirect("workshop:eventspace", workshop_slug=workshop.slug)
+        return redirect("users:register_success", workshop_slug=workshop.slug)
 
     context = {}
     context["form"] = form

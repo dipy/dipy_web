@@ -9,6 +9,8 @@ app_name = 'users'
 urlpatterns = [
     path('register/<str:workshop_slug>/<str:pricing_slug>', views.register,
          name='register'),
+    path('register_success/<str:workshop_slug>', views.register_success,
+         name='register_success'),
     # path('login/', auth_views.LoginView, name='login'),
     path('settings', views.profile_settings, name='profile'),
     path('password', views.profile_password, name='password'),
