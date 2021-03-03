@@ -1,12 +1,20 @@
 """Workshop URL Configuration."""
 
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 app_name = 'workshop'
 
 urlpatterns = [
-    # Home Page
+    # Worskhop Management
+    path('dashboard/', views.dashboard_workshops,
+         name='dashboard_workshops'),
+    path('dashboard/add/', views.add_workshop,
+         name='add_workshop'),
+    re_path(r'^dashboard/edit/(?P<workshop_id>.*?)/$',
+            views.edit_workshop, name='edit_workshop'),
+    re_path(r'^dashboard/delete/(?P<workshop_id>.*?)/$',
+            views.delete_workshop, name='delete_workshop'),
     path('courses', views.courses_overview, name='courses'),
     path('w_static/<str:year>', views.index_static, name='index_static'),
     path('eventspace/<str:workshop_slug>', views.eventspace, name='eventspace'),

@@ -111,16 +111,6 @@ urlpatterns = [
             views.check_update_documentation,
             name='check_update_documentation'),
 
-    # Worskhop Management
-    path('dashboard/workshops/', views.dashboard_workshops,
-         name='dashboard_workshops'),
-    path('dashboard/workshops/add/', views.add_workshop,
-         name='add_workshop'),
-    re_path(r'^dashboard/workshops/edit/(?P<workshop_id>.*?)/$',
-            views.edit_workshop, name='edit_workshop'),
-    re_path(r'^dashboard/workshops/delete/(?P<workshop_id>.*?)/$',
-            views.delete_workshop, name='delete_workshop'),
-
     # Redirect some Pages
     re_path(r'^reference_cmd/(?P<path>.*?)/$', views.redirect_old_url),
     re_path(r'^reference/(?P<path>.*?)/$', views.redirect_old_url),

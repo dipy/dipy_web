@@ -1,5 +1,7 @@
 {% extends "website/base_template.html" %}
 {% load static %}
+{% load customfilters %}
+{% is_app_installed "workshop" as is_workshop_installed %}
 
 
 {% block nav %}
@@ -35,7 +37,7 @@
                             <li><a href="{% url 'website:dashboard_carousel' %}" >Carousel</a></li>
                             <li><a href="{% url 'website:dashboard_sponsor' %}" >Sponsor</a></li>
                             <li><a href="{% url 'website:dashboard_documentation' %}" >Documentation</a></li>
-                            <li><a href="{% url 'website:dashboard_workshops' %}" >Workshops</a></li>
+                            <li><a href="{% url 'workshop:dashboard_workshops' %}" >Workshops</a></li>
                             <li><a href="{% url 'website:dashboard_logout' %}" >Logout</a></li>
                         </ul>
                 </div>

@@ -1,13 +1,18 @@
 """Main Workshop pages Management."""
 
-__all__ = ['index_static', 'index', 'eventspace', ]
+__all__ = ['index_static', 'index', 'eventspace', 'dashboard_workshops',
+           'add_workshop', 'edit_workshop', 'delete_workshop']
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
+
+from website.views.decorator import github_permission_required
+
 from .models import *
+from .forms import AddEditWorkshopForm
 
 
 def index_static(request, year):
@@ -73,6 +78,7 @@ def eventspace_calendar(request, workshop_slug):
     context['workshop'] = workshop
     return render(request, 'workshop/eventspace_calendar.html', context)
 
+
 @login_required
 def eventspace_courses(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
@@ -81,3 +87,63 @@ def eventspace_courses(request, workshop_slug):
     return render(request, 'workshop/eventspace_courses.html', context)
 
 
+@login_required
+@github_permission_required
+def dashboard_workshops(request):
+    all_workshops = Workshop.objects.all()
+    context = {'all_workshops': all_workshops}
+    return render(request, 'workshop/dashboard_workshops.html', context)
+
+
+@login_required
+@github_permission_required
+def add_workshop(request):
+    context = {'title': 'Add'}
+    if request.method == 'POST':
+        submitted_form = AddEditWorkshopForm(request.POST)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('workshop:dashboard_workshops')
+        else:
+            context['form'] = submitted_form
+            return render(request, 'workshop/addeditworkshop.html', context)
+
+    form = AddEditWorkshopForm()
+    context['form'] = form
+    return render(request, 'workshop/addeditworkshop.html', context)
+
+
+@login_required
+@github_permission_required
+def edit_workshop(request, workshop_id):
+    try:
+        workshop = Workshop.objects.get(id=workshop_id)
+    except Exception:
+        raise Http404("Workshop does not exist")
+
+    context = {'title': 'Edit'}
+    if request.method == 'POST':
+        submitted_form = AddEditWorkshopForm(request.POST,
+                                             instance=workshop)
+        if submitted_form.is_valid():
+            submitted_form.save()
+            return redirect('workshop:dashboard_workshops')
+        else:
+            context['form'] = submitted_form
+            return render(request, 'workshop/addeditworkshop.html', context)
+
+    form = AddEditWorkshopForm(instance=workshop)
+    context['form'] = form
+    return render(request, 'workshop/addeditworkshop.html', context)
+
+
+@login_required
+@github_permission_required
+def delete_workshop(request, workshop_id):
+    try:
+        w = Workshop.objects.get(id=workshop_id)
+    except Exception:
+        raise Http404("Workshop does not exist")
+
+    w.delete()
+    return redirect('workshop:dashboard_workshops')

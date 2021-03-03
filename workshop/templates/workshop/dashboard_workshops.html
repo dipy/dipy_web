@@ -9,7 +9,7 @@
 
 <h3 class="text-center">Add / Edit Workshop Event</h3>
 
-<div class="text-center"><a href="{% url 'website:add_workshop' %}">Add New Workshop Event</a></div>
+<div class="text-center"><a href="{% url 'workshop:add_workshop' %}">Add New Workshop Event</a></div>
 
 {% for workshop in all_workshops %}
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -22,7 +22,7 @@
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Registration End Date: </strong>{{ workshop.registration_end_date }}</div><br/>
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Is in person?  </strong>{{ workshop.is_in_person|yesno }}</div>
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Is visible?  </strong>{{ workshop.is_published|yesno }}</div><br/>
-    <p><a href="{% url 'website:edit_workshop' workshop_id=workshop.id %} ">Edit</a> | <a class="workshopDeleteLink" href="{% url 'website:delete_workshop' workshop_id=workshop.id %} ">Delete</a></p>
+    <p><a href="{% url 'workshop:edit_workshop' workshop_id=workshop.id %} ">Edit</a> | <a class="workshopDeleteLink" href="{% url 'workshop:delete_workshop' workshop_id=workshop.id %} ">Delete</a></p>
     <hr>
 </div>
 {% endfor %}

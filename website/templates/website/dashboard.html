@@ -1,4 +1,6 @@
 {% extends "website/dashboard_template.html" %}
+{% load customfilters %}
+{% is_app_installed "workshop" as is_workshop_installed %}
 
 
 {% block content_body %}
@@ -11,8 +13,8 @@
 		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_carousel' %}"><p class="dashboard-button btn btn-default">Add / Edit Carousel Images</p></a></div>
 		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_sponsor' %}"><p class="dashboard-button btn btn-default">Add / Edit Sponsor Images</p></a></div>
 		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_documentation' %}"><p class="dashboard-button btn btn-default">Manage Documentation</p></a></div>
-		<div class="col-xs-12 col-sm-6"><a href="{% url 'website:dashboard_workshops' %}"><p class="dashboard-button btn btn-default">Add / Edit Workshops information</p></a></div>
-		<div class="col-12"><a href="{% url 'website:dashboard_logout' %}"><p class="dashboard-button btn btn-default logout">Logout</p></a></div>
+		<div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:dashboard_workshops' %}"><p class="dashboard-button btn btn-default">Add / Edit Workshops information</p></a></div>
+		<div class="col-12"><a href="{% url 'website:dashboard_logout' %}"><p class="dashboard-button btn btn-default logout">LOGOUT</p></a></div>
 	</div>
 </section>
 

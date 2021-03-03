@@ -3,8 +3,8 @@ from .models import *
 
 
 class AddEditWorkshopForm(ModelForm):
-    speakers = MultipleChoiceField(choices=Speaker.objects.all(), label='Orator',
-                                   widget=CheckboxSelectMultiple)
+    # speakers = MultipleChoiceField(choices=Speaker.objects.all(), label='Orator',
+    #                                widget=CheckboxSelectMultiple)
     class Meta:
         model = Workshop
         fields = ['codename', 'start_date', 'end_date',
