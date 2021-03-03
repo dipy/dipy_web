@@ -42,3 +42,7 @@ def gh_permission(user):
     return has_permission
 
 
+@register.simple_tag
+def is_app_installed(app):
+  from django.apps import apps
+  return apps.is_installed(app)
