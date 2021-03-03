@@ -14,4 +14,5 @@ urlpatterns = [
     path('password', views.profile_password, name='password'),
     path('login/', views.login_view, name='login'),
     path('logout/', auth_views.LogoutView, name='logout'),
+    path('acces_denied/', views.access_denied, name='access_denied'),
 ]

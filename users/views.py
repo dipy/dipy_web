@@ -112,3 +112,7 @@ def profile_password(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'users/profile_password.html', {'form': form})
+
+
+def access_denied(request):
+    return render(request, 'users/access_denied.html', {})

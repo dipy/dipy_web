@@ -1,6 +1,7 @@
 """More information: https://rahmonov.me/posts/introduction-to-python-social-auth/ """
 from django.conf import settings
 from website.views.tools import has_commit_permission
+from django.shortcuts import redirect
 
 USER_FIELDS = ['username', 'email']
 
@@ -13,7 +14,7 @@ def create_user(strategy, backend, details, user=None, *args, **kwargs):
     if action_type == 'login':
 
         if backend.name != 'github':
-            return
+            return redirect('users:access_denied')
 
         try:
             access_token = kwargs.get('response', {}).get('access_token', '')
@@ -24,7 +25,7 @@ def create_user(strategy, backend, details, user=None, *args, **kwargs):
             access_token, settings.DOCUMENTATION_REPO_NAME)
 
         if not has_permission:
-            return
+            return redirect('users:access_denied')
 
     fields = dict((name, kwargs.get(name, details.get(name)))
                   for name in backend.setting('USER_FIELDS', USER_FIELDS))
