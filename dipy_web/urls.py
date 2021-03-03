@@ -18,7 +18,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 
-urlpatterns = [
+urlpatterns = static(settings.MEDIA_URL,
+                     document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
     path('admin/', admin.site.urls),
     # social login urls
     path('oauth/', include('social_django.urls', namespace='social')),
@@ -30,8 +33,6 @@ urlpatterns = [
     path('', include('website.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
 
 handler403 = 'website.views.custom403'
 handler404 = 'website.views.custom404'

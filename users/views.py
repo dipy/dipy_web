@@ -40,7 +40,7 @@ def register(request, workshop_slug, pricing_slug):
 
     form = UsersRegisterForm(request.POST or None, initial=initial_data)
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
-    pricing = Pricing.objects.get(slug__contains=pricing_slug)
+    pricing = Pricing.objects.get(slug=pricing_slug)
     if form.is_valid():
         user = form.save()
         password = form.cleaned_data.get("password")

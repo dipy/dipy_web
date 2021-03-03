@@ -22,7 +22,7 @@
       </div>
       <div>
         {% for workshop in all_workshop %}
-        div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}"><p class="dashboard-button btn btn-default">{{workshop.year}}</p></a></div>
+        <div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}"><p class="dashboard-button btn btn-default">{{workshop.year}}</p></a></div>
         {% endfor %}
       </div>
       {% else %}
