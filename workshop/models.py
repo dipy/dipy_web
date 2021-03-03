@@ -23,12 +23,15 @@ def generate_unique_slug(instance, new_slug=None):
         num += 1
     return unique_slug
 
+
 class BackgroundImage(models.Model):
     """
     Model for storing background image in index.html or commingsoon.html.
     """
     image = models.ImageField(upload_to='bg_images/', blank=True,
-                              default=f"{settings.STATIC_URL,}workshop/images/dipy_odf_vs_2018-10-03.png")
+                              default=f"{settings.STATIC_URL,}workshop/images/dipy_odf_vs_2018-10-03.png",
+                              help_text="upload image to the server. If external_image_url is empty, this image is selected")
+    external_image_url = models.URLField(max_length=300, blank=True, help_text='Preferred option. define avatar url.'),
     image_caption = models.CharField(max_length=200, default=None,
                                      help_text="Use for alt_text", blank=False)
     image_description = models.TextField(blank=True)
@@ -56,7 +59,8 @@ class BackgroundImage(models.Model):
 
     @property
     def url(self):
-        return self.image.url
+        return self.external_image_url or self.image.url
+
 
     def __str__(self):
         return self.image_caption
@@ -64,10 +68,11 @@ class BackgroundImage(models.Model):
 
 class Speaker(models.Model):
     fullname = models.CharField(max_length=300)
-    title = models.CharField(max_length=300)
-    affiliation = models.CharField(max_length=300)
+    title = models.CharField(max_length=300, blank=True)
+    affiliation = models.CharField(max_length=300, blank=True)
     avatar = models.ImageField(upload_to='speaker_images/', blank=True,
-                               null=True)
+                               help_text='upload and define profile picture. We recommend using external_avatar_url instead')
+    external_avatar_url = models.URLField(max_length=300, blank=True, help_text='Preferred option. define avatar url.'),
     position = models.PositiveSmallIntegerField(default=0,
                                                 help_text="Speakers are "
                                                           "ordered by position"
@@ -87,6 +92,9 @@ class Speaker(models.Model):
         If an image hasn't been uploaded yet, it returns a stock image
         :returns: str -- the image url
         """
+        if self.external_avatar_url:
+            return self.external_avatar_url
+
         if self.avatar and hasattr(self.avatar, 'url'):
             return self.avatar.url
 
@@ -97,7 +105,7 @@ class Speaker(models.Model):
 class Pricing(models.Model):
     name = models.CharField(max_length=100)  # Basic / Pro / Premium
     slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
-    stripe_price_id = models.CharField(max_length=50)
+    stripe_price_id = models.CharField(max_length=50, blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     currency = models.CharField(max_length=50)
 
