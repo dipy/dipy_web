@@ -25,9 +25,7 @@
                 <div class="collapse navbar-collapse" id="basic-navbar"> <!-- id="bs-example-navbar-collapse-1"> -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'website:index' %}">Home</a></li>
-                        {% if is_workshop_installed %}
                         {% show_workshop_menu %}
-                        {% endif %}
                         {% for page in pages_in_nav %}
                         <li><a href="/page/{{page.website_position_id}}">{{page.title}}</a></li>
                         {% endfor %}
