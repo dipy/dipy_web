@@ -10,15 +10,18 @@ from django.contrib.auth import logout
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 
 from .tools import *
 from .decorator import github_permission_required
 from website.models import *
 
 
-# Definition of views:
-# Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+cache_duration = 15  # cache the view for 30 minutes
+
+
+@cache_page(60 * cache_duration)
+@vary_on_cookie
 def index(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
@@ -68,8 +71,9 @@ def cite(request):
     context['meta'] = get_meta_tags_dict(title="DIPY - Publications")
     return render(request, 'website/cite.html', context)
 
-#Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+
+@cache_page(60 * cache_duration)
+@vary_on_cookie
 def honeycomb(request):
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
@@ -80,8 +84,9 @@ def honeycomb(request):
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
     return render(request, 'website/honeycomb.html', context)
 
-# Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+
+@cache_page(60 * cache_duration)
+@vary_on_cookie
 def tutorials(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
@@ -95,8 +100,9 @@ def support(request):
     context['meta'] = get_meta_tags_dict(title="DIPY - Support")
     return render(request, 'website/support.html', context)
 
-#Temporary disable the cache
+
 @cache_page(60 * 5)  # cache the view for 5 minutes
+@vary_on_cookie
 def follow_us(request):
     context = {}
     context['latest_news'] = get_latest_news_posts(5)
@@ -120,8 +126,9 @@ def news_page(request, news_id):
                                          description=news_post.description)
     return render(request, 'website/news.html', context)
 
-#Temporary disable the cache
-@cache_page(60 * 30)  # cache the view for 30 minutes
+
+@cache_page(60 * cache_duration)
+@vary_on_cookie
 def contributors(request):
     context = {}
     return render(request, 'website/contributors.html', context)

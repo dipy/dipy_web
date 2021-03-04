@@ -38,7 +38,7 @@
             <ul>
                 <li data-menuanchor="Home"><a href="#Home">Home</a></li>
                 <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
-                <li data-menuanchor="Workshops"><a href="#Workshops">Workshops</a></li>
+                <!-- <li data-menuanchor="Workshops"><a href="#Workshops">Workshops</a></li> -->
                 <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
                 <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
                 {% if workshop.is_in_person %}
@@ -87,7 +87,7 @@
         <div class="container p-t-60">
             <div class="row">
                 {% for speaker in workshop.speakers.all %}
-                <div class="col-lg-4 col-sm-6 p-b-50">
+                <div class="col-lg-3 col-sm-6 p-b-50">
                     <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="140" height="140">
                     <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
                     <p class="color-black">{{speaker.title}}</p>
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="section" id="section_3">
+    <!-- <div class="section" id="section_3">
         <div class="container">
             <h1 class="m-t-80 m-b-30"><b>TUTORIALS</b></h1>
             <div class="row">
@@ -123,7 +123,7 @@
             </div><br\>
             <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. More than 15 DIPY developers will be available this year on site to help. All tutorials will run on 3 levels: novice, intermediate and advanced. The workshop will include social events and activities. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
         </div>
-    </div>
+    </div> -->
     <div class="section" id="section_calendar">
         <div class="container">
             <div class="row with-padding-10">
@@ -208,7 +208,7 @@
                     </div>
             </div>
             <div>
-                <p class="text-center"><strong>*Scientific Panel Q/A, group discussion, coding sprint, and community support are included everyday.</strong></p>
+                <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. A Scientific Q/A sessions will be available everyday. More information provied after registration. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
             </div>
         </div>
     </div>
@@ -221,17 +221,19 @@
                     {% else %}
                     <h2 class="color-dipy intro p-b-25">Registration for DIPY WORKSHOP {{workshop.year}} is now open!</h2>
                     {% endif %}
+                    {% if workshop.show_registration_deadline %}
 					<p class="p-b-25 m2-txt2">Registration deadline: {{workshop.registration_end_date|date:"dS F Y"}}</p>
+                    {% endif %}
 				</div>
 				<div class="row justify-content-md-center">
 					<div class="col-md-5 col-lg-3">
 						<div class="item">
-                            <div class="ribbon">Best Value</div>
+                            <!-- <div class="ribbon">Best Value</div> -->
 							<div class="heading">
 								<h3 class="p-t-15 p-b-15">FREE</h3>
 							</div>
 							<p class="p-b-10">DIPY Workshop is free</p>
-							<div class="features m-b-50">
+							<div class="features">
                                 <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
                                 <h4><span class="feature">Access to all materials</span> : <span class="value">Yes</span></h4>
 								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
@@ -247,16 +249,14 @@
 					<div class="col-md-5 col-lg-3">
 						<div class="item">
 							<div class="heading">
-								<h3>FREE + Bronze Sponsor</h3>
+								<h3>DIPY Bronze Sponsoring</h3>
 							</div>
-							<p class="p-b-10">Add DIPY Bronze Sponsor</p>
+							<p class="p-b-10">Sponsor DIPY event</p>
 							<div class="features">
-                                <h4><span class="feature">Support*</span> : <span class="value">1 month</span></h4>
-                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
-                                <h4><span class="feature">Access to all materials</span> : <span class="value">Yes</span></h4>
-								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+                                <h4><span class="feature">Include everything in FREE </span></h4>
+                                <h4><span class="feature">Support*</span> : <span class="value">2 weeks</span></h4>
 							</div>
-							<div class="price">
+							<div class="price m-t-65">
 								<h4>$399</h4>
                             </div>
                             {% if not workshop.is_past_due_registration%}
@@ -267,16 +267,15 @@
                     <div class="col-md-5 col-lg-3">
 						<div class="item">
 							<div class="heading">
-								<h3>FREE + Silver Sponsor</h3>
+								<h3>DIPY Silver Sponsoring</h3>
 							</div>
-							<p class="p-b-10">Add DIPY Silver Sponsor</p>
+							<p class="p-b-10">Sponsor DIPY event</p>
 							<div class="features">
-                                <h4><span class="feature">Support*</span> : <span class="value">2 months</span></h4>
-                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
-                                <h4><span class="feature">Access to all materials</span> : <span class="value">Yes</span></h4>
-								<h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+                                <h4><span class="feature">Include everything in FREE </span></h4>
+                                <h4><span class="feature">Support*</span> : <span class="value">1 month</span></h4>
+
 							</div>
-							<div class="price">
+							<div class="price m-t-65">
 								<h4>$799</h4>
                             </div>
                             {% if not workshop.is_past_due_registration%}
@@ -287,16 +286,14 @@
 					<div class="col-md-5 col-lg-3">
 						<div class="item">
 							<div class="heading">
-								<h3>FREE + Gold Sponsor</h3>
+								<h3>DIPY Gold Sponsoring</h3>
 							</div>
-							<p class="p-b-10">DIPY Gold Sponsor</p>
+							<p class="p-b-10">Sponsor DIPY event</p>
 							<div class="features">
-                                <h4><span class="feature">Support*</span> : <span class="value">4 months</span></h4>
-                                <h4><span class="feature">Amazing Community Help</span> : <span class="value">Yes</span></h4>
-                                <h4><span class="feature">Access to all materials</span> : <span class="value">Yes</span></h4>
-                                <h4><span class="feature">Duration</span> : <span class="value">5 Days</span></h4>
+                                <h4><span class="feature">Include everything in FREE </span></h4>
+                                <h4><span class="feature">Support*</span> : <span class="value">3 months</span></h4>
 							</div>
-							<div class="price">
+							<div class="price m-t-65">
 								<h4>$1490</h4>
                             </div>
                             {% if not workshop.is_past_due_registration%}
@@ -305,7 +302,7 @@
 						</div>
 					</div>
 				</div>
-                <div><p class="text-center color-white"><b>* Post Workshop Exclusive Support</b></p></div>
+                <div><p class="text-center color-white"><b>* Post Workshop Exclusive Support, Please <a class="color-dipy" href="mailto:admins@dipy.org?subject=Informations about sponsoring DIPY event"> contact us</a> for more information</b></p></div>
                 <div id="error-message"></div>
             </div>
         </div>
@@ -560,7 +557,7 @@
                 navigation: false,
                 navigationPosition: 'right',
                 continuousVertical: false,
-                anchors: ["Home", "Speakers", "Workshops", "Schedule", "Registration",
+                anchors: ["Home", "Speakers", "Schedule", "Registration",  // "Workshops",
                           {% if workshop.is_in_person %} "Lodging", "Venue", {% endif %}
                           "Contact"],
 
