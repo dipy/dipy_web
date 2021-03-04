@@ -9,6 +9,11 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
+import markdown
+import bleach
+
+from website.models import allowed_html_tags, allowed_attrs
+
 
 User = get_user_model()
 
@@ -136,6 +141,8 @@ class Workshop(models.Model):
                                                    default=timezone.now)
     registration_end_date = models.DateTimeField(editable=True,
                                                  default=timezone.now)
+    welcome_email = models.TextField(default="Thanks for your joining DIPY Workshop.")
+    welcome_email_html = models.TextField(editable=False, blank=True)
     speakers = models.ManyToManyField(Speaker, related_name="workshops",
                                       blank=True)
     members = models.ManyToManyField(User, related_name="workshops",
@@ -166,6 +173,14 @@ class Workshop(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = generate_unique_slug(Workshop, self.__str__().lower())
+
+    def save(self, *args, **kwargs):
+        html_content = markdown.markdown(self.welcome_email,
+                                         extensions=['codehilite'])
+        print(html_content)
+        # bleach is used to filter html tags like <script> for security
+        self.welcome_email_html = bleach.clean(html_content, allowed_html_tags,
+                                               allowed_attrs)
 
         self.modified = timezone.now()
         # clear the cache
