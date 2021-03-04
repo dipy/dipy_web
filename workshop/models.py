@@ -141,6 +141,7 @@ class Workshop(models.Model):
                                                    default=timezone.now)
     registration_end_date = models.DateTimeField(editable=True,
                                                  default=timezone.now)
+    show_registration_deadline = models.BooleanField(default=False)
     welcome_email = models.TextField(default="Thanks for your joining DIPY Workshop.")
     welcome_email_html = models.TextField(editable=False, blank=True)
     speakers = models.ManyToManyField(Speaker, related_name="workshops",
