@@ -132,6 +132,18 @@ CACHES = {
     }
 }
 
+# email backend
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.yourserver.com'
+# EMAIL_PORT = '<your-server-port>'
+# EMAIL_HOST_USER = 'your@djangoapp.com'
+# EMAIL_HOST_PASSWORD = 'your-email account-password'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -214,10 +226,15 @@ META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = 'dipy.org'
 
 # python-social-auth settings
-FIELDS_STORED_IN_SESSION = ['action_type']
+FIELDS_STORED_IN_SESSION = ['action_type', 'workshop_id', 'pricing_id']
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_URL = '/login'
+
+# SOCIAL_AUTH_EMAIL_FORM_HTML = 'email_signup.html'
+# SOCIAL_AUTH_EMAIL_VALIDATION_FUNCTION = 'app.mail.send_validation'
+# SOCIAL_AUTH_EMAIL_VALIDATION_URL = '/email-sent/'
+# SOCIAL_AUTH_USERNAME_FORM_HTML = 'username_signup.html'
 
 SOCIAL_AUTH_PIPELINE = (
     # Get the information we can about the user and return it in a simple
@@ -266,6 +283,11 @@ SOCIAL_AUTH_PIPELINE = (
 
     # Update image profile information
     'website.views.tools.save_profile_picture',
+
+    # Add to workshop
+    'workshop.pipeline.add_to_workshop',
+    # Send welcome email
+    'workshop.pipeline.send_welcome_email',
 )
 
 AUTHENTICATION_BACKENDS = (
