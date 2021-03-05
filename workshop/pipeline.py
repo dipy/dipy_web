@@ -22,9 +22,10 @@ def add_to_workshop(strategy, backend, details, user=None, *args, **kwargs):
         #     # Todo: manage multiple subscription
         #     subs[0].pricing = pricing
         #     subs[0].save()
-
+        strategy.session_set('is_new_to_workshop', False)
         if user not in workshop.members.all():
             workshop.members.add(user)
+            strategy.session_set('is_new_to_workshop', True)
 
     return
 

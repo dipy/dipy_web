@@ -30,8 +30,13 @@ def login_view(request):
 
 
 def register_success(request, workshop_slug):
+    is_new_user = request.session.get('new_user', False)
+    is_new_to_workshop = request.session.get('is_new_to_workshop', False)
+
+    is_new_user = is_new_user or is_new_to_workshop
     return render(request, 'users/register_success.html',
-                  {'workshop_slug': workshop_slug})
+                  {'workshop_slug': workshop_slug,
+                   'is_new_user': is_new_user})
 
 
 def register(request, workshop_slug, pricing_slug):

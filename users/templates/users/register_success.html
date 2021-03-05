@@ -18,15 +18,20 @@
     <div class="row">
       <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
         <div class="col-lg-12 omb_login p-b-10 loginbox">
-          <h2 class="text-center p-b-30"> Registration SUCCESS!</h2>
+          {% if is_new_user %}
+            <h2 class="text-center p-b-30"> Registration SUCCESS!</h2>
             <p class="text-center p-b-20">Congratulations! Your account has been succesfully created and we already logged you to our platform</p>
             <p class="text-center">Please check your email for further instructions.</p>
+          {% else %}
+            <h2 class="text-center p-b-30"> You are already registered!</h2>
+            <p class="text-center p-b-20">Please, Select one of the following option:</p>
+          {% endif %}
             <div>
               <div class="col-xs-12"><a href="{% url 'workshop:eventspace' workshop_slug=workshop_slug %}"><p class="dashboard-button btn btn-default">Workshop space</p></a></div>
               <div class="col-xs-12"><a href="{% url 'website:index' %}"><p class="dashboard-button btn btn-default">Home Page</p></a></div>
               <div class="col-xs-12"><a href="{% url 'users:profile' %}"><p class="dashboard-button btn btn-default">Profile Settings</p></a></div>
             </div>
-            <p class="text-center">Having Trouble? <a href='mailto:skoudoro@iu.edu'>Contact us.</a></p>
+            <p class="text-center">Having Trouble? <a href='mailto:admins@dipy.org'>Contact us.</a></p>
         </div>
       </div>
     </div>
