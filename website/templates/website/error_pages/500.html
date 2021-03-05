@@ -1,12 +1,4 @@
 {% extends "website/base_template.html" %}
-
-{% block content_body %}
-
-<!-- Content -->
-{% endblock %}
-
-
-{% extends "website/base_template.html" %}
 {% load static %}
 
 
@@ -23,14 +15,17 @@
 
 {% block content_body %}
 <div class="content-card">
-
-  <div class="row"><div class="col-md-3 col-md-offset-4">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-4">
       <span class="err">5</span>
       <i class="far fa-question-circle fa-spin"></i>
       <i class="far fa-question-circle fa-spin"></i>
-  </div></div>
+    </div>
+  </div>
   <div class="col-12 msg">
-    <div class="page-heading"><h2>500 Some Error Occured</h2></div>
+    <h2>500 Some Error Occured</h2>
+    <p>Please contact the server administrator to inform them of the time this error occurred, and the actions you performed just before this error.</p>
+    <p>Go back to <a href="{% url 'website:index' %}">Home</a></p>
   </div>
 </div>
 {% endblock %}
