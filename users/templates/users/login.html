@@ -37,6 +37,16 @@
                     </a>
                 </div>
             </div>
+            {% if show_social_error %}
+            <div class="non-field-errors m-t-20">
+                <p class="form-error color-red fs-20 text-center">Your email address cannot be retrieve.</p>
+                <p class="form-error color-red fs-13 text-center">You do not have a public email address in your profile page</p>
+                <p class="form-error color-red fs-13 text-center">Please, choose another option to login.</p>
+                {% if backend == 'github' %}
+                <p class="form-error color-red fs-13 text-center">On Github, you can setup your email address <a href="https://github.com/settings/profile">here</a> and, retry to login.</p>
+                {% endif %}
+            </div>
+            {% endif %}
 
             <div class="row omb_row-sm-offset-3 omb_loginOr">
                 <div class="col-lg-12">

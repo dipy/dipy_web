@@ -3,6 +3,7 @@ from django.conf import settings
 from website.views.tools import has_commit_permission
 from django.shortcuts import redirect
 
+
 USER_FIELDS = ['username', 'email']
 
 

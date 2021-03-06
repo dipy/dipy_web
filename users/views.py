@@ -25,7 +25,12 @@ def login_view(request):
         login(request, user, backend=backend)
         return redirect('website:index')
 
-    context = {'form': form}
+    show_social_error = request.GET.get('show_social_error', False)
+    backend = request.GET.get('backend', '')
+    context = {'form': form,
+               'show_social_error': show_social_error,
+               'backend': backend}
+
     return render(request, 'users/login.html', context)
 
 
@@ -68,10 +73,15 @@ def register(request, workshop_slug, pricing_slug):
         workshop.members.add(user)
         return redirect("users:register_success", workshop_slug=workshop.slug)
 
+
+    show_social_error = request.GET.get('show_social_error', False)
+    backend = request.GET.get('backend', '')
     context = {}
     context["form"] = form
     context["workshop"] = workshop
     context['pricing'] = pricing
+    context['show_social_error'] = show_social_error
+    context['backend'] = backend
     return render(request, "users/register.html", context)
 
 

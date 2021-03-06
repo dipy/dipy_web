@@ -1,8 +1,51 @@
 from django.core.mail import send_mail
+from urllib.parse import urlencode
+
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.urls.base import reverse
+from django.shortcuts import redirect
+# from django.urls import resolve
 
 from workshop.models import Workshop, Pricing, Subscription
+
+
+def require_email(strategy, backend, details, is_new=False, user=None, *args, **kwargs):
+    if user and user.email:
+        return
+
+    elif is_new and not details.get('email'):
+        email = strategy.request_data().get('email')
+        if email:
+            details['email'] = email
+            return
+
+        action_type = strategy.session_get('action_type')
+
+        if action_type == 'login':
+            base_url = reverse('users:login')
+            query_string = urlencode({'show_social_error': True,
+                                      'backend': backend.name})
+            return redirect(f'{base_url}?{query_string}')
+
+        elif action_type == 'register':
+            workshop_id = strategy.session_get('workshop_id')
+            pricing_id = strategy.session_get('pricing_id')
+
+            workshop = Workshop.objects.get(id=workshop_id)
+            pricing = Pricing.objects.get(id=pricing_id)
+
+            base_url = reverse('users:register',
+                               kwargs={'workshop_slug': workshop.slug,
+                                       'pricing_slug': pricing.slug})
+            query_string = urlencode({'show_social_error': True,
+                                      'backend': backend.name})
+
+            return redirect(f'{base_url}?{query_string}')
+
+
+
+
 
 
 def add_to_workshop(strategy, backend, details, user=None, *args, **kwargs):
