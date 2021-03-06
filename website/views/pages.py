@@ -78,7 +78,6 @@ def honeycomb(request):
     context = {}
     context['all_youtube_videos'] = get_youtube_videos('UCHnEuCRDGFOR5cfEo0nD3pw', 100)
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
-    # import ipdb; ipdb.set_trace()
     context['all_documentation_examples'] = eval(doc[0].gallery) if doc else []  # get_doc_examples_images()
 
     context['meta'] = get_meta_tags_dict(title="DIPY - Gallery")
