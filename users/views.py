@@ -27,9 +27,11 @@ def login_view(request):
 
     show_social_error = request.GET.get('show_social_error', False)
     backend = request.GET.get('backend', '')
+    next_url = request.GET.get('next', '/')
     context = {'form': form,
                'show_social_error': show_social_error,
-               'backend': backend}
+               'backend': backend,
+               'next_url': next_url}
 
     return render(request, 'users/login.html', context)
 

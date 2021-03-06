@@ -44,10 +44,6 @@ def require_email(strategy, backend, details, is_new=False, user=None, *args, **
             return redirect(f'{base_url}?{query_string}')
 
 
-
-
-
-
 def add_to_workshop(strategy, backend, details, user=None, *args, **kwargs):
     action_type = strategy.session_get('action_type')
     if action_type == 'register':

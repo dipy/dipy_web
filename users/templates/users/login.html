@@ -22,17 +22,17 @@
             <h2 class="form-signin-heading p-b-20 text-center">LOGIN</h2>
             <div class="row omb_row-sm-offset-3 omb_socialButtons">
                 <div class="col-lg-4">
-                    <a href="{% url 'social:begin' 'github' %}?action_type=login&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-github">
+                    <a href="{% url 'social:begin' 'github' %}?action_type=login&next={{next_url}}" class="btn btn-lg btn-block omb_btn-github">
                         <i class="fa fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="{% url 'social:begin' 'linkedin-oauth2' %}?action_type=login&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-linkedin">
+                    <a href="{% url 'social:begin' 'linkedin-oauth2' %}?action_type=login&next={{next_url}}" class="btn btn-lg btn-block omb_btn-linkedin">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <a href="{% url 'social:begin' 'google-oauth2' %}?action_type=login&next={% url 'website:index' %}" class="btn btn-lg btn-block omb_btn-google">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}?action_type=login&next={{next_url}}" class="btn btn-lg btn-block omb_btn-google">
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>
