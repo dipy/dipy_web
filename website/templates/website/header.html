@@ -62,7 +62,7 @@
                                aria-haspopup="true" aria-expanded="false"><img alt="" class="img-circle" width="21" height="21" src="{{user.avatar_url}}"></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'users:profile' %}">Profile Settings</a></li>
-                                <li><a href="{% url 'workshop:courses' %}">Workshop Courses</a></li>
+                                <li><a href="{% url 'workshop:workshop_list' %}">Workshop Space</a></li>
                                 {% if user|has_gh_permission %}
                                 <li><a href="{% url 'website:dashboard' %}">Dashboard</a></li>
                                 {% endif %}

@@ -1,6 +1,7 @@
 """Workshop Model definitions."""
 
-__all__ = ['Speaker', 'Workshop', 'BackgroundImage', ]
+__all__ = ['Speaker', 'Workshop', 'BackgroundImage', 'WorkshopEvent',
+           'Lesson', 'Video', 'QA']
 
 from django.conf import settings
 from django.core.cache import cache
@@ -207,36 +208,86 @@ class Subscription(models.Model):
     def is_active(self):
         return self.status == "active" or self.status == "trialing"
 
-# class Course(models.Model):
-#     pricing_tiers = models.ManyToManyField(Pricing, blank=True)
-#     name = models.CharField(max_length=100)
-#     slug = models.SlugField(unique=True)
-#     thumbnail = models.ImageField(upload_to="thumbnails/")
-#     description = models.TextField()
 
-#     def __str__(self):
-#         return self.name
+class Track(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    thumbnail = models.ImageField(upload_to="tracks/", blank=True)
+    description = models.TextField(blank=True)
 
-#     def get_absolute_url(self):
-#         return reverse("content:course-detail", kwargs={"slug": self.slug})
+    def __str__(self):
+        return self.name
+
+    # def get_absolute_url(self):
+    #     return reverse("workshop:course-detail", kwargs={"slug": self.slug})
 
 
-# class Video(models.Model):
-#     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='videos')
-#     vimeo_id = models.CharField(max_length=50)
-#     title = models.CharField(max_length=150)
-#     slug = models.SlugField(unique=True)
-#     description = models.TextField()
-#     order = models.IntegerField(default=1)
+class Lesson(Track):
+    nb_speakers = models.IntegerField(default=0, editable=False)
 
-#     class Meta:
-#         ordering = ["order"]
+    def save(self, *args, **kwargs):
+        self.nb_speakers = 0
+        if hasattr(self, 'videos'):
+            self.nb_speakers = sum([len(v.speakers.all())
+                                    for v in self.videos.all()])
 
-#     def __str__(self):
-#         return self.title
+        # clear the cache
+        cache.clear()
 
-#     def get_absolute_url(self):
-#         return reverse("content:video-detail", kwargs={
-#             "video_slug": self.slug,
-#             "slug": self.course.slug
-#         })
+        # Call the "real" save() method.
+        super(Lesson, self).save(*args, **kwargs)
+
+
+class QA(Track):
+    panel = models.ManyToManyField(Speaker, related_name="qas",
+                                   blank=True)
+
+
+class Video(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
+                               related_name='videos')
+    video_url = models.URLField(max_length=500, blank=True)
+    title = models.CharField(max_length=150)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True)
+    speakers = models.ManyToManyField(Speaker, related_name="videos",
+                                      blank=True)
+    order = models.IntegerField(default=1)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.title
+
+    def video_id(self):
+        if not self.video_url:
+            return ''
+
+        for prefix in ['https://youtu.be/',
+                      'https://www.youtube.com/watch?v=']:
+            if self.video_url.startswith(prefix):
+                return self.video_url.replace(prefix, '')
+
+        return ''
+    # def get_absolute_url(self):
+    #     return reverse("content:video-detail", kwargs={
+    #         "video_slug": self.slug,
+    #         "slug": self.course.slug
+    #     })
+
+
+class WorkshopEvent(models.Model):
+    """docstring for WorkshopEvent."""
+    workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE,
+                                 related_name='events')
+    session = models.ForeignKey(Track, on_delete=models.CASCADE,
+                                related_name='events')
+    start_date = models.DateTimeField(editable=True, default=timezone.now)
+    end_date = models.DateTimeField(editable=True, default=timezone.now)
+
+    def __str__(self):
+        return f'Workshop {self.workshop.year} - {self.session.name}'
+
+    class Meta:
+        ordering = ["start_date"]
