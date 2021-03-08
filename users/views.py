@@ -1,5 +1,3 @@
-from urllib.parse import urlparse
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -9,9 +7,9 @@ from django.shortcuts import render, redirect
 # from django.urls.base import reverse
 from social_django.models import UserSocialAuth
 
-from .forms import UsersRegisterForm, UsersLoginForm
+from users.forms import UsersRegisterForm, UsersLoginForm
 from workshop.models import Subscription, Workshop, Pricing
-# from social_core.pipeline
+
 import stripe
 
 
@@ -114,6 +112,7 @@ def profile_settings(request):
         'google_login': google_login,
         'can_disconnect': can_disconnect
     })
+
 
 @login_required
 def profile_password(request):

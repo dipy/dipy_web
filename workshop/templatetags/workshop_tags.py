@@ -10,3 +10,8 @@ register = template.Library()
 def show_workshop_menu():
     all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')
     return {'all_workshops': all_workshops}
+
+
+@register.filter(name='is_lesson')
+def is_lesson(track):
+    return hasattr(track, 'lesson')

@@ -46,7 +46,7 @@
                 <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
                 {% endif %}
                 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
-                <li data-menuanchor=""><a href="{% url 'workshop:courses' %}">Login</a></li>
+                <li data-menuanchor=""><a href="{% url 'workshop:workshop_list' %}">Login</a></li>
             </ul>
         </div>
         <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
@@ -81,7 +81,7 @@
                         <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
                     </div>
                     <div class="col-lg-4 p-b-25">
-                        <p class="color-white fs-13 txt-center p-b-48">Already Registered ? <a class='color-dipy' href="{% url 'workshop:courses' %}">login here</a></p>
+                        <p class="color-white fs-13 txt-center p-b-48">Already Registered ? <a class='color-dipy' href="{% url 'workshop:workshop_list' %}">login here</a></p>
                     </div>
 
                     <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>
@@ -130,7 +130,7 @@
         </div>
     </div> -->
     <div class="section" id="section_calendar">
-        <div class="container">
+        <div class="container p-t-60">
             <div class="row with-padding-10">
                     <div class="col-lg-4 p-b-20">
                         <div class="card">

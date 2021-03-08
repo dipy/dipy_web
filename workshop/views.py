@@ -3,6 +3,8 @@
 __all__ = ['index_static', 'index', 'eventspace', 'dashboard_workshops',
            'add_workshop', 'edit_workshop', 'delete_workshop']
 
+import datetime
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -39,7 +41,7 @@ def index(request, workshop_slug):
 
 
 @login_required
-def courses_overview(request):
+def workshop_list(request):
     user = request.user
     workshops = user.workshops.all()
     context = {}
@@ -52,6 +54,7 @@ def eventspace(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
     context = {}
     context['workshop'] = workshop
+    # context['tweets'] = get_twitter_feed('dipymri', 5)
     return render(request, 'workshop/eventspace.html', context)
 
 
@@ -80,11 +83,44 @@ def eventspace_calendar(request, workshop_slug):
 
 
 @login_required
+def eventspace_daily(request, workshop_slug, date):
+    dt_date = datetime.datetime.strptime(str(date), "%Y%m%d")
+    dt_date = timezone.make_aware(dt_date)
+    workshop = Workshop.objects.get(slug__contains=workshop_slug)
+
+    workshop_events = WorkshopEvent.objects.filter(workshop=workshop,
+                                                  start_date__date=dt_date)
+
+
+    # import ipdb; ipdb.set_trace()
+    context = {'workshop': workshop,
+               'workshop_events': workshop_events}
+
+    return render(request, 'workshop/eventspace_daily.html', context)
+
+
+@login_required
 def eventspace_courses(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
-    context = {}
-    context['workshop'] = workshop
+    all_lesson = Lesson.objects.filter(events__in=workshop.events.all())
+
+    context = {'workshop': workshop,
+               'all_lesson': all_lesson,
+               }
     return render(request, 'workshop/eventspace_courses.html', context)
+
+
+@login_required
+def eventspace_lesson(request, workshop_slug, lesson_slug, video_slug):
+    workshop = Workshop.objects.get(slug__contains=workshop_slug)
+    lesson = Lesson.objects.get(slug__contains=lesson_slug)
+    video = Video.objects.get(slug__contains=video_slug)
+
+    print(video.video_id())
+    context = {'workshop': workshop,
+               'lesson': lesson,
+               'video': video}
+    return render(request, 'workshop/eventspace_lesson.html', context)
 
 
 @login_required

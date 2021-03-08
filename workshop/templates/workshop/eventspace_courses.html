@@ -1,8 +1,320 @@
 {% extends "workshop/eventspace_template.html" %}
+{% load static %}
 {% load customfilters %}
+
+{% block extra_css %}
+<style>
+ #aspect-content {
+	 margin: 50px 0 0;
+	 font-family: "Poppins", sans-serif;
+}
+ #aspect-content * {
+	 box-sizing: border-box;
+}
+ .aspect-tab {
+	 position: relative;
+	 width: 100%;
+	 max-width: 1000px;
+	 margin: 0 auto 10px;
+	 border-radius: 4px;
+	 background-color: #fff;
+	 box-shadow: 0 0 0 1px rgba(236, 236, 236, 1);
+	 opacity: 1;
+	 transition: box-shadow 0.2s, opacity 0.4s;
+}
+ .aspect-tab:hover {
+	 box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .11);
+}
+ .aspect-input {
+	 display: none;
+}
+ .aspect-input:checked ~ .aspect-content + .aspect-tab-content {
+	 max-height: 3000px;
+}
+ .aspect-input:checked ~ .aspect-content:after {
+	 transform: rotate(0);
+}
+ .aspect-label {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 height: 100%;
+	 max-height: 80px;
+	 width: 100%;
+	 margin: 0;
+	 padding: 0;
+	 font-size: 0;
+	 z-index: 1;
+	 cursor: pointer;
+}
+ .aspect-label:hover ~ .aspect-content:after {
+	 background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTI0IDI0SDBWMGgyNHoiIG9wYWNpdHk9Ii44NyIvPgogICAgICAgIDxwYXRoIGZpbGw9IiM1NTZBRUEiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTE1Ljg4IDE1LjI5TDEyIDExLjQxbC0zLjg4IDMuODhhLjk5Ni45OTYgMCAxIDEtMS40MS0xLjQxbDQuNTktNC41OWEuOTk2Ljk5NiAwIDAgMSAxLjQxIDBsNC41OSA0LjU5Yy4zOS4zOS4zOSAxLjAyIDAgMS40MS0uMzkuMzgtMS4wMy4zOS0xLjQyIDB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+}
+ .aspect-content {
+	 position: relative;
+	 display: block;
+	 height: 80px;
+	 margin: 0;
+	 padding: 0 87px 0 30px;
+	 font-size: 0;
+	 white-space: nowrap;
+	 cursor: pointer;
+	 user-select: none;
+	 -webkit-user-select: none;
+	 -khtml-user-select: none;
+	 -moz-user-select: none;
+	 -ms-user-select: none;
+	 -o-user-select: none;
+}
+ .aspect-content:before, .aspect-content:after {
+	 content: '';
+	 display: inline-block;
+	 vertical-align: middle;
+}
+ .aspect-content:before {
+	 height: 100%;
+}
+ .aspect-content:after {
+	 position: absolute;
+	 width: 24px;
+	 height: 100%;
+	 right: 30px;
+	 background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTI0IDI0SDBWMGgyNHoiIG9wYWNpdHk9Ii44NyIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNBOUFDQUYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTE1Ljg4IDE1LjI5TDEyIDExLjQxbC0zLjg4IDMuODhhLjk5Ni45OTYgMCAxIDEtMS40MS0xLjQxbDQuNTktNC41OWEuOTk2Ljk5NiAwIDAgMSAxLjQxIDBsNC41OSA0LjU5Yy4zOS4zOS4zOSAxLjAyIDAgMS40MS0uMzkuMzgtMS4wMy4zOS0xLjQyIDB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+	 background-repeat: no-repeat;
+	 background-position: center;
+	 transform: rotate(180deg);
+}
+ .aspect-name {
+	 display: inline-block;
+	 width: 75%;
+	 margin-left: 16px;
+	 font-weight: 500;
+	 color: #000;
+	 white-space: normal;
+	 text-align: left;
+	 vertical-align: middle;
+}
+ .aspect-stat {
+	 width: 40%;
+	 text-align: right;
+}
+ .all-opinions, .aspect-name {
+	 font-size: 14px;
+	 line-height: 22px;
+}
+ .all-opinions {
+	 color: #5d5d5d;
+	 text-align: left;
+}
+ .aspect-content + .aspect-tab-content {
+	 max-height: 0;
+	 overflow: hidden;
+	 transition: max-height 0.3s;
+}
+ .aspect-content > div, .aspect-stat > div {
+	 display: inline-block;
+}
+ .aspect-content > div {
+	 vertical-align: middle;
+}
+ .aspect-info {
+	 width: 60%;
+	 white-space: nowrap;
+	 font-size: 0;
+}
+
+.speaker-info {
+	 width: 100%;
+	 white-space: nowrap;
+	 font-size: 13px;
+     display: inline-block;
+     margin: 0px;
+}
+
+div.speaker-info img, div.aspect-info img {
+    display: inline-block;
+    margin: 5px 10px;
+    max-width: 100%;
+}
+
+ .chart-pie {
+	 position: relative;
+	 display: inline-block;
+	 height: 44px;
+	 width: 44px;
+     font-size: 30px;
+	 vertical-align: middle;
+     padding: 5px;
+     text-align: center;
+}
+
+ .aspect-tab-content {
+	 background-color: #f9f9f9;
+	 font-size: 0;
+	 text-align: justify;
+}
+ .sentiment-wrapper {
+	 padding: 24px 30px 30px;
+}
+
+.button {
+  background-color: #fc7f0c; /* Green */
+  border: none;
+  color: white;
+  padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 10px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  width: 100%;
+}
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  color: white;
+}
+
+ .sentiment-wrapper > div {
+	 display: inline-block;
+	 width: 33.3%;
+	 max-width: 390px;
+	 padding: 0 5px;
+	 box-sizing: border-box;
+	 vertical-align: top;
+	 cursor: default;
+}
+ .sentiment-wrapper > div > div {
+	 width: 100%;
+	 padding: 16px 24px 20px;
+	 box-sizing: border-box;
+	 border-radius: 4px;
+	 background-color: #fff;
+	 border: 1px solid #ececec;
+	 text-align: left;
+}
+ .opinion-header {
+	 position: relative;
+	 width: 100%;
+	 margin: 0 0 24px;
+	 font-size: 13px;
+	 font-weight: 500;
+	 line-height: 20px;
+	 color: black;
+	 text-transform: capitalize;
+     display: flex;
+}
+ .opinion-header > span:nth-child(2) {
+	 position: absolute;
+	 right: 0;
+}
+ .opinion-header + div > span {
+	 font-size: 13px;
+	 font-weight: 400;
+	 line-height: 22px;
+	 color: #363636;
+}
+ @media screen and (max-width: 800px) {
+	 .aspect-label {
+		 max-height: 102px;
+	}
+	 .aspect-content {
+		 height: auto;
+		 padding: 10px 87px 10px 30px;
+	}
+	 .aspect-content:before {
+		 display: none;
+	}
+	 .aspect-content:after {
+		 top: 0;
+	}
+	 .aspect-content > div {
+		 display: block;
+		 width: 100%;
+	}
+	 .aspect-stat {
+		 margin-top: 10px;
+		 text-align: left;
+	}
+}
+ @media screen and (max-width: 750px) {
+	 .sentiment-wrapper > div {
+		 display: block;
+		 width: 100%;
+		 max-width: 100%;
+	}
+	 .sentiment-wrapper > div:not(:first-child) {
+		 margin-top: 10px;
+	}
+}
+ @media screen and (max-width: 500px) {
+	 .aspect-label {
+		 max-height: 140px;
+	}
+	 .aspect-stat > div {
+		 display: block;
+		 width: 100%;
+	}
+	 .all-opinions {
+		 margin-bottom: 10px;
+	}
+	 .all-opinions + div > span:first-child {
+		 margin: 0;
+	}
+}
+</style>
+{% endblock %}
+
 {% block dashboard_content_body %}
 
-<h3 class="text-center">Courses will be unlocked at 10 am each day of the workshop</h3>
+<!-- <h3 class="text-center">Courses will be unlocked at 10 am each day of the workshop</h3> -->
+<div id="aspect-content">
+  {% for lesson in all_lesson %}
+  <div class="aspect-tab ">
+    <input id="item-{{forloop.counter}}" type="checkbox" class="aspect-input" name="aspect">
+    <label for="item-{{forloop.counter}}" class="aspect-label"></label>
+    <div class="aspect-content">
+        <div class="aspect-info">
+            <!-- <span class="fa fa-envelope chart-pie"></span> -->
+            <img src="{% static 'images/dipy-favicon.png' %}" width=5%>
+            <span class="aspect-name">{{lesson.name}}</span>
+        </div>
+        <div class="aspect-stat">
+            <div class="all-opinions">
+                <span class="all-opinions-count">{{lesson.nb_speakers}}</span>
+                <span>speakers</span>
+            </div>
+        </div>
+    </div>
+    <div class="aspect-tab-content">
+        <div class="sentiment-wrapper">
+            {% for video in lesson.videos.all %}
+            <div>
+                <div>
+                    <div class="opinion-header">
+                        <span style="width: 70%;">{{video.title}}</span>
+                        <span style="width: 30%;"><i class="fa fa-youtube-play color-dipy p-r-5" aria-hidden="true"></i>15m30</span>
+                    </div>
+                    <div>
+                        {% for speaker in video.speakers.all%}
+                        <div class="speaker-info">
+                            <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="15" height="15">
+                            <span class="">{{speaker.fullname|title}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="button" href="{% url 'workshop:eventspace_lesson' workshop_slug=workshop.slug lesson_slug=lesson.slug video_slug=video.slug %}">Go to Session</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 
 {% endblock %}
 
