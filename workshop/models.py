@@ -270,11 +270,15 @@ class Video(models.Model):
                 return self.video_url.replace(prefix, '')
 
         return ''
-    # def get_absolute_url(self):
-    #     return reverse("content:video-detail", kwargs={
-    #         "video_slug": self.slug,
-    #         "slug": self.course.slug
-    #     })
+
+    def save(self, *args, **kwargs):
+        self.lesson.save()
+
+        # clear the cache
+        cache.clear()
+
+        # Call the "real" save() method.
+        super(Video, self).save(*args, **kwargs)
 
 
 class WorkshopEvent(models.Model):
