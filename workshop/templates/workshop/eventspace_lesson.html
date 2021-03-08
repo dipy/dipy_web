@@ -38,7 +38,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
             <a href="{% url 'workshop:eventspace_lesson' workshop_slug=workshop.slug lesson_slug=lesson.slug video_slug=vid.slug %}" class="list-group-item {% if vid.slug == video.slug %} active {% endif %}">
               <h4 class="fs-13 p-b-10">{{vid.title}}</h4>
               <div class="">
-                {% for speaker in video.speakers.all%}
+                {% for speaker in vid.speakers.all%}
                   <div>
                     <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="15" height="15">
                     <span class="fs-11">{{speaker.fullname|title}}</span>
