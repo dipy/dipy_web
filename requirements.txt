@@ -19,6 +19,7 @@ lxml
 django-meta>=2.0.0
 pillow
 stripe
+tweepy>=3.9.0
 
 # Unittest
 pytest

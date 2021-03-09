@@ -135,6 +135,8 @@ class Pricing(models.Model):
 # Add Location/address Model
 class Workshop(models.Model):
     codename = models.CharField(max_length=200)
+    twitter_hashtags = models.CharField(max_length=200, blank=True,
+                                        help_text="Define twitter hashtags. It should start with # and all tags should be separate with a space (no coma or semi-colon")
     slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
     start_date = models.DateTimeField(editable=True, default=timezone.now)
     end_date = models.DateTimeField(editable=True, default=timezone.now)
@@ -168,6 +170,11 @@ class Workshop(models.Model):
     @property
     def is_past_due_registration(self):
         return timezone.now() > self.registration_end_date
+
+    def hashtags(self):
+        ht = [tag for tag in self.twitter_hashtags.split(' ')
+              if '#' in tag or '@' in tag]
+        return ht
 
     def __str__(self):
         return f'DIPY WORKSHOP {self.year}'
@@ -241,6 +248,7 @@ class Lesson(Track):
 class QA(Track):
     panel = models.ManyToManyField(Speaker, related_name="qas",
                                    blank=True)
+    zoom_link = models.URLField(max_length=300, blank=True)
 
 
 class Video(models.Model):
