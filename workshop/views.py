@@ -15,6 +15,7 @@ from website.views.decorator import github_permission_required
 
 from .models import *
 from .forms import AddEditWorkshopForm
+from .tools import get_workshop_tweet
 
 
 def index_static(request, year):
@@ -52,9 +53,10 @@ def workshop_list(request):
 @login_required
 def eventspace(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
-    context = {}
-    context['workshop'] = workshop
-    # context['tweets'] = get_twitter_feed('dipymri', 5)
+
+    context = {'workshop': workshop,
+               'tweets': get_workshop_tweet(workshop.hashtags())
+               }
     return render(request, 'workshop/eventspace.html', context)
 
 
