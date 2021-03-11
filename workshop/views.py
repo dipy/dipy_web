@@ -90,13 +90,20 @@ def eventspace_daily(request, workshop_slug, date):
     dt_date = timezone.make_aware(dt_date)
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
 
-    workshop_events = WorkshopEvent.objects.filter(workshop=workshop,
-                                                  start_date__date=dt_date)
+    all_lesson = Lesson.objects.filter(events__start_date__date=dt_date,
+                                       events__workshop=workshop)
+    all_qa = QA.objects.filter(events__start_date__date=dt_date,
+                               events__workshop=workshop)
 
+    video_id = request.GET.get('video_id', None)
 
-    # import ipdb; ipdb.set_trace()
     context = {'workshop': workshop,
-               'workshop_events': workshop_events}
+               'all_lesson': all_lesson,
+               'all_qa': all_qa,
+               'release_date': dt_date}
+    if video_id is not None:
+        vid = Video.objects.get(id=video_id)
+        context["video"] = vid
 
     return render(request, 'workshop/eventspace_daily.html', context)
 

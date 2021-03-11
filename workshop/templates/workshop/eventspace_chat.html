@@ -1,8 +1,10 @@
 {% extends "workshop/eventspace_template.html" %}
 {% load customfilters %}
 {% block dashboard_content_body %}
-<div class = "col-md-8 col-md-offset-2 m-t-80 m-b-80">
-  <h2 class='text-center p-b-20'>Workshop Chat</h2>
+<h1 class="text-center"><b>Workshop Chat</b></h1>
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>General</h3>
+  <p></p>
   <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop/~embed"></iframe>
 <!-- <iframe src="https://e.widgetbot.io/channels/695048505902891009/695305679682011217" height="600" width="800"></iframe> -->
 <!-- <widgetbot
@@ -12,7 +14,31 @@
   height="600"
 ></widgetbot> -->
 </div>
-
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>Preprocessing</h3>
+  <p>*Chat dedicated to Denoising, segmentation, registration </p>
+  <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop-preprocessing/~embed"></iframe>
+</div>
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>Reconstruction</h3>
+  <p>*Chat dedicated to all models (dti, dki, ivim, csd, etc.), Microstructure</p>
+  <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop-reconstruction/~embed"></iframe>
+</div>
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>Tractography</h3>
+  <p>*Chat dedicated to streamlines analysis and connectivity, etc.</p>
+  <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop-tractography/~embed"></iframe>
+</div>
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>Analytics</h3>
+  <p>*Chat dedicated to tractometry, etc. </p>
+  <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop-analytics/~embed"></iframe>
+</div>
+<div class = "col-md-6">
+  <h3 class='text-center p-b-20'>Random</h3>
+  <p>*Chat dedicated to share your work, interesting paper, etc.</p>
+  <iframe id="gitterFrame" src="https://gitter.im/dipy/workshop-random/~embed"></iframe>
+</div>
 {% endblock %}
 
 {% block extra_js_bottom %}
