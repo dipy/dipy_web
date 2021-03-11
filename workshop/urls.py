@@ -21,7 +21,7 @@ urlpatterns = [
          name='eventspace'),
     path('eventspace/<str:workshop_slug>/calendar', views.eventspace_calendar,
          name='eventspace_calendar'),
-    path('eventspace/<str:workshop_slug>/calendar/<int:date>',
+    path('eventspace/<str:workshop_slug>/calendar/<str:date>',
          views.eventspace_daily, name='eventspace_daily'),
     path('eventspace/<str:workshop_slug>/courses', views.eventspace_courses,
          name='eventspace_courses'),

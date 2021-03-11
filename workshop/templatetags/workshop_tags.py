@@ -15,3 +15,9 @@ def show_workshop_menu():
 @register.filter(name='is_lesson')
 def is_lesson(track):
     return hasattr(track, 'lesson')
+
+
+@register.simple_tag(name='qa_time')
+def qa_time(qa, workshop):
+    t = qa.events.get(workshop=workshop).start_date
+    return t.strftime("%H:%m %p")
