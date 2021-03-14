@@ -96,14 +96,25 @@ def eventspace_daily(request, workshop_slug, date):
                                events__workshop=workshop)
 
     video_id = request.GET.get('video_id', None)
+    now = datetime.datetime.now()
+    now = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    can_release_videos = timezone.make_aware(now) >= dt_date
+
+    # print(now)
+    # print(dt_date)
+    # print(can_release_videos)
 
     context = {'workshop': workshop,
                'all_lesson': all_lesson,
                'all_qa': all_qa,
-               'release_date': dt_date}
+               'release_date': dt_date,
+               'can_release_videos': can_release_videos}
+
     if video_id is not None:
         vid = Video.objects.get(id=video_id)
-        context["video"] = vid
+    else:
+        vid = all_lesson[0].videos.first()
+    context["video"] = vid
 
     return render(request, 'workshop/eventspace_daily.html', context)
 
@@ -125,10 +136,22 @@ def eventspace_lesson(request, workshop_slug, lesson_slug, video_slug):
     lesson = Lesson.objects.get(slug__contains=lesson_slug)
     video = Video.objects.get(slug__contains=video_slug)
 
-    print(video.video_id())
+    event = lesson.events.filter(workshop=workshop).last()
+
+    now = datetime.datetime.now()
+    now = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    can_release_videos = timezone.make_aware(now) >= event.start_date
+
+    # print(video.video_id())
+    # print(now)
+    # print(event.start_date)
+    # print(can_release_videos)
+
     context = {'workshop': workshop,
                'lesson': lesson,
-               'video': video}
+               'video': video,
+               'release_date': event.start_date,
+               'can_release_videos': can_release_videos}
     return render(request, 'workshop/eventspace_lesson.html', context)
 
 

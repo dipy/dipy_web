@@ -55,9 +55,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
   </div>
   <div class="col-lg-8 p-b-50">
     <div class="youtube-wrapper">
-      {% if not video.video_url %}
+      {% if not video.video_url or not can_release_videos %}
         <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
-        <h1 class="text-center p-b-80">The session will be unlocked on Monday, March 15</h1>
+        <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
       {% else%}
         <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe></div>
       {% endif %}
