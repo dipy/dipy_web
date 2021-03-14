@@ -74,7 +74,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
       <div class='col-lg-6'>
         <p><strong>Subject:</strong> {{qa.name}}</p>
         <p><strong>Time:</strong>  {% qa_time qa workshop %} EST</p>
-        <p><strong>Link:</strong> {{qa.zoom_link}}</p>
+        <p><strong>Link:</strong> <a href="{{qa.zoom_link}}">{{qa.zoom_link}}</a></p>
         <p><strong>Panel:</strong> </p>
         {% for speaker in qa.panel.all %}
         <div class="">

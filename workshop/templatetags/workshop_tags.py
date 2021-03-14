@@ -20,4 +20,4 @@ def is_lesson(track):
 @register.simple_tag(name='qa_time')
 def qa_time(qa, workshop):
     t = qa.events.get(workshop=workshop).start_date
-    return t.strftime("%H:%m %p")
+    return t.strftime("%H:%M %p")
