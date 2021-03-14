@@ -59,7 +59,8 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
   </div>
   <div class="col-lg-8 p-b-50">
     <div class="col-lg-12 youtube-wrapper">
-      {% if not video.video_url %}
+      {% if not video.video_url or not can_release_videos %}
+
         <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
         <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
       {% else%}
