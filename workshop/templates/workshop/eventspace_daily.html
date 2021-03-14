@@ -75,6 +75,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
         <p><strong>Subject:</strong> {{qa.name}}</p>
         <p><strong>Time:</strong>  {% qa_time qa workshop %} EST</p>
         <p><strong>Link:</strong> <a href="{{qa.zoom_link}}">{{qa.zoom_link}}</a></p>
+        {% if qa.password %}
+        <p><strong>Password:</strong> {{qa.password}}</p>
+        {% endif %}
         <p><strong>Panel:</strong> </p>
         {% for speaker in qa.panel.all %}
         <div class="">

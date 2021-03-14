@@ -249,6 +249,7 @@ class QA(Track):
     panel = models.ManyToManyField(Speaker, related_name="qas",
                                    blank=True)
     zoom_link = models.URLField(max_length=300, blank=True)
+    password = models.CharField(max_length=300, blank=True)
 
 
 class Video(models.Model):
