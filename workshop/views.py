@@ -136,14 +136,18 @@ def eventspace_lesson(request, workshop_slug, lesson_slug, video_slug):
     lesson = Lesson.objects.get(slug__contains=lesson_slug)
     video = Video.objects.get(slug__contains=video_slug)
 
-    event = lesson.events.filter(workshop=workshop).last()
+    # event = lesson.events.filter(workshop=workshop).last()
+    event = WorkshopEvent.objects.filter(workshop=workshop, session=lesson).last()
+
 
     now = datetime.datetime.now()
     now = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    can_release_videos = timezone.make_aware(now) >= event.start_date
+    event_date = event.start_date.replace(hour=0, minute=0, second=0, microsecond=0)
+    can_release_videos = timezone.make_aware(now) >= event_date
 
     # print(video.video_id())
     # print(now)
+    # print(event_date)
     # print(event.start_date)
     # print(can_release_videos)
 
