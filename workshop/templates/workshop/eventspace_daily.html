@@ -64,7 +64,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
         <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
         <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
       {% else%}
-        <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe></div>
+        <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
       {% endif %}
     </div>
     {% if all_qa %}
