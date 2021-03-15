@@ -35,7 +35,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
               <h4 class="panel-title">{{lesson.name}}</h4>
             </a>
           </div>
-          <div id="collapseOne-{{forloop.counter}}" class="panel-collapse collapse {% if forloop.first %}in{% endif %}">
+          <div id="collapseOne-{{forloop.counter}}" class="panel-collapse collapse in">
             {% for vid in lesson.videos.all %}
             <div class="list-group">
               <a href="{% url 'workshop:eventspace_daily' workshop_slug=workshop.slug date=release_date|date:'Ymd'  %}?video_id={{vid.id}}" class="list-group-item {% if vid.slug == video.slug %} active {% endif %}">
@@ -89,6 +89,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
       {% endfor %}
     </div>
     {% endif %}
+  </div>
 </div>
 
 {% endblock %}
