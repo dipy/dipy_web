@@ -714,6 +714,14 @@ p.admonition-title {
   color: #ff8c00;
 }
 
+/*********
+SPHINX
+**********/
+span.classifier:before { content: "\00a0 : \00a0"; }
+
+
+
+
 @media (max-width: 1200px) {
   #websiteNavbar {
     min-height: 60px;
@@ -785,4 +793,5 @@ p.admonition-title {
   .dashboard-button {
     margin: unset;
     margin-top: 0.5em;
-    margin-bottom: 0.5em; } }
+    margin-bottom: 0.5em; }
+}
