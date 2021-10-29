@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.pyc
+*.py.old
 
 # C extensions
 *.so
@@ -55,7 +56,7 @@ coverage.xml
 # Django stuff:
 *.log
 *.sqlite3
-*.old
+*sqlite3.old
 settings.py
 staticfiles/
 migrations/

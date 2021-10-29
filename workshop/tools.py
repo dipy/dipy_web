@@ -13,12 +13,12 @@ def get_workshop_tweet(tags, max_tweet=15):
 
     # Define Keywords
     keywords = ' OR '.join(tags) + '  -filter:retweets'
-    return [tweet for tweet in tweepy.Cursor(api.search, q=(keywords),
+    return [tweet for tweet in tweepy.Cursor(api.search_tweets, q=(keywords),
                                              tweet_mode="extended").items(max_tweet)]
 
     # print(tags)
     # tweets = []
-    # for tweet in tweepy.Cursor(api.search, q=(keywords), lang='en', tweet_mode="extended").items(max_tweet):
+    # for tweet in tweepy.Cursor(api.search_tweets, q=(keywords), lang='en', tweet_mode="extended").items(max_tweet):
     #     # print(tweet)
     #     tweets.append(tweet)
 
