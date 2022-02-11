@@ -183,7 +183,6 @@ class Workshop(models.Model):
         if not self.slug:
             self.slug = generate_unique_slug(Workshop, self.__str__().lower())
 
-    def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.welcome_email,
                                          extensions=['codehilite'])
         print(html_content)
