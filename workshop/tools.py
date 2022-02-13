@@ -2,6 +2,8 @@ from datetime import datetime
 import tweepy
 from django.conf import settings
 
+from workshop.models import Video
+
 
 def get_workshop_tweet(tags, max_tweet=15):
     if not tags:
@@ -38,15 +40,25 @@ def generate_calendar(workshop):
     events = workshop.events.all()
     calendar = {}
     for evt in events:
-        date = evt.start_date.strftime("%d-%m-%Y")
+        date = evt.start_date  #.strftime("%d-%m-%Y")
         time = evt.start_date.strftime("%H:%M:%S")
+        videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
+        author = "by "
+        for vid in videos:
+            speakers = vid.speakers.all()
+            for sp in speakers:
+                author += f"{sp.fullname}, "
+
+        author = author[:-2] if author != "by " else ""
         if date in calendar:
-            calendar[date].append((evt.session.name, time))
+            calendar[date].append((evt.session.name, time, author))
         else:
-            calendar[date] = [(evt.session.name, time)]
+            calendar[date] = [(evt.session.name, time, author)]
 
     # cal = sorted(calendar.items())
-    cal = [(str2date(cal[0]), sorted(cal[1], key=lambda val: val[1]))
-           for cal in sorted(calendar.items())]
+    # cal = [(str2date(cal[0]), sorted(cal[1], key=lambda val: val[1]))
+    #        for cal in sorted(calendar.items())]
+    cal = [(cal[0], sorted(cal[1], key=lambda val: val[1]))
+            for cal in sorted(calendar.items())]
     # print(cal)s
     return cal

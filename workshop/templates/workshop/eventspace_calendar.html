@@ -30,6 +30,35 @@
 </div>
 <div class="col-lg-12">
     <div class="row equal with-padding-10">
+            {% if calendar %}
+            {% for event in calendar %}
+                <div class="col-lg-4 p-b-20">
+                    <a href="{% url 'workshop:eventspace_daily' workshop.slug event.0|date:'Ymd' %}"><div class="cal">
+                        <div class="panel-body">
+                            <h4 class="">Day {{ forloop.counter }} - {{ event.0|date:"l, F d"}} </h4>
+                            <hr style="border:2px solid" class="color-dipy">
+                            <ul class="p-l-0" style="list-style: none;">
+                                {% for topic in event.1 %}
+                                <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p><p><small class="text-muted">{{topic.2}}</small></p></li>
+                                <!-- <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li> -->
+                                {% endfor %}
+                            </ul>
+                            <p></p>
+                        </div>
+                    </div></a>
+                </div>
+            {% endfor %}
+            {%else %}
+            <div class="col-lg-4 offset-4 p-b-20">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="">To be Defined</h4>
+                        <hr style="border:2px solid" class="color-dipy">
+                        <p>We are currently finalising the calendar.</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             <div class="col-lg-4 p-b-20">
                 <a href="{% url 'workshop:eventspace_daily' workshop.slug 20210315 %}"><div class="cal">
                     <div class="panel-body">

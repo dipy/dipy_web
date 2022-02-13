@@ -132,15 +132,16 @@
     <div class="section" id="section_calendar">
         <div class="container p-t-60">
             <div class="row with-padding-10">
+                {% if calendar %}
                 {% for event in calendar %}
                     <div class="col-lg-4 p-b-20">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="">Day {{ forloop.counter }} - {{ event.0}}</h4>
+                                <h4 class="">Day {{ forloop.counter }} - {{ event.0|date:"l, F d"}}</h4>
                                 <hr style="border:2px solid" class="color-dipy">
                                 <ul>
                                     {% for topic in event.1 %}
-                                    <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p></li>
+                                    <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p><p><small class="text-muted">{{topic.2}}</small></p></li>
                                     <!-- <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li> -->
                                     {% endfor %}
                                 </ul>
@@ -149,23 +150,17 @@
                         </div>
                     </div>
                 {% endfor %}
-
-                    <div class="col-lg-4 p-b-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="">Day 5 - Friday, March 19 </h4>
-                                <hr style="border:2px solid" class="color-dipy">
-                                <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>IVIM and Optimization</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Data harmonization</strong></p><p><small class="text-muted">by Daniel Moyer</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Tractometry II </strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>GPU Acceleration</strong></p><p><small class="text-muted">by Gregory R Lee</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Clinical Insights from Brain Imaging using Predictive Modeling: Huntington’s Disease as a Case Study</strong></p><p><small class="text-muted">by Eduardo Castro</small></p></li>
-                                </ul>
-                                <p></p>
-                            </div>
+                {%else %}
+                <div class="col-lg-4 offset-4 p-b-20">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="">To be Defined</h4>
+                            <hr style="border:2px solid" class="color-dipy">
+                            <p>We are currently finalising the calendar.</p>
                         </div>
                     </div>
+                </div>
+                {% endif %}
             </div>
             <div>
                 <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. A Scientific Q/A sessions will be available everyday. More information provied after registration. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
