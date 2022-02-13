@@ -1,3 +1,4 @@
+from datetime import datetime
 import tweepy
 from django.conf import settings
 
@@ -26,3 +27,26 @@ def get_workshop_tweet(tags, max_tweet=15):
     # print(len(tweets))
     # return tweets
 
+
+def str2date(date_str):
+    """The date should be in the following form: 12-03-2021."""
+    date = datetime.strptime(date_str, '%d-%m-%Y')
+    return date.strftime("%A, %B %d")
+
+
+def generate_calendar(workshop):
+    events = workshop.events.all()
+    calendar = {}
+    for evt in events:
+        date = evt.start_date.strftime("%d-%m-%Y")
+        time = evt.start_date.strftime("%H:%M:%S")
+        if date in calendar:
+            calendar[date].append((evt.session.name, time))
+        else:
+            calendar[date] = [(evt.session.name, time)]
+
+    # cal = sorted(calendar.items())
+    cal = [(str2date(cal[0]), sorted(cal[1], key=lambda val: val[1]))
+           for cal in sorted(calendar.items())]
+    # print(cal)s
+    return cal
