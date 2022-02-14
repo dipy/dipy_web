@@ -40,16 +40,15 @@ def generate_calendar(workshop):
     events = workshop.events.all()
     calendar = {}
     for evt in events:
-        date = evt.start_date  #.strftime("%d-%m-%Y")
+        #.strftime("%d-%m-%Y")
+        date = evt.start_date.replace(minute=00, hour=00, second=00)
         time = evt.start_date.strftime("%H:%M:%S")
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
-        author = "by "
-        for vid in videos:
-            speakers = vid.speakers.all()
-            for sp in speakers:
-                author += f"{sp.fullname}, "
+        author = set([sp.fullname for vid in videos
+                      for sp in vid.speakers.all()])
 
-        author = author[:-2] if author != "by " else ""
+        author = "by " + ", ".join(author) if author else ""
+        print(date, evt.session.name, date in calendar)
         if date in calendar:
             calendar[date].append((evt.session.name, time, author))
         else:
