@@ -41,7 +41,7 @@ def generate_calendar(workshop):
     calendar = {}
     for evt in events:
         #.strftime("%d-%m-%Y")
-        date = evt.start_date.replace(minute=00, hour=00, second=00)
+        date = evt.start_date.replace(minute=1, hour=1, second=1)
         time = evt.start_date.strftime("%H:%M:%S")
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
         author = set([sp.fullname for vid in videos
