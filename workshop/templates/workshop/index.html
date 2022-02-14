@@ -132,83 +132,35 @@
     <div class="section" id="section_calendar">
         <div class="container p-t-60">
             <div class="row with-padding-10">
+                {% if calendar %}
+                {% for event in calendar %}
                     <div class="col-lg-4 p-b-20">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="">Day 1 - Monday, March 15</h4>
+                                <h4 class="">Day {{ forloop.counter }} - {{ event.0|date:"l, F d"}}</h4>
                                 <hr style="border:2px solid" class="color-dipy">
                                 <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>Overview & Introduction to new Interfaces</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis & Javier Guaje</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Diffusion Tensor Imaging</strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Diffusion Kurtosing Imaging</strong></p><p><small class="text-muted">by Rafaël Neto Henriques</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Denoising</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
+                                    {% for topic in event.1 %}
+                                    <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p><p><small class="text-muted">{{topic.2}}</small></p></li>
+                                    <!-- <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li> -->
+                                    {% endfor %}
                                 </ul>
                                 <p></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 p-b-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="">Day 2 - Tuesday, March 16 </h4>
-                                <hr style="border:2px solid" class="color-dipy">
-                                <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>A tour of spherical harmonics-based local reconstruction techniques in DIPY</strong></p><p><small class="text-muted">by Maxime Descoteaux</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Microstructure modeling theory and practice</strong></p><p><small class="text-muted">by Rafaël Neto Henriques</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Dictionary based methods for brain microstructure estimation</strong></p><p><small class="text-muted">by Alonso Ramirez</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Motion Correction & Image Registration</strong></p><p><small class="text-muted">by Serge Koudoro</small></p></li>
-                                </ul>
-                                <p></p>
-                            </div>
+                {% endfor %}
+                {%else %}
+                <div class="col-lg-4 offset-4 p-b-20">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="">To be Defined</h4>
+                            <hr style="border:2px solid" class="color-dipy">
+                            <p>We are currently finalising the calendar.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 p-b-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="">Day 3 - Wednesday, March 17 </h4>
-                                <hr style="border:2px solid" class="color-dipy">
-                                <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>Diffusion Tractography</strong></p><p><small class="text-muted">by Gabriel Girard & Etienne St-Onge</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Multidimensional Diffusion Encodings</strong></p><p><small class="text-muted">by Jennifer A McNab</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Deep Learning in Medical Imaging (Intro, Segmentation, Registration)</strong></p><p><small class="text-muted">by Jon Haitz Legarreta Gorroño, Javier Guaje, Bramsh Qamar Chandio, Jong Sung Park, Shreyas Fadnavis</small></p></li>
-                                </ul>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 p-b-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="">Day 4 - Thursday, March 18 </h4>
-                                <hr style="border:2px solid" class="color-dipy">
-                                <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>Automatic segmentation of bundles</strong></p><p><small class="text-muted">by Eleftherios Garyfallidis</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Tractometry</strong></p><p><small class="text-muted">by Bramsh Qamar Chandio</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Statistical analysis and group analysis</strong></p><p><small class="text-muted">by Jaroslaw Harezlak</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Acquisitions and High Field Diffusion MRI HCP 2.0</strong></p><p><small class="text-muted">by Susie Huang</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Tissue classification</strong></p><p><small class="text-muted">by Hu Cheng, Julio Villalon</small></p></li>
-                                </ul>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 p-b-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="">Day 5 - Friday, March 19 </h4>
-                                <hr style="border:2px solid" class="color-dipy">
-                                <ul>
-                                    <li class="p-b-10"><p class="color-black"><strong>IVIM and Optimization</strong></p><p><small class="text-muted">by Shreyas Fadnavis</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Data harmonization</strong></p><p><small class="text-muted">by Daniel Moyer</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Tractometry II </strong></p><p><small class="text-muted">by Ariel Rokem</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>GPU Acceleration</strong></p><p><small class="text-muted">by Gregory R Lee</small></p></li>
-                                    <li class="p-b-10"><p class="color-black"><strong>Clinical Insights from Brain Imaging using Predictive Modeling: Huntington’s Disease as a Case Study</strong></p><p><small class="text-muted">by Eduardo Castro</small></p></li>
-                                </ul>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                {% endif %}
             </div>
             <div>
                 <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. A Scientific Q/A sessions will be available everyday. More information provied after registration. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>

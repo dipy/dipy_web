@@ -3,6 +3,7 @@
 __all__ = ['index_static', 'index', 'eventspace', 'dashboard_workshops',
            'add_workshop', 'edit_workshop', 'delete_workshop']
 
+# from calendar import calendar
 import datetime
 
 from django.conf import settings
@@ -15,7 +16,7 @@ from website.views.decorator import github_permission_required
 
 from .models import *
 from .forms import AddEditWorkshopForm
-from .tools import get_workshop_tweet
+from .tools import get_workshop_tweet, generate_calendar
 
 
 def index_static(request, year):
@@ -31,8 +32,10 @@ def index(request, workshop_slug):
     if not workshop.is_published:
         raise Http404()
 
+    calendar = generate_calendar(workshop)
     context = {}
     context['workshop'] = workshop
+    context['calendar'] = calendar
 
     if timezone.now() < workshop.registration_start_date:
         return render(request, 'workshop/comingsoon.html', context)
@@ -79,8 +82,11 @@ def eventspace_sponsor(request, workshop_slug):
 @login_required
 def eventspace_calendar(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
+    calendar = generate_calendar(workshop)
     context = {}
     context['workshop'] = workshop
+    context['calendar'] = calendar
+
     return render(request, 'workshop/eventspace_calendar.html', context)
 
 

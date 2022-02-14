@@ -12,7 +12,7 @@ class QAAdmin(admin.ModelAdmin):
     filter_horizontal = ('panel',)
 
 class VideoAdmin(admin.ModelAdmin):
-    filter_horizontal = ('speakers',)
+    filter_horizontal = ('speakers', 'workshops')
 
 admin.site.register(models.BackgroundImage)
 admin.site.register(models.Speaker)

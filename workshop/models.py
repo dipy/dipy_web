@@ -252,6 +252,8 @@ class QA(Track):
 
 
 class Video(models.Model):
+    workshops = models.ManyToManyField(Workshop, related_name="videos",
+                                       blank=True)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
                                related_name='videos')
     video_url = models.URLField(max_length=500, blank=True)
