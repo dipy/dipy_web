@@ -1,6 +1,7 @@
 from datetime import datetime
 import tweepy
 from django.conf import settings
+from django.utils import timezone as tz
 
 from workshop.models import Video
 
@@ -40,8 +41,9 @@ def generate_calendar(workshop):
     events = workshop.events.all()
     calendar = {}
     for evt in events:
-        #.strftime("%d-%m-%Y")
-        date = evt.start_date.replace(minute=1, hour=1, second=1)
+        # .strftime("%d-%m-%Y")
+        date = evt.start_date.replace(minute=1, hour=1, second=1,
+                                      tzinfo=tz.get_current_timezone())
         time = evt.start_date.strftime("%H:%M:%S")
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
         author = set([sp.fullname for vid in videos
@@ -58,6 +60,6 @@ def generate_calendar(workshop):
     # cal = [(str2date(cal[0]), sorted(cal[1], key=lambda val: val[1]))
     #        for cal in sorted(calendar.items())]
     cal = [(cal[0], sorted(cal[1], key=lambda val: val[1]))
-            for cal in sorted(calendar.items())]
+           for cal in sorted(calendar.items())]
     # print(cal)s
     return cal
