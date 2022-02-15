@@ -33,5 +33,7 @@ urlpatterns = [
          name='eventspace_sponsor'),
     # path('eventspace/<str:workshop_slug>/help', views.eventspace_help,
     #      name='eventspace_help'),
+    path('', views.workshops, name='workshops'),
+    path('latest', views.latest, name='latest'),
     path('<str:workshop_slug>', views.index, name='index'),
 ]

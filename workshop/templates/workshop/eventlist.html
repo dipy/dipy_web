@@ -18,11 +18,19 @@
     <div class="row">
       {% if all_workshop %}
       <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
-        <h2 class='text-center'> Select Workshop year</h2>
+        {% if public %}
+        <h2 class='text-center'> DIPY Workshops List </h2>
+        {% else %}
+        <h2 class='text-center'> Select workshop year</h2>
+        {% endif %}
       </div>
       <div>
         {% for workshop in all_workshop %}
-        <div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}"><p class="dashboard-button btn btn-default">{{workshop.year}}</p></a></div>
+          {% if public %}
+          <div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:index' workshop_slug=workshop.slug %}"><p class="dashboard-button btn btn-default">{{workshop.year}}</p></a></div>
+          {% else %}
+          <div class="col-xs-12 col-sm-6"><a href="{% url 'workshop:eventspace' workshop_slug=workshop.slug %}"><p class="dashboard-button btn btn-default">{{workshop.year}}</p></a></div>
+          {% endif %}
         {% endfor %}
       </div>
       {% else %}

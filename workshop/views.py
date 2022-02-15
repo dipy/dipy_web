@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.urls import reverse
 
 from website.views.decorator import github_permission_required
 
@@ -42,6 +43,20 @@ def index(request, workshop_slug):
 
     context["STRIPE_PUBLIC_KEY"] = settings.STRIPE_PUBLIC_KEY
     return render(request, 'workshop/index.html', context)
+
+
+def workshops(request):
+    all_workshops = Workshop.objects.all()
+    context = {}
+    context['all_workshop'] = all_workshops
+    context['public'] = True
+    return render(request, 'workshop/eventlist.html', context)
+
+
+def latest(request):
+    workshop = Workshop.objects.latest('start_date')
+    return redirect(reverse('workshop:index',
+                    kwargs={'workshop_slug': workshop.slug}))
 
 
 @login_required
