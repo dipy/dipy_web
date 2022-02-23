@@ -248,6 +248,9 @@ class GithubStatFetcher:
                 contributor_dict["weekly_commits"] = contributor["weeks"]
                 contributor_stats["contributors"].insert(0, contributor_dict)
 
+            contributor_stats["contributors"] = sorted(
+                contributor_stats["contributors"],
+                key=lambda x: x.get('total_commits'), reverse=True)
             contributor_stats["total_commits"] = grand_total_commits
 
             cumulative_contributors = self.__get_cumulative_contributors(
