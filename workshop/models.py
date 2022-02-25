@@ -110,12 +110,19 @@ class Speaker(models.Model):
                                    'user-1633250_640.png')
 
 
+def default_features():
+    return [{"title": "Amazing Community Help", "value": "Yes"},
+            {"title": "Access to all materials", "value": "Yes"},
+            {"title": "Duration", "value": "5 Days"}]
+
+
 class Pricing(models.Model):
     name = models.CharField(max_length=100)  # Basic / Pro / Premium
     slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
     stripe_price_id = models.CharField(max_length=50, blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     currency = models.CharField(max_length=50)
+    features = models.JSONField(default=default_features)
 
     def __str__(self):
         return self.name
@@ -128,7 +135,7 @@ class Pricing(models.Model):
         super(Pricing, self).save(*args, **kwargs)
 
     def get_stripe_price(self):
-        return int(self.price * 100)
+        return int(self.price)  # * 100)
 
 # TODO:
 # Add Grant Model
