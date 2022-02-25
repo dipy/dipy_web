@@ -37,6 +37,8 @@ def index(request, workshop_slug):
     context = {}
     context['workshop'] = workshop
     context['calendar'] = calendar
+    context['all_pricing'] = workshop.pricing_tiers.all()
+    context['show_pricing_info'] = bool(workshop.pricing_tiers.filter(price__gt=0).count())
 
     if timezone.now() < workshop.registration_start_date:
         return render(request, 'workshop/comingsoon.html', context)
