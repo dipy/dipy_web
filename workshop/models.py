@@ -154,6 +154,9 @@ class Workshop(models.Model):
     show_registration_deadline = models.BooleanField(default=False)
     welcome_email = models.TextField(default="Thanks for your joining DIPY Workshop.")
     welcome_email_html = models.TextField(editable=False, blank=True)
+    leaflet_image = models.ImageField(upload_to='bg_images/', blank=True,
+                                     default=f"{settings.STATIC_URL}/workshop/images/dipy_odf_vs_2018-10-03.png",
+                                     help_text="upload leaflet image to the server.")
     speakers = models.ManyToManyField(Speaker, related_name="workshops",
                                       blank=True)
     members = models.ManyToManyField(User, related_name="workshops",
@@ -166,6 +169,11 @@ class Workshop(models.Model):
     modified = models.DateTimeField(editable=False, auto_now_add=True)
     is_in_person = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
+    has_live_qa = models.BooleanField(default=True)
+    has_live_keynote = models.BooleanField(default=False)
+    has_live_demo = models.BooleanField(default=False)
+    has_data_accelerator = models.BooleanField(default=True)
+    has_code_sprint = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-start_date']
