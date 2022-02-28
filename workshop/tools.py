@@ -50,7 +50,7 @@ def generate_calendar(workshop):
                       for sp in vid.speakers.all()])
 
         author = "by " + ", ".join(author) if author else ""
-        print(date, evt.session.name, date in calendar)
+        # print(date, evt.session.name, date in calendar)
         if date in calendar:
             calendar[date].append((evt.session.name, time, author))
         else:

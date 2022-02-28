@@ -115,8 +115,12 @@ def eventspace_daily(request, workshop_slug, date):
 
     all_lesson = Lesson.objects.filter(events__start_date__date=dt_date,
                                        events__workshop=workshop)
-    all_qa = QA.objects.filter(events__start_date__date=dt_date,
-                               events__workshop=workshop)
+
+    # all_qa = QA.objects.filter(events__start_date__date=dt_date,
+    #                            events__workshop=workshop)
+    all_qa = WorkshopEvent.objects.filter(session__in=QA.objects.all(),
+                                          start_date__date=dt_date,
+                                          workshop=workshop)
 
     video_id = request.GET.get('video_id', None)
     now = datetime.datetime.now()

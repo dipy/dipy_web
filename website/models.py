@@ -96,7 +96,7 @@ class WebsiteSection(models.Model):
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,
                                          extensions=['codehilite'])
-        print(html_content)
+        # print(html_content)
         # bleach is used to filter html tags like <script> for security
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
@@ -124,7 +124,7 @@ class NewsPost(models.Model):
     def save(self, *args, **kwargs):
         html_content = markdown.markdown(self.body_markdown,
                                          extensions=['codehilite'])
-        print(html_content)
+        # print(html_content)
         # bleach is used to filter html tags like <script> for security
         self.body_html = bleach.clean(html_content, allowed_html_tags,
                                       allowed_attrs)
