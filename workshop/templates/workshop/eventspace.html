@@ -4,8 +4,8 @@
 {% block dashboard_content_body %}
 
 <div class="col-lg-12">
-{% if workshop.leaflet %}
-<img src="{{workshop.leaflet.url}}">
+{% if workshop.leaflet_image %}
+<img src="{{workshop.leaflet_image.url}}">
 {% else %}
 <img src="{% static 'workshop/images/intro-dipy-ws-2021.png' %}">
 {% endif %}
@@ -53,7 +53,7 @@
 </div>
 <div class="p-t-80 col-lg-12">
     <div class="page-heading"><h3>Your Last Tweets! </h3></div>
-    <p>Share on twitter with #dipyworkshop2021 #dipyworkshop or @dipymri tags</p>
+    <p>Share on twitter with {{ workshop.twitter_hashtags }} #dipyworkshop or @dipymri tags</p>
     <div>
         <table class="table">
         {% for tweet in tweets %}
