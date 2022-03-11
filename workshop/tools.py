@@ -41,15 +41,18 @@ def generate_calendar(workshop):
     events = workshop.events.all()
     calendar = {}
     for evt in events:
-        # .strftime("%d-%m-%Y")
         date = evt.start_date.replace(minute=1, hour=1, second=1,
                                       tzinfo=tz.get_current_timezone())
-        time = evt.start_date.strftime("%H:%M:%S")
+        time = evt.start_date.strftime("%-H:%M %p")
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
-        author = set([sp.fullname for vid in videos
-                      for sp in vid.speakers.all()])
+        author = []
+        if videos:
+            author = set([(sp.fullname, sp.avatar_url) for vid in videos
+                          for sp in vid.speakers.all()])
+        elif hasattr(evt.session, 'qa'):
+            panel = evt.session.qa.panel.all()
+            author = set([(sp.fullname, sp.avatar_url) for sp in panel])
 
-        author = "by " + ", ".join(author) if author else ""
         # print(date, evt.session.name, date in calendar)
         if date in calendar:
             calendar[date].append((evt.session.name, time, author))
