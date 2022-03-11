@@ -43,7 +43,7 @@ def generate_calendar(workshop):
     for evt in events:
         date = evt.start_date.replace(minute=1, hour=1, second=1,
                                       tzinfo=tz.get_current_timezone())
-        time = evt.start_date.strftime("%-H:%M %p")
+        time = evt.start_date.replace(tzinfo=tz.get_current_timezone()).strftime("%-H:%M %p")
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
         author = []
         if videos:
