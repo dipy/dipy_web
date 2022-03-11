@@ -139,10 +139,16 @@
                             <div class="card-body">
                                 <h4 class="">Day {{ forloop.counter }} - {{ event.0|date:"l, F d"}}</h4>
                                 <hr style="border:2px solid" class="color-dipy">
-                                <ul>
+                                <ul class="p-l-0 txt-left" style="list-style: none;">
                                     {% for topic in event.1 %}
-                                    <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p><p><small class="text-muted">{{topic.2}}</small></p></li>
-                                    <!-- <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li> -->
+                                    <li class="p-b-10">
+                                        <p class="color-black"><u>{{topic.1}}</u> - <strong>{{topic.0}}</strong></p>
+                                        <p>
+                                            {% for speaker in topic.2 %}
+                                            <img class="rounded-circle schedule-img" src="{{speaker.1}}" alt="{{speaker.0}}" width="10" height="10"><small class="text-muted">{{speaker.0}} </small>
+                                            {% endfor %}
+                                        </p>
+                                    </li>
                                     {% endfor %}
                                 </ul>
                                 <p></p>

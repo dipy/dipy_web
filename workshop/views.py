@@ -100,6 +100,7 @@ def eventspace_sponsor(request, workshop_slug):
 def eventspace_calendar(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
     calendar = generate_calendar(workshop)
+
     context = {}
     context['workshop'] = workshop
     context['calendar'] = calendar
