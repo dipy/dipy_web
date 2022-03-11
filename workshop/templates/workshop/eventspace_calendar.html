@@ -16,6 +16,12 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
 }
+
+.schedule-img {
+    display: inline;
+    margin: 5px;
+
+}
 </style>
 {% endblock %}
 
@@ -26,7 +32,7 @@
 <div class="col-lg-12 p-b-20">
     <!-- <p><strong>Notes:</strong></p> -->
     <h2><b>Videos released every morning at your respective timezone</b></h2>
-    <h2><b>Live Q&A: Starts at 3pm EST everyday. Ask all your questions during this live event.</b></h2>
+    <h2><b>Live Q&A: Starts at 3pm ET everyday. Ask all your questions during this live event.</b></h2>
 </div>
 <div class="col-lg-12">
     <div class="row equal with-padding-10">
@@ -39,8 +45,14 @@
                             <hr style="border:2px solid" class="color-dipy">
                             <ul class="p-l-0" style="list-style: none;">
                                 {% for topic in event.1 %}
-                                <li class="p-b-10"><p class="color-black"><strong>{{topic.0}}</strong></p><p><small class="text-muted">{{topic.2}}</small></p></li>
-                                <!-- <li class="p-b-10"><p class="color-black"><strong>Introduction to computational anatomy</strong></p><p><small class="text-muted">by Francois Rheault & Wei Tang</small></p></li> -->
+                                <li class="p-b-10">
+                                    <p class="color-black"><u>{{topic.1}}</u> - <strong>{{topic.0}}</strong></p>
+                                    <p>
+                                        {% for speaker in topic.2 %}
+                                        <img class="rounded-circle schedule-img" src="{{speaker.1}}" alt="{{speaker.0}}" width="10" height="10"><small class="text-muted">{{speaker.0}} </small>
+                                        {% endfor %}
+                                    </p>
+                                </li>
                                 {% endfor %}
                             </ul>
                             <p></p>
