@@ -1,0 +1,67 @@
+
+============
+dipy_horizon
+============
+
+Usage
+-----
+
+ dipy_horizon [-h] [--cluster] [--cluster_thr float] [--random_colors [str ...]] [--length_gt float] [--length_lt float] [--clusters_gt int]
+                     [--clusters_lt int] [--native_coords] [--stealth] [--emergency_header str] [--bg_color [float ...]] [--disable_order_transparency]
+                     [--buan] [--buan_thr float] [--buan_highlight [float ...]] [--roi_images] [--roi_colors [float ...]] [--out_dir str]
+                     [--out_stealth_png str]
+                     input_files [input_files ...]
+
+Interactive medical visualization - Invert the Horizon!
+
+Interact with any number of .trk, .tck or .dpy tractograms and anatomy files .nii or .nii.gz. Cluster streamlines on loading.
+
+Positional Arguments
+--------------------
+
+
+  input_files
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --cluster             Enable QuickBundlesX clustering.
+  --cluster_thr float   Distance threshold used for clustering. Default value 15.0 for small animal brains you may need to use something smaller such as 2.0. The distance is in mm. For this parameter to be active ``cluster`` should be enabled.
+  --random_colors [str ...]
+                        Given multiple tractograms and/or ROIs then each tractogram and/or ROI will be shown with different color. If no value is provided, both the tractograms and the ROIs will have a different random color generated from a distinguishable colormap. If the effect should only be applied to one of the 2 types, then use the options 'tracts' and 'rois' for the tractograms and the ROIs respectively.
+  --length_gt float     Clusters with average length greater than ``length_gt`` amount in mm will be shown.
+  --length_lt float     Clusters with average length less than ``length_lt`` amount in mm will be shown.
+  --clusters_gt int     Clusters with size greater than ``clusters_gt`` will be shown.
+  --clusters_lt int     Clusters with size less than ``clusters_gt`` will be shown.
+  --native_coords       Show results in native coordinates.
+  --stealth             Do not use interactive mode just save figure.
+  --emergency_header str
+                        If no anatomy reference is provided an emergency header is provided. Current options 'icbm_2009a' and 'icbm_2009c'.
+  --bg_color [float ...]
+                        Define the background color of the scene. Colors can be defined with 1 or 3 values and should be between [0-1].
+  --disable_order_transparency
+                        Use depth peeling to sort transparent objects. If True also enables anti-aliasing.
+  --buan                Enables BUAN framework visualization.
+  --buan_thr float      Uses the threshold value to highlight segments on the bundle which have pvalues less than this threshold.
+  --buan_highlight [float ...]
+                        Define the bundle highlight area color. Colors can be defined with 1 or 3 values and should be between [0-1]. For example, a value of (1, 0, 0) would mean the red color.
+  --roi_images          Displays binary images as contours.
+  --roi_colors [float ...]
+                        Define the color for the roi images. Colors can be defined with 1 or 3 values and should be between [0-1]. For example, a value of (1, 0, 0) would mean the red color.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Output directory. (default current directory)
+  --out_stealth_png str
+                        Filename of saved picture.
+
+References
+----------
+
+ 
+.. [Horizon_ISMRM19] Garyfallidis E., M-A. Cote, B.Q. Chandio,    S. Fadnavis, J. Guaje, R. Aggarwal, E. St-Onge, K.S. Juneja,    S. Koudoro, D. Reagan, DIPY Horizon: fast, modular, unified and    adaptive visualization, Proceedings of: International Society of    Magnetic Resonance in Medicine (ISMRM), Montreal, Canada, 2019.
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

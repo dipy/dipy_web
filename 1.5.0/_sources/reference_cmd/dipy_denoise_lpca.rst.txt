@@ -1,0 +1,49 @@
+
+=================
+dipy_denoise_lpca
+=================
+
+Usage
+-----
+
+ dipy_denoise_lpca [-h] [--sigma float] [--b0_threshold float] [--bvecs_tol float] [--patch_radius int] [--pca_method str] [--tau_factor float]
+                     [--out_dir str] [--out_denoised str]
+                     input_files bvalues_files bvectors_files
+
+Workflow wrapping LPCA denoising method.
+
+Positional Arguments
+--------------------
+
+
+  input_files           Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+  bvalues_files         Path to the bvalues files. This path may contain wildcards to use multiple bvalues files at once.
+  bvectors_files        Path to the bvectors files. This path may contain wildcards to use multiple bvectors files at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --sigma float         Standard deviation of the noise estimated from the data. Default 0: it means sigma value estimation with the Manjon2013 algorithm [3]_.
+  --b0_threshold float  Threshold used to find b0 volumes.
+  --bvecs_tol float     Threshold used to check that norm(bvec) = 1 +/- bvecs_tol b-vectors are unit vectors.
+  --patch_radius int    The radius of the local patch to be taken around each voxel (in voxels) For example, for a patch radius with value 2, and assuming the input image is a 3D image, the denoising will take place in blocks of 5x5x5 voxels.
+  --pca_method str      Use either eigenvalue decomposition ('eig') or singular value decomposition ('svd') for principal component analysis. The default method is 'eig' which is faster. However, occasionally 'svd' might be more accurate.
+  --tau_factor float    Thresholding of PCA eigenvalues is done by nulling out eigenvalues that are smaller than:  .. math ::          \tau = (\tau_{factor} \sigma)^2  \tau_{factor} can be change to adjust the relationship between the noise standard deviation and the threshold \tau. If \tau_{factor} is set to None, it will be automatically calculated using the Marcenko-Pastur distribution [2]_.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Output directory. (default current directory)
+  --out_denoised str    Name of the resulting denoised volume.
+
+References
+----------
+
+ 
+.. [1] Veraart J, Novikov DS, Christiaens D, Ades-aron B, Sijbers,Fieremans E, 2016. Denoising of Diffusion MRI using randommatrix theory. Neuroimage 142:394-406.doi: 10.1016/j.neuroimage.2016.08.016
+.. [2] Veraart J, Fieremans E, Novikov DS. 2016. Diffusion MRI noisemapping using random matrix theory. Magnetic Resonance inMedicine.doi: 10.1002/mrm.26059.
+.. [3] Manjon JV, Coupe P, Concha L, Buades A, Collins DL (2013)Diffusion Weighted Image Denoising Using Overcomplete LocalPCA. PLoS ONE 8(9): e73021.https://doi.org/10.1371/journal.pone.0073021
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.
