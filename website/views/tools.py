@@ -229,10 +229,13 @@ def update_documentations():
 
 def update_doc_informations(ids):
     for doc in DocumentationLink.objects.filter(id__in=ids):
+        print("UPDATE TUTORIALS")
         doc.tutorials = get_doc_examples(doc.version)
         doc.save()
+        print("UPDATE GALLERY")
         doc.gallery = get_doc_examples_images(doc.version)
         doc.save()
+        print("UPDATE INTRO")
         doc.intro = get_dipy_intro(doc.version)
         doc.is_updated = True
         doc.save()
@@ -494,6 +497,8 @@ def get_doc_examples(version=None):
     bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="examples")
+    # TOTOTOTOTOTOTOTOTOTOTOTOTOTOTOT
+    # import ipdb; ipdb.set_trace()
     all_major_sections = examples_div.find_all("div",
                                                class_="section",
                                                recursive=False)

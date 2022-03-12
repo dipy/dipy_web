@@ -21,3 +21,13 @@ def is_lesson(track):
 def qa_time(qa, workshop):
     t = qa.events.get(workshop=workshop).start_date
     return t.strftime("%H:%M %p")
+
+
+@register.filter(name='in_workshops')
+def in_workshops(things, workshop):
+    return things.filter(workshops=workshop)
+
+
+@register.filter(name='in_workshop')
+def in_workshop(things, workshop):
+    return things.filter(workshop=workshop)

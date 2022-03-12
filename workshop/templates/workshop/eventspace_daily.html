@@ -29,6 +29,11 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
     opacity: 0;
   }
 }
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
 </style>
 {% endblock %}
 
@@ -47,6 +52,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
           </div>
           <div id="collapseOne-{{forloop.counter}}" class="panel-collapse collapse {% if video in lesson.videos.all %} in {% endif %}">
             {% for vid in lesson.videos.all %}
+            {% if workshop in vid.workshops.all %}
             <div class="list-group">
               <a href="{% url 'workshop:eventspace_daily' workshop_slug=workshop.slug date=release_date|date:'Ymd'  %}?video_id={{vid.id}}" class="list-group-item {% if vid.slug == video.slug %} active {% endif %}">
                 <h4 class="fs-13 p-b-10">{{vid.title}}</h4>
@@ -61,6 +67,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
                 </div>
               </a>
             </div>
+            {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -81,7 +88,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
     <div class="col-lg-12 p-t-30">
       <h2 class="text-center blink_me">Live Session</h2>
       {% for qa in all_qa%}
-      <div class='col-lg-6'>
+      <div class='p-b-10 col-lg-6'>
         <p><strong>Subject:</strong> {{qa.session.name}}</p>
         <p><strong>Time:</strong>  {{ qa.start_date|date:"g:i a" }} ET</p>
         <p><strong>Link:</strong> <a href="{{qa.session.qa.zoom_link}}">{{qa.session.qa.zoom_link}}</a></p>
@@ -96,6 +103,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
         </div>
         {% endfor %}
       </div>
+      <hr class="rounded">
       {% endfor %}
     </div>
     {% endif %}

@@ -231,13 +231,16 @@ class Subscription(models.Model):
 
 
 class Track(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=500)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to="tracks/", blank=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["name"]
 
     # def get_absolute_url(self):
     #     return reverse("workshop:course-detail", kwargs={"slug": self.slug})
@@ -280,10 +283,11 @@ class Video(models.Model):
     order = models.IntegerField(default=1)
 
     class Meta:
-        ordering = ["order"]
+        ordering = ["lesson", "order"]
+
 
     def __str__(self):
-        return self.title
+        return f"{self.lesson.name} - {self.title}"
 
     def video_id(self):
         if not self.video_url:
