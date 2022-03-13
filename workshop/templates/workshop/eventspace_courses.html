@@ -1,6 +1,7 @@
 {% extends "workshop/eventspace_template.html" %}
 {% load static %}
 {% load customfilters %}
+{% load workshop_tags %}
 
 {% block extra_css %}
 <style>
@@ -283,14 +284,14 @@ div.speaker-info img, div.aspect-info img {
         </div>
         <div class="aspect-stat">
             <div class="all-opinions">
-                <span class="all-opinions-count">{{lesson.videos.all|length}}</span>
+                <span class="all-opinions-count">{{lesson.videos|in_workshops:workshop|length}}</span>
                 <span>video(s)</span>
             </div>
         </div>
     </div>
     <div class="aspect-tab-content">
         <div class="sentiment-wrapper">
-            {% for video in lesson.videos.all %}
+            {% for video in lesson.videos|in_workshops:workshop %}
             <div>
                 <div>
                     <div class="opinion-header">

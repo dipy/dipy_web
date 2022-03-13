@@ -141,7 +141,7 @@ def eventspace_daily(request, workshop_slug, date):
     if video_id is not None:
         vid = Video.objects.get(id=video_id)
     else:
-        vid = all_lesson[0].videos.first()
+        vid = all_lesson[0].videos.filter(workshops=workshop).first()
     context["video"] = vid
 
     return render(request, 'workshop/eventspace_daily.html', context)
