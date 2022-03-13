@@ -115,7 +115,7 @@ def eventspace_daily(request, workshop_slug, date):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
 
     all_lesson = Lesson.objects.filter(events__start_date__date=dt_date,
-                                       events__workshop=workshop)
+                                       events__workshop=workshop).order_by('-events__start_date')
 
     # all_qa = QA.objects.filter(events__start_date__date=dt_date,
     #                            events__workshop=workshop)

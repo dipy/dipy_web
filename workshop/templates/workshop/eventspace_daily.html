@@ -89,6 +89,7 @@ hr.rounded {
       <h2 class="text-center blink_me">Live Session</h2>
       {% for qa in all_qa%}
       <div class='p-b-10 col-lg-6'>
+        <hr class="rounded">
         <p><strong>Subject:</strong> {{qa.session.name}}</p>
         <p><strong>Time:</strong>  {{ qa.start_date|date:"g:i a" }} ET</p>
         <p><strong>Link:</strong> <a href="{{qa.session.qa.zoom_link}}">{{qa.session.qa.zoom_link}}</a></p>
@@ -102,8 +103,8 @@ hr.rounded {
           <span class="fs-11">{{speaker.fullname|title}}</span>
         </div>
         {% endfor %}
+        <hr class="rounded">
       </div>
-      <hr class="rounded">
       {% endfor %}
     </div>
     {% endif %}
