@@ -150,7 +150,7 @@ def eventspace_daily(request, workshop_slug, date):
 @login_required
 def eventspace_courses(request, workshop_slug):
     workshop = Workshop.objects.get(slug__contains=workshop_slug)
-    all_lesson = Lesson.objects.filter(events__in=workshop.events.all())
+    all_lesson = Lesson.objects.filter(events__in=workshop.events.all()).order_by('events__start_date')
 
     context = {'workshop': workshop,
                'all_lesson': all_lesson,
