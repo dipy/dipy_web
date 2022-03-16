@@ -37,6 +37,17 @@ def str2date(date_str):
     return date.strftime("%A, %B %d")
 
 
+def remove_duplicated_author(l_authors):
+    print(l_authors)
+    visited = set()
+    result = []
+    for author, img in l_authors:
+        if author.lower() not in visited:
+            visited.add(author.lower())
+            result.append((author, img))
+    return result
+
+
 def generate_calendar(workshop):
     events = workshop.events.all()
     calendar = {}
@@ -48,6 +59,7 @@ def generate_calendar(workshop):
 
         videos = Video.objects.filter(workshops=workshop, lesson=evt.session)
         author = []
+
         if videos:
             author = set([(sp.fullname, sp.avatar_url) for vid in videos
                           for sp in vid.speakers.all()])
@@ -55,6 +67,7 @@ def generate_calendar(workshop):
             panel = evt.session.qa.panel.all()
             author = set([(sp.fullname, sp.avatar_url) for sp in panel])
 
+        author = remove_duplicated_author(author)
         # print(date, evt.session.name, date in calendar)
         if date in calendar:
             calendar[date].append((evt.session.name, time, author))
