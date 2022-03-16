@@ -27,12 +27,15 @@
 
 {% block dashboard_content_body %}
 
-<h2 class="text-center p-b-20"><b>Schedule</b></h2>
+<h1 class="text-center p-b-20"><b><u>Schedule</u></b></h1>
 
 <div class="col-lg-12 p-b-20">
     <!-- <p><strong>Notes:</strong></p> -->
-    <h2><b>Videos released every morning at your respective timezone</b></h2>
-    <h2><b>Live Q&A: Starts at 3pm ET everyday. Ask all your questions during this live event.</b></h2>
+    <h3><b>- Videos released every morning at your respective timezone</b></h3>
+    <h3><b>- Live Q&A: Starts at 3pm ET everyday. Ask all your questions during this live event.</b></h3>
+    {% if workshop.schedule_pdf_link %}
+    <h3><b>- Download the detailed workshop program <a href="{{workshop.schedule_pdf_link}}">here</a></b></h3>
+    {% endif %}
 </div>
 <div class="col-lg-12">
     <div class="row equal with-padding-10">

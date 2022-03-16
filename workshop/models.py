@@ -152,6 +152,7 @@ class Workshop(models.Model):
     registration_end_date = models.DateTimeField(editable=True,
                                                  default=timezone.now)
     show_registration_deadline = models.BooleanField(default=False)
+    schedule_pdf_link = models.URLField(max_length=500, blank=True)
     welcome_email = models.TextField(default="Thanks for your joining DIPY Workshop.")
     welcome_email_html = models.TextField(editable=False, blank=True)
     leaflet_image = models.ImageField(upload_to='bg_images/', blank=True,

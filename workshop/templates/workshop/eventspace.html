@@ -11,7 +11,10 @@
 {% endif %}
 </div>
 <div class="p-t-80 col-lg-12 text-center">
-    <div class="page-heading p-b-50"><h2><b>Schedule and how to plan your week</b></h2></div>
+    <div class="page-heading p-b-30"><h2><b>Schedule and how to plan your week</b></h2></div>
+    {% if workshop.schedule_pdf_link %}
+    <h3 class="p-b-30"><b>Download the detailed workshop program and instruction <a href="{{workshop.schedule_pdf_link}}">here</a></b></h3>
+    {% endif %}
     <h3><strong>Educational videos</strong></h3>
     <p> All educational videos will be released at 10 am EST each day. You can access them through the <a href="{% url 'workshop:eventspace_calendar' workshop_slug=workshop.slug %}">schedule page.</a></p>
     {% if workshop.has_live_keynote %}
