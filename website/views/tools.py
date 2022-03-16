@@ -359,17 +359,24 @@ def get_dipy_intro(version=None):
     bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="diffusion-imaging-in-python")
+    if not examples_div:
+        examples_div = bs_doc.find("section", id="diffusion-imaging-in-python")
     intro_text_p = examples_div.find("p")
     intro_text_p.attrs['class'] = 'text-center'
     highlight_div = examples_div.find("div", id="highlights")
+    if not highlight_div:
+        highlight_div = examples_div.find("section", id="highlights")
     highlight_div.h2.decompose()
     for link in highlight_div.find_all('a'):
-        l =  link.get('href')
+        l = link.get('href')
         if l.lower().startswith('#') or 'http:/' in l or 'https:/' in l:
             continue
         link['href'] = 'documentation/latest/{}'.format(l)
 
     annoucement = examples_div.find("div", id="announcements")
+    if not annoucement:
+        annoucement = examples_div.find("section", id="announcements")
+
     annoucement.h2.decompose()
     for link in annoucement.find_all('a'):
         l = link.get('href')
@@ -419,6 +426,8 @@ def get_dipy_publications(count=3):
     response_json = response.json()
     bs_doc = BeautifulSoup(response_json['body'], "lxml")
     publication_div = bs_doc.find("div", id="publications")
+    if not publication_div:
+        publication_div = bs_doc.find("section", id="publications")
     publication_div.h1.decompose()
     publication = publication_div.find_all('p')
     if publication:
@@ -497,11 +506,14 @@ def get_doc_examples(version=None):
     bs_doc = BeautifulSoup(response_json['body'], "lxml")
 
     examples_div = bs_doc.find("div", id="examples")
+    if not examples_div:
+        examples_div = bs_doc.find("section", id="examples")
     # TOTOTOTOTOTOTOTOTOTOTOTOTOTOTOT
-    # import ipdb; ipdb.set_trace()
     all_major_sections = examples_div.find_all("div",
                                                class_="section",
                                                recursive=False)
+    if not all_major_sections:
+        all_major_sections = examples_div.find_all("section", recursive=False)
     print('DURATION {}s'.format(time.time() - start))
     start = time.time()
     for major_section in all_major_sections:
@@ -514,6 +526,9 @@ def get_doc_examples(version=None):
         all_minor_sections = major_section.find_all("div",
                                                     class_="section",
                                                     recursive=False)
+        if not all_minor_sections:
+            all_minor_sections = major_section.find_all("section",
+                                                        recursive=False)
 
         if len(all_minor_sections) == 0:
             # no minor sections, only examples_list
