@@ -170,10 +170,20 @@ class Workshop(models.Model):
     is_in_person = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
     has_live_qa = models.BooleanField(default=True)
+    live_qa_zoom_link = models.URLField(max_length=500, blank=True)
+    live_qa_password = models.CharField(max_length=300, blank=True)
     has_live_keynote = models.BooleanField(default=False)
+    keynote_zoom_link = models.URLField(max_length=500, blank=True)
+    keynote_password = models.CharField(max_length=300, blank=True)
     has_live_demo = models.BooleanField(default=False)
+    demo_zoom_link = models.URLField(max_length=500, blank=True)
+    demo_password = models.CharField(max_length=300, blank=True)
     has_data_accelerator = models.BooleanField(default=True)
+    data_zoom_link = models.URLField(max_length=500, blank=True)
+    data_password = models.CharField(max_length=300, blank=True)
     has_code_sprint = models.BooleanField(default=True)
+    code_sprint_zoom_link = models.URLField(max_length=500, blank=True)
+    code_sprint_password = models.CharField(max_length=300, blank=True)
 
     class Meta:
         ordering = ['-start_date']

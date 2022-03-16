@@ -17,34 +17,42 @@
     {% if workshop.has_live_keynote %}
     <h3><strong>Live Keynotes (M-F)</strong></h3>
     <p>Every day, do not miss the live guest keynote ! </p>
-    <p>Join using the following link: <a href="https://iu.zoom.us/j/89566117760?pwd=eUkvdTgvMzJ6WTYzUWN6TS9vRnF0QT09">https://iu.zoom.us/s/89566117760</a></p>
-    <p><strong>Password:</strong> 283999</p>
+    <!-- <p>Join using the following link: <a href="https://iu.zoom.us/j/89566117760?pwd=eUkvdTgvMzJ6WTYzUWN6TS9vRnF0QT09">https://iu.zoom.us/s/89566117760</a></p>
+    <p><strong>Password:</strong> 283999</p> -->
+    <p>Join using the following link: <a href="{{workshop.keynote_zoom_link}}">{{workshop.keynote_zoom_link}}</a></p>
+    <p><strong>Password:</strong> {{workshop.keynote_password}}</p>
     {% endif %}
     {% if workshop.has_live_qa %}
     <h3><strong>Live Q&A Session</strong></h3>
     <p>Starts at 3pm EST everyday. Ask all your questions during this live event.</p>
-    <p>Join using the following link: <a href="https://iu.zoom.us/j/89566117760?pwd=eUkvdTgvMzJ6WTYzUWN6TS9vRnF0QT09">https://iu.zoom.us/s/89566117760</a></p>
-    <p><strong>Password:</strong> 388368</p>
+    <!-- <p>Join using the following link: <a href="https://iu.zoom.us/j/89566117760?pwd=eUkvdTgvMzJ6WTYzUWN6TS9vRnF0QT09">https://iu.zoom.us/s/89566117760</a></p>
+    <p><strong>Password:</strong> 388368</p> -->
+    <p>Join using the following link: <a href="{{workshop.live_qa_zoom_link}}">{{workshop.live_qa_zoom_link}}</a></p>
+    <p><strong>Password:</strong> {{workshop.live_qa_password}}</p>
     {% endif %}
     {% if workshop.has_data_accelerator %}
     <h3><strong>Data accelerator (M-W)</strong></h3>
     <p>Need help with you data? Let's discuss about it.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1eI_4J8qXmRhnFk-CRpNLVlm-cLWlN3ke5wL3dWyY3jU/edit?usp=sharing">You can reserve a 20min slot here</a> and the DIPY team will provide suggestions.</p>
-    <p>Join using the following link: <a href="https://iu.zoom.us/j/82498644798?pwd=M1kwemtQa0o3eVlKdTBPZGQySkRhUT09">https://iu.zoom.us/s/82498644798</a></p>
-    <p><strong>Password:</strong> 283999</p>
+    <!-- <p>Join using the following link: <a href="https://iu.zoom.us/j/82498644798?pwd=M1kwemtQa0o3eVlKdTBPZGQySkRhUT09">https://iu.zoom.us/s/82498644798</a></p>
+    <p><strong>Password:</strong> 283999</p> -->
+    <p>Join using the following link: <a href={{workshop.data_zoom_link}}">{{workshop.data_zoom_link}}</a></p>
+    <p><strong>Password:</strong> {{workshop.data_password}}</p>
     {% endif %}
     {% if workshop.has_code_sprint %}
     <h3><strong>Coding Sprint (T-F)</strong></h3>
     <p>Want to contribute a new feature?</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1FOJ102nq9aR_LOc6kPRzCCj-VxNd61eKf2E_hIeLLPs/edit?usp=sharing">Add your details here.</a></p>
-    <p>Zoom Link for your session: <a href="https://iu.zoom.us/j/82498644798?pwd=M1kwemtQa0o3eVlKdTBPZGQySkRhUT09">https://iu.zoom.us/s/82498644798</a></p>
-    <p><strong>Password:</strong> 283999</p>
+    <!-- <p>Zoom Link for your session: <a href="https://iu.zoom.us/j/82498644798?pwd=M1kwemtQa0o3eVlKdTBPZGQySkRhUT09">https://iu.zoom.us/s/82498644798</a></p>
+    <p><strong>Password:</strong> 283999</p> -->
+    <p>Zoom Link for your session: <a href="{{workshop.code_sprint_zoom_link}}">{{workshop.code_sprint_zoom_link}}</a></p>
+    <p><strong>Password:</strong> {{workshop.code_sprint_password}}</p>
     {% endif %}
     {% if workshop.has_live_demo %}
     <h3><strong>Live Demo / Tutorials </strong></h3>
     <p>Want to learn a new feature? Want to learn how to use our Command Line Interface?</p>
-    <p>Join this Live tutorial using the following link: <a href="https://iu.zoom.us/j/82498644798?pwd=M1kwemtQa0o3eVlKdTBPZGQySkRhUT09">https://iu.zoom.us/s/82498644798</a></p>
-    <p><strong>Password:</strong> 283999</p>
+    <p>Join this Live tutorial using the following link: <a href="{{workshop.demo_zoom_link}}">{{workshop.demo_zoom_link}}</a></p>
+    <p><strong>Password:</strong> {{workshop.demo_password}}</p>
     {% endif %}
     <h3><strong>Chat</strong></h3>
     <p>All questions can be adressed on <a href="{% url 'workshop:eventspace_chat' workshop_slug=workshop.slug %}">our integrated chat</a></p>
