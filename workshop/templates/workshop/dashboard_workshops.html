@@ -24,6 +24,11 @@
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Is visible?  </strong>{{ workshop.is_published|yesno }}</div>
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Nb Attendees:  </strong>{{ workshop.members.all|length }}</div>
     <div class="p-b-10 col-xs-12 col-sm-6 col-md-6 col-lg-6 "><strong>Nb Speakers:  </strong>{{ workshop.speakers.all|length }}</div>
+    <div class="p-b-10 col-xs-12 col-sm-12 col-md-12 col-lg-&2 "><strong>Attendees Email:  </strong>
+        {% for m in workshop.members.all %}
+        <span>&lt;{{m.email}}&gt;</span>
+        {% endfor %}
+    </div>
     <p><a href="{% url 'workshop:edit_workshop' workshop_id=workshop.id %} ">Edit</a> | <a class="workshopDeleteLink" href="{% url 'workshop:delete_workshop' workshop_id=workshop.id %} ">Delete</a></p>
     <hr>
 </div>
