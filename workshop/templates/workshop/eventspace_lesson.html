@@ -1,6 +1,7 @@
 {% extends "workshop/eventspace_template.html" %}
 {% load static %}
 {% load customfilters %}
+{% load workshop_tags %}
 
 {% block extra_css %}
 <style>
@@ -33,7 +34,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
-          {% for vid in lesson.videos.all %}
+          {% for vid in lesson.videos|in_workshops:workshop %}
           <div class="list-group">
             <a href="{% url 'workshop:eventspace_lesson' workshop_slug=workshop.slug lesson_slug=lesson.slug video_slug=vid.slug %}" class="list-group-item {% if vid.slug == video.slug %} active {% endif %}">
               <h4 class="fs-13 p-b-10">{{vid.title}}</h4>
