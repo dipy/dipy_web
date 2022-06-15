@@ -123,7 +123,10 @@ def eventspace_daily(request, workshop_slug, date):
                                           start_date__date=dt_date,
                                           workshop=workshop)
 
+    all_replays = [q.session.qa for q in all_qa if q.session.qa.replay]
+
     video_id = request.GET.get('video_id', None)
+    qa_id = request.GET.get('qa_id', None)
     now = datetime.datetime.now()
     now = now.replace(hour=0, minute=0, second=0, microsecond=0)
     can_release_videos = timezone.make_aware(now) >= dt_date
@@ -136,13 +139,16 @@ def eventspace_daily(request, workshop_slug, date):
                'all_lesson': all_lesson,
                'all_qa': all_qa,
                'release_date': dt_date,
-               'can_release_videos': can_release_videos}
+               'can_release_videos': can_release_videos,
+               'all_replays': all_replays}
 
     if video_id is not None:
         vid = Video.objects.get(id=video_id)
     else:
-        vid = all_lesson[0].videos.filter(workshops=workshop).first()
+        vid = all_lesson[0].videos.filter(workshops=workshop).first() if qa_id is None else None
+
     context["video"] = vid
+    context["current_qa"] = QA.objects.get(id=qa_id) if qa_id is not None else None
 
     return render(request, 'workshop/eventspace_daily.html', context)
 

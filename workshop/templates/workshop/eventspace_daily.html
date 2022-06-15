@@ -73,18 +73,61 @@ hr.rounded {
         </div>
       </div>
     {% endfor %}
+    {% if all_replays %}
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class='color-black' data-toggle="collapse" data-parent="#accordion" href="#collapseOne-{{forloop.counter}}">
+            <h4 class="panel-title">Live Events Replay</h4>
+          </a>
+        </div>
+        <div id="collapseOne-{{forloop.counter}}" class="panel-collapse collapse {% if current_qa in all_replays %} in {% endif %}">
+          {% for qa in all_replays %}
+          {% if qa.replay %}
+          <div class="list-group">
+            <a href="{% url 'workshop:eventspace_daily' workshop_slug=workshop.slug date=release_date|date:'Ymd'  %}?qa_id={{qa.id}}" class="list-group-item {% if qa.slug == current_qa.slug %} active {% endif %}">
+              <h4 class="fs-13 p-b-10">{{qa.name}}</h4>
+              <div class="">
+                {% for speaker in qa.panel.all%}
+                  <div>
+                    <img class="rounded-circle" src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}" width="15" height="15">
+                    <span class="fs-11">{{speaker.fullname|title}}</span>
+                  </div>
+                {% endfor %}
+                <div class="p-t-10" style="text-align: right;"><span><i class="fa fa-youtube-play color-dipy p-r-5" aria-hidden="true"></i></span></div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
   <div class="col-lg-8 p-b-50">
     <div class="col-lg-12 youtube-wrapper">
-      {% if not video.video_url or not can_release_videos %}
+      {%if video%}
+        {% if not video.video_url or not can_release_videos%}
 
-        <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
-        <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
-      {% else%}
-        <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+          <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
+          <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
+        {% else%}
+          <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+      {% elif current_qa %}
+        {% if current_qa.replay%}
+          <iframe class="youtube-embed" width="640" height="360" src="https://www.youtube.com/embed/{{ current_qa.replay_id }}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+        {% else%}
+          <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
+          <h1 class="text-center p-b-80">Live Event Replay not available yet</h1>
+        {% endif%}
+      {% else %}
+       <span class="fa fa-lock p-t-80 w-full text-center" style="font-size: 3em;"></span>
+       <h1 class="text-center p-b-80">The session will be unlocked on {{release_date|date}}</h1>
       {% endif %}
     </div>
-    {% if all_qa %}
+    {% if all_qa and not workshop.is_past_due %}
     <div class="col-lg-12 p-t-30">
       <h2 class="text-center blink_me">Live Sessions</h2>
       {% for qa in all_qa%}

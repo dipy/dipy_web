@@ -197,6 +197,10 @@ class Workshop(models.Model):
     def is_past_due_registration(self):
         return timezone.now() > self.registration_end_date
 
+    @property
+    def is_past_due(self):
+        return timezone.now() > self.end_date
+
     def hashtags(self):
         ht = [tag for tag in self.twitter_hashtags.split(' ')
               if '#' in tag or '@' in tag]
@@ -278,7 +282,18 @@ class QA(Track):
                                    blank=True)
     zoom_link = models.URLField(max_length=300, blank=True)
     password = models.CharField(max_length=300, blank=True)
+    replay = models.URLField(max_length=500, blank=True)
 
+    def replay_id(self):
+        if not self.replay:
+            return ''
+
+        for prefix in ['https://youtu.be/',
+                      'https://www.youtube.com/watch?v=']:
+            if self.replay.startswith(prefix):
+                return self.replay.replace(prefix, '')
+
+        return ''
 
 class Video(models.Model):
     workshops = models.ManyToManyField(Workshop, related_name="videos",
