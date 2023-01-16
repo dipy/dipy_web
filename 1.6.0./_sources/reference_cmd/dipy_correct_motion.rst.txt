@@ -1,0 +1,40 @@
+
+===================
+dipy_correct_motion
+===================
+
+Usage
+-----
+
+ dipy_correct_motion [-h] [--b0_threshold float] [--bvecs_tol float] [--out_dir str] [--out_moved str] [--out_affine str]
+                     input_files bvalues_files bvectors_files
+
+Positional Arguments
+--------------------
+
+
+  input_files           Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+  bvalues_files         Path to the bvalues files. This path may contain wildcards to use multiple bvalues files at once.
+  bvectors_files        Path to the bvectors files. This path may contain wildcards to use multiple bvectors files at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --b0_threshold float  Threshold used to find b0 volumes.
+  --bvecs_tol float     Threshold used to check that norm(bvec) = 1 +/- bvecs_tol b-vectors are unit vectors
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Directory to save the transformed image and the affine matrix  (default current directory).
+  --out_moved str       Name for the saved transformed image.
+  --out_affine str      Name for the saved affine matrix.
+
+References
+----------
+
+ 
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

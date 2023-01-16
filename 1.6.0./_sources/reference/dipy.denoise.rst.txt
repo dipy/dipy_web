@@ -1,0 +1,487 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`denoise`
+==============
+.. automodule:: dipy.denoise
+
+.. currentmodule:: dipy.denoise
+.. autosummary::
+
+   bench
+   test
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.adaptive_soft_matching`
+---------------------------------------------
+.. automodule:: dipy.denoise.adaptive_soft_matching
+
+.. currentmodule:: dipy.denoise.adaptive_soft_matching
+.. autosummary::
+
+   adaptive_soft_matching
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.denspeed`
+-------------------------------
+.. automodule:: dipy.denoise.denspeed
+
+.. currentmodule:: dipy.denoise.denspeed
+.. autosummary::
+
+   add_padding_reflection
+   correspond_indices
+   determine_num_threads
+   nlmeans_3d
+   remove_padding
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.enhancement_kernel`
+-----------------------------------------
+.. automodule:: dipy.denoise.enhancement_kernel
+
+.. currentmodule:: dipy.denoise.enhancement_kernel
+.. autosummary::
+
+   EnhancementKernel
+   HemiSphere
+   Sphere
+   ceil
+   disperse_charges
+   get_sphere
+   gettempdir
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.gibbs`
+----------------------------
+.. automodule:: dipy.denoise.gibbs
+
+.. currentmodule:: dipy.denoise.gibbs
+.. autosummary::
+
+   Version
+   partial
+   Pool
+   deprecated_params
+   determine_num_processes
+   gibbs_removal
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.localpca`
+-------------------------------
+.. automodule:: dipy.denoise.localpca
+
+.. currentmodule:: dipy.denoise.localpca
+.. autosummary::
+
+   Version
+   eigh
+   genpca
+   localpca
+   mppca
+   warn
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.nlmeans`
+------------------------------
+.. automodule:: dipy.denoise.nlmeans
+
+.. currentmodule:: dipy.denoise.nlmeans
+.. autosummary::
+
+   nlmeans
+   nlmeans_3d
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.nlmeans_block`
+------------------------------------
+.. automodule:: dipy.denoise.nlmeans_block
+
+.. currentmodule:: dipy.denoise.nlmeans_block
+.. autosummary::
+
+   firdn
+   nlmeans_block
+   upfir
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.noise_estimate`
+-------------------------------------
+.. automodule:: dipy.denoise.noise_estimate
+
+.. currentmodule:: dipy.denoise.noise_estimate
+.. autosummary::
+
+   convolve
+   estimate_sigma
+   piesno
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.non_local_means`
+--------------------------------------
+.. automodule:: dipy.denoise.non_local_means
+
+.. currentmodule:: dipy.denoise.non_local_means
+.. autosummary::
+
+   nlmeans_block
+   non_local_means
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.patch2self`
+---------------------------------
+.. automodule:: dipy.denoise.patch2self
+
+.. currentmodule:: dipy.denoise.patch2self
+.. autosummary::
+
+   optional_package
+   patch2self
+   warn
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.pca_noise_estimate`
+-----------------------------------------
+.. automodule:: dipy.denoise.pca_noise_estimate
+
+.. currentmodule:: dipy.denoise.pca_noise_estimate
+.. autosummary::
+
+   pca_noise_estimate
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`denoise.shift_twist_convolution`
+----------------------------------------------
+.. automodule:: dipy.denoise.shift_twist_convolution
+
+.. currentmodule:: dipy.denoise.shift_twist_convolution
+.. autosummary::
+
+   convolve
+   convolve_sf
+   determine_num_threads
+   sf_to_sh
+   sh_to_sf
+
+
+.. currentmodule:: dipy.denoise
+
+bench
+~~~~~
+
+.. autofunction:: bench
+
+test
+~~~~
+
+.. autofunction:: test
+
+
+.. currentmodule:: dipy.denoise.adaptive_soft_matching
+
+adaptive_soft_matching
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: adaptive_soft_matching
+
+
+.. currentmodule:: dipy.denoise.denspeed
+
+add_padding_reflection
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: add_padding_reflection
+
+correspond_indices
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: correspond_indices
+
+determine_num_threads
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: determine_num_threads
+
+nlmeans_3d
+~~~~~~~~~~
+
+.. autofunction:: nlmeans_3d
+
+remove_padding
+~~~~~~~~~~~~~~
+
+.. autofunction:: remove_padding
+
+
+.. currentmodule:: dipy.denoise.enhancement_kernel
+
+
+:class:`EnhancementKernel`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: EnhancementKernel
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`HemiSphere`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: HemiSphere
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Sphere`
+~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Sphere
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+ceil
+~~~~
+
+.. autofunction:: ceil
+
+disperse_charges
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: disperse_charges
+
+get_sphere
+~~~~~~~~~~
+
+.. autofunction:: get_sphere
+
+gettempdir
+~~~~~~~~~~
+
+.. autofunction:: gettempdir
+
+
+.. currentmodule:: dipy.denoise.gibbs
+
+
+:class:`Version`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Version
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`partial`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: partial
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+Pool
+~~~~
+
+.. autofunction:: Pool
+
+deprecated_params
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: deprecated_params
+
+determine_num_processes
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: determine_num_processes
+
+gibbs_removal
+~~~~~~~~~~~~~
+
+.. autofunction:: gibbs_removal
+
+
+.. currentmodule:: dipy.denoise.localpca
+
+
+:class:`Version`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Version
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+eigh
+~~~~
+
+.. autofunction:: eigh
+
+genpca
+~~~~~~
+
+.. autofunction:: genpca
+
+localpca
+~~~~~~~~
+
+.. autofunction:: localpca
+
+mppca
+~~~~~
+
+.. autofunction:: mppca
+
+warn
+~~~~
+
+.. autofunction:: warn
+
+
+.. currentmodule:: dipy.denoise.nlmeans
+
+nlmeans
+~~~~~~~
+
+.. autofunction:: nlmeans
+
+nlmeans_3d
+~~~~~~~~~~
+
+.. autofunction:: nlmeans_3d
+
+
+.. currentmodule:: dipy.denoise.nlmeans_block
+
+firdn
+~~~~~
+
+.. autofunction:: firdn
+
+nlmeans_block
+~~~~~~~~~~~~~
+
+.. autofunction:: nlmeans_block
+
+upfir
+~~~~~
+
+.. autofunction:: upfir
+
+
+.. currentmodule:: dipy.denoise.noise_estimate
+
+convolve
+~~~~~~~~
+
+.. autofunction:: convolve
+
+estimate_sigma
+~~~~~~~~~~~~~~
+
+.. autofunction:: estimate_sigma
+
+piesno
+~~~~~~
+
+.. autofunction:: piesno
+
+
+.. currentmodule:: dipy.denoise.non_local_means
+
+nlmeans_block
+~~~~~~~~~~~~~
+
+.. autofunction:: nlmeans_block
+
+non_local_means
+~~~~~~~~~~~~~~~
+
+.. autofunction:: non_local_means
+
+
+.. currentmodule:: dipy.denoise.patch2self
+
+optional_package
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: optional_package
+
+patch2self
+~~~~~~~~~~
+
+.. autofunction:: patch2self
+
+warn
+~~~~
+
+.. autofunction:: warn
+
+
+.. currentmodule:: dipy.denoise.pca_noise_estimate
+
+pca_noise_estimate
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pca_noise_estimate
+
+
+.. currentmodule:: dipy.denoise.shift_twist_convolution
+
+convolve
+~~~~~~~~
+
+.. autofunction:: convolve
+
+convolve_sf
+~~~~~~~~~~~
+
+.. autofunction:: convolve_sf
+
+determine_num_threads
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: determine_num_threads
+
+sf_to_sh
+~~~~~~~~
+
+.. autofunction:: sf_to_sh
+
+sh_to_sf
+~~~~~~~~
+
+.. autofunction:: sh_to_sf
+

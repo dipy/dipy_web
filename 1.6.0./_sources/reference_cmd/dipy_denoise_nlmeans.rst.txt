@@ -1,0 +1,43 @@
+
+====================
+dipy_denoise_nlmeans
+====================
+
+Usage
+-----
+
+ dipy_denoise_nlmeans [-h] [--sigma float] [--patch_radius int] [--block_radius int] [--rician] [--out_dir str] [--out_denoised str] input_files
+
+Workflow wrapping the nlmeans denoising method.
+
+It applies nlmeans denoise on each file found by 'globing' ``input_files`` and saves the results in a directory specified by ``out_dir``.
+
+Positional Arguments
+--------------------
+
+
+  input_files         Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help          show this help message and exit
+  --sigma float       Sigma parameter to pass to the nlmeans algorithm.
+  --patch_radius int  patch size is ``2 x patch_radius + 1``.
+  --block_radius int  block size is ``2 x block_radius + 1``.
+  --rician            If True the noise is estimated as Rician, otherwise Gaussian noise is assumed.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str       Output directory. (default current directory)
+  --out_denoised str  Name of the resulting denoised volume.
+
+References
+----------
+
+ 
+.. [Descoteaux08] Descoteaux, Maxime and Wiest-Daesslé, Nicolas andPrima, Sylvain and Barillot, Christian and Deriche, Rachid.Impact of Rician Adapted Non-Local Means Filtering onHARDI, MICCAI 2008
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

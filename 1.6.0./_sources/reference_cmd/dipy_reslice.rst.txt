@@ -1,0 +1,42 @@
+
+============
+dipy_reslice
+============
+
+Usage
+-----
+
+ dipy_reslice [-h] [--order int] [--mode str] [--cval float] [--num_processes int] [--out_dir str] [--out_resliced str]
+                     input_files new_vox_size [new_vox_size ...]
+
+Reslice data with new voxel resolution defined by ``new_vox_sz``
+
+Positional Arguments
+--------------------
+
+
+  input_files          Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+  new_vox_size         new voxel size.
+
+Optional Arguments
+------------------
+
+
+  -h, --help           show this help message and exit
+  --order int          order of interpolation, from 0 to 5, for resampling/reslicing, 0 nearest interpolation, 1 trilinear etc.. if you don't want any smoothing 0 is the option you need.
+  --mode str           Points outside the boundaries of the input are filled according to the given mode 'constant', 'nearest', 'reflect' or 'wrap'.
+  --cval float         Value used for points outside the boundaries of the input if mode='constant'.
+  --num_processes int  Split the calculation to a pool of children processes. This only applies to 4D `data` arrays. Default is 1. If < 0 the maximal number of cores minus ``num_processes + 1`` is used (enter -1 to use as many cores as possible). 0 raises an error.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str        Output directory. (default current directory)
+  --out_resliced str   Name of the resliced dataset to be saved.
+
+References
+----------
+
+ 
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

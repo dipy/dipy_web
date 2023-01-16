@@ -1,0 +1,49 @@
+
+=======================
+dipy_denoise_patch2self
+=======================
+
+Usage
+-----
+
+ dipy_denoise_patch2self [-h] [--model str] [--b0_threshold int] [--alpha float] [--verbose] [--b0_denoising] [--clip_negative_vals]
+                     [--shift_intensity] [--out_dir str] [--out_denoised str]
+                     input_files bval_files
+
+Workflow for Patch2Self denoising method.
+
+It applies patch2self denoising on each file found by 'globing' ``input_file`` and ``bval_file``. It saves the results in a directory specified by ``out_dir``.
+
+Positional Arguments
+--------------------
+
+
+  input_files           Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+  bval_files            bval file associated with the diffusion data.
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --model str           This will determine the algorithm used to solve the set of linear equations underlying this model. If it is a string it needs to be one of the following: {'ols', 'ridge', 'lasso'}. Otherwise, it can be an object that inherits from `dipy.optimize.SKLearnLinearSolver` or an object with a similar interface from Scikit-Learn: `sklearn.linear_model.LinearRegression`, `sklearn.linear_model.Lasso` or `sklearn.linear_model.Ridge` and other objects that inherit from `sklearn.base.RegressorMixin`. Default: 'ols'.
+  --b0_threshold int    Threshold for considering volumes as b0.
+  --alpha float         Regularization parameter only for ridge regression model.
+  --verbose             Show progress of Patch2Self and time taken.
+  --b0_denoising        Skips denoising b0 volumes if set to False.
+  --clip_negative_vals  Sets negative values after denoising to 0 using `np.clip`.
+  --shift_intensity     Shifts the distribution of intensities per volume to give non-negative values
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Output directory (default current directory)
+  --out_denoised str    Name of the resulting denoised volume (default: dwi_patch2self.nii.gz)
+
+References
+----------
+
+ 
+.. [Fadnavis20] S. Fadnavis, J. Batson, E. Garyfallidis, Patch2Self:            Denoising Diffusion MRI with Self-supervised Learning,            Advances in Neural Information Processing Systems 33 (2020)
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

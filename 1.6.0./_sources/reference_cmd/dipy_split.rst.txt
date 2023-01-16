@@ -1,0 +1,37 @@
+
+==========
+dipy_split
+==========
+
+Usage
+-----
+
+ dipy_split [-h] [--vol_idx int] [--out_dir str] [--out_split str] input_files [input_files ...]
+
+Splits the input 4D file and extracts the required 3D volume.
+
+Positional Arguments
+--------------------
+
+
+  input_files      Any number of Nifti1 files
+
+Optional Arguments
+------------------
+
+
+  -h, --help       show this help message and exit
+  --vol_idx int
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str    Output directory. (default current directory)
+  --out_split str  Name of the resulting split volume
+
+References
+----------
+
+ 
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.
