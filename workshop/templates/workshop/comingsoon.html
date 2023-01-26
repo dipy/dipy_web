@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="UTF-8">
 	<meta name="author" content="Serge Koudoro" />
-    <meta name="description" content="DIPY Workshop {{workshop_year}} Bloomington" />
+    <meta name="description" content="DIPY Workshop {{workshop_year}} {{workshop.location}}" />
     <meta name="keywords"  content="Workshop, neuroimaging, dti, diffusion imaging" />
     <meta name="Resource-type" content="Document" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +51,7 @@
 			{% else %}
 			<p class="m2-txt3">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
 			{% endif %}
-			<p class="m2-txt1 txt-center p-b-48">Bloomington - Indiana</p>
+			<p class="m2-txt1 txt-center p-b-48">{{workshop.location}}</p>
 
 			<small class="m2-txt1 txt-center p-b-25"> <b class="m2-txt2">Registration</b> will open in</small>
 			<div class="flex-w flex-c-m cd100 p-b-33">
