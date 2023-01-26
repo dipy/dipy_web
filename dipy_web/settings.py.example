@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'social_django',
     'meta',
     'users.apps.UsersConfig',
-    'memberships.apps.MembershipsConfig',
+    #  'memberships.apps.MembershipsConfig',
     'payment.apps.PaymentConfig',
     'website.apps.WebsiteConfig',
     'github_visualization.apps.GithubVisualizationConfig',
