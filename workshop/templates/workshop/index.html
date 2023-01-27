@@ -81,7 +81,8 @@
                         <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
                     </div>
                     <div class="col-lg-4 p-b-25">
-                        <p class="color-white fs-13 txt-center p-b-48">Already Registered ? <a class='color-dipy' href="{% url 'workshop:workshop_list' %}">login here</a></p>
+                        <p class="color-white fs-13 txt-center p-b-5">Already Registered ? <a class='color-dipy' href="{% url 'workshop:workshop_list' %}">login here</a></p>
+                        <p class="color-white fs-11 txt-center p-b-48">DIPY Workshop {{workshop.year}} is supported by {{workshop.supported_by}}</p>
                     </div>
 
                     <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>
