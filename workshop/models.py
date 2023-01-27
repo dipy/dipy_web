@@ -143,6 +143,7 @@ class Pricing(models.Model):
 class Workshop(models.Model):
     codename = models.CharField(max_length=200)
     location = models.CharField(max_length=500, default='Bloomington - Indiana')
+    supported_by = models.CharField(max_length=500, default='NIH/NIBIB (1R01EB027585) and Indiana University')
     twitter_hashtags = models.CharField(max_length=200, blank=True,
                                         help_text="Define twitter hashtags. It should start with # and all tags should be separate with a space (no coma or semi-colon")
     slug = models.SlugField(max_length=200, unique=True, blank=True, editable=False)
