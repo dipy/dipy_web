@@ -31,3 +31,9 @@ def in_workshops(things, workshop):
 @register.filter(name='in_workshop')
 def in_workshop(things, workshop):
     return things.filter(workshop=workshop)
+
+
+@register.filter
+def addstr(arg1, arg2):
+    """concatenate arg1 & arg2"""
+    return str(arg1) + str(arg2)

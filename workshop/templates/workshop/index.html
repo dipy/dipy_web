@@ -1,4 +1,6 @@
 {% load static %}
+{% load workshop_tags %}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -81,7 +83,9 @@
                         <a href="#Registration" role="button" class="btn btn-lg btn-block btn-outline-secondary">Register NOW</a>
                     </div>
                     <div class="col-lg-4 p-b-25">
+                        {% if not workshop.is_in_person %}
                         <p class="color-white fs-13 txt-center p-b-5">Already Registered ? <a class='color-dipy' href="{% url 'workshop:workshop_list' %}">login here</a></p>
+                        {% endif %}
                         <p class="color-white fs-11 txt-center p-b-48">DIPY Workshop {{workshop.year}} is supported by {{workshop.supported_by}}</p>
                     </div>
 
@@ -196,10 +200,12 @@
 							<div class="heading">
 								<h3 class="p-t-15 p-b-15">{{pricing.name}}</h3>
 							</div>
-                            {% if pricing.get_stripe_price == 0 %}
-							<p class="p-b-10">DIPY Workshop is free</p>
-                            {% else %}
-                            <p class="p-b-10">Sponsor DIPY event</p>
+                            {% if pricing.have_tagline %}
+                                {% if pricing.get_stripe_price == 0 %}
+                                <p class="p-b-10">DIPY Workshop is free</p>
+                                {% else %}
+                                <p class="p-b-10">Sponsor DIPY event</p>
+                                {% endif %}
                             {% endif %}
                             {% if pricing.features%}
 							<div class="features">
@@ -212,10 +218,14 @@
 								<h4>${{pricing.get_stripe_price}}</h4>
                             </div>
                             {% if not workshop.is_past_due_registration%}
-                                {% if pricing.get_stripe_price == 0 %}
-                                <a class="btn btn-block btn-primary" href="{% url 'users:register' workshop_slug=workshop.slug pricing_slug=pricing.slug %}">Register</a>
+                                {% if workshop.use_stripe %}
+                                    {% if pricing.get_stripe_price == 0 %}
+                                    <a class="btn btn-block btn-primary" href="{% url 'users:register' workshop_slug=workshop.slug pricing_slug=pricing.slug %}">Register</a>
+                                    {% else %}
+                                    <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="{{pricing.get_stripe_price}}">Register & Sponsor Event</button>
+                                    {% endif %}
                                 {% else %}
-                                <button class="btn btn-block btn-outline-primary checkout-button" type="button" role="link" id="checkout-button" value="{{pricing.get_stripe_price}}">Register & Sponsor Event</button>
+                                    <a class="btn btn-block btn-primary" href="https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750">Register</a>
                                 {% endif %}
                             {% endif %}
 						</div>
@@ -223,7 +233,7 @@
                     {% endfor %}
 				</div>
                 {% if show_pricing_info %}
-                <div><p class="text-center color-white"><b>* Post Workshop Exclusive Support, Please <a class="color-dipy" href="mailto:admins@dipy.org?subject=Informations about sponsoring DIPY event"> contact us</a> for more information</b></p></div>
+                <div><p class="text-center color-white"><b>* Workshop Exclusive Support, Please <a class="color-dipy" href="mailto:admins@dipy.org?subject=Informations about sponsoring DIPY event"> contact us</a> for more information</b></p></div>
                 {% endif %}
                 {% endif %}
                 <div id="error-message"></div>
@@ -236,51 +246,7 @@
     <div class="section" id="section_6">
         <div class="apply-section">
             <div class="container">
-                <div class=".col-8 .col-sm-6">
-                    <h1 class="color-dipy intro p-b-25 p-t-25">Accommodations</h1>
-                    <p class="p-b-25 m2-txt2">We recommend you to book your hotel at <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union</a><br/> If this is booked you can also try <a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Graduate Hotel Bloomington </a></p>
-                </div>
-                <div class="row p-t-20">
-	                <div class="col-12 col-sm-6 p-b-100">
-	                    <img class="rounded-circle" src="{% static 'workshop/images/IMU.jpg' %}"
-	                            alt="IMU" width="280" height="280">
-	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">Indiana Memorial Union </a></h2>
-                        <p class="color-white">900 E 7th St, Bloomington, IN 47405</p>
-                        <br/>
-                        <div class="txt-left p-l-55">
-                            <p>- Rate Range of $94.00 to $124.00 + sales tax per room, per night.</p>
-                            <p>- <b>Block will be released 2/10/19</b></p>
-                            <p>- To make reservation: </p>
-                            <ol type="1" class="p-l-65">
-                                <li>1. Go to <a class="color-dipy" href="https://www.imu.indiana.edu/hotel/index.shtml">www.imu.indiana.edu</a></li>
-                                <li>2. Select Dates</li>
-                                <li>3. Select # of rooms</li>
-                                <li>4. Select More Options</li>
-                                <li>5. Enter Group Code: <b class="color-dipy">DIPY19</b> (enter group code again if new dates are selected)</li>
-                            </ol>
-                            <p><b class="color-dipy">OR</b> call 800-209-8145 or 812-855-2536</p>
-                        </div>
-
-	                </div>
-	                <div class="col-12 col-sm-6 p-b-100">
-	                    <img class="rounded-circle" src="{% static 'workshop/images/graduate.jpg' %}"
-	                            alt="graduate" width="280" height="280">
-	                    <h2 class="m2-txt4"><a class="color-dipy" href="https://www.graduatehotels.com/bloomington/">Graduate Hotel Bloomington </a></h2>
-                        <p class="color-white">210 E Kirkwood Ave, Bloomington, IN 47408</p>
-                        <br/>
-                        <div class="txt-left p-l-55">
-                            <p>- Rate of $94.00 + sales tax per room, per night</p>
-                            <p>- To make reservation: </p>
-                            <ol type="1" class="p-l-65">
-                                <li>1. Go to <a class="color-dipy" href="https://gc.synxis.com/rez.aspx?Hotel=3251&Chain=21643&arrive=3/11/2019&depart=3/15/2019&adult=1&child=0&group=190311DIPY">www.graduatehotels.com/bloomington/</a></li>
-                                <li>2. Check/Enter Group Code: <b class="color-dipy">190311DIPY</b> (enter group code again if new dates are selected)</li>
-                                <li>3. Check/Select Dates</li>
-                                <li>4. Select # of rooms</li>
-                                <li>5. Select More Options</li>
-                            </ol>
-                        </div>
-	                </div>
-                </div>
+                {% include "./partials/accomodation_"|addstr:workshop.template_suffix|addstr:".html" %}
             </div>
         </div>
     </div>
@@ -288,133 +254,15 @@
         <div class="container-fluid" id="map_wrapper">
             <div class="map_canvas">
                 <div class="gmap_canvas">
-                    <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <iframe id="gmap_canvas" height="100%" width="100%" src="{{workshop.location_map}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <!-- <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
+                    <!-- <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Le+Merigot+Santa+Monica&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
                 </div>
             </div>
         </div>
 
-        <div id="map_info">
-            <div class="col-md-5 col-sm-7 m-l-50" id="tab_container">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active text-center" data-toggle="tab" href="#location" role="tab"
-                            aria-controls="location">
-                            <h4 class="fa fa-compass"></h4><br/>Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel">
-                            <h4 class="fa fa-home"></h4><br/>Hotel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#flight" role="tab" aria-controls="flight">
-                            <h4 class="fa fa-plane"></h4><br/>Flight</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#road" role="tab" aria-controls="road">
-                            <h4 class="fa fa-road"></h4><br/>Road</a>
-                    </li>
-                </ul>
+        {% include "./partials/venue_info_"|addstr:workshop.template_suffix|addstr:".html" %}
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="location" role="tabpanel">
-                        <div class="col-9 offset-3">
-                            <br/>
-                            <div>
-                                <img class="col" alt="500x500" style="width: 300px; height: 150px;"
-                                        src="{% static 'workshop/images/luddy_hall.jpg' %}">
-                            </div>
-                            <div class="col" style="padding: 2%;font-size: 0.8em;">
-                                <br/>
-                                <h3>Luddy Hall <br/>700 N Woodlawn Ave<br/>Bloomington, IN 47408</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="hotel" role="tabpanel">
-                        <div class="col-9 offset-3">
-                            <br/>
-                            <h3>
-                                <b>On Campus Hotel: Indiana Memorial Union (IMU)</b>
-                            </h3>
-                            <p>
-                                The Indiana Memorial Union (IMU) is located in the center of campus and is in easy
-                                walking
-                                distance to many of Bloomington’s downtown shops, cafes and restaurants.<br/>
-                                <a target="_blank" rel="noopener noreferrer"
-                                    href="https://www.imu.indiana.edu/hotel/index.shtml">more informations...</a>
-                            </p>
-                            <br/>
-                            <h3><b>Off Campus Accommodations</b>
-                            </h3>
-                            <br/>
-                            <p>
-                                There are many hotel options outside of the IU Bloomington campus. Some hotels are
-                                located within walking distance; some are a short drive from campus. Check out
-                                the Visit Bloomington web site for off campus lodging (<a target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            href="https://www.visitbloomington.com/visitors/hotels">https://www.visitbloomington.com/visitors/hotels</a>).
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="flight" role="tabpanel">
-                        <div class="col-9 offset-3">
-                            <br/>
-                            <h3>
-                                <b>Air Travel to IU Bloomington</b>
-                            </h3>
-                            <p>Airport Symbol: <strong>IND</strong><br/>
-                                Location: 50 miles north of Bloomington, IN
-                            </p>
-                            <h3>
-                                <b>Airport to Campus</b>
-                            </h3>
-                            <p><a target="_blank" rel="noopener noreferrer"
-                                    href="https://www.soashuttle.com/locations/bloomington-to-indianapolis">Star of America
-                                - Shuttle Service</a>
-                                <br/>
-                                <a target="_blank" rel="noopener noreferrer"
-                                    href="https://www.goexpresstravel.com/airport_shuttle_schedule">Go Express Travel -
-                                    Shuttle Service</a>
-                                <br/>
-                                <a target="_blank" rel="noopener noreferrer"
-                                    href="https://classictouchlimo.com">Limousine Service - Classic Touch Limousine</a>
-                                <br/>
-                            </p>
-                            <br/>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="road" role="tabpanel">
-                        <div class="col-9 offset-3">
-                            <br/>
-                            <h3>
-                                <b>Driving to IU Bloomington</b>
-                            </h3>
-                            <p>
-                                We suggest that you consult Mapquest or Google maps for the best directions to
-                                Bloomington
-                                and return or use GPS to guide you. Driving to and from the airport to campus
-                                is simple and direct. Driving time from the airport to camps is approximately
-                                50 minutes.
-                            </p>
-                            <br/>
-                            <h3><b>Car Rental - Bus, Taxis</b>
-                            </h3>
-                            <br/>
-                            <p>
-                                Most major car rental companies provide service at the airport. Car Rental companies
-                                are located in the Ground Transportation Center on the lower level of the terminal,
-                                outside Baggage Claim.
-                            </p>
-                            <p>
-                                There is no convenient bus service from the Indianapolis Airport to IU Bloomington.
-                            </p>
-                            <p>
-                                Taxis service is available, but is very expensive and not recommended.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 {% endif %}

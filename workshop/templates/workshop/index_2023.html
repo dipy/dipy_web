@@ -1,5 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,7 +8,7 @@
   <meta name="author" content="Maharshi Gor" />
   <meta name="description" content="DIPY Workshop 2023 LA" />
   <meta name="keywords" content="Workshop, neuroimaging, dti, diffusion imaging" />
-  <link rel="icon" type="image/png" href="../../../website/static/images/dipy-favicon.png">
+  <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
   <meta name="Resource-type" content="Document" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,18 +16,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/vendor/fullpage/css/jquery.fullpage.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/fullpage/css/jquery.fullpage.css' %}" />
 
   <!-- Font Awesome -->
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'
     type='text/css'>
 
   <!-- CSS Files -->
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/css/main.css" />
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/css/countdown.css" />
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/css/util.css" />
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/css/workshop-2023.css">
-  <link rel="stylesheet" type="text/css" href="../../static/workshop/css/timeline.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/countdown.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
 
 </head>
 
@@ -46,7 +47,7 @@
           <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
         </ul>
       </div>
-      <div class="col-md-1"><img class="" src="../../static/workshop/images/iu_trident_web_reverse.png"></div>
+      <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
   </div>
   <main id="fullpage">
@@ -75,7 +76,7 @@
           Le Merigot Santa Monica - Los Angeles, California
         </p>
 
-        <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
+        <!-- <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -99,7 +100,7 @@
         <div class="p-b-25">
           <a href="https://mail.python.org/mailman3/lists/dipy.python.org/" role="button"
             class="btn btn-lg btn-secondary register-btn">KEEP ME UPDATED</a>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -113,7 +114,7 @@
           <div class="col-lg-4">
             <div class="speaker-card">
               <div class="speaker-img">
-                <img src="../../static/workshop/images/garyfallidis.jpg" alt="E Garyfallidis">
+                <img src="{% static 'workshop/images/garyfallidis.jpg' %}" alt="E Garyfallidis">
               </div>
               <div class="speaker-data">
                 <h3 class="m2-txt4">Eleftherios Garyfallidis</h3>
@@ -125,7 +126,7 @@
           <div class="col-lg-4">
             <div class="speaker-card">
               <div class="speaker-img">
-                <img src="../../static/workshop/images/matthew_sm.jpg" alt="Matthew Brett">
+                <img src="{% static 'workshop/images/matthew_sm.jpg' %}" alt="Matthew Brett">
               </div>
               <div class="speaker-data">
                 <h3 class="m2-txt4">Matthew Brett, M.D.</h3>
@@ -137,7 +138,7 @@
           <div class="col-lg-4">
             <div class="speaker-card">
               <div class="speaker-img">
-                <img src="../../static/workshop/images/rokem.jpg" alt="Ariel Rokem">
+                <img src="{% static 'workshop/images/rokem.jpg' %}" alt="Ariel Rokem">
               </div>
               <div class="speaker-data">
                 <h3 class="m2-txt4">Ariel Rokem</h3>
@@ -185,8 +186,8 @@
                             <h6 class="timeline-text-title">Workshop Overview &amp; Install Instructions</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -206,8 +207,8 @@
                             <h6 class="timeline-text-title">Imaging Data</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -227,8 +228,8 @@
                             <h6 class="timeline-text-title">Visualization of 3D/4D</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -248,8 +249,8 @@
                             <h6 class="timeline-text-title">Brain extraction</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -269,8 +270,8 @@
                             <h6 class="timeline-text-title">Denoising</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -290,8 +291,8 @@
                             <h6 class="timeline-text-title">Registration</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -311,8 +312,8 @@
                             <h6 class="timeline-text-title">Susceptibility Correction</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -349,8 +350,8 @@
                             <h6 class="timeline-text-title">Diffusion Tensor Imaging</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -370,8 +371,8 @@
                             <h6 class="timeline-text-title">DKI</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -391,8 +392,8 @@
                             <h6 class="timeline-text-title">Spherical Harmonic Reconstruction</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -412,8 +413,8 @@
                             <h6 class="timeline-text-title">Microstructure Modeling</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -433,8 +434,8 @@
                             <h6 class="timeline-text-title">Q-Space Trajectory Imaging</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -454,8 +455,8 @@
                             <h6 class="timeline-text-title">Other reconstruction</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -492,8 +493,8 @@
                             <h6 class="timeline-text-title">Computational Neuroanatomy</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -515,8 +516,8 @@
 
 
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -537,8 +538,8 @@
                             <p class="p-t-10">QuickBundles, RecoBundles, Streamline Search</p>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -559,8 +560,8 @@
                             <p class="p-t-10">TRK, TCK, TRX</p>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -580,8 +581,8 @@
                             <h6 class="timeline-text-title">Validation</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -621,8 +622,8 @@
                             <p class="p-t-10">Rigid (SLR), Nonrigid (BundleWarp)</p>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -643,8 +644,8 @@
                             <p class="p-t-10">Bundle Analytics 1.0, Bundle Analytics 2.0</p>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -664,8 +665,8 @@
                             <h6 class="timeline-text-title">Metric Fusion</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -685,8 +686,8 @@
                             <h6 class="timeline-text-title">Searching for Pathways</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -723,8 +724,8 @@
                             <h6 class="timeline-text-title">IVIM</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -744,8 +745,8 @@
                             <h6 class="timeline-text-title">Tissue Classification</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -765,8 +766,8 @@
                             <h6 class="timeline-text-title">Other Clinical applications</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -786,8 +787,8 @@
                             <h6 class="timeline-text-title">Present your work</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <!-- <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -807,8 +808,8 @@
                             <h6 class="timeline-text-title">Practice</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -828,8 +829,8 @@
                             <h6 class="timeline-text-title">Conclusions and Next Steps</h6>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             <div class="wrapper">
-                              <img class="avatar" src="../../static/workshop/images/garyfallidis.jpg">
-                              <img class="avatar" src="../../static/workshop/images/matthew_sm.jpg" style="left: -18px">
+                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
                             </div> -->
                           </div>
                         </div>
@@ -863,7 +864,7 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn">
+                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -882,7 +883,7 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn">
+                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -901,7 +902,7 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn">
+                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -916,6 +917,7 @@
 
       </div>
     </section>
+
     <section class="contact page" id="section_5">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
@@ -937,9 +939,9 @@
 
 
 
-  <script type="text/javascript" src="../../static/workshop/vendor/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="../../static/workshop/vendor/scrolloverflow.min.js"></script>
-  <script type="text/javascript" src="../../static/workshop/vendor/fullpage/js/jquery.fullpage.js"></script>
+  <script type="text/javascript" src="{% static 'workshop/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'workshop/vendor/scrolloverflow.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
 
   <script type="text/javascript">
     $(document).ready(function () {
@@ -989,8 +991,8 @@
     }
   </script>
 
-  <script type="text/javascript" src="../../static/workshop/js/main.js"></script>
-  <script type="text/javascript" src="../../static/workshop/js/countdown.js"></script>
+  <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
+  <script type="text/javascript" src="{% static 'workshop/js/countdown.js' %}"></script>
 
 
 </body>

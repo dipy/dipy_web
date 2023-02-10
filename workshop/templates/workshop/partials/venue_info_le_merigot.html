@@ -1,0 +1,123 @@
+{% load static %}
+<div id="map_info">
+    <div class="col-md-5 col-sm-7 m-l-50" id="tab_container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active text-center" data-toggle="tab" href="#location" role="tab"
+                    aria-controls="location">
+                    <h4 class="fa fa-compass"></h4><br/>Location</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel">
+                    <h4 class="fa fa-home"></h4><br/>Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#flight" role="tab" aria-controls="flight">
+                    <h4 class="fa fa-plane"></h4><br/>Flight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#road" role="tab" aria-controls="road">
+                    <h4 class="fa fa-road"></h4><br/>Road</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="location" role="tabpanel">
+                <div class="col-9 offset-3">
+                    <br/>
+                    <div>
+                        <img class="col" alt="500x500" style="width: 300px; height: 150px;"
+                                src="{% static 'workshop/images/luddy_hall.jpg' %}">
+                    </div>
+                    <div class="col" style="padding: 2%;font-size: 0.8em;">
+                        <br/>
+                        <h3>Luddy Hall <br/>700 N Woodlawn Ave<br/>Bloomington, IN 47408</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="hotel" role="tabpanel">
+                <div class="col-9 offset-3">
+                    <br/>
+                    <h3>
+                        <b>On Campus Hotel: Indiana Memorial Union (IMU)</b>
+                    </h3>
+                    <p>
+                        The Indiana Memorial Union (IMU) is located in the center of campus and is in easy
+                        walking
+                        distance to many of Bloomington’s downtown shops, cafes and restaurants.<br/>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.imu.indiana.edu/hotel/index.shtml">more informations...</a>
+                    </p>
+                    <br/>
+                    <h3><b>Off Campus Accommodations</b>
+                    </h3>
+                    <br/>
+                    <p>
+                        There are many hotel options outside of the IU Bloomington campus. Some hotels are
+                        located within walking distance; some are a short drive from campus. Check out
+                        the Visit Bloomington web site for off campus lodging (<a target="_blank"
+                                                                                    rel="noopener noreferrer"
+                                                                                    href="https://www.visitbloomington.com/visitors/hotels">https://www.visitbloomington.com/visitors/hotels</a>).
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane" id="flight" role="tabpanel">
+                <div class="col-9 offset-3">
+                    <br/>
+                    <h3>
+                        <b>Air Travel to IU Bloomington</b>
+                    </h3>
+                    <p>Airport Symbol: <strong>IND</strong><br/>
+                        Location: 50 miles north of Bloomington, IN
+                    </p>
+                    <h3>
+                        <b>Airport to Campus</b>
+                    </h3>
+                    <p><a target="_blank" rel="noopener noreferrer"
+                            href="https://www.soashuttle.com/locations/bloomington-to-indianapolis">Star of America
+                        - Shuttle Service</a>
+                        <br/>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.goexpresstravel.com/airport_shuttle_schedule">Go Express Travel -
+                            Shuttle Service</a>
+                        <br/>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://classictouchlimo.com">Limousine Service - Classic Touch Limousine</a>
+                        <br/>
+                    </p>
+                    <br/>
+                </div>
+            </div>
+            <div class="tab-pane" id="road" role="tabpanel">
+                <div class="col-9 offset-3">
+                    <br/>
+                    <h3>
+                        <b>Driving to IU Bloomington</b>
+                    </h3>
+                    <p>
+                        We suggest that you consult Mapquest or Google maps for the best directions to
+                        Bloomington
+                        and return or use GPS to guide you. Driving to and from the airport to campus
+                        is simple and direct. Driving time from the airport to camps is approximately
+                        50 minutes.
+                    </p>
+                    <br/>
+                    <h3><b>Car Rental - Bus, Taxis</b>
+                    </h3>
+                    <br/>
+                    <p>
+                        Most major car rental companies provide service at the airport. Car Rental companies
+                        are located in the Ground Transportation Center on the lower level of the terminal,
+                        outside Baggage Claim.
+                    </p>
+                    <p>
+                        There is no convenient bus service from the Indianapolis Airport to IU Bloomington.
+                    </p>
+                    <p>
+                        Taxis service is available, but is very expensive and not recommended.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
