@@ -123,6 +123,7 @@ class Pricing(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     currency = models.CharField(max_length=50)
     features = models.JSONField(default=default_features)
+    have_tagline = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -143,6 +144,7 @@ class Pricing(models.Model):
 class Workshop(models.Model):
     codename = models.CharField(max_length=200)
     location = models.CharField(max_length=500, default='Bloomington - Indiana')
+    location_map = models.CharField(max_length=500, default='https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed')
     supported_by = models.CharField(max_length=500, default='NIH/NIBIB (1R01EB027585) and Indiana University')
     twitter_hashtags = models.CharField(max_length=200, blank=True,
                                         help_text="Define twitter hashtags. It should start with # and all tags should be separate with a space (no coma or semi-colon")
@@ -164,6 +166,7 @@ class Workshop(models.Model):
                                       blank=True)
     members = models.ManyToManyField(User, related_name="workshops",
                                      blank=True)
+    use_stripe = models.BooleanField(default=False)
     pricing_tiers = models.ManyToManyField(Pricing, blank=True)
     bg_images = models.ManyToManyField(BackgroundImage,
                                        related_name="workshops",
@@ -187,6 +190,9 @@ class Workshop(models.Model):
     has_code_sprint = models.BooleanField(default=True)
     code_sprint_zoom_link = models.URLField(max_length=500, blank=True)
     code_sprint_password = models.CharField(max_length=300, blank=True)
+
+    template_suffix = models.CharField(max_length=500, default='indiana')
+
 
     class Meta:
         ordering = ['-start_date']
