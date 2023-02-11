@@ -53,9 +53,12 @@
   <main id="fullpage">
     <section class="home page" id="section_1">
       <div class="simpleslide100">
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});"></div>
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});">
+        </div>
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
       </div>
       <div class="content-section">
         <h1 class="content-title l1-txt1 p-b-10">
@@ -146,10 +149,57 @@
         </div>
       </div>
       <div class="row">
-        <h1 class="content-title l1-txt1 p-b-10 p-l-50 color-black">
-        </h1>
+        <div class="col-lg-4">
+          <div class="speaker-card">
+            <div class="speaker-img">
+              <img src="{% static 'workshop/images/yeatman.jpeg' %}" alt="J Yeatman">
+            </div>
+            <div class="speaker-data">
+              <h3 class="m2-txt4">Jason Yeatman</h3>
+              <p class="p-t-10">Assistant Professor, Graduate School of Education</p>
+              <p class="s2-text3">Standford</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="speaker-card">
+            <div class="speaker-img">
+              <img src="{% static 'workshop/images/Heilbronner.jpeg' %}" alt="S Heilbronner">
+            </div>
+            <div class="speaker-data">
+              <h3 class="m2-txt4">Sarah Heilbronner</h3>
+              <p class="p-t-10">Assistant Professor, Department of Neuroscience</p>
+              <p class="s2-text3">University of Minnesota</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="speaker-card">
+            <div class="speaker-img">
+              <img src="{% static 'workshop/images/Fadnavis.jpeg' %}" alt="S Fadnavis">
+            </div>
+            <div class="speaker-data">
+              <h3 class="m2-txt4">Shreyas Fadnavis</h3>
+              <p class="p-t-10">Postdoctoral Research Fellow</p>
+              <p class="s2-text3">Harvard University</p>
+            </div>
+          </div>
+        </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="speaker-card">
+            <div class="speaker-img">
+              <img src="{% static 'workshop/images/Chandio.jpeg' %}" alt="B Q Chandio">
+            </div>
+            <div class="speaker-data">
+              <h3 class="m2-txt4">Bramsh Qamar Chandio</h3>
+              <p class="p-t-10">Postdoctoral Scholar</p>
+              <p class="s2-text3">University of Southern California</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="program page" id="section_3">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -860,7 +910,8 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                <button class="btn btn-lg btn-secondary register-btn"
+                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -879,7 +930,8 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                <button class="btn btn-lg btn-secondary register-btn"
+                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -898,7 +950,8 @@
 
             <div class="payment-purchase p-b-20 p-t-20 flex-c">
               <div>
-                <button class="btn btn-lg btn-secondary register-btn" onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                <button class="btn btn-lg btn-secondary register-btn"
+                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
                   Register NOW
                 </button>
               </div>
@@ -924,7 +977,8 @@
         <div class="col-12 p-l-10 p-r-50">
           <!-- <i class="fa fa-4x fa-envelope-o" style="color: #ff7f00;"></i> -->
           <p class="m2-txt3 p-t-20">Contact us for more information by sending an email at
-            <strong>dipy&#64;python.org</strong></p>
+            <strong>dipy&#64;python.org</strong>
+          </p>
           <p class="m2-txt3 p-t-20">or joining our interactive chatroom at <a
               href="https://gitter.im/dipy/dipy"><strong>https://gitter.im/dipy/dipy</strong></a></p>
 
