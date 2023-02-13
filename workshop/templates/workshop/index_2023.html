@@ -4,9 +4,9 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>DIPY - Workshop 2023</title>
+  <title>DIPY WORKSHOP {{workshop.year}}</title>
   <meta name="author" content="Maharshi Gor" />
-  <meta name="description" content="DIPY Workshop 2023 LA" />
+  <meta name="description" content="DIPY Workshop {{workshop_year}} {{workshop.location}}" />
   <meta name="keywords" content="Workshop, neuroimaging, dti, diffusion imaging" />
   <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
   <meta name="Resource-type" content="Document" />
@@ -44,6 +44,7 @@
           <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
           <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
+          <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
           <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
         </ul>
       </div>
@@ -53,12 +54,15 @@
   <main id="fullpage">
     <section class="home page" id="section_1">
       <div class="simpleslide100">
-        <div class="simpleslide100-item bg-img1"
-          style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});">
-        </div>
-        <div class="simpleslide100-item bg-img1"
-          style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+      {% if workshop.bg_images.all %}
+        {% for bg in workshop.bg_images.all %}
+        <div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
+        {% endfor %}
+      {% else %}
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});"></div>
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+      {% endif %}
       </div>
       <div class="content-section">
         <h1 class="content-title l1-txt1 p-b-10">
@@ -66,13 +70,17 @@
         </h1>
         <div class="speaker-divider m-b-40"></div>
         <h5 class="m2-txt4 p-b-25">
-          Sunny Edition
+          {{workshop.codename|title}} Edition
         </h5>
-        <p class="m2-txt3 p-b-10">
-          24th - 28th April 2023
-        </p>
+        {% if workshop.start_date.year !=  workshop.end_date.year %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F Y"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% elif workshop.start_date.month !=  workshop.end_date.month %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% else %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% endif %}
         <p class="m2-txt1 p-b-48">
-          Le Merigot Santa Monica - Los Angeles, California
+          {{workshop.location}}
         </p>
 
         <!-- <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
@@ -970,6 +978,16 @@
       </div>
     </section>
 
+    <section class="page venue" id="section_7">
+      <div class="container-fluid" id="map_wrapper">
+          <div class="map_canvas">
+              <div class="gmap_canvas">
+                  <iframe id="gmap_canvas" height="100%" width="100%" src="{{workshop.location_map}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+              </div>
+          </div>
+      </div>
+    </section>
+
     <section class="contact page" id="section_5">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
@@ -1007,7 +1025,7 @@
         navigation: false,
         navigationPosition: 'right',
         continuousVertical: false,
-        anchors: ["Home", "Speakers", "Schedule", "Registration", "Contact"],
+        anchors: ["Home", "Speakers", "Schedule", "Registration", "Venue", "Contact"],
 
         menu: '#menu-wrap',
 

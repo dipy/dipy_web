@@ -44,6 +44,8 @@ def index(request, workshop_slug):
         return render(request, 'workshop/comingsoon.html', context)
 
     context["STRIPE_PUBLIC_KEY"] = settings.STRIPE_PUBLIC_KEY
+    if workshop.year == 2023:
+        return render(request, 'workshop/index_2023.html', context)
     return render(request, 'workshop/index.html', context)
 
 

@@ -3,11 +3,7 @@
        aria-haspopup="true" aria-expanded="false">Workshops<span class="caret"></span></a>
     <ul class="dropdown-menu">
         {% for w in all_workshops %}
-        {% if w.year == 2023 %}
-        <li><a href="{% url 'workshop:index_static' year=2023 %}">2023</a></li>
-        {% else %}
         <li><a href="{% url 'workshop:index' workshop_slug=w.slug %}">{{w.year}}</a></li>
-        {% endif %}
         {% endfor %}
         <li><a href="{% url 'workshop:index_static' year=2020 %}">2020</a></li>
         <li><a href="{% url 'workshop:index_static' year=2019 %}">2019</a></li>

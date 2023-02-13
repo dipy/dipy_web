@@ -28,7 +28,9 @@
     <!--======================================Custom Fonts=============================================-->
    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
    <!--====================================== Stripe =============================================-->
+   {% if workshop.use_stripe %}
    <script src="https://js.stripe.com/v3/"></script>
+   {% endif %}
 
 </head>
 <body>
@@ -48,14 +50,16 @@
                 <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
                 {% endif %}
                 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
+                {% if not workshop.is_in_person %}
                 <li data-menuanchor=""><a href="{% url 'workshop:workshop_list' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
         <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
     </div>
-<div id="fullpage">
-    <div class="section" id="section_1">
+<main id="fullpage">
+    <section class="page" id="section_1">
         	<div class="simpleslide100">
                 {% if workshop.bg_images.all %}
                 {% for bg in workshop.bg_images.all %}
@@ -92,8 +96,8 @@
                     <div><img class="col m-t-15 animated infinite bounce" width=75% height=75% src="{% static 'workshop/images/go-down.png' %}" style="width: 75%;"></div>
                 </div>
             </div>
-    </div>
-    <div class="section" id="section_2">
+    </section>
+    <section class="page" id="section_2">
         <div class="container p-t-60">
             <div class="row">
                 {% for speaker in workshop.speakers.all %}
@@ -106,7 +110,7 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </section>
     <!-- <div class="section" id="section_3">
         <div class="container">
             <h1 class="m-t-80 m-b-30"><b>TUTORIALS</b></h1>
@@ -134,7 +138,7 @@
             <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. More than 15 DIPY developers will be available this year on site to help. All tutorials will run on 3 levels: novice, intermediate and advanced. The workshop will include social events and activities. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
         </div>
     </div> -->
-    <div class="section" id="section_calendar">
+    <section class="page" id="section_calendar">
         <div class="container p-t-60">
             <div class="row with-padding-10">
                 {% if calendar %}
@@ -177,8 +181,8 @@
                 <h3 class="m-t-30">The workshop will include a <b>data accelerator</b> where you will be able to analyze your own data together with the <a href="http://dipy.org"><strong class='color-dipy'>DIPY</strong></a> developers. A Scientific Q/A sessions will be available everyday. More information provied after registration. The workshop is open to <b>academic</b>, <b>clinical</b> and <b>industrial</b> attendees from all fields of neuroscience and neuroengineering. </h3>
             </div>
         </div>
-    </div>
-    <div class="section" id="section_5">
+    </section>
+    <section class="page" id="section_5">
         <div class=" pricing-table">
             <div class="container">
                 <div class="block-heading">
@@ -239,35 +243,33 @@
                 <div id="error-message"></div>
             </div>
         </div>
-    </div>
+    </section>
 
 {% if workshop.is_in_person %}
 
-    <div class="section" id="section_6">
+    <section class="page" id="section_6">
         <div class="apply-section">
             <div class="container">
                 {% include "./partials/accomodation_"|addstr:workshop.template_suffix|addstr:".html" %}
             </div>
         </div>
-    </div>
-    <div class="section venue" id="section_7">
+    </section>
+    <section class="page venue" id="section_7">
         <div class="container-fluid" id="map_wrapper">
             <div class="map_canvas">
                 <div class="gmap_canvas">
                     <iframe id="gmap_canvas" height="100%" width="100%" src="{{workshop.location_map}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    <!-- <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Luddy%20Hall&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
-                    <!-- <iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Le+Merigot+Santa+Monica&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
                 </div>
             </div>
         </div>
 
         {% include "./partials/venue_info_"|addstr:workshop.template_suffix|addstr:".html" %}
 
-    </div>
+    </section>
 
 {% endif %}
 
-    <div class="section" id="section_8">
+    <section class="page" id="section_8">
         <div class="container">
             <div class="row">
                 <div class="text-center mx-auto p-t-100">
@@ -294,9 +296,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
  {% csrf_token %}
-</div>
+</main>
 
    <!--[if IE]>
         <script type="text/javascript">
@@ -322,6 +324,7 @@
         $(document).ready(function() {
             $('#fullpage').fullpage({
                 //easingcss3: linear,
+                sectionSelector: '.page',
                 autoScrolling: true,
                 scrollOverflow: true,
                 fitToSection: true,
@@ -366,6 +369,8 @@
                 }
             }
     </script>
+
+    {% if workshop.use_stripe %}
     <script type="text/javascript">
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         // Create an instance of the Stripe object with your publishable API key
@@ -402,6 +407,7 @@
             });
         });
       </script>
+    {% endif %}
 
     <!--===============================================================================================-->
     <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
