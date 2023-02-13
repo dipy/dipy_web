@@ -80,7 +80,12 @@ body {
 }
 
 .speakers-wrapper {
-  padding: 50px;
+  padding: 50px;  
+}
+
+.speaker-content {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .speaker-divider {
@@ -146,12 +151,20 @@ body {
     margin-right: 10px;
   }
 
-  .program, .payment, .contact {
+  .l1-txt1 {
+    font-size: 40px;
+  }
+
+
+  .program, .payment, .contact, .speakers-wrapper, .content-section {
     /* background-color: white; */
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     padding-top: 50px;
     padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0;
   }
+
 
   .program-day {
     padding-bottom: 40px;
