@@ -22,7 +22,10 @@ from .tools import get_workshop_tweet, generate_calendar
 
 def index_static(request, year):
     """Old Workshop index page. Now it is dynamic."""
-    return render(request, f'workshop/index_{year}.html', {})
+    workshop = Workshop.objects.get(end_date__year=year)
+    context = {}
+    context['workshop'] = workshop
+    return render(request, f'workshop/index_{year}.html', context)
 
 
 def index(request, workshop_slug):
