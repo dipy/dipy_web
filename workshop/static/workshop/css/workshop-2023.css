@@ -83,7 +83,7 @@ body {
   padding: 50px;  
 }
 
-.speaker-content {
+.speaker-content, .program-content, .payment-content {
   max-width: 1400px;
   margin: 0 auto;
 }
