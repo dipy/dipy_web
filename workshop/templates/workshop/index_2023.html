@@ -83,7 +83,8 @@
           {{workshop.location}}
         </p>
 
-        <!-- <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
+        {% if coming_soon %}
+        <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -107,7 +108,8 @@
         <div class="p-b-25">
           <a href="https://mail.python.org/mailman3/lists/dipy.python.org/" role="button"
             class="btn btn-lg btn-secondary register-btn">KEEP ME UPDATED</a>
-        </div> -->
+        </div>
+        {% endif %}
       </div>
     </section>
 
@@ -119,94 +121,20 @@
         <div class="speaker-divider m-b-40"></div>
         <div class="speaker-content">
           <div class="row">
+            {% for speaker in workshop.speakers.all %}
             <div class="col-lg-4 p-b-40">
               <div class="speaker-card">
                 <div class="speaker-img">
-                  <img src="{% static 'workshop/images/garyfallidis.jpg' %}" alt="E Garyfallidis">
+                  <img src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}">
                 </div>
                 <div class="speaker-data">
-                  <h3 class="m2-txt4">Eleftherios Garyfallidis</h3>
-                  <p class="p-t-10">Chair, DIPY Founder & Lead Developer</p>
-                  <p class="s2-text3">Indiana University, Bloomington</p>
+                  <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
+                  <p class="p-t-10">{{speaker.title}}</p>
+                  <p class="s2-text3">{{speaker.affiliation}}</p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/matthew_sm.jpg' %}" alt="Matthew Brett">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Matthew Brett, M.D.</h3>
-                  <p class="p-t-10">College of Life and Environmental Sciences</p>
-                  <p class="s2-text3">Birmingham University</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/rokem.jpg' %}" alt="Ariel Rokem">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Ariel Rokem</h3>
-                  <p class="p-t-10">Associate DIPY Lead eScience Institute</p>
-                  <p class="s2-text3">University of Washington, Seattle</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/yeatman.jpeg' %}" alt="J Yeatman">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Jason Yeatman</h3>
-                  <p class="p-t-10">Assistant Professor, Graduate School of Education</p>
-                  <p class="s2-text3">Standford</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/Heilbronner.jpeg' %}" alt="S Heilbronner">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Sarah Heilbronner</h3>
-                  <p class="p-t-10">Assistant Professor, Department of Neuroscience</p>
-                  <p class="s2-text3">University of Minnesota</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/Fadnavis.jpeg' %}" alt="S Fadnavis">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Shreyas Fadnavis</h3>
-                  <p class="p-t-10">Postdoctoral Research Fellow</p>
-                  <p class="s2-text3">Harvard University</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/Chandio.jpeg' %}" alt="B Q Chandio">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Bramsh Qamar Chandio</h3>
-                  <p class="p-t-10">Postdoctoral Scholar</p>
-                  <p class="s2-text3">University of Southern California</p>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
 
@@ -922,7 +850,7 @@
               <h4 class="payment-card-amount">
                 &dollar;995&#42;
               </h4>
-  
+
               <div class="payment-purchase p-b-20 p-t-20 flex-c">
                 <div>
                   <button class="btn btn-lg btn-secondary register-btn"
@@ -930,7 +858,7 @@
                     Register NOW
                   </button>
                 </div>
-  
+
               </div>
             </div>
           </div>
@@ -942,7 +870,7 @@
               <h4 class="payment-card-amount">
                 &dollar;1200&#42;
               </h4>
-  
+
               <div class="payment-purchase p-b-20 p-t-20 flex-c">
                 <div>
                   <button class="btn btn-lg btn-secondary register-btn"
@@ -950,7 +878,7 @@
                     Register NOW
                   </button>
                 </div>
-  
+
               </div>
             </div>
           </div>
@@ -962,7 +890,7 @@
               <h4 class="payment-card-amount">
                 &dollar;1500&#42;
               </h4>
-  
+
               <div class="payment-purchase p-b-20 p-t-20 flex-c">
                 <div>
                   <button class="btn btn-lg btn-secondary register-btn"
@@ -970,13 +898,13 @@
                     Register NOW
                   </button>
                 </div>
-  
+
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="p-t-20 flex-c s2-txt2">
 
         &#42;These prices includes Breakfast, Snacks and Unlimited Coffee on the venue
@@ -985,6 +913,12 @@
     </section>
 
     <section class="page venue" id="section_7">
+      <div style="top: 6%;position: absolute;padding-left: 20px;">
+        <h1 class="content-title l1-txt1 color-black">
+          Venue
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
       <div class="container-fluid" id="map_wrapper">
           <div class="map_canvas">
               <div class="gmap_canvas">
