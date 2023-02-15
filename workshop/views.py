@@ -22,9 +22,13 @@ from .tools import get_workshop_tweet, generate_calendar
 
 def index_static(request, year):
     """Old Workshop index page. Now it is dynamic."""
-    workshop = Workshop.objects.get(end_date__year=year)
     context = {}
-    context['workshop'] = workshop
+    try:
+        workshop = Workshop.objects.get(end_date__year=year)
+        context['workshop'] = workshop
+    except Workshop.DoesNotExist:
+        workshop = None
+
     return render(request, f'workshop/index_{year}.html', context)
 
 
@@ -42,8 +46,10 @@ def index(request, workshop_slug):
     context['calendar'] = calendar
     context['all_pricing'] = workshop.pricing_tiers.all()
     context['show_pricing_info'] = bool(workshop.pricing_tiers.filter(price__gt=0).count())
+    context['coming_soon'] = False
 
-    if timezone.now() < workshop.registration_start_date:
+    if timezone.now() < workshop.registration_start_date and int(workshop.year) != 2023:
+        context['coming_soon'] = True
         return render(request, 'workshop/comingsoon.html', context)
 
     context["STRIPE_PUBLIC_KEY"] = settings.STRIPE_PUBLIC_KEY

@@ -83,7 +83,8 @@
           {{workshop.location}}
         </p>
 
-        <!-- <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
+        {% if coming_soon %}
+        <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -107,7 +108,8 @@
         <div class="p-b-25">
           <a href="https://mail.python.org/mailman3/lists/dipy.python.org/" role="button"
             class="btn btn-lg btn-secondary register-btn">KEEP ME UPDATED</a>
-        </div> -->
+        </div>
+        {% endif %}
       </div>
     </section>
 
@@ -119,94 +121,20 @@
         <div class="speaker-divider m-b-40"></div>
         <div class="speaker-content">
           <div class="row">
+            {% for speaker in workshop.speakers.all %}
             <div class="col-lg-4 p-b-40">
               <div class="speaker-card">
                 <div class="speaker-img">
-                  <img src="{% static 'workshop/images/garyfallidis.jpg' %}" alt="E Garyfallidis">
+                  <img src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}">
                 </div>
                 <div class="speaker-data">
-                  <h3 class="m2-txt4">Eleftherios Garyfallidis</h3>
-                  <p class="p-t-10">Chair, DIPY Founder & Lead Developer</p>
-                  <p class="s2-text3">Indiana University, Bloomington</p>
+                  <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
+                  <p class="p-t-10">{{speaker.title}}</p>
+                  <p class="s2-text3">{{speaker.affiliation}}</p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/matthew_sm.jpg' %}" alt="Matthew Brett">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Matthew Brett, M.D.</h3>
-                  <p class="p-t-10">College of Life and Environmental Sciences</p>
-                  <p class="s2-text3">Birmingham University</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/rokem.jpg' %}" alt="Ariel Rokem">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Ariel Rokem</h3>
-                  <p class="p-t-10">Associate DIPY Lead eScience Institute</p>
-                  <p class="s2-text3">University of Washington, Seattle</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/yeatman.jpeg' %}" alt="J Yeatman">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Jason Yeatman</h3>
-                  <p class="p-t-10">Assistant Professor, Graduate School of Education</p>
-                  <p class="s2-text3">Standford</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/Heilbronner.jpeg' %}" alt="S Heilbronner">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Sarah Heilbronner</h3>
-                  <p class="p-t-10">Assistant Professor, Department of Neuroscience</p>
-                  <p class="s2-text3">University of Minnesota</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-                  <img src="{% static 'workshop/images/Fadnavis.jpeg' %}" alt="S Fadnavis">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Shreyas Fadnavis</h3>
-                  <p class="p-t-10">Postdoctoral Research Fellow</p>
-                  <p class="s2-text3">Harvard University</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4 p-b-40">
-              <div class="speaker-card">
-                <div class="speaker-img">
-              <img src="{% static 'workshop/images/Chandio.jpeg' %}" alt="B Q Chandio">
-                </div>
-                <div class="speaker-data">
-                  <h3 class="m2-txt4">Bramsh Qamar Chandio</h3>
-                  <p class="p-t-10">Postdoctoral Scholar</p>
-                  <p class="s2-text3">University of Southern California</p>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
 
@@ -217,161 +145,432 @@
         Schedule
       </h1>
       <div class="speaker-divider m-b-40"></div>
-      <div class="row p-l-40 p-r-40 p-b-80">
-        <div class="col-lg-4">
-          <div class="program-day">
-            <h3 class="program-title m2-txt3 m-b-10">
-              Day 1 - Monday, April 24
-            </h3>
-            <h5 class="program-title m2-txt4 p-b-20">
-              Preprocessing
-            </h5>
-            <div class="row">
-              <div class="col-12">
-                <!-- Timeline Area-->
-                <div class="apland-timeline-area">
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+      <div class="program-content">
+        <div class="row p-l-40 p-r-40 p-b-80">
+          <div class="col-lg-4">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 1 - Monday, April 24
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Preprocessing
+              </h5>
+              <div class="row">
+                <div class="col-12">
+                  <!-- Timeline Area-->
+                  <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Workshop Overview &amp; Install Instructions</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Workshop Overview &amp; Install Instructions</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Imaging Data</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Visualization of 3D/4D</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Brain extraction</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Denoising</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Registration</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Susceptibility Correction</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 2 - Tuesday, April 25
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Reconstruction
+              </h5>
+              <div class="row">
+                <div class="col-12">
+                  <!-- Timeline Area-->
+                  <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Diffusion Tensor Imaging</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Imaging Data</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Diffusion Kurtosis Imaging (DKI)</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Spherical Harmonic Reconstruction</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Microstructure Modeling</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Q-Space Trajectory Imaging</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Other reconstruction</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Visualization of 3D/4D</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 3 - Wednesday, April 26
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Tractography
+              </h5>
+              <div class="row">
+                <div class="col-12">
+                  <!-- Timeline Area-->
+                  <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Computational Neuroanatomy</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Brain extraction</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tractography Algorithms</h6>
+                              <p class="p-t-10">FACT, EUDX, PFT, PTT</p>
+
+
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Denoising</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tractography Segmentation </h6>
+                              <p class="p-t-10">QuickBundles, RecoBundles, Streamline Search</p>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Registration</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tractography File Formats</h6>
+                              <p class="p-t-10">TRK, TCK, TRX</p>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Susceptibility Correction</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Validation</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -382,139 +581,101 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="program-day">
-            <h3 class="program-title m2-txt3 m-b-10">
-              Day 2 - Tuesday, April 25
-            </h3>
-            <h5 class="program-title m2-txt4 p-b-20">
-              Reconstruction
-            </h5>
-            <div class="row">
-              <div class="col-12">
-                <!-- Timeline Area-->
-                <div class="apland-timeline-area">
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Diffusion Tensor Imaging</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+        <div class="row p-l-40 p-r-40 p-t-20">
+          <div class="col-lg-4">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 4 - Thursday, April 27
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Tractometry
+              </h5>
+              <div class="row">
+                <div class="col-12">
+                  <!-- Timeline Area-->
+                  <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tractography Registration</h6>
+                              <p class="p-t-10">Rigid (SLR), Nonrigid (BundleWarp)</p>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Diffusion Kurtosis Imaging (DKI)</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tractometry Analysis</h6>
+                              <p class="p-t-10">Bundle Analytics 1.0, Bundle Analytics 2.0</p>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Spherical Harmonic Reconstruction</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Metric Fusion</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Microstructure Modeling</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
                       </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Q-Space Trajectory Imaging</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Other reconstruction</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Searching for Pathways</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -524,123 +685,140 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="program-day">
-            <h3 class="program-title m2-txt3 m-b-10">
-              Day 3 - Wednesday, April 26
-            </h3>
-            <h5 class="program-title m2-txt4 p-b-20">
-              Tractography
-            </h5>
-            <div class="row">
-              <div class="col-12">
-                <!-- Timeline Area-->
-                <div class="apland-timeline-area">
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Computational Neuroanatomy</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+          <div class="col-lg-4">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 5 - Friday, April 28
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Mixed Topics
+              </h5>
+              <div class="row">
+                <div class="col-12">
+                  <!-- Timeline Area-->
+                  <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Intra-Voxel Incoherent Motion (IVIM)</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tractography Algorithms</h6>
-                            <p class="p-t-10">FACT, EUDX, PFT, PTT</p>
-
-
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Tissue Classification</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tractography Segmentation </h6>
-                            <p class="p-t-10">QuickBundles, RecoBundles, Streamline Search</p>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Other Clinical applications</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tractography File Formats</h6>
-                            <p class="p-t-10">TRK, TCK, TRX</p>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Present your work</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                              <!-- <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Practice</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Validation</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                      <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="timeline-text">
+                              <h6 class="timeline-text-title">Conclusions and Next Steps</h6>
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                              <div class="wrapper">
+                                <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
+                                <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
+                              </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -649,350 +827,104 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-lg-4">
+
           </div>
         </div>
       </div>
-      <div class="row p-l-40 p-r-40 p-t-20">
-        <div class="col-lg-4">
-          <div class="program-day">
-            <h3 class="program-title m2-txt3 m-b-10">
-              Day 4 - Thursday, April 27
-            </h3>
-            <h5 class="program-title m2-txt4 p-b-20">
-              Tractometry
-            </h5>
-            <div class="row">
-              <div class="col-12">
-                <!-- Timeline Area-->
-                <div class="apland-timeline-area">
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tractography Registration</h6>
-                            <p class="p-t-10">Rigid (SLR), Nonrigid (BundleWarp)</p>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tractometry Analysis</h6>
-                            <p class="p-t-10">Bundle Analytics 1.0, Bundle Analytics 2.0</p>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Metric Fusion</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Searching for Pathways</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="program-day">
-            <h3 class="program-title m2-txt3 m-b-10">
-              Day 5 - Friday, April 28
-            </h3>
-            <h5 class="program-title m2-txt4 p-b-20">
-              Mixed Topics
-            </h5>
-            <div class="row">
-              <div class="col-12">
-                <!-- Timeline Area-->
-                <div class="apland-timeline-area">
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Intra-Voxel Incoherent Motion (IVIM)</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Tissue Classification</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Other Clinical applications</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Present your work</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <!-- <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Practice</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Single Timeline Content-->
-                  <div class="single-timeline-area">
-                    <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s"
-                      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s"
-                          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                          <div class="timeline-text">
-                            <h6 class="timeline-text-title">Conclusions and Next Steps</h6>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="wrapper">
-                              <img class="avatar" src="{% static 'workshop/images/garyfallidis.jpg' %}">
-                              <img class="avatar" src="{% static 'workshop/images/matthew_sm.jpg' %}" style="left: -18px">
-                            </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
 
-        </div>
-      </div>
     </section>
     <section class="payment page" id="section_4">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Registrations
       </h1>
       <div class="speaker-divider m-b-40"></div>
-      <div class="row p-l-60 p-r-60">
-        <div class="col-lg-4 col-sm-12 p-b-30">
-          <div class="payment-card">
-            <h4 class="payment-card-title m2-txt4">
-              Student
-            </h4>
-            <h4 class="payment-card-amount">
-              &dollar;995&#42;
-            </h4>
-            <div class="payment-benefits">
-              <p class="m2-txt3 p-b-10">Who should take this?</p>
-              <ul class="s2-text3">
-                <li>Master's Degree Students</li>
-                <li>PhD Candidates</li>
-                <li>Postdocs Fellows</li>
-              </ul>
-            </div>
-            <div class="payment-purchase p-b-20 flex-c">
-              <div>
-                <button class="btn btn-lg btn-secondary register-btn"
-                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
-                  Register NOW
-                </button>
+      <div class="payment-content">
+        <div class="row p-l-60 p-r-60">
+          <div class="col-lg-4 col-sm-12 p-b-30">
+            <div class="payment-card">
+              <h4 class="payment-card-title m2-txt4">
+                Student
+              </h4>
+              <h4 class="payment-card-amount">
+                &dollar;995&#42;
+              </h4>
+              <div class="payment-benefits">
+                <p class="m2-txt3 p-b-10">Who should take this?</p>
+                <ul class="s2-text3">
+                  <li>Master's Degree Students</li>
+                  <li>PhD Candidates</li>
+                  <li>Postdocs Fellows</li>
+                </ul>
               </div>
-
+              <div class="payment-purchase p-b-20 flex-c">
+                <div>
+                  <button class="btn btn-lg btn-secondary register-btn"
+                    onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                    Register NOW
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-sm-12 p-b-30">
-          <div class="payment-card">
-            <h4 class="payment-card-title m2-txt4">
-              Academic
-            </h4>
-            <h4 class="payment-card-amount">
-              &dollar;1200&#42;
-            </h4>
-            <div class="payment-benefits">
-              <p class="m2-txt3 p-b-10">Who should take this?</p>
-              <ul class="s2-text3">
-                <li>Faculty</li>
-                <li>Research Scientist</li>
-                <li>Any Academic Personnel</li>
-              </ul>
-            </div>
-
-            <div class="payment-purchase p-b-20 flex-c">
-              <div>
-                <button class="btn btn-lg btn-secondary register-btn"
-                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
-                  Register NOW
-                </button>
+          <div class="col-lg-4 col-sm-12 p-b-30">
+            <div class="payment-card">
+              <h4 class="payment-card-title m2-txt4">
+                Academic
+              </h4>
+              <h4 class="payment-card-amount">
+                &dollar;1200&#42;
+              </h4>
+              <div class="payment-benefits">
+                <p class="m2-txt3 p-b-10">Who should take this?</p>
+                <ul class="s2-text3">
+                  <li>Faculty</li>
+                  <li>Research Scientist</li>
+                  <li>Any Academic Personnel</li>
+                </ul>
               </div>
-
+  
+              <div class="payment-purchase p-b-20 flex-c">
+                <div>
+                  <button class="btn btn-lg btn-secondary register-btn"
+                    onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                    Register NOW
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-sm-12 p-b-30">
-          <div class="payment-card">
-            <h4 class="payment-card-title m2-txt4">
-              Non - Academic
-            </h4>
-            <h4 class="payment-card-amount">
-              &dollar;1500&#42;
-            </h4>
-            <div class="payment-benefits">
-              <p class="m2-txt3 p-b-10">Who should take this?</p>
-              <ul class="s2-text3">
-                <li>Industry Personnel</li>
-                <li>Hospital Personnel</li>
-                <li>Clinical Personnel</li>
-              </ul>
-            </div>
-            <div class="payment-purchase p-b-20 flex-c">
-              <div>
-                <button class="btn btn-lg btn-secondary register-btn"
-                  onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
-                  Register NOW
-                </button>
+          <div class="col-lg-4 col-sm-12 p-b-30">
+            <div class="payment-card">
+              <h4 class="payment-card-title m2-txt4">
+                Non - Academic
+              </h4>
+              <h4 class="payment-card-amount">
+                &dollar;1500&#42;
+              </h4>
+              <div class="payment-benefits">
+                <p class="m2-txt3 p-b-10">Who should take this?</p>
+                <ul class="s2-text3">
+                  <li>Industry Personnel</li>
+                  <li>Hospital Personnel</li>
+                  <li>Clinical Personnel</li>
+                </ul>
               </div>
-
+              <div class="payment-purchase p-b-20 flex-c">
+                <div>
+                  <button class="btn btn-lg btn-secondary register-btn"
+                    onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                    Register NOW
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      
+
       <div class="p-t-20 flex-c s2-txt2">
 
         &#42;These prices includes Unlimited Coffee, Continental Breakfast and Snacks on the venue
