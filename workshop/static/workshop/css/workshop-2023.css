@@ -191,10 +191,11 @@ body {
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
+  margin: 0 20px;
 }
 
 .payment-card-title {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
   padding: 20px 0;
   text-align: center;
@@ -203,9 +204,9 @@ body {
 }
 
 .payment-card-amount {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 600;
-  padding: 20px 0;
+  padding: 16px 0;
   text-align: center;
   background-color: rgba(255, 127, 0, 0.5);
   color: white;
@@ -218,9 +219,12 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
+/* .payment-benefits p {
+  font-size: 20px;
+} */
+
 .payment-benefits li {
   line-height: 2;
-  font-size: 20px;
   /* transition: all 0.5s ease-in-out; */
 }
 
@@ -234,3 +238,10 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
+#map_wrapper {
+  width: 100%;
+  padding: 50px;
+  top: 10px;
+  left: 0;
+  height: 100vh;
+}
