@@ -28,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
 
 </head>
 
@@ -45,6 +46,7 @@
           <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
+          <li data-menuanchor="Gallery"><a href="#Gallery">Gallery</a></li>
           <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
         </ul>
       </div>
@@ -54,15 +56,18 @@
   <main id="fullpage">
     <section class="home page" id="section_1">
       <div class="simpleslide100">
-      {% if workshop.bg_images.all %}
+        {% if workshop.bg_images.all %}
         {% for bg in workshop.bg_images.all %}
         <div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
         {% endfor %}
-      {% else %}
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});"></div>
-        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
-      {% endif %}
+        {% else %}
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});">
+        </div>
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+        {% endif %}
       </div>
       <div class="content-section">
         <h1 class="content-title l1-txt1 p-b-10">
@@ -72,9 +77,9 @@
         <h5 class="m2-txt4 p-b-25">
           {{workshop.codename|title}} Edition
         </h5>
-        {% if workshop.start_date.year !=  workshop.end_date.year %}
+        {% if workshop.start_date.year != workshop.end_date.year %}
         <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F Y"}} - {{workshop.end_date|date:"dS F Y"}}</p>
-        {% elif workshop.start_date.month !=  workshop.end_date.month %}
+        {% elif workshop.start_date.month != workshop.end_date.month %}
         <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F"}} - {{workshop.end_date|date:"dS F Y"}}</p>
         {% else %}
         <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
@@ -837,7 +842,7 @@
     </section>
     <section class="payment page" id="section_4">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
-        Registrations
+        Registration
       </h1>
       <div class="speaker-divider m-b-40"></div>
       <div class="payment-content">
@@ -855,7 +860,7 @@
                 <ul class="s2-text3">
                   <li>Master's Degree Students</li>
                   <li>PhD Candidates</li>
-                  <li>Postdocs Fellows</li>
+                  <li>Postdocs</li>
                 </ul>
               </div>
               <div class="payment-purchase p-b-20 flex-c">
@@ -884,7 +889,7 @@
                   <li>Any Academic Personnel</li>
                 </ul>
               </div>
-  
+
               <div class="payment-purchase p-b-20 flex-c">
                 <div>
                   <button class="btn btn-lg btn-secondary register-btn"
@@ -907,8 +912,8 @@
                 <p class="m2-txt3 p-b-10">Who should take this?</p>
                 <ul class="s2-text3">
                   <li>Industry Personnel</li>
-                  <li>Hospital Personnel</li>
-                  <li>Clinical Personnel</li>
+                  <li>Medical Staff</li>
+                  <li>Radiologists, Neurologists...</li>
                 </ul>
               </div>
               <div class="payment-purchase p-b-20 flex-c">
@@ -923,7 +928,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <div class="p-t-20 flex-c s2-txt2">
 
@@ -932,22 +937,60 @@
       </div>
     </section>
 
-    <section class="page venue" id="section_5">
-      
+    <section class="venue page" id="section_5">
+
       <div class="container-fluid" id="map_wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Venue
         </h1>
         <div class="speaker-divider m-b-40"></div>
-          <div class="map_canvas">
-              <div class="gmap_canvas">
-                  <iframe id="gmap_canvas" height="80%" width="100%" src="{{workshop.location_map}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-              </div>
+        <div class="map_canvas">
+          <div class="gmap_canvas">
+            <iframe id="gmap_canvas" height="80%" width="100%" src="{{workshop.location_map}}" frameborder="0"
+              scrolling="no" marginheight="0" marginwidth="0"></iframe>
           </div>
+        </div>
       </div>
     </section>
 
-    <section class="contact page" id="section_6">
+
+    <section class="venue page" id="section_6">
+      <div class="container-fluid" id="map_wrapper">
+
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Gallery
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+        <section class="gallery">
+          <div class="gallery__item">
+            <input type="radio" id="img-1" checked name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_4.JPG' %}" alt="" />
+            <label for="img-1" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_4.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-2" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_3.JPG' %}" alt="" />
+            <label for="img-2" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_3.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-3" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_2.JPG' %}" alt="" />
+            <label for="img-3" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_2.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-4" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_1.JPG' %}" alt="" />
+            <label for="img-4" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_1.JPG' %}"
+                alt="" /></label>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="contact page" id="section_7">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
@@ -984,7 +1027,7 @@
         navigation: false,
         navigationPosition: 'right',
         continuousVertical: false,
-        anchors: ["Home", "Speakers", "Schedule", "Registration", "Venue", "Contact"],
+        anchors: ["Home", "Speakers", "Schedule", "Registration", "Venue", "Gallery", "Contact"],
 
         menu: '#menu-wrap',
 

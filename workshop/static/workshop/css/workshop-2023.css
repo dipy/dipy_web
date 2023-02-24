@@ -151,8 +151,9 @@ body {
     margin-right: 10px;
   }
 
-  .l1-txt1 {
+  h1.l1-txt1 {
     font-size: 40px;
+    line-height: 40px;
   }
 
 
