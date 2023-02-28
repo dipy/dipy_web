@@ -611,6 +611,13 @@ div.apply-section h4, td {
   text-transform: uppercase;
 }
 
+.s2-txt4 {
+  font-size: 18px;
+  line-height: 1.4;
+  color: #444444;
+}
+
+
 .s2-txt2-dark {
   /* font-family: Lato-Bold; */
   font-size: 20px;

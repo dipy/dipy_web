@@ -29,6 +29,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
 
 </head>
 
@@ -42,7 +43,9 @@
       <div class="col-md-10" id="menu">
         <ul>
           <li data-menuanchor="Home"><a href="#Home">Home</a></li>
+          <li data-menuanchor="About"><a href="#About">About</a></li>
           <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
+          <li data-menuanchor="Why"><a href="#Why">Why?</a></li>
           <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
@@ -118,7 +121,39 @@
       </div>
     </section>
 
-    <section class="speakers page" id="section_2">
+    <section class="about page" id="section_2">
+      <h1 class="content-title l1-txt1 p-b-10 color-black">
+        About the workshop
+      </h1>
+      <div class="speaker-divider m-b-40"></div>
+      <div class="about-content p-t-20">
+        <p class="s2-txt4 txt-justify fs-18">
+          Attention grads, researchers, physicists, radiologists, doctors and technicians interested in medical imaging!
+          Join us for an exciting workshop hosted by DIPY in Santa Monica, Los Angeles. Our comprehensive program is
+          designed to equip you with the skills and knowledge needed to master the latest techniques and tools in
+          structural and diffusion imaging.
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Our team of expert instructors will guide you through the fundamentals of diffusion theory, data
+          pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading
+          professionals, ask questions, and network with like-minded peers
+        </p>
+        <p class="s2-txt4 txt-justify fa-18 p-t-20">
+          Whether you're new to diffusion imaging or an experienced practitioner, this workshop is perfect for you. Our
+          curriculum is tailored to meet the needs of individuals at all levels of expertise. Don't miss this chance to
+          enhance your skills and advance your career.
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Register today to secure your spot in this highly anticipated event. We can't wait to see you in Santa Monica,
+          Los Angeles!
+        </p>
+        <p class="s2-txt2 txt-right p-t-20">
+          &#8211; DIPY Team!
+        </p>
+      </div>
+    </section>
+
+    <section class="speakers page" id="section_3">
       <div class="speakers-wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Speakers
@@ -145,7 +180,68 @@
 
       </div>
     </section>
-    <section class="program page" id="section_3">
+
+    <section class="why page" id="section_4">
+      <h1 class="content-title l1-txt1 p-b-10 color-black">
+        Why DIPY Workshop?
+      </h1>
+      <div class="speaker-divider m-b-40"></div>
+      <div class="why-content">
+        <h1 class="m2-txt4 lh-1-5">
+          Here are a few reasons why attending the DIPY MR Imaging workshop is essential:
+        </h1>
+        <div class="p-t-20">
+          <ol class="list">
+            <li class="list-item"><span class="list-item__number">1.</span>
+              <p class="list-item__title">Hands-on experience:</p>
+              <p class="list-item__details">
+                The workshop offers a hands-on learning experience, which is essential for learning how to use MR
+                imaging techniques and software effectively. The practical sessions provide attendees with the
+                opportunity to work on real-world problems and gain valuable experience in the field.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">2.</span>
+              <p class="list-item__title">Expert instructors:</p>
+              <p class="list-item__details">
+                The workshop is led by expert instructors who have extensive experience in MR imaging and DIPY software.
+                They provide valuable insights and expertise, 
+                which is essential for staying up-to-date with the latest advancements in this rapidly evolving field.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">3.</span>
+              <p class="list-item__title">Networking opportunities:</p>
+              <p class="list-item__details">
+                The workshop provides an excellent opportunity for attendees to network with other professionals in the field. 
+                This can lead to collaborations and the sharing of knowledge and expertise, 
+                which is critical for advancing research in the field.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">4.</span>
+              <p class="list-item__title">Access to the latest technology:</p>
+              <p class="list-item__details">
+                The DIPY workshop provides access to the latest software for analyzing and processing MR imaging data. 
+                This ensures that attendees are working with the most advanced technology available, 
+                which can lead to more accurate and efficient analysis of data.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">5.</span>
+              <p class="list-item__title">Deep understanding of the theory behind the methods:</p>
+              <p class="list-item__details">
+                The topics covered need a solid understanding of the models, theory and math. For this reason,
+                all tutorials will be provided at four levels: <br/>
+                a) Theory b) Algorithms/Methods c) Code/Interfaces and d) Clinical Application Examples.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="program page" id="section_5">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Schedule
       </h1>
@@ -862,7 +958,8 @@
       </div>
 
     </section>
-    <section class="payment page" id="section_4">
+
+    <section class="payment page" id="section_6">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Registration
       </h1>
@@ -959,7 +1056,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_5">
+    <section class="venue page" id="section_7">
 
       <div class="container-fluid" id="map_wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -975,8 +1072,7 @@
       </div>
     </section>
 
-
-    <section class="venue page" id="section_6">
+    <section class="venue page" id="section_8">
       <div class="container-fluid" id="map_wrapper">
 
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1012,13 +1108,13 @@
       </div>
     </section>
 
-    <section class="contact page" id="section_7">
+    <section class="contact page" id="section_9">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
       <div class="speaker-divider m-b-40"></div>
 
-      <div class="row">
+      <div class="p-l-10 row">
         <div class="col-12 p-l-10 p-r-50">
           <!-- <i class="fa fa-4x fa-envelope-o" style="color: #ff7f00;"></i> -->
           <p class="m2-txt3 p-t-20">Contact us for more information by sending an email at
@@ -1049,7 +1145,7 @@
         navigation: false,
         navigationPosition: 'right',
         continuousVertical: false,
-        anchors: ["Home", "Speakers", "Schedule", "Registration", "Venue", "Gallery", "Contact"],
+        anchors: ["Home", "About", "Speakers", "Why", "Schedule", "Registration", "Venue", "Gallery", "Contact"],
 
         menu: '#menu-wrap',
 

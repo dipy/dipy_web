@@ -83,6 +83,16 @@ body {
   padding: 50px;  
 }
 
+.about-content, .why-content {
+  max-width: 900px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-top: 10px solid #ff7f00;
+  border-bottom: 10px solid #ff7f00;
+  padding: 50px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
 .speaker-content, .program-content, .payment-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -136,7 +146,7 @@ body {
   font-size: 14px;
 }
 
-.program, .payment, .contact {
+.program, .payment, .contact, .about, .why {
   /* background-color: white; */
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   padding-top: 50px;
@@ -157,7 +167,8 @@ body {
   }
 
 
-  .program, .payment, .contact, .speakers-wrapper, .content-section {
+  .program, .payment, .contact, 
+  .speakers-wrapper, .content-section, .about, .why {
     /* background-color: white; */
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     padding-top: 50px;
@@ -176,6 +187,16 @@ body {
 
   .payment .p-l-60, .payment .p-r-60 {
     padding: 0 30px;
+  }
+
+  .about-content, .why-content {
+    max-width: 90vw;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-top: 10px solid #ff7f00;
+    border-bottom: 10px solid #ff7f00;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 0 auto;
   }
 }
 
