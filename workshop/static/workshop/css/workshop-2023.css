@@ -83,6 +83,16 @@ body {
   padding: 50px;  
 }
 
+.about-content, .why-content {
+  max-width: 900px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-top: 10px solid #ff7f00;
+  border-bottom: 10px solid #ff7f00;
+  padding: 50px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
 .speaker-content, .program-content, .payment-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -136,12 +146,31 @@ body {
   font-size: 14px;
 }
 
-.program, .payment, .contact {
+.program, .payment, .contact, .about, .why, .lodging {
   /* background-color: white; */
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   padding-top: 50px;
   padding-left: 50px;
 }
+
+.lodging-section {
+  width: calc(50vw - 50px);
+  height: 80vh;
+  padding-right: 50px;
+  margin-bottom: 50px;
+}
+
+.lodging-section a {
+  text-decoration: underline;
+}
+
+.side-border {
+  border-left: 6px solid #ff7f00;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 
 @media only screen and (max-width: 600px) {
 
@@ -157,7 +186,8 @@ body {
   }
 
 
-  .program, .payment, .contact, .speakers-wrapper, .content-section {
+  .program, .payment, .contact, 
+  .speakers-wrapper, .content-section, .about, .why, .lodging {
     /* background-color: white; */
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     padding-top: 50px;
@@ -176,6 +206,33 @@ body {
 
   .payment .p-l-60, .payment .p-r-60 {
     padding: 0 30px;
+  }
+
+  .about-content, .why-content {
+    max-width: 90vw;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-top: 10px solid #ff7f00;
+    border-bottom: 10px solid #ff7f00;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+
+  .lodging-section {
+    width: 100vw;
+    height: auto;
+    padding-right: 10px;
+    padding-left: 20px;
+  }
+
+  .side-border {
+    box-shadow: none;
+    border: 0;
+    padding-left: 0;
+  }
+
+  .mobile-wrap div {
+    width: 100%;
   }
 }
 
@@ -229,7 +286,7 @@ body {
   /* transition: all 0.5s ease-in-out; */
 }
 
-.payment-benefits li::before {
+.payment li::before, .lodging li::before {
   content: "\2022";
   color: #ff7f00;
   font-weight: bold;
@@ -246,3 +303,4 @@ body {
   left: 0;
   height: 100vh;
 }
+

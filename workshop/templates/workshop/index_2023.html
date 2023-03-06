@@ -29,6 +29,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
 
 </head>
 
@@ -42,10 +43,13 @@
       <div class="col-md-10" id="menu">
         <ul>
           <li data-menuanchor="Home"><a href="#Home">Home</a></li>
+          <li data-menuanchor="About"><a href="#About">About</a></li>
           <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
+          <li data-menuanchor="Why"><a href="#Why">Why?</a></li>
           <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
+          <li data-menuanchor="Lodging"><a href="#Lodging">Lodging</a></li>
           <li data-menuanchor="Gallery"><a href="#Gallery">Gallery</a></li>
           <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
         </ul>
@@ -118,7 +122,35 @@
       </div>
     </section>
 
-    <section class="speakers page" id="section_2">
+    <section class="about page" id="section_2">
+      <h1 class="content-title l1-txt1 p-b-10 color-black">
+        About the workshop
+      </h1>
+      <div class="speaker-divider m-b-40"></div>
+      <div class="about-content p-t-20">
+        <p class="s2-txt4 txt-justify fs-18">
+          Attention grads, researchers, physicists, radiologists, doctors and technicians interested in medical imaging! Join us for an exciting workshop hosted by DIPY in Santa Monica, Los Angeles. Our comprehensive program is designed to equip you with the skills and knowledge needed to master the latest techniques and tools in structural and diffusion imaging.
+
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Our team of expert instructors will guide you through the fundamentals of diffusion theory, data pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading professionals, ask questions, and network with like-minded peers.
+
+        </p>
+        <p class="s2-txt4 txt-justify fa-18 p-t-20">
+          Whether you're new to diffusion imaging or an experienced practitioner, this workshop is perfect for you. Our curriculum is tailored to meet the needs of individuals at all levels of expertise. Don't miss this chance to enhance your skills and advance your career.
+
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Register today to secure your spot in this highly anticipated event. We can't wait to see you in Santa Monica, Los Angeles!
+
+        </p>
+        <p class="s2-txt2 txt-right p-t-20">
+          &#8211; DIPY Team!
+        </p>
+      </div>
+    </section>
+
+    <section class="speakers page" id="section_3">
       <div class="speakers-wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Speakers
@@ -145,7 +177,62 @@
 
       </div>
     </section>
-    <section class="program page" id="section_3">
+
+    <section class="why page" id="section_4">
+      <h1 class="content-title l1-txt1 p-b-10 color-black">
+        Why DIPY Workshop?
+      </h1>
+      <div class="speaker-divider m-b-40"></div>
+      <div class="why-content">
+        <h1 class="m2-txt4 lh-1-5">
+          Here are a few reasons why attending the DIPY MR Imaging workshop is essential:
+        </h1>
+        <div class="p-t-20">
+          <ol class="list">
+            <li class="list-item"><span class="list-item__number">1.</span>
+              <p class="list-item__title">Hands-on experience:</p>
+              <p class="list-item__details">
+                The workshop offers a hands-on learning experience, which is essential for learning how to use MR imaging techniques and software effectively. The practical sessions provide attendees with the opportunity to work on real-world problems and gain valuable experience in the field.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">2.</span>
+              <p class="list-item__title">Expert instructors:</p>
+              <p class="list-item__details">
+                The workshop is led by expert instructors who have extensive experience in MR imaging and DIPY software. They provide valuable insights and expertise, which is essential for staying up-to-date with the latest advancements in this rapidly evolving field.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">3.</span>
+              <p class="list-item__title">Networking opportunities:</p>
+              <p class="list-item__details">
+                The workshop provides an excellent opportunity for attendees to network with other professionals in the field. This can lead to collaborations and the sharing of knowledge and expertise, which is critical for advancing research in the field.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">4.</span>
+              <p class="list-item__title">Access to the latest technology:</p>
+              <p class="list-item__details">
+                The DIPY workshop provides access to the latest software for analyzing and processing MR imaging data. This ensures that attendees are working with the most advanced technology available, which can lead to more accurate and efficient analysis of data.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">5.</span>
+              <p class="list-item__title">Deep understanding of the theory behind the methods:</p>
+              <p class="list-item__details">
+                The topics covered need a solid understanding of the models, theory and math. For this reason, all tutorials will be provided at four levels : <br/> a) Theory, b) Algorithms/Methods, c) Code/Interfaces and d) Clinical Application Examples.
+
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="program page" id="section_5">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Schedule
       </h1>
@@ -862,7 +949,8 @@
       </div>
 
     </section>
-    <section class="payment page" id="section_4">
+
+    <section class="payment page" id="section_6">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Registration
       </h1>
@@ -959,7 +1047,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_5">
+    <section class="venue page" id="section_7">
 
       <div class="container-fluid" id="map_wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -975,8 +1063,146 @@
       </div>
     </section>
 
+    <section class="lodging page" id="section_8">
+      <div class="flex-c flex-w">
+        <div class="lodging-section">
+          <h1 class="content-title l1-txt1 p-b-10 color-black">
+            Lodging
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="side-border">
+            <p class="s2-txt4 txt-justify fs-16">
+              A block of rooms has been reserved at Le Merigot Santa Monica at discounted prices. This allows you to be
+              in
+              the same location with the conference and reduce commute time. Which further allows more time to explore
+              Santa Monica.
 
-    <section class="venue page" id="section_6">
+            </p>
+            <div class="flex-l p-t-20">
+              <i class="fa fa-map-marker color-dipy s2-txt4 fs-16" aria-hidden="true"></i>
+              <p class="s2-txt4 txt-justify fs-16 p-l-10">
+                Le Merigot Santa Monica, 
+                1740 Ocean Ave,
+                Santa Monica, CA 90401
+              </p>
+            </div>
+            <p class="s2-txt4 txt-justify fs-16 p-t-20">
+              <strong class="s2-txt2 fs-20">Reservations</strong><br />
+              <span class="p-t-5">
+                In order to secure a hotel room at the conference hotel, you may contact the hotel directly and specify
+                DIPY
+                Workshop to receive the discounted price and make your reservation.
+                You may also reserve your room online through the group booking link below.
+              </span>
+            </p>
+            <div class="p-t-20">
+              <a class="s2-txt2 fs-16"
+                href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.marriott.com%2Fevents%2Fstart.mi%3Fid%3D1675361476433%26key%3DGRP&data=05%7C01%7Ckkdaniel%40iu.edu%7C77e9003ec5994b32529708db05492e67%7C1113be34aed14d00ab4bcdd02510be91%7C0%7C0%7C638109584417929653%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000%7C%7C%7C&sdata=%2Fp7aUbw5Lf0CQIjNl93v%2BnsyIxi%2F9VbreIHfflGJo78%3D&reserved=0">Book
+                your group rate for DIPY Workshop 2023 at Le Merigot Santa Monica
+              </a>
+            </div>
+            <div class="p-t-20">
+              <p class="s2-txt4 fs-18">
+                Last day for this discounted price is: <strong class="color-dipy">March 15, 2023</strong>
+              </p>
+              <p class="s2-txt4 fs-18">
+                Parking: <strong class="color-dipy">&dollar;56</strong>
+              </p>
+              <p class="s2-txt2 p-t-20 p-b-10">Optional Resort Fee Benefits:</p>
+              <div class="flex-c">
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>In-room WIFI</li>
+                  <li>Tesla & Universal Charging Stations</li>
+                  <li>Custom Beach Cruiser Bicycle Rentals</li>
+                  <li>Beach Chair, Umbrella, and Towel Service</li>
+                </ul>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>Boogie Board Rentals</li>
+                  <li>Coffee & Tea Served in the Lobby</li>
+                  <li>Fruit Infused Water Served in the Lobby Every Afternoon</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <div class="lodging-section">
+          <h1 class="content-title l1-txt1 p-b-10 color-black">
+            Transportation
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="side-border">
+            <p class="s2-txt4 txt-justify fs-16">
+              <strong class="s2-txt2 fs-20">Los Angeles International Airport (LAX)</strong>
+            </p>
+            <p class="s2-txt4 fs-14 p-t-10">
+              <i class="fa fa-phone s2-txt4 fs-16" aria-hidden="true"></i> (Airport) : &nbsp;<strong
+                class="color-limestone fs-14">+1 310-646-5252
+              </strong>
+            </p>
+            <p class="s2-txt4 fs-14">
+              <i class="fa fa-location-arrow s2-txt4 fs-16" aria-hidden="true"></i> (Hotel) : &nbsp;<strong
+                class="color-limestone fs-14">14.5 km NW
+
+              </strong>
+            </p>
+            <p class="s2-txt4 txt-justify fs-16 p-t-10">
+              <strong class="s2-txt2 color-limestone fs-20">Hotel does not provide a shuttle service for this
+                event</strong>
+            </p>
+            <p class="s2-txt2 p-t-20">
+              <strong class="s2-txt2 fs-20">
+                Alternative transport:
+              </strong> <br />
+
+            </p>
+            <div class="flex-sb flex-w mobile-wrap">
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Town Car Limo Service</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>&dollar;110 (one way)</li>
+                  <li>Reservation required</li>
+                </ul>
+              </div>
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Taxi</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>&dollar;60 (one way)</li>
+                </ul>
+              </div>
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Rideshare services</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>Uber</li>
+                  <li>Lyft</li>
+                </ul>
+              </div>
+
+            </div>
+            <p class="s2-txt2 p-t-20">
+              <strong class="s2-txt2 fs-20">
+                Driving Directions:
+              </strong> <br />
+            </p>
+            <p class="s2-txt2 color-limestone p-t-10 p-b-10">SURFACE STREET</p>
+            <p class="s2-txt4 txt-justify fs-16">
+              Sepulveda Blvd. north to Lincoln Boulevard north, 8 miles to Pico Blvd. turn left, right turn on to Ocean Avenue. 
+
+            </p>
+            <p class="s2-txt2 color-limestone p-t-10 p-b-10">FREEWAY</p>
+            <p class="s2-txt4 txt-justify fs-16">
+              Century Blvd. to 405 north, 5 miles to 10 west, 3 miles to 4th/5th Street Exit (stay in the lane that indicates 4th street), turn left on 4th to Pico Blvd., turn right on Pico to Ocean Avenue, then turn right on Ocean ave. We are halfway down the street on the left hand side. 
+
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="venue page" id="section_9">
       <div class="container-fluid" id="map_wrapper">
 
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1012,13 +1238,13 @@
       </div>
     </section>
 
-    <section class="contact page" id="section_7">
+    <section class="contact page" id="section_10">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
       <div class="speaker-divider m-b-40"></div>
 
-      <div class="row">
+      <div class="p-l-10 row">
         <div class="col-12 p-l-10 p-r-50">
           <!-- <i class="fa fa-4x fa-envelope-o" style="color: #ff7f00;"></i> -->
           <p class="m2-txt3 p-t-20">Contact us for more information by sending an email at
@@ -1049,7 +1275,7 @@
         navigation: false,
         navigationPosition: 'right',
         continuousVertical: false,
-        anchors: ["Home", "Speakers", "Schedule", "Registration", "Venue", "Gallery", "Contact"],
+        anchors: ["Home", "About", "Speakers", "Why", "Schedule", "Registration", "Venue", "Lodging", "Gallery", "Contact"],
 
         menu: '#menu-wrap',
 
