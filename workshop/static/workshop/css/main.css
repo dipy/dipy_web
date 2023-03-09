@@ -132,7 +132,7 @@ a:hover {
 	top:0;
 	left:0;
 	height: 50px;
-	z-index: 2;
+	z-index: 3;
 	width: 100%;
 	padding: 0;
 	margin:0;
@@ -144,7 +144,7 @@ a:hover {
   float: right;
   max-height:100%;
   max-width:100%;
-  z-index: 3;
+  z-index: 4;
 }
 div.hamburger{
   float: left;
@@ -152,7 +152,7 @@ div.hamburger{
 }
 div.hamburger a {
   display: None;
-  z-index: 2;
+  z-index: 3;
   position: fixed;
 
 }
@@ -867,6 +867,21 @@ div.apply-section h4, td {
 
   .w-full-lg {width: 100%;}
 
+  #menu-wrap{
+    z-index: 7;
+  }
+  #menu-wrap img{
+    z-index: 8;
+  }
+  div.hamburger{
+    float: left;
+    font-size:200%;
+  }
+  div.hamburger a {
+    z-index: 7;
+  
+  }
+
   #menu.responsive {
     margin: 0;
     padding: 0;
@@ -874,9 +889,9 @@ div.apply-section h4, td {
     top: 50px;
     left: 0%;
     width: 50%;
-    height: 100%;
+    height: calc(100vh - 50px);
     background: black;
-    z-index: 2;
+    z-index: 7;
     transition: 0.5s;
 
   }
@@ -903,11 +918,11 @@ div.apply-section h4, td {
   }
   #menu-wrap div.hamburger a {
     display: inline-block;
-    z-index: 3;
+    z-index: 8;
     position: fixed;
 
   }
-  #menu-wrap img{ z-index: 3;}
+  #menu-wrap img{ z-index: 8;}
 
   th {
     font-size: 15px

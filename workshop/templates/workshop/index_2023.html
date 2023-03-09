@@ -16,8 +16,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/fullpage/css/jquery.fullpage.css' %}" />
-
   <!-- Font Awesome -->
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'
     type='text/css'>
@@ -30,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/carousel.css' %}" />
 
 </head>
 
@@ -42,23 +41,23 @@
             class="fa fa-bars color-dipy"></i></a></div>
       <div class="col-md-10" id="menu">
         <ul>
-          <li data-menuanchor="Home"><a href="#Home">Home</a></li>
-          <li data-menuanchor="About"><a href="#About">About</a></li>
-          <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
-          <li data-menuanchor="Why"><a href="#Why">Why?</a></li>
-          <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
-          <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
-          <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
-          <li data-menuanchor="Lodging"><a href="#Lodging">Lodging</a></li>
-          <li data-menuanchor="Gallery"><a href="#Gallery">Gallery</a></li>
-          <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
+          <li data-menuanchor="Home" onclick="openCloseMenu()"><a href="#Home">Home</a></li>
+          <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
+          <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
+          <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
+          <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
+          <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
+          <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li>
+          <li data-menuanchor="Lodging" onclick="openCloseMenu()"><a href="#Lodging">Lodging</a></li>
+          <li data-menuanchor="Gallery" onclick="openCloseMenu()"><a href="#Gallery">Gallery</a></li>
+          <li data-menuanchor="Contact" onclick="openCloseMenu()"><a href="#Contact">Contact</a></li>
         </ul>
       </div>
       <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
   </div>
-  <main id="fullpage">
-    <section class="home page" id="section_1">
+  <main>
+    <section class="home" id="Home">
       <div class="simpleslide100">
         {% if workshop.bg_images.all %}
         {% for bg in workshop.bg_images.all %}
@@ -122,26 +121,34 @@
       </div>
     </section>
 
-    <section class="about page" id="section_2">
+    <section class="about p-b-50" id="About">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         About the workshop
       </h1>
       <div class="speaker-divider m-b-40"></div>
       <div class="about-content p-t-20">
         <p class="s2-txt4 txt-justify fs-18">
-          Attention grads, researchers, physicists, radiologists, doctors and technicians interested in medical imaging! Join us for an exciting workshop hosted by DIPY in Santa Monica, Los Angeles. Our comprehensive program is designed to equip you with the skills and knowledge needed to master the latest techniques and tools in structural and diffusion imaging.
+          Attention grads, researchers, physicists, radiologists, doctors and technicians interested in medical imaging!
+          Join us for an exciting workshop hosted by DIPY in Santa Monica, Los Angeles. Our comprehensive program is
+          designed to equip you with the skills and knowledge needed to master the latest techniques and tools in
+          structural and diffusion imaging.
 
         </p>
         <p class="s2-txt4 txt-justify fs-18 p-t-20">
-          Our team of expert instructors will guide you through the fundamentals of diffusion theory, data pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading professionals, ask questions, and network with like-minded peers.
+          Our team of expert instructors will guide you through the fundamentals of diffusion theory, data
+          pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading
+          professionals, ask questions, and network with like-minded peers.
 
         </p>
         <p class="s2-txt4 txt-justify fa-18 p-t-20">
-          Whether you're new to diffusion imaging or an experienced practitioner, this workshop is perfect for you. Our curriculum is tailored to meet the needs of individuals at all levels of expertise. Don't miss this chance to enhance your skills and advance your career.
+          Whether you're new to diffusion imaging or an experienced practitioner, this workshop is perfect for you. Our
+          curriculum is tailored to meet the needs of individuals at all levels of expertise. Don't miss this chance to
+          enhance your skills and advance your career.
 
         </p>
         <p class="s2-txt4 txt-justify fs-18 p-t-20">
-          Register today to secure your spot in this highly anticipated event. We can't wait to see you in Santa Monica, Los Angeles!
+          Register today to secure your spot in this highly anticipated event. We can't wait to see you in Santa Monica,
+          Los Angeles!
 
         </p>
         <p class="s2-txt2 txt-right p-t-20">
@@ -150,7 +157,7 @@
       </div>
     </section>
 
-    <section class="speakers page" id="section_3">
+    <section class="speakers p-b-50" id="Speakers">
       <div class="speakers-wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Speakers
@@ -175,10 +182,135 @@
           </div>
         </div>
 
+        <section class="participants p-t-50">
+          <h1 class="content-title l2-txt1 p-b-10 color-black">
+            Participants From
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="c-slider">
+            <div class="c-slide-track">
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EPFL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UPENN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UTHA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/BUSM.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EMORY.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUSM.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/LU.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/CAMH.jpg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/USHER.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/HARVARD.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MIT.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MSINAI.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MWISCONSIN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/JHOPKINS.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCHICAGO.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/DUKE.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/THEMINDRESNET.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/HMRI.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UW.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCB.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCSD.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/PENNMED.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UARIZONA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/DELLMEDSCHOOL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUPUI.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EPFL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UPENN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UTHA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/BUSM.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EMORY.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUSM.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/LU.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/CAMH.jpg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/USHER.png' %}" width="250" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="thanks p-t-50">
+          <h1 class="content-title l2-txt1 p-b-10 color-black">
+            Special Thanks
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="flex-c w-full thanks-content">
+            <div class="flex-sa w-full flex-w">
+              <img src="{% static 'workshop/images/universities/GRG.png' %}"  width="150" alt="" />
+              <img src="{% static 'workshop/images/universities/ISE.jpeg' %}" width="150" alt="" />
+              <img src="{% static 'workshop/images/universities/NIBIB.jpeg' %}" width="250" alt="" />
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
-    <section class="why page" id="section_4">
+    <section class="why p-b-50" id="Why">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Why DIPY Workshop?
       </h1>
@@ -192,7 +324,9 @@
             <li class="list-item"><span class="list-item__number">1.</span>
               <p class="list-item__title">Hands-on experience:</p>
               <p class="list-item__details">
-                The workshop offers a hands-on learning experience, which is essential for learning how to use MR imaging techniques and software effectively. The practical sessions provide attendees with the opportunity to work on real-world problems and gain valuable experience in the field.
+                The workshop offers a hands-on learning experience, which is essential for learning how to use MR
+                imaging techniques and software effectively. The practical sessions provide attendees with the
+                opportunity to work on real-world problems and gain valuable experience in the field.
 
               </p>
             </li>
@@ -200,7 +334,9 @@
             <li class="list-item"><span class="list-item__number">2.</span>
               <p class="list-item__title">Expert instructors:</p>
               <p class="list-item__details">
-                The workshop is led by expert instructors who have extensive experience in MR imaging and DIPY software. They provide valuable insights and expertise, which is essential for staying up-to-date with the latest advancements in this rapidly evolving field.
+                The workshop is led by expert instructors who have extensive experience in MR imaging and DIPY software.
+                They provide valuable insights and expertise, which is essential for staying up-to-date with the latest
+                advancements in this rapidly evolving field.
 
               </p>
             </li>
@@ -208,14 +344,18 @@
             <li class="list-item"><span class="list-item__number">3.</span>
               <p class="list-item__title">Networking opportunities:</p>
               <p class="list-item__details">
-                The workshop provides an excellent opportunity for attendees to network with other professionals in the field. This can lead to collaborations and the sharing of knowledge and expertise, which is critical for advancing research in the field.
+                The workshop provides an excellent opportunity for attendees to network with other professionals in the
+                field. This can lead to collaborations and the sharing of knowledge and expertise, which is critical for
+                advancing research in the field.
               </p>
             </li>
 
             <li class="list-item"><span class="list-item__number">4.</span>
               <p class="list-item__title">Access to the latest technology:</p>
               <p class="list-item__details">
-                The DIPY workshop provides access to the latest software for analyzing and processing MR imaging data. This ensures that attendees are working with the most advanced technology available, which can lead to more accurate and efficient analysis of data.
+                The DIPY workshop provides access to the latest software for analyzing and processing MR imaging data.
+                This ensures that attendees are working with the most advanced technology available, which can lead to
+                more accurate and efficient analysis of data.
 
               </p>
             </li>
@@ -223,7 +363,9 @@
             <li class="list-item"><span class="list-item__number">5.</span>
               <p class="list-item__title">Deep understanding of the theory behind the methods:</p>
               <p class="list-item__details">
-                The topics covered need a solid understanding of the models, theory and math. For this reason, all tutorials will be provided at four levels : <br/> a) Theory, b) Algorithms/Methods, c) Code/Interfaces and d) Clinical Application Examples.
+                The topics covered need a solid understanding of the models, theory and math. For this reason, all
+                tutorials will be provided at four levels : <br /> a) Theory, b) Algorithms/Methods, c) Code/Interfaces
+                and d) Clinical Application Examples.
 
               </p>
             </li>
@@ -232,7 +374,7 @@
       </div>
     </section>
 
-    <section class="program page" id="section_5">
+    <section class="program p-b-50" id="Schedule">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Schedule
       </h1>
@@ -950,13 +1092,13 @@
 
     </section>
 
-    <section class="payment page" id="section_6">
+    <section class="payment p-b-50" id="Registration">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Registration
       </h1>
       <div class="speaker-divider m-b-40"></div>
       <div class="payment-content">
-        <div class="row p-l-60 p-r-60">
+        <div class="row">
           <div class="col-lg-4 col-sm-12 p-b-30">
             <div class="payment-card">
               <h4 class="payment-card-title m2-txt4">
@@ -1047,7 +1189,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_7">
+    <section class="venue p-b-50" id="Venue">
 
       <div class="container-fluid" id="map_wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1063,7 +1205,7 @@
       </div>
     </section>
 
-    <section class="lodging page" id="section_8">
+    <section class="lodging p-b-50" id="Lodging">
       <div class="flex-c flex-w">
         <div class="lodging-section">
           <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1081,7 +1223,7 @@
             <div class="flex-l p-t-20">
               <i class="fa fa-map-marker color-dipy s2-txt4 fs-16" aria-hidden="true"></i>
               <p class="s2-txt4 txt-justify fs-16 p-l-10">
-                Le Merigot Santa Monica, 
+                Le Merigot Santa Monica,
                 1740 Ocean Ave,
                 Santa Monica, CA 90401
               </p>
@@ -1188,12 +1330,15 @@
             </p>
             <p class="s2-txt2 color-limestone p-t-10 p-b-10">SURFACE STREET</p>
             <p class="s2-txt4 txt-justify fs-16">
-              Sepulveda Blvd. north to Lincoln Boulevard north, 8 miles to Pico Blvd. turn left, right turn on to Ocean Avenue. 
+              Sepulveda Blvd. north to Lincoln Boulevard north, 8 miles to Pico Blvd. turn left, right turn on to Ocean
+              Avenue.
 
             </p>
             <p class="s2-txt2 color-limestone p-t-10 p-b-10">FREEWAY</p>
             <p class="s2-txt4 txt-justify fs-16">
-              Century Blvd. to 405 north, 5 miles to 10 west, 3 miles to 4th/5th Street Exit (stay in the lane that indicates 4th street), turn left on 4th to Pico Blvd., turn right on Pico to Ocean Avenue, then turn right on Ocean ave. We are halfway down the street on the left hand side. 
+              Century Blvd. to 405 north, 5 miles to 10 west, 3 miles to 4th/5th Street Exit (stay in the lane that
+              indicates 4th street), turn left on 4th to Pico Blvd., turn right on Pico to Ocean Avenue, then turn right
+              on Ocean ave. We are halfway down the street on the left hand side.
 
             </p>
           </div>
@@ -1202,7 +1347,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_9">
+    <section class="venue p-b-50" id="Gallery">
       <div class="container-fluid" id="map_wrapper">
 
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1238,7 +1383,7 @@
       </div>
     </section>
 
-    <section class="contact page" id="section_10">
+    <section class="contact" id="Contact">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
@@ -1261,53 +1406,16 @@
 
 
   <script type="text/javascript" src="{% static 'workshop/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'workshop/vendor/scrolloverflow.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
 
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#fullpage').fullpage({
-        //easingcss3: linear,
-        sectionSelector: '.page',
-        autoScrolling: true,
-        scrollOverflow: true,
-        fitToSection: true,
-        navigation: false,
-        navigationPosition: 'right',
-        continuousVertical: false,
-        anchors: ["Home", "About", "Speakers", "Why", "Schedule", "Registration", "Venue", "Lodging", "Gallery", "Contact"],
-
-        menu: '#menu-wrap',
-
-        onLeave: function (index, newIndex, direction) {
-          if (index == 1 && direction == 'down') {
-            $('#menu-wrap').fadeIn(600);
-          }
-          else if (newIndex == 1 && direction == 'up') {
-            $('#menu-wrap').hide();
-          }
-          else if (index == 2 && direction == 'down') {
-            //alert("test");
-            $('div.custom-box').addClass('animated bounce delay-4s slower');
-          }
-          else if (index == 3) {
-            $('div.custom-box').removeClass('animated bounce delay-4s slower');
-          }
-          else if (index == 4 && direction == 'up') {
-            //alert("test");
-            $('div.custom-box').addClass('animated bounce delay-4s slower');
-          }
-
-        },
-      });
-      $('#menu-wrap').hide();
-    });
     function openCloseMenu () {
-      var x = document.getElementById("menu");
-      if (x.className.includes("responsive")) {
-        x.className = "col-md-10"
-      } else {
-        x.className = "responsive";
+      if (window.innerWidth < 768) {
+        var x = document.getElementById("menu");
+        if (x.className.includes("responsive")) {
+          x.className = "col-md-10"
+        } else {
+          x.className = "responsive";
+        }
       }
     }
   </script>
