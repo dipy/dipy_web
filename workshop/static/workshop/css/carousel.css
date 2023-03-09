@@ -24,7 +24,7 @@
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 1400px;
+  max-width: 90vw;
   /* padding: 40px 0; */
 }
 .c-slider::before, .c-slider::after {

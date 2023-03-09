@@ -16,8 +16,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="{% static 'workshop/vendor/fullpage/css/jquery.fullpage.css' %}" />
-
   <!-- Font Awesome -->
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'
     type='text/css'>
@@ -43,23 +41,23 @@
             class="fa fa-bars color-dipy"></i></a></div>
       <div class="col-md-10" id="menu">
         <ul>
-          <li data-menuanchor="Home"><a href="#Home">Home</a></li>
-          <li data-menuanchor="About"><a href="#About">About</a></li>
-          <li data-menuanchor="Speakers"><a href="#Speakers">Speakers</a></li>
-          <li data-menuanchor="Why"><a href="#Why">Why?</a></li>
-          <li data-menuanchor="Schedule"><a href="#Schedule">Schedule</a></li>
-          <li data-menuanchor="Registration"><a href="#Registration">Registration</a></li>
-          <li data-menuanchor="Venue"><a href="#Venue">Venue</a></li>
-          <li data-menuanchor="Lodging"><a href="#Lodging">Lodging</a></li>
-          <li data-menuanchor="Gallery"><a href="#Gallery">Gallery</a></li>
-          <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
+          <li data-menuanchor="Home" onclick="openCloseMenu()"><a href="#Home">Home</a></li>
+          <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
+          <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
+          <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
+          <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
+          <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
+          <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li>
+          <li data-menuanchor="Lodging" onclick="openCloseMenu()"><a href="#Lodging">Lodging</a></li>
+          <li data-menuanchor="Gallery" onclick="openCloseMenu()"><a href="#Gallery">Gallery</a></li>
+          <li data-menuanchor="Contact" onclick="openCloseMenu()"><a href="#Contact">Contact</a></li>
         </ul>
       </div>
       <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
   </div>
-  <main id="fullpage">
-    <section class="home page" id="section_1">
+  <main>
+    <section class="home" id="Home">
       <div class="simpleslide100">
         {% if workshop.bg_images.all %}
         {% for bg in workshop.bg_images.all %}
@@ -123,7 +121,7 @@
       </div>
     </section>
 
-    <section class="about page" id="section_2">
+    <section class="about p-b-50" id="About">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         About the workshop
       </h1>
@@ -159,7 +157,7 @@
       </div>
     </section>
 
-    <section class="speakers page" id="section_3">
+    <section class="speakers p-b-50" id="Speakers">
       <div class="speakers-wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Speakers
@@ -185,7 +183,7 @@
         </div>
 
         <section class="participants p-t-50">
-          <h1 class="content-title l1-txt1 p-b-10 color-black">
+          <h1 class="content-title l2-txt1 p-b-10 color-black">
             Participants From
           </h1>
           <div class="speaker-divider m-b-40"></div>
@@ -297,7 +295,7 @@
           </div>
         </section>
         <section class="thanks p-t-50">
-          <h1 class="content-title l1-txt1 p-b-10 color-black">
+          <h1 class="content-title l2-txt1 p-b-10 color-black">
             Special Thanks
           </h1>
           <div class="speaker-divider m-b-40"></div>
@@ -312,7 +310,7 @@
       </div>
     </section>
 
-    <section class="why page" id="section_4">
+    <section class="why p-b-50" id="Why">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Why DIPY Workshop?
       </h1>
@@ -376,7 +374,7 @@
       </div>
     </section>
 
-    <section class="program page" id="section_5">
+    <section class="program p-b-50" id="Schedule">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Schedule
       </h1>
@@ -1094,13 +1092,13 @@
 
     </section>
 
-    <section class="payment page" id="section_7">
+    <section class="payment p-b-50" id="Registration">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Registration
       </h1>
       <div class="speaker-divider m-b-40"></div>
       <div class="payment-content">
-        <div class="row p-l-60 p-r-60">
+        <div class="row">
           <div class="col-lg-4 col-sm-12 p-b-30">
             <div class="payment-card">
               <h4 class="payment-card-title m2-txt4">
@@ -1191,7 +1189,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_8">
+    <section class="venue p-b-50" id="Venue">
 
       <div class="container-fluid" id="map_wrapper">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1207,7 +1205,7 @@
       </div>
     </section>
 
-    <section class="lodging page" id="section_9">
+    <section class="lodging p-b-50" id="Lodging">
       <div class="flex-c flex-w">
         <div class="lodging-section">
           <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1349,7 +1347,7 @@
       </div>
     </section>
 
-    <section class="venue page" id="section_10">
+    <section class="venue p-b-50" id="Gallery">
       <div class="container-fluid" id="map_wrapper">
 
         <h1 class="content-title l1-txt1 p-b-10 color-black">
@@ -1385,7 +1383,7 @@
       </div>
     </section>
 
-    <section class="contact page" id="section_11">
+    <section class="contact" id="Contact">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
@@ -1408,53 +1406,16 @@
 
 
   <script type="text/javascript" src="{% static 'workshop/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'workshop/vendor/scrolloverflow.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'workshop/vendor/fullpage/js/jquery.fullpage.js' %}"></script>
 
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#fullpage').fullpage({
-        //easingcss3: linear,
-        sectionSelector: '.page',
-        autoScrolling: true,
-        scrollOverflow: true,
-        fitToSection: true,
-        navigation: false,
-        navigationPosition: 'right',
-        continuousVertical: false,
-        anchors: ["Home", "About", "Speakers", "Why", "Schedule", "Registration", "Venue", "Lodging", "Gallery", "Contact"],
-
-        menu: '#menu-wrap',
-
-        onLeave: function (index, newIndex, direction) {
-          if (index == 1 && direction == 'down') {
-            $('#menu-wrap').fadeIn(600);
-          }
-          else if (newIndex == 1 && direction == 'up') {
-            $('#menu-wrap').hide();
-          }
-          else if (index == 2 && direction == 'down') {
-            //alert("test");
-            $('div.custom-box').addClass('animated bounce delay-4s slower');
-          }
-          else if (index == 3) {
-            $('div.custom-box').removeClass('animated bounce delay-4s slower');
-          }
-          else if (index == 4 && direction == 'up') {
-            //alert("test");
-            $('div.custom-box').addClass('animated bounce delay-4s slower');
-          }
-
-        },
-      });
-      $('#menu-wrap').hide();
-    });
     function openCloseMenu () {
-      var x = document.getElementById("menu");
-      if (x.className.includes("responsive")) {
-        x.className = "col-md-10"
-      } else {
-        x.className = "responsive";
+      if (window.innerWidth < 768) {
+        var x = document.getElementById("menu");
+        if (x.className.includes("responsive")) {
+          x.className = "col-md-10"
+        } else {
+          x.className = "responsive";
+        }
       }
     }
   </script>
