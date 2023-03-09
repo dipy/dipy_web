@@ -146,11 +146,26 @@ body {
   font-size: 14px;
 }
 
-.program, .payment, .contact, .about, .why, .lodging, .participents {
+.program, .payment, .contact, .about, .why, .lodging {
   /* background-color: white; */
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   padding-top: 50px;
   padding-left: 50px;
+}
+
+.thanks {
+  padding-right: 50px;
+}
+
+.thanks-content {
+  max-width: 1000px;
+  width: calc(100vw - 100px);
+  margin: auto;
+}
+
+.thanks img {
+  padding: 20px 0;
+  margin: 0 20px;
 }
 
 .lodging-section {
@@ -234,6 +249,19 @@ body {
   .mobile-wrap div {
     width: 100%;
   }
+
+  .thanks {
+    padding-right: 10px;
+  }
+
+  .thanks-content div {
+    justify-content: center;
+  }
+
+  .thanks-content img {
+    max-width: 100%;
+    max-height: 200px;
+  }
 }
 
 .program-day {
@@ -304,3 +332,10 @@ body {
   height: 100vh;
 }
 
+#menu-wrap li a, #menu-wrap li.active a {
+  padding: 9px 12px;
+}
+
+#menu-wrap li {
+  margin: 5px;
+}
