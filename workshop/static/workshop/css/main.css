@@ -103,7 +103,7 @@ a:hover {
 }
 #menu-wrap li.active{
 	/*border-bottom: 1px solid black;*/
-	border-top: 1px solid #fc7f0c;
+	border-bottom: 2px solid #fc7f0c;
 	color: #fc7f0c;
 }
 #menu-wrap li a{
@@ -132,7 +132,7 @@ a:hover {
 	top:0;
 	left:0;
 	height: 50px;
-	z-index: 3;
+	z-index: 7;
 	width: 100%;
 	padding: 0;
 	margin:0;
@@ -144,7 +144,7 @@ a:hover {
   float: right;
   max-height:100%;
   max-width:100%;
-  z-index: 4;
+  z-index: 8;
 }
 div.hamburger{
   float: left;
@@ -152,7 +152,7 @@ div.hamburger{
 }
 div.hamburger a {
   display: None;
-  z-index: 3;
+  z-index: 7;
   position: fixed;
 
 }
