@@ -1414,7 +1414,7 @@
 
   <script type="text/javascript">
     function openCloseMenu () {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 768) { 
         var x = document.getElementById("menu");
         if (x.className.includes("responsive")) {
           x.className = "col-md-10"
@@ -1423,6 +1423,23 @@
         }
       }
     }
+    $(document).ready(function() {
+      $(window).scroll(function() {
+        var scrollHeight = $(window).scrollTop();
+        $('a[href^="#"]').each(function() {
+          var target = $(this).attr('href');
+          var offset = $(target).offset().top;
+          var windowHeight = $(window).height();
+          if (offset <= scrollHeight + windowHeight && offset + $(target).height() > scrollHeight) {
+            $(this).parents('#menu li').addClass('active');
+            $(this).parents('#menu li').siblings().removeClass('active');
+            return false; // exit the loop
+          } else {
+            $(this).parents('#menu li').removeClass('active');
+          }
+        });
+      });
+    });
   </script>
 
   <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>

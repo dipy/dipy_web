@@ -148,7 +148,7 @@ body {
 }
 
 .contact {
-  height: 80vh;
+  height: 100vh;
 }
 
 .program, .payment, .contact, .about, .why, .lodging {
@@ -363,4 +363,8 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   scroll-behavior: smooth
+}
+
+body {
+  padding-bottom: 1000px;
 }
