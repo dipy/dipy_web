@@ -1424,7 +1424,11 @@
       }
     }
     $(document).ready(function() {
+      var menu = $('#menu-wrap');
+      menu.hide();
+
       $(window).scroll(function() {
+        menu.show();
         var scrollHeight = $(window).scrollTop();
         $('a[href^="#"]').each(function() {
           var target = $(this).attr('href');
@@ -1438,6 +1442,13 @@
             $(this).parents('#menu li').removeClass('active');
           }
         });
+        setTimeout(function(){ 
+          var scrollHeight = $(window).scrollTop();
+          console.log(scrollHeight)
+          if (scrollHeight == 0) {
+            menu.hide();
+          }
+        }, 500);
       });
     });
   </script>
