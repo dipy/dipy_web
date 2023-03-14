@@ -2,17 +2,6 @@ html, body {
   margin: 0;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-body ::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
 .home {
   position: relative;
 
@@ -117,6 +106,7 @@ body {
 
   margin-left: 40px;
   margin-right: 40px;
+  width: 100%;
 
   text-align: center;
 }
@@ -155,8 +145,35 @@ body {
   min-height: 100vh;
 }
 
+.about-content, .why-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: fit-content;
+}
 
-.program, .payment, .contact, .about, .why, .lodging, .highlights {
+.watermark {
+  filter: invert(58%) sepia(41%) saturate(4693%) hue-rotate(359deg) brightness(101%) contrast(107%);
+  opacity: 0.2;
+  width: 35%;
+}
+
+.watermark-logo {
+  opacity: 0.2;
+  margin-top: -15%;
+  width: 35%;
+}
+
+.watermark-wrapper {
+  height: inherit;
+  width: 80%;
+  left: 10%;
+  top: 0;
+  margin: auto;
+  margin-left: -5%;
+}
+
+.program, .payment, .contact, .about, .why, .lodging {
   /* background-color: white; */
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   padding-top: 50px;
@@ -209,8 +226,9 @@ body {
 
   .speaker-card {
     margin-top: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100vw - 40px);
   }
 
   h1.l1-txt1 {
@@ -243,7 +261,7 @@ body {
 
   .about-content, .why-content {
     max-width: 90vw;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: none;
     border-top: 10px solid #ff7f00;
     border-bottom: 10px solid #ff7f00;
     padding: 20px;
@@ -284,6 +302,19 @@ body {
   .payment-content {
     width: 90vw;
     margin: 0 auto;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .watermark {
+    width: 85%;
+  }
+  
+  .watermark-logo {
+    margin-top: -30%;
+    width: 85%;
   }
 }
 
