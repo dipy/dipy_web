@@ -140,6 +140,10 @@ html, body {
 .contact {
   height: 100vh;
 }
+.highlights {
+  height: 100vh;
+  min-height: 100vh;
+}
 
 .about-content, .why-content {
   position: relative;
@@ -234,7 +238,7 @@ html, body {
 
 
   .program, .payment, .contact, 
-  .speakers-wrapper, .content-section, .about, .why, .lodging {
+  .speakers-wrapper, .content-section, .about, .why, .lodging, .highlights {
     /* background-color: white; */
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     padding-top: 50px;

@@ -29,6 +29,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/carousel.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/highlight-carousel.css' %}" />
 
 </head>
 
@@ -45,6 +46,7 @@
           <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
           <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
           <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
+          <li data-menuanchor="Highlight" class="no-mobile-view" onclick="openCloseMenu()"><a href="#Highlight">Highlight</a></li>
           <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li>
@@ -416,6 +418,55 @@
               </p>
             </li>
           </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights no-mobile-view" id="Highlight">
+      <div class="p-l-50">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Highlight
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="highlight-wrapper">
+        <div class="highlight-container">
+          <input type="radio" name="slider" id="item-1" checked>
+          <input type="radio" name="slider" id="item-2">
+          <input type="radio" name="slider" id="item-3">
+          <div class="cards">
+            <label class="card" for="item-1" id="song-1">
+              <img
+                src="https://raw.githubusercontent.com/dipy/dipy_data/master/tractometry.png?raw=true"
+                alt="highlight 1">
+            </label>
+            <label class="card" for="item-2" id="song-2">
+              <img
+                src="https://raw.githubusercontent.com/dipy/dipy_data/master/wrapping_bundles.png?raw=true"
+                alt="highlight 2">
+            </label>
+            <label class="card" for="item-3" id="song-3">
+              <img
+                src="https://raw.githubusercontent.com/dipy/dipy_data/master/illuminating_lines.png?raw=true"
+                alt="highlight 3">
+            </label>
+          </div>
+          <div class="player">
+            <div class="upper-part">
+              <div class="info-area" id="test">
+                <label class="highlight-info" id="highlight-info-1">
+                  <div class="title">Tractometry</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-2">
+                  <div class="title">Warping of bundles</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-3">
+                  <div class="title">Visualization - Illuminating lines with cinematic rendering
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1455,7 +1506,7 @@
 
   <script type="text/javascript">
     function openCloseMenu () {
-      if (window.innerWidth < 768) { 
+      if (window.innerWidth < 768) {
         var x = document.getElementById("menu");
         if (x.className.includes("responsive")) {
           x.className = "col-md-10"
@@ -1464,14 +1515,14 @@
         }
       }
     }
-    $(document).ready(function() {
+    $(document).ready(function () {
+      // menu highlighting
       var menu = $('#menu-wrap');
       menu.hide();
-
-      $(window).scroll(function() {
+      $(window).scroll(function () {
         menu.show();
         var scrollHeight = $(window).scrollTop();
-        $('a[href^="#"]').each(function() {
+        $('a[href^="#"]').each(function () {
           var target = $(this).attr('href');
           var offset = $(target).offset().top;
           var windowHeight = $(window).height();
@@ -1483,14 +1534,21 @@
             $(this).parents('#menu li').removeClass('active');
           }
         });
-        setTimeout(function(){ 
+        setTimeout(function () {
           var scrollHeight = $(window).scrollTop();
-          console.log(scrollHeight)
           if (scrollHeight == 0) {
             menu.hide();
           }
         }, 500);
       });
+
+      var activeHighlight = 0;
+      // highlight carousel
+      setInterval(function() {
+        activeHighlight += 1;
+        activeHighlight %= 3;
+        $(`#item-${(activeHighlight + 1)}`).prop('checked', true);
+      }, 3000)
     });
   </script>
 
