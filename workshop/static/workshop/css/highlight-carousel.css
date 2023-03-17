@@ -46,6 +46,7 @@ input[type=radio] {
   padding: 30px 10px;
   font-family: "DM Sans", sans-serif;
   transition: background 0.8s ease-in;
+  overflow-x: hidden;
 }
 
 .highlight-wrapper img {
@@ -56,25 +57,54 @@ input[type=radio] {
      object-fit: contain;
 }
 
-#item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+#item-1:checked ~ .cards #highlight-5,
+#item-2:checked ~ .cards #highlight-1,
+#item-3:checked ~ .cards #highlight-2,
+#item-4:checked ~ .cards #highlight-3,
+#item-5:checked ~ .cards #highlight-4 {
   transform: translatex(-40%) scale(0.8);
   opacity: 0.4;
   z-index: 0;
 }
 
-#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+#item-1:checked ~ .cards #highlight-2,
+#item-2:checked ~ .cards #highlight-3,
+#item-3:checked ~ .cards #highlight-4,
+#item-4:checked ~ .cards #highlight-5,
+#item-5:checked ~ .cards #highlight-1 {
   transform: translatex(40%) scale(0.8);
   opacity: 0.4;
   z-index: 0;
 }
 
-#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+#item-1:checked ~ .cards #highlight-1,
+#item-2:checked ~ .cards #highlight-2,
+#item-3:checked ~ .cards #highlight-3,
+#item-4:checked ~ .cards #highlight-4,
+#item-5:checked ~ .cards #highlight-5 {
   transform: translatex(0) scale(1);
   opacity: 1;
   z-index: 1;
 }
-#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+#item-1:checked ~ .cards #highlight-1,
+#item-2:checked ~ .cards #highlight-2,
+#item-3:checked ~ .cards #highlight-3,
+#item-4:checked ~ .cards #highlight-4,
+#item-5:checked ~ .cards #highlight-5 {
   box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+}
+
+#item-1:checked ~ .cards #highlight-3,
+#item-1:checked ~ .cards #highlight-4,
+#item-2:checked ~ .cards #highlight-4,
+#item-2:checked ~ .cards #highlight-5,
+#item-3:checked ~ .cards #highlight-1,
+#item-3:checked ~ .cards #highlight-5,
+#item-4:checked ~ .cards #highlight-1,
+#item-4:checked ~ .cards #highlight-2,
+#item-5:checked ~ .cards #highlight-2,
+#item-5:checked ~ .cards #highlight-3 {
+  opacity: 0;
 }
 
 .player {
@@ -133,7 +163,7 @@ input[type=radio] {
   transition: transform 0.8s ease-in;
 }
 
-#item-2:checked ~ .player #test {
+#item-1:checked ~ .player #test {
   transform: translateY(0);
 }
 
@@ -143,4 +173,12 @@ input[type=radio] {
 
 #item-3:checked ~ .player #test {
   transform: translateY(-120px);
+}
+
+#item-4:checked ~ .player #test {
+  transform: translateY(-180px);
+}
+
+#item-5:checked ~ .player #test {
+  transform: translateY(-240px);
 }
