@@ -46,7 +46,7 @@
           <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
           <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
           <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
-          <li data-menuanchor="Highlight" class="no-mobile-view" onclick="openCloseMenu()"><a href="#Highlight">Highlight</a></li>
+          <li data-menuanchor="Highlight" class="no-mobile-view" onclick="openCloseMenu()"><a href="#Highlight">Highlights</a></li>
           <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li>
@@ -423,9 +423,9 @@
     </section>
 
     <section class="highlights no-mobile-view" id="Highlight">
-      <div class="p-l-50">
+      <div class="p-l-50 p-t-50">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
-          Highlight
+          Highlights
         </h1>
         <div class="speaker-divider m-b-40"></div>
       </div>
@@ -434,35 +434,52 @@
           <input type="radio" name="slider" id="item-1" checked>
           <input type="radio" name="slider" id="item-2">
           <input type="radio" name="slider" id="item-3">
+          <input type="radio" name="slider" id="item-4">
+          <input type="radio" name="slider" id="item-5">
           <div class="cards">
-            <label class="card" for="item-1" id="song-1">
+            <label class="card" for="item-1" id="highlight-1">
               <img
                 src="https://raw.githubusercontent.com/dipy/dipy_data/master/tractometry.png?raw=true"
                 alt="highlight 1">
             </label>
-            <label class="card" for="item-2" id="song-2">
+            <label class="card" for="item-2" id="highlight-2">
               <img
                 src="https://raw.githubusercontent.com/dipy/dipy_data/master/wrapping_bundles.png?raw=true"
                 alt="highlight 2">
             </label>
-            <label class="card" for="item-3" id="song-3">
+            <label class="card" for="item-3" id="highlight-3">
               <img
                 src="https://raw.githubusercontent.com/dipy/dipy_data/master/illuminating_lines.png?raw=true"
                 alt="highlight 3">
+            </label>
+            <label class="card" for="item-4" id="highlight-4">
+              <img
+                src="https://raw.githubusercontent.com/dipy/dipy_data/master/preprocess.png?raw=true"
+                alt="highlight 4">
+            </label>
+            <label class="card" for="item-5" id="highlight-5">
+              <img
+                src="https://raw.githubusercontent.com/dipy/dipy_data/master/brain-extraction.png?raw=true"
+                alt="highlight 5">
             </label>
           </div>
           <div class="player">
             <div class="upper-part">
               <div class="info-area" id="test">
                 <label class="highlight-info" id="highlight-info-1">
-                  <div class="title">Tractometry</div>
+                  <div class="title">Advanced tractometry</div>
                 </label>
                 <label class="highlight-info" id="highlight-info-2">
                   <div class="title">Warping of bundles</div>
                 </label>
                 <label class="highlight-info" id="highlight-info-3">
-                  <div class="title">Visualization - Illuminating lines with cinematic rendering
-                  </div>
+                  <div class="title">Cinematic visualization</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-4">
+                  <div class="title">State-of-the-art preprocessing</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-5">
+                  <div class="title">Accurate brain extraction</div>
                 </label>
               </div>
             </div>
@@ -1546,7 +1563,7 @@
       // highlight carousel
       setInterval(function() {
         activeHighlight += 1;
-        activeHighlight %= 3;
+        activeHighlight %= 5;
         $(`#item-${(activeHighlight + 1)}`).prop('checked', true);
       }, 3000)
     });
