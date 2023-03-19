@@ -2908,3 +2908,9 @@ iframe {border: none;}
 	}
 }
 
+@media (min-width: 992px) {
+	.offset-lg-1-5 {
+		margin-left: 12.499999995%;
+	}
+}
+

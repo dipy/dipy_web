@@ -133,10 +133,11 @@ a:hover {
 	left:0;
 	height: 50px;
 	z-index: 7;
-	width: 100%;
+	width: 100vw;
 	padding: 0;
 	margin:0;
 	direction: rtl;
+  box-sizing: border-box;
 }
 #menu-wrap img{
   width: auto;
