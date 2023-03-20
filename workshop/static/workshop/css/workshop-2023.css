@@ -184,12 +184,9 @@ html, body {
   filter: invert(58%) sepia(41%) saturate(4693%) hue-rotate(359deg) brightness(101%) contrast(107%);
   opacity: 0.2;
   width: 35%;
-}
-
-.watermark-logo {
-  opacity: 0.2;
-  margin-top: -15%;
-  width: 35%;
+  padding: 10px;
+  border: 10px solid #000;
+  border-radius: 50%;
 }
 
 .watermark-wrapper {
