@@ -61,6 +61,7 @@
   </div>
   <main>
     <section class="home" id="Home">
+      <div class="gradient"></div>
       <div class="simpleslide100">
         {% if workshop.bg_images.all %}
         {% for bg in workshop.bg_images.all %}
@@ -75,7 +76,7 @@
           style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
         {% endif %}
       </div>
-      <div class="content-section">
+      <div class="full-page content-section">
         <h1 class="content-title l1-txt1 p-b-10">
           DIPY WORKSHOP
         </h1>
@@ -420,9 +421,9 @@
               <p class="list-item__details txt-justify">
                 The topics covered need a solid understanding of the models, theory and math. For this reason, all
                 tutorials will be provided at four levels : <br />
-                a&#41; Theory <br/>
-                b&#41; Algorithms/Methods <br/>
-                c&#41; Code/Interfaces <br/>
+                a&#41; Theory <br />
+                b&#41; Algorithms/Methods <br />
+                c&#41; Code/Interfaces <br />
                 d&#41; Clinical Application Examples.
               </p>
             </li>
@@ -1470,13 +1471,14 @@
       </div>
     </section>
 
-    <section class="venue p-b-50" id="Gallery">
-      <div class="container-fluid" id="map_wrapper">
-
+    <section class="full-page p-b-50" id="Gallery">
+      <div class="full-page-heading">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Gallery
         </h1>
         <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="full-page-content">
         <section class="gallery">
           <div class="gallery__item">
             <input type="radio" id="img-1" checked name="gallery" class="gallery__selector" />
@@ -1503,10 +1505,27 @@
                 alt="" /></label>
           </div>
         </section>
+        <div class="s2-txt4 txt-justify fs-16 p-t-20 gallery__text">
+          <p>
+            <strong class="s2-txt2 fs-20">About the location</strong>
+          </p>
+          <br/>
+          <p>
+            We are fortunate to be holding this workshop in Santa Monica, Los Angeles in one of the most beautiful
+            places in the world. Santa Monica provides a range of facilities and entertainment options near the ocean.
+          </p>
+          <br />
+          <p>
+            In addition, you can of course also visit the great sites available in central LA (The Getty, Universal
+            Studios, etc.). For more options see <a class="s2-txt2 fs-16"
+            href="https://www.timeout.com/los-angeles/things-to-do/best-places-visit-los-angeles" target="_blank">here
+          </a>.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="Contact">
+    <section class="full-page contact" id="Contact">
       <h1 class="content-title l1-txt1 p-b-10 color-black">
         Contact
       </h1>
