@@ -23,8 +23,9 @@
   <!-- CSS Files -->
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/countdown.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}" />
+
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
@@ -46,10 +47,10 @@
           <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
           <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
           <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
-          <li data-menuanchor="Highlight" class="no-mobile-view" onclick="openCloseMenu()"><a
-              href="#Highlight">Highlights</a></li>
-          <li data-menuanchor="MHighlight" class="mobile-view-only" onclick="openCloseMenu()"><a
-              href="#MHighlight">Highlights</a></li>
+          <li data-menuanchor="Highlight" onclick="openCloseMenu()">
+            <a href="#Highlight" class="no-mobile-view">Highlights</a>
+            <a href="#MHighlight" class="mobile-view-only">Highlights</a>
+          </li>
           <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
           <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
           <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li>
@@ -494,7 +495,7 @@
       </div>
     </section>
 
-    <section class="m-highlights mobile-view-only full-page" id="MHighlight">
+    <section class="m-highlights full-page mobile-view-only" id="MHighlight">
       <div class="full-page-heading">
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Highlights

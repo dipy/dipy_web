@@ -176,11 +176,11 @@ input[type=radio] {
 }
 
 #item-4:checked ~ .player #test {
-  transform: translateY(-180px);
+  transform: translateY(-178px);
 }
 
 #item-5:checked ~ .player #test {
-  transform: translateY(-240px);
+  transform: translateY(-236px);
 }
 
 .m-highlights-holder {

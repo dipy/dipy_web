@@ -2902,7 +2902,7 @@ iframe {border: none;}
 }
 
 .mobile-view-only {
-	display: none;
+	display: none !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2912,7 +2912,7 @@ iframe {border: none;}
 	}
 
 	.mobile-view-only {
-		display: block;
+		display: block !important;
 	}
 }
 
