@@ -18,10 +18,10 @@ $(".left-arrow").invisible();
 $(".right-arrow").click(function (e) {
   e.preventDefault();
   let slider = $(this).siblings(".m-highlights-img-holder");
-  let scroll = slider.attr("scroll");
-  if (scroll + window.innerWidth < width) {
-    slider.animate({ scrollLeft: window.innerWidth }, 300);
+  let scroll = parseInt(slider.attr("scroll"));
+  if (scroll + 2 * window.innerWidth < width) {
     scroll += window.innerWidth;
+    slider.animate({ scrollLeft: scroll }, 300);
   } else {
     slider.animate({ scrollLeft: width }, 300);
     scroll = width;
@@ -34,10 +34,10 @@ $(".right-arrow").click(function (e) {
 $(".left-arrow").click(function (e) {
   e.preventDefault();
   let slider = $(this).siblings(".m-highlights-img-holder");
-  let scroll = slider.attr("scroll");
-  if (scroll - window.innerWidth > 0) {
-    slider.animate({ scrollLeft: -window.innerWidth }, 300);
+  let scroll = parseInt(slider.attr("scroll"));
+  if (scroll - 2 * window.innerWidth > 0) {
     scroll -= window.innerWidth;
+    slider.animate({ scrollLeft: scroll - window.innerWidth }, 300);
   } else {
     slider.animate({ scrollLeft: 0 }, 300);
     scroll = 0;
