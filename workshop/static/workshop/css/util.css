@@ -2901,10 +2901,18 @@ iframe {border: none;}
 	bottom: 0px;
 }
 
+.mobile-view-only {
+	display: none !important;
+}
+
 @media only screen and (max-width: 767px) {
   /* Your CSS rules for mobile devices go here */
 	.no-mobile-view {
 		display: none !important;
+	}
+
+	.mobile-view-only {
+		display: block !important;
 	}
 }
 
