@@ -448,6 +448,7 @@
           <input type="radio" name="slider" id="item-3">
           <input type="radio" name="slider" id="item-4">
           <input type="radio" name="slider" id="item-5">
+          <input type="radio" name="slider" id="item-6">
           <div class="cards">
             <label class="card" for="item-1" id="highlight-1">
               <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/tractometry.png?raw=true"
@@ -469,6 +470,10 @@
               <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/brain-extraction.png?raw=true"
                 alt="highlight 5">
             </label>
+            <label class="card" for="item-6" id="highlight-6">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/generative_approach.png?raw=true"
+                alt="highlight 6">
+            </label>
           </div>
           <div class="player">
             <div class="upper-part">
@@ -487,6 +492,9 @@
                 </label>
                 <label class="highlight-info" id="highlight-info-5">
                   <div class="title">Accurate brain extraction</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-5">
+                  <div class="title">Generative approaches for missing data</div>
                 </label>
               </div>
             </div>
@@ -604,6 +612,29 @@
               alt="highlight 5">
           </div>
           <div class="title">Accurate brain extraction</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img  class="m-highlights-img" src="https://raw.githubusercontent.com/dipy/dipy_data/master/generative_approach.png?raw=true"
+                alt="highlight 6">
+          </div>
+          <div class="title">Generative approaches for missing data</div>
           <div class="left-arrow float-btn">
             <div class="round">
               <div id="cta">
@@ -1722,7 +1753,7 @@
       // highlight carousel
       setInterval(function () {
         activeHighlight += 1;
-        activeHighlight %= 5;
+        activeHighlight %= 6;
         $(`#item-${(activeHighlight + 1)}`).prop('checked', true);
       }, 3000)
     });
