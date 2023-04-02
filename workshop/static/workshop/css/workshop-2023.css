@@ -347,15 +347,16 @@ html, body {
     width: 85%;
   }
 
-  .col-sm-12 {
+  .col-sm-12, .col-12 {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
-.program-day {
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-  margin: 0 20px;
+.program-day .col-12,
+.program-day .col-lg-4 {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .program-title, .payment-title {
