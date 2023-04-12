@@ -373,9 +373,9 @@ html, body {
 }
 
 .payment-card-amount {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
-  padding: 16px 0;
+  padding: 10px 0;
   text-align: center;
   background-color: rgba(255, 127, 0, 0.5);
   color: white;
@@ -384,9 +384,22 @@ html, body {
 
 .payment-benefits {
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 10px;
   transition: all 0.5s ease-in-out;
+  min-height: 260px;
 }
+
+/* .color-silver {
+  color: #B0BEC5;
+}
+
+.color-gold {
+  color: #FBC02D;
+}
+
+.color-platinum {
+  color: #E0E0E0;
+} */
 
 /* .payment-benefits p {
   font-size: 20px;
