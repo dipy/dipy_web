@@ -25,3 +25,6 @@
   left: 50%;
   transform: translateX(-50%);
 }
+#countdown .time {
+  font-size: inherit;
+}

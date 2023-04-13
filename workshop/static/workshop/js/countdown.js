@@ -9,7 +9,7 @@ function getTimeRemaining(endtime) {
     days: days,
     hours: hours,
     minutes: minutes,
-    seconds: seconds
+    seconds: seconds,
   };
 }
 
@@ -37,5 +37,5 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = "February 10 2023";
+const deadline = "April 24 2023 09:00:00 GMT -0700";
 initializeClock("countdown", deadline);
