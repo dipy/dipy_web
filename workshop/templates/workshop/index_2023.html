@@ -98,8 +98,8 @@
           {{workshop.location}}
         </p>
 
-        {% if coming_soon %}
-        <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Registrations</b> starts in</small>
+        
+        <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Workshop</b> starts in:</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -121,10 +121,10 @@
         </div>
 
         <div class="p-b-25">
-          <a href="https://mail.python.org/mailman3/lists/dipy.python.org/" role="button"
-            class="btn btn-lg btn-secondary register-btn">KEEP ME UPDATED</a>
+          <a href="#Registration" role="button"
+            class="btn btn-lg btn-secondary register-btn">Register Now</a>
         </div>
-        {% endif %}
+        
       </div>
     </section>
 
@@ -353,12 +353,13 @@
             </h1>
             <div class="speaker-divider m-b-40"></div>
           </div>
-          <div class="flex-c w-full thanks-content">
+          <div class="flex-col-c w-full thanks-content">
             <div class="flex-sa w-full flex-w">
               <img src="{% static 'workshop/images/universities/GRG.png' %}" width="150" alt="" />
               <img src="{% static 'workshop/images/universities/ISE.jpeg' %}" width="150" alt="" />
               <!-- <img src="{% static 'workshop/images/universities/NIBIB.jpeg' %}" width="250" alt="" /> -->
             </div>
+            <strong class="s2-txt2 fs-16 m-b-20 color-black">Multiple speakers including Garyfallidis, Landman and Harezlak are funded by the National Institutes of Health. In addition, Koudoro, Rokem and Girard are funded from an EOSS grant through the Chan Zuckerberg Initiative.</strong>
           </div>
         </section>
       </div>
@@ -1695,10 +1696,10 @@
         <h1 class="content-title l1-txt1 p-b-10 color-black">
           Registration
         </h1>
-        <div class="speaker-divider m-b-40"></div>
+        <div class="speaker-divider"></div>
       </div>
       <div class="full-page-content payment-content">
-        <section class="conf-management p-t-50">
+        <section class="conf-management">
           <div class="flex-col-c">
             <h1 class="content-title l2-txt1 p-b-10 color-black txt-center">
               Student
@@ -1709,7 +1710,7 @@
           </div>
           <div class="speaker-content">
             <div class="row">
-              <div class="col-lg-3 col-sm-12 p-b-30 offset-lg-1-5">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Silver
@@ -1722,7 +1723,7 @@
                     <ul class="s2-text3">
                       <li>Listen to the talks live.</li>
                       <li>Learn from the experts.</li>
-                      <li>3 days workshop.</li>
+                      <li>First 3 days workshop.</li>
                       <li>Basic kit for diffusion imaging.</li>
                       <li>Ability to upgrade during the workshop.</li>
                     </ul>
@@ -1737,7 +1738,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Gold
@@ -1749,7 +1750,7 @@
                     <p class="m2-txt3 p-b-10">What will be included?</p>
                     <ul class="s2-text3">
                       <li>Everything in Silver.</li>
-                      <li>5 days workshop.</li>
+                      <li>Complete 5 days of workshop.</li>
                       <li>Attend study groups </li>
                       <li>Present your work.</li>
                       <li>LinkedIn verifiable certificate.</li>
@@ -1766,7 +1767,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Platinum
@@ -1779,7 +1780,8 @@
                     <ul class="s2-text3">
                       <li>Everything in Gold.</li>
                       <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
-                      <li>Access to talks and materials after the workshop.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
                       <li>Year-long support option.</li>
                     </ul>
                   </div>
@@ -1808,7 +1810,7 @@
           </div>
           <div class="speaker-content">
             <div class="row">
-              <div class="col-lg-3 col-sm-12 p-b-30 offset-lg-1-5">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Silver
@@ -1821,7 +1823,7 @@
                     <ul class="s2-text3">
                       <li>Listen to the talks live.</li>
                       <li>Learn from the experts.</li>
-                      <li>3 days workshop.</li>
+                      <li>First 3 days of workshop.</li>
                       <li>Basic kit for diffusion imaging.</li>
                       <li>Ability to upgrade during the workshop.</li>
                     </ul>
@@ -1836,7 +1838,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Gold
@@ -1848,7 +1850,7 @@
                     <p class="m2-txt3 p-b-10">What will be included?</p>
                     <ul class="s2-text3">
                       <li>Everything in Silver.</li>
-                      <li>5 days workshop.</li>
+                      <li>Complete 5 days of workshop.</li>
                       <li>Attend study groups </li>
                       <li>Present your work.</li>
                       <li>LinkedIn verifiable certificate.</li>
@@ -1865,7 +1867,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Platinum
@@ -1878,7 +1880,8 @@
                     <ul class="s2-text3">
                       <li>Everything in Gold.</li>
                       <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
-                      <li>Access to talks and materials after the workshop.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
                       <li>Year-long support option.</li>
                     </ul>
                   </div>
@@ -1907,7 +1910,7 @@
           </div>
           <div class="speaker-content">
             <div class="row">
-              <div class="col-lg-3 col-sm-12 p-b-30 offset-lg-1-5">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Silver
@@ -1920,7 +1923,7 @@
                     <ul class="s2-text3">
                       <li>Listen to the talks live.</li>
                       <li>Learn from the experts.</li>
-                      <li>3 days workshop.</li>
+                      <li>First 3 days workshop.</li>
                       <li>Basic kit for diffusion imaging.</li>
                       <li>Ability to upgrade during the workshop.</li>
                     </ul>
@@ -1935,7 +1938,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Gold
@@ -1947,7 +1950,7 @@
                     <p class="m2-txt3 p-b-10">What will be included?</p>
                     <ul class="s2-text3">
                       <li>Everything in Silver.</li>
-                      <li>5 days workshop.</li>
+                      <li>Complete 5 days of workshop.</li>
                       <li>Attend study groups </li>
                       <li>Present your work.</li>
                       <li>LinkedIn verifiable certificate.</li>
@@ -1964,7 +1967,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-12 p-b-30">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
                 <div class="payment-card">
                   <h4 class="payment-card-title m2-txt4">
                     Platinum
@@ -1977,7 +1980,8 @@
                     <ul class="s2-text3">
                       <li>Everything in Gold.</li>
                       <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
-                      <li>Access to talks and materials after the workshop.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
                       <li>Year-long support option.</li>
                     </ul>
                   </div>
@@ -2290,7 +2294,7 @@
   </script>
 
   <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
-  <!-- <script type="text/javascript" src="{% static 'workshop/js/countdown.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'workshop/js/countdown.js' %}"></script>
   <script type="text/javascript" src="{% static 'workshop/js/scroll.js' %}"></script>
 
 
