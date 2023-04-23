@@ -5,6 +5,8 @@ __all__ = ['index', 'page', 'cite', 'honeycomb', 'tutorials', 'support',
            'dashboard_login', 'custom403', 'custom404', 'custom500',
            'redirect_old_url', 'dashboard_logout']
 
+from packaging.version import parse
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import Http404
@@ -89,6 +91,9 @@ def honeycomb(request):
 def tutorials(request):
     context = {}
     doc = DocumentationLink.objects.filter(displayed=True).exclude(version__contains='dev').order_by('-version')
+    if parse(doc[0].version) >= parse('1.7.0'):
+        return redirect('website:documentation', version=doc[0].version,
+                        path='examples_built')
     context['all_documentation_examples'] = eval(doc[0].tutorials) if doc else []  # get_doc_examples()
     context['meta'] = get_meta_tags_dict(title="DIPY - Tutorials")
     return render(request, 'website/tutorials.html', context)

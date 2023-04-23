@@ -70,6 +70,14 @@ def documentation(request, version, path):
             context['meta'] = get_meta_tags_dict(title=page_title,
                                                  description=first_p_text)
 
+    # Special case for sphinx-gallery
+    for img in bs_doc.find_all('img', {'class': 'sphx-glr-single-img'}):
+        img_url = img.get('src', '')
+        img_srcset = img.get('srcset', '')
+        img['src'] = f'../{img_url}'
+        img['srcset'] = f'../{img_srcset}'
+
+    response_json['body'] = str(bs_doc)
     context['doc'] = response_json
     context['version'] = version
     all_workshops = Workshop.objects.filter(is_published=True).order_by('-start_date')

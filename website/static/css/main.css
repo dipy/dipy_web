@@ -94,14 +94,21 @@ td {
 /*****************************
 *  Footer
 ******************************/
-.bg-gray { background-color: lightgray; }
-.bg-white { background-color: white; }
-
-section {
+.news {
   display: grid;
   background-color: white;
   padding: 30px 0;
   padding-top: 15px; }
+
+.bg-gray { background-color: lightgray; }
+.bg-white { background-color: white; }
+
+section {
+  /* display: grid; */
+  background-color: white;
+  padding: 30px 0;
+  padding-top: 15px; }
+
 
 section .section-title {
   text-align: center;
@@ -653,6 +660,9 @@ Features
 /*********
 Other
 **********/
+#examples {
+  display: block;
+}
 #examples > div.section:before {
   content: '';
   display: block;
