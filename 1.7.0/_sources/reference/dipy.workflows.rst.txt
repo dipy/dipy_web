@@ -1,0 +1,812 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`workflows`
+================
+.. automodule:: dipy.workflows
+
+.. currentmodule:: dipy.workflows
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.align`
+------------------------------
+.. automodule:: dipy.workflows.align
+
+.. currentmodule:: dipy.workflows.align
+.. autosummary::
+
+   ResliceFlow
+   SlrWithQbxFlow
+   ImageRegistrationFlow
+   ApplyTransformFlow
+   SynRegistrationFlow
+   MotionCorrectionFlow
+   BundleWarpFlow
+   check_dimensions
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.base`
+-----------------------------
+.. automodule:: dipy.workflows.base
+
+.. currentmodule:: dipy.workflows.base
+.. autosummary::
+
+   IntrospectiveArgumentParser
+   get_args_default
+   none_or_dtype
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.combined_workflow`
+------------------------------------------
+.. automodule:: dipy.workflows.combined_workflow
+
+.. currentmodule:: dipy.workflows.combined_workflow
+.. autosummary::
+
+   CombinedWorkflow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.denoise`
+--------------------------------
+.. automodule:: dipy.workflows.denoise
+
+.. currentmodule:: dipy.workflows.denoise
+.. autosummary::
+
+   Patch2SelfFlow
+   NLMeansFlow
+   LPCAFlow
+   MPPCAFlow
+   GibbsRingingFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.docstring_parser`
+-----------------------------------------
+.. automodule:: dipy.workflows.docstring_parser
+
+.. currentmodule:: dipy.workflows.docstring_parser
+.. autosummary::
+
+   Reader
+   NumpyDocString
+   dedent_lines
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.flow_runner`
+------------------------------------
+.. automodule:: dipy.workflows.flow_runner
+
+.. currentmodule:: dipy.workflows.flow_runner
+.. autosummary::
+
+   get_level
+   run_flow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.io`
+---------------------------
+.. automodule:: dipy.workflows.io
+
+.. currentmodule:: dipy.workflows.io
+.. autosummary::
+
+   IoInfoFlow
+   FetchFlow
+   SplitFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.mask`
+-----------------------------
+.. automodule:: dipy.workflows.mask
+
+.. currentmodule:: dipy.workflows.mask
+.. autosummary::
+
+   MaskFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.multi_io`
+---------------------------------
+.. automodule:: dipy.workflows.multi_io
+
+.. currentmodule:: dipy.workflows.multi_io
+.. autosummary::
+
+   IOIterator
+   common_start
+   slash_to_under
+   connect_output_paths
+   concatenate_inputs
+   basename_without_extension
+   io_iterator
+   io_iterator_
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.reconst`
+--------------------------------
+.. automodule:: dipy.workflows.reconst
+
+.. currentmodule:: dipy.workflows.reconst
+.. autosummary::
+
+   ReconstMAPMRIFlow
+   ReconstDtiFlow
+   ReconstCSDFlow
+   ReconstCSAFlow
+   ReconstDkiFlow
+   ReconstIvimFlow
+   ReconstRUMBAFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.segment`
+--------------------------------
+.. automodule:: dipy.workflows.segment
+
+.. currentmodule:: dipy.workflows.segment
+.. autosummary::
+
+   MedianOtsuFlow
+   RecoBundlesFlow
+   LabelsBundlesFlow
+   EVACPlusFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.stats`
+------------------------------
+.. automodule:: dipy.workflows.stats
+
+.. currentmodule:: dipy.workflows.stats
+.. autosummary::
+
+   SNRinCCFlow
+   BundleAnalysisTractometryFlow
+   LinearMixedModelsFlow
+   BundleShapeAnalysis
+   buan_bundle_profiles
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.tracking`
+---------------------------------
+.. automodule:: dipy.workflows.tracking
+
+.. currentmodule:: dipy.workflows.tracking
+.. autosummary::
+
+   LocalFiberTrackingPAMFlow
+   PFTrackingPAMFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.viz`
+----------------------------
+.. automodule:: dipy.workflows.viz
+
+.. currentmodule:: dipy.workflows.viz
+.. autosummary::
+
+   HorizonFlow
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`workflows.workflow`
+---------------------------------
+.. automodule:: dipy.workflows.workflow
+
+.. currentmodule:: dipy.workflows.workflow
+.. autosummary::
+
+   Workflow
+
+
+.. currentmodule:: dipy.workflows
+
+
+.. currentmodule:: dipy.workflows.align
+
+
+:class:`ResliceFlow`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ResliceFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`SlrWithQbxFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SlrWithQbxFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ImageRegistrationFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ImageRegistrationFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ApplyTransformFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ApplyTransformFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`SynRegistrationFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SynRegistrationFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`MotionCorrectionFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MotionCorrectionFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`BundleWarpFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: BundleWarpFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+check_dimensions
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: check_dimensions
+
+
+.. currentmodule:: dipy.workflows.base
+
+
+:class:`IntrospectiveArgumentParser`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IntrospectiveArgumentParser
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+get_args_default
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_args_default
+
+none_or_dtype
+~~~~~~~~~~~~~
+
+.. autofunction:: none_or_dtype
+
+
+.. currentmodule:: dipy.workflows.combined_workflow
+
+
+:class:`CombinedWorkflow`
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: CombinedWorkflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.denoise
+
+
+:class:`Patch2SelfFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Patch2SelfFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`NLMeansFlow`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NLMeansFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`LPCAFlow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LPCAFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`MPPCAFlow`
+~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MPPCAFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`GibbsRingingFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: GibbsRingingFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.docstring_parser
+
+
+:class:`Reader`
+~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Reader
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`NumpyDocString`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NumpyDocString
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+dedent_lines
+~~~~~~~~~~~~
+
+.. autofunction:: dedent_lines
+
+
+.. currentmodule:: dipy.workflows.flow_runner
+
+get_level
+~~~~~~~~~
+
+.. autofunction:: get_level
+
+run_flow
+~~~~~~~~
+
+.. autofunction:: run_flow
+
+
+.. currentmodule:: dipy.workflows.io
+
+
+:class:`IoInfoFlow`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IoInfoFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`FetchFlow`
+~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: FetchFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`SplitFlow`
+~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SplitFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.mask
+
+
+:class:`MaskFlow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MaskFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.multi_io
+
+
+:class:`IOIterator`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: IOIterator
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+common_start
+~~~~~~~~~~~~
+
+.. autofunction:: common_start
+
+slash_to_under
+~~~~~~~~~~~~~~
+
+.. autofunction:: slash_to_under
+
+connect_output_paths
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: connect_output_paths
+
+concatenate_inputs
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: concatenate_inputs
+
+basename_without_extension
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: basename_without_extension
+
+io_iterator
+~~~~~~~~~~~
+
+.. autofunction:: io_iterator
+
+io_iterator_
+~~~~~~~~~~~~
+
+.. autofunction:: io_iterator_
+
+
+.. currentmodule:: dipy.workflows.reconst
+
+
+:class:`ReconstMAPMRIFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstMAPMRIFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstDtiFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstDtiFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstCSDFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstCSDFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstCSAFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstCSAFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstDkiFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstDkiFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstIvimFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstIvimFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ReconstRUMBAFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ReconstRUMBAFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.segment
+
+
+:class:`MedianOtsuFlow`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MedianOtsuFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`RecoBundlesFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: RecoBundlesFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`LabelsBundlesFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LabelsBundlesFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`EVACPlusFlow`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: EVACPlusFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.stats
+
+
+:class:`SNRinCCFlow`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SNRinCCFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`BundleAnalysisTractometryFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: BundleAnalysisTractometryFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`LinearMixedModelsFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LinearMixedModelsFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`BundleShapeAnalysis`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: BundleShapeAnalysis
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+buan_bundle_profiles
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: buan_bundle_profiles
+
+
+.. currentmodule:: dipy.workflows.tracking
+
+
+:class:`LocalFiberTrackingPAMFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: LocalFiberTrackingPAMFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`PFTrackingPAMFlow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: PFTrackingPAMFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.viz
+
+
+:class:`HorizonFlow`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: HorizonFlow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.workflows.workflow
+
+
+:class:`Workflow`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Workflow
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+

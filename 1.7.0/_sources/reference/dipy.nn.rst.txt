@@ -1,0 +1,331 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`nn`
+=========
+.. automodule:: dipy.nn
+
+.. currentmodule:: dipy.nn
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.cnn_1d_denoising`
+----------------------------------
+.. automodule:: dipy.nn.cnn_1d_denoising
+
+.. currentmodule:: dipy.nn.cnn_1d_denoising
+.. autosummary::
+
+   Cnn1DDenoiser
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.evac`
+----------------------
+.. automodule:: dipy.nn.evac
+
+.. currentmodule:: dipy.nn.evac
+.. autosummary::
+
+   Block
+   ChannelSum
+   EVACPlus
+   logger
+   prepare_img
+   init_model
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.histo_resdnn`
+------------------------------
+.. automodule:: dipy.nn.histo_resdnn
+
+.. currentmodule:: dipy.nn.histo_resdnn
+.. autosummary::
+
+   HistoResDNN
+   logger
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.model`
+-----------------------
+.. automodule:: dipy.nn.model
+
+.. currentmodule:: dipy.nn.model
+.. autosummary::
+
+   SingleLayerPerceptron
+   MultipleLayerPercepton
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.synb0`
+-----------------------
+.. automodule:: dipy.nn.synb0
+
+.. currentmodule:: dipy.nn.synb0
+.. autosummary::
+
+   EncoderBlock
+   DecoderBlock
+   EncoderBlock
+   DecoderBlock
+   Synb0
+   logger
+   UNet3D
+   normalize
+   unnormalize
+   UNet3D
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`nn.utils`
+-----------------------
+.. automodule:: dipy.nn.utils
+
+.. currentmodule:: dipy.nn.utils
+.. autosummary::
+
+   normalize
+   unnormalize
+   set_logger_level
+   transform_img
+   recover_img
+
+
+.. currentmodule:: dipy.nn
+
+
+.. currentmodule:: dipy.nn.cnn_1d_denoising
+
+
+:class:`Cnn1DDenoiser`
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Cnn1DDenoiser
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.nn.evac
+
+
+:class:`Block`
+~~~~~~~~~~~~~~
+
+
+.. autoclass:: Block
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ChannelSum`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ChannelSum
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`EVACPlus`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: EVACPlus
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+prepare_img
+~~~~~~~~~~~
+
+.. autofunction:: prepare_img
+
+init_model
+~~~~~~~~~~
+
+.. autofunction:: init_model
+
+
+.. currentmodule:: dipy.nn.histo_resdnn
+
+
+:class:`HistoResDNN`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: HistoResDNN
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+
+.. currentmodule:: dipy.nn.model
+
+
+:class:`SingleLayerPerceptron`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SingleLayerPerceptron
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`MultipleLayerPercepton`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: MultipleLayerPercepton
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.nn.synb0
+
+
+:class:`EncoderBlock`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: EncoderBlock
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`DecoderBlock`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: DecoderBlock
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`EncoderBlock`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: EncoderBlock
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`DecoderBlock`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: DecoderBlock
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Synb0`
+~~~~~~~~~~~~~~
+
+
+.. autoclass:: Synb0
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+UNet3D
+~~~~~~
+
+.. autofunction:: UNet3D
+
+normalize
+~~~~~~~~~
+
+.. autofunction:: normalize
+
+unnormalize
+~~~~~~~~~~~
+
+.. autofunction:: unnormalize
+
+UNet3D
+~~~~~~
+
+.. autofunction:: UNet3D
+
+
+.. currentmodule:: dipy.nn.utils
+
+normalize
+~~~~~~~~~
+
+.. autofunction:: normalize
+
+unnormalize
+~~~~~~~~~~~
+
+.. autofunction:: unnormalize
+
+set_logger_level
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: set_logger_level
+
+transform_img
+~~~~~~~~~~~~~
+
+.. autofunction:: transform_img
+
+recover_img
+~~~~~~~~~~~
+
+.. autofunction:: recover_img
+

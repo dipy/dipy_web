@@ -1,0 +1,39 @@
+
+==============
+dipy_evac_plus
+==============
+
+Usage
+-----
+
+ dipy_evac_plus [-h] [--save_masked] [--out_dir str] [--out_mask str] [--out_masked str] input_files
+
+Extract brain using EVAC+
+
+Positional Arguments
+--------------------
+
+
+  input_files       Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help        show this help message and exit
+  --save_masked     Save mask.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str     Output directory. (default current directory)
+  --out_mask str    Name of the mask volume to be saved.
+  --out_masked str  Name of the masked volume to be saved.
+
+References
+----------
+
+ 
+..  [Park2022] Park, J.S., Fadnavis, S., & Garyfallidis, E. (2022).EVAC+: Multi-scale V-net with Deep FeatureCRF Layers for Brain Extraction.  
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

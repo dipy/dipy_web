@@ -1,0 +1,456 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`segment`
+==============
+.. automodule:: dipy.segment
+
+.. currentmodule:: dipy.segment
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.benchmarks`
+---------------------------------
+.. automodule:: dipy.segment.benchmarks
+
+.. currentmodule:: dipy.segment.benchmarks
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.benchmarks.bench_quickbundles`
+----------------------------------------------------
+.. automodule:: dipy.segment.benchmarks.bench_quickbundles
+
+.. currentmodule:: dipy.segment.benchmarks.bench_quickbundles
+.. autosummary::
+
+   MDFpy
+   bench_quickbundles
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.bundles`
+------------------------------
+.. automodule:: dipy.segment.bundles
+
+.. currentmodule:: dipy.segment.bundles
+.. autosummary::
+
+   RecoBundles
+   check_range
+   logger
+   bundle_adjacency
+   ba_analysis
+   cluster_bundle
+   bundle_shape_similarity
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.clustering`
+---------------------------------
+.. automodule:: dipy.segment.clustering
+
+.. currentmodule:: dipy.segment.clustering
+.. autosummary::
+
+   Identity
+   Cluster
+   ClusterCentroid
+   ClusterMap
+   ClusterMapCentroid
+   Clustering
+   QuickBundles
+   QuickBundlesX
+   TreeCluster
+   TreeClusterMap
+   logger
+   qbx_and_merge
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.fss`
+--------------------------
+.. automodule:: dipy.segment.fss
+
+.. currentmodule:: dipy.segment.fss
+.. autosummary::
+
+   FastStreamlineSearch
+   nearest_from_matrix_row
+   nearest_from_matrix_col
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.mask`
+---------------------------
+.. automodule:: dipy.segment.mask
+
+.. currentmodule:: dipy.segment.mask
+.. autosummary::
+
+   multi_median
+   applymask
+   bounding_box
+   crop
+   median_otsu
+   segment_from_cfa
+   clean_cc_mask
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.metric`
+-----------------------------
+.. automodule:: dipy.segment.metric
+
+.. currentmodule:: dipy.segment.metric
+.. autosummary::
+
+   mdf
+   mean_manhattan_distance
+   mean_euclidean_distance
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.threshold`
+--------------------------------
+.. automodule:: dipy.segment.threshold
+
+.. currentmodule:: dipy.segment.threshold
+.. autosummary::
+
+   otsu
+   upper_bound_by_rate
+   upper_bound_by_percent
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`segment.tissue`
+-----------------------------
+.. automodule:: dipy.segment.tissue
+
+.. currentmodule:: dipy.segment.tissue
+.. autosummary::
+
+   TissueClassifierHMRF
+
+
+.. currentmodule:: dipy.segment
+
+
+.. currentmodule:: dipy.segment.benchmarks
+
+
+.. currentmodule:: dipy.segment.benchmarks.bench_quickbundles
+
+
+:class:`MDFpy`
+~~~~~~~~~~~~~~
+
+
+.. autoclass:: MDFpy
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+bench_quickbundles
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: bench_quickbundles
+
+
+.. currentmodule:: dipy.segment.bundles
+
+
+:class:`RecoBundles`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: RecoBundles
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+check_range
+~~~~~~~~~~~
+
+.. autofunction:: check_range
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+bundle_adjacency
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: bundle_adjacency
+
+ba_analysis
+~~~~~~~~~~~
+
+.. autofunction:: ba_analysis
+
+cluster_bundle
+~~~~~~~~~~~~~~
+
+.. autofunction:: cluster_bundle
+
+bundle_shape_similarity
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: bundle_shape_similarity
+
+
+.. currentmodule:: dipy.segment.clustering
+
+
+:class:`Identity`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Identity
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Cluster`
+~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Cluster
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ClusterCentroid`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ClusterCentroid
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ClusterMap`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ClusterMap
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`ClusterMapCentroid`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ClusterMapCentroid
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`Clustering`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Clustering
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`QuickBundles`
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: QuickBundles
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`QuickBundlesX`
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: QuickBundlesX
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`TreeCluster`
+~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TreeCluster
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`TreeClusterMap`
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TreeClusterMap
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+qbx_and_merge
+~~~~~~~~~~~~~
+
+.. autofunction:: qbx_and_merge
+
+
+.. currentmodule:: dipy.segment.fss
+
+
+:class:`FastStreamlineSearch`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: FastStreamlineSearch
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+nearest_from_matrix_row
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: nearest_from_matrix_row
+
+nearest_from_matrix_col
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: nearest_from_matrix_col
+
+
+.. currentmodule:: dipy.segment.mask
+
+multi_median
+~~~~~~~~~~~~
+
+.. autofunction:: multi_median
+
+applymask
+~~~~~~~~~
+
+.. autofunction:: applymask
+
+bounding_box
+~~~~~~~~~~~~
+
+.. autofunction:: bounding_box
+
+crop
+~~~~
+
+.. autofunction:: crop
+
+median_otsu
+~~~~~~~~~~~
+
+.. autofunction:: median_otsu
+
+segment_from_cfa
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: segment_from_cfa
+
+clean_cc_mask
+~~~~~~~~~~~~~
+
+.. autofunction:: clean_cc_mask
+
+
+.. currentmodule:: dipy.segment.metric
+
+mdf
+~~~
+
+.. autofunction:: mdf
+
+mean_manhattan_distance
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: mean_manhattan_distance
+
+mean_euclidean_distance
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: mean_euclidean_distance
+
+
+.. currentmodule:: dipy.segment.threshold
+
+otsu
+~~~~
+
+.. autofunction:: otsu
+
+upper_bound_by_rate
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: upper_bound_by_rate
+
+upper_bound_by_percent
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: upper_bound_by_percent
+
+
+.. currentmodule:: dipy.segment.tissue
+
+
+:class:`TissueClassifierHMRF`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: TissueClassifierHMRF
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+

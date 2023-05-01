@@ -1,0 +1,19 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`dipy`
+===========
+.. automodule:: dipy
+
+.. currentmodule:: dipy
+.. autosummary::
+
+   get_info
+
+
+.. currentmodule:: dipy
+
+get_info
+~~~~~~~~
+
+.. autofunction:: get_info
+

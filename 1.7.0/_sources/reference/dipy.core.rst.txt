@@ -1,0 +1,787 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`core`
+===========
+.. automodule:: dipy.core
+
+.. currentmodule:: dipy.core
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.geometry`
+----------------------------
+.. automodule:: dipy.core.geometry
+
+.. currentmodule:: dipy.core.geometry
+.. autosummary::
+
+   _TUPLE2AXES
+   sphere2cart
+   cart2sphere
+   sph2latlon
+   normalized_vector
+   vector_norm
+   rodrigues_axis_rotation
+   nearest_pos_semi_def
+   sphere_distance
+   cart_distance
+   vector_cosine
+   lambert_equal_area_projection_polar
+   lambert_equal_area_projection_cart
+   euler_matrix
+   compose_matrix
+   decompose_matrix
+   circumradius
+   vec2vec_rotmat
+   compose_transformations
+   perpendicular_directions
+   dist_to_corner
+   is_hemispherical
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.gradients`
+-----------------------------
+.. automodule:: dipy.core.gradients
+
+.. currentmodule:: dipy.core.gradients
+.. autosummary::
+
+   GradientTable
+   logger
+   unique_bvals
+   gradient_table_from_bvals_bvecs
+   gradient_table_from_qvals_bvecs
+   gradient_table_from_gradient_strength_bvecs
+   gradient_table
+   reorient_bvecs
+   generate_bvecs
+   round_bvals
+   unique_bvals_tolerance
+   get_bval_indices
+   unique_bvals_magnitude
+   check_multi_b
+   btens_to_params
+   params_to_btens
+   ornt_mapping
+   reorient_vectors
+   reorient_on_axis
+   orientation_from_string
+   orientation_to_string
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.graph`
+-------------------------
+.. automodule:: dipy.core.graph
+
+.. currentmodule:: dipy.core.graph
+.. autosummary::
+
+   Graph
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.histeq`
+--------------------------
+.. automodule:: dipy.core.histeq
+
+.. currentmodule:: dipy.core.histeq
+.. autosummary::
+
+   histeq
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.ndindex`
+---------------------------
+.. automodule:: dipy.core.ndindex
+
+.. currentmodule:: dipy.core.ndindex
+.. autosummary::
+
+   ndindex
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.onetime`
+---------------------------
+.. automodule:: dipy.core.onetime
+
+.. currentmodule:: dipy.core.onetime
+.. autosummary::
+
+   ResetMixin
+   OneTimeProperty
+   auto_attr
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.optimize`
+----------------------------
+.. automodule:: dipy.core.optimize
+
+.. currentmodule:: dipy.core.optimize
+.. autosummary::
+
+   Optimizer
+   SKLearnLinearSolver
+   NonNegativeLeastSquares
+   PositiveDefiniteLeastSquares
+   spdot
+   sparse_nnls
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.profile`
+---------------------------
+.. automodule:: dipy.core.profile
+
+.. currentmodule:: dipy.core.profile
+.. autosummary::
+
+   Profiler
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.rng`
+-----------------------
+.. automodule:: dipy.core.rng
+
+.. currentmodule:: dipy.core.rng
+.. autosummary::
+
+   WichmannHill2006
+   WichmannHill1982
+   LEcuyer
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.sphere`
+--------------------------
+.. automodule:: dipy.core.sphere
+
+.. currentmodule:: dipy.core.sphere
+.. autosummary::
+
+   Sphere
+   HemiSphere
+   faces_from_sphere_vertices
+   unique_edges
+   unique_sets
+   disperse_charges
+   disperse_charges_alt
+   euler_characteristic_check
+   octahedron_vertices
+   octahedron_faces
+   icosahedron_vertices
+   icosahedron_faces
+   unit_octahedron
+   unit_icosahedron
+   hemi_icosahedron
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.sphere_stats`
+--------------------------------
+.. automodule:: dipy.core.sphere_stats
+
+.. currentmodule:: dipy.core.sphere_stats
+.. autosummary::
+
+   random_uniform_on_sphere
+   eigenstats
+   compare_orientation_sets
+   angular_similarity
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.subdivide_octahedron`
+----------------------------------------
+.. automodule:: dipy.core.subdivide_octahedron
+
+.. currentmodule:: dipy.core.subdivide_octahedron
+.. autosummary::
+
+   create_unit_sphere
+   create_unit_hemisphere
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`core.wavelet`
+---------------------------
+.. automodule:: dipy.core.wavelet
+
+.. currentmodule:: dipy.core.wavelet
+.. autosummary::
+
+   cshift3D
+   permutationinverse
+   afb3D_A
+   sfb3D_A
+   sfb3D
+   afb3D
+   dwt3D
+   idwt3D
+
+
+.. currentmodule:: dipy.core
+
+
+.. currentmodule:: dipy.core.geometry
+
+_TUPLE2AXES
+~~~~~~~~~~~
+
+.. autofunction:: _TUPLE2AXES
+
+sphere2cart
+~~~~~~~~~~~
+
+.. autofunction:: sphere2cart
+
+cart2sphere
+~~~~~~~~~~~
+
+.. autofunction:: cart2sphere
+
+sph2latlon
+~~~~~~~~~~
+
+.. autofunction:: sph2latlon
+
+normalized_vector
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: normalized_vector
+
+vector_norm
+~~~~~~~~~~~
+
+.. autofunction:: vector_norm
+
+rodrigues_axis_rotation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: rodrigues_axis_rotation
+
+nearest_pos_semi_def
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: nearest_pos_semi_def
+
+sphere_distance
+~~~~~~~~~~~~~~~
+
+.. autofunction:: sphere_distance
+
+cart_distance
+~~~~~~~~~~~~~
+
+.. autofunction:: cart_distance
+
+vector_cosine
+~~~~~~~~~~~~~
+
+.. autofunction:: vector_cosine
+
+lambert_equal_area_projection_polar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: lambert_equal_area_projection_polar
+
+lambert_equal_area_projection_cart
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: lambert_equal_area_projection_cart
+
+euler_matrix
+~~~~~~~~~~~~
+
+.. autofunction:: euler_matrix
+
+compose_matrix
+~~~~~~~~~~~~~~
+
+.. autofunction:: compose_matrix
+
+decompose_matrix
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: decompose_matrix
+
+circumradius
+~~~~~~~~~~~~
+
+.. autofunction:: circumradius
+
+vec2vec_rotmat
+~~~~~~~~~~~~~~
+
+.. autofunction:: vec2vec_rotmat
+
+compose_transformations
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: compose_transformations
+
+perpendicular_directions
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: perpendicular_directions
+
+dist_to_corner
+~~~~~~~~~~~~~~
+
+.. autofunction:: dist_to_corner
+
+is_hemispherical
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: is_hemispherical
+
+
+.. currentmodule:: dipy.core.gradients
+
+
+:class:`GradientTable`
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: GradientTable
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+logger
+~~~~~~
+
+.. autofunction:: logger
+
+unique_bvals
+~~~~~~~~~~~~
+
+.. autofunction:: unique_bvals
+
+gradient_table_from_bvals_bvecs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: gradient_table_from_bvals_bvecs
+
+gradient_table_from_qvals_bvecs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: gradient_table_from_qvals_bvecs
+
+gradient_table_from_gradient_strength_bvecs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: gradient_table_from_gradient_strength_bvecs
+
+gradient_table
+~~~~~~~~~~~~~~
+
+.. autofunction:: gradient_table
+
+reorient_bvecs
+~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_bvecs
+
+generate_bvecs
+~~~~~~~~~~~~~~
+
+.. autofunction:: generate_bvecs
+
+round_bvals
+~~~~~~~~~~~
+
+.. autofunction:: round_bvals
+
+unique_bvals_tolerance
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: unique_bvals_tolerance
+
+get_bval_indices
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_bval_indices
+
+unique_bvals_magnitude
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: unique_bvals_magnitude
+
+check_multi_b
+~~~~~~~~~~~~~
+
+.. autofunction:: check_multi_b
+
+btens_to_params
+~~~~~~~~~~~~~~~
+
+.. autofunction:: btens_to_params
+
+params_to_btens
+~~~~~~~~~~~~~~~
+
+.. autofunction:: params_to_btens
+
+ornt_mapping
+~~~~~~~~~~~~
+
+.. autofunction:: ornt_mapping
+
+reorient_vectors
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_vectors
+
+reorient_on_axis
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: reorient_on_axis
+
+orientation_from_string
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_from_string
+
+orientation_to_string
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: orientation_to_string
+
+
+.. currentmodule:: dipy.core.graph
+
+
+:class:`Graph`
+~~~~~~~~~~~~~~
+
+
+.. autoclass:: Graph
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.core.histeq
+
+histeq
+~~~~~~
+
+.. autofunction:: histeq
+
+
+.. currentmodule:: dipy.core.ndindex
+
+ndindex
+~~~~~~~
+
+.. autofunction:: ndindex
+
+
+.. currentmodule:: dipy.core.onetime
+
+
+:class:`ResetMixin`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: ResetMixin
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`OneTimeProperty`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: OneTimeProperty
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+auto_attr
+~~~~~~~~~
+
+.. autofunction:: auto_attr
+
+
+.. currentmodule:: dipy.core.optimize
+
+
+:class:`Optimizer`
+~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Optimizer
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`SKLearnLinearSolver`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: SKLearnLinearSolver
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`NonNegativeLeastSquares`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: NonNegativeLeastSquares
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`PositiveDefiniteLeastSquares`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: PositiveDefiniteLeastSquares
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+spdot
+~~~~~
+
+.. autofunction:: spdot
+
+sparse_nnls
+~~~~~~~~~~~
+
+.. autofunction:: sparse_nnls
+
+
+.. currentmodule:: dipy.core.profile
+
+
+:class:`Profiler`
+~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Profiler
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+.. currentmodule:: dipy.core.rng
+
+WichmannHill2006
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: WichmannHill2006
+
+WichmannHill1982
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: WichmannHill1982
+
+LEcuyer
+~~~~~~~
+
+.. autofunction:: LEcuyer
+
+
+.. currentmodule:: dipy.core.sphere
+
+
+:class:`Sphere`
+~~~~~~~~~~~~~~~
+
+
+.. autoclass:: Sphere
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+
+:class:`HemiSphere`
+~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: HemiSphere
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+faces_from_sphere_vertices
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: faces_from_sphere_vertices
+
+unique_edges
+~~~~~~~~~~~~
+
+.. autofunction:: unique_edges
+
+unique_sets
+~~~~~~~~~~~
+
+.. autofunction:: unique_sets
+
+disperse_charges
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: disperse_charges
+
+disperse_charges_alt
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: disperse_charges_alt
+
+euler_characteristic_check
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: euler_characteristic_check
+
+octahedron_vertices
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: octahedron_vertices
+
+octahedron_faces
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: octahedron_faces
+
+icosahedron_vertices
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: icosahedron_vertices
+
+icosahedron_faces
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: icosahedron_faces
+
+unit_octahedron
+~~~~~~~~~~~~~~~
+
+.. autofunction:: unit_octahedron
+
+unit_icosahedron
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: unit_icosahedron
+
+hemi_icosahedron
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: hemi_icosahedron
+
+
+.. currentmodule:: dipy.core.sphere_stats
+
+random_uniform_on_sphere
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: random_uniform_on_sphere
+
+eigenstats
+~~~~~~~~~~
+
+.. autofunction:: eigenstats
+
+compare_orientation_sets
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: compare_orientation_sets
+
+angular_similarity
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: angular_similarity
+
+
+.. currentmodule:: dipy.core.subdivide_octahedron
+
+create_unit_sphere
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: create_unit_sphere
+
+create_unit_hemisphere
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: create_unit_hemisphere
+
+
+.. currentmodule:: dipy.core.wavelet
+
+cshift3D
+~~~~~~~~
+
+.. autofunction:: cshift3D
+
+permutationinverse
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: permutationinverse
+
+afb3D_A
+~~~~~~~
+
+.. autofunction:: afb3D_A
+
+sfb3D_A
+~~~~~~~
+
+.. autofunction:: sfb3D_A
+
+sfb3D
+~~~~~
+
+.. autofunction:: sfb3D
+
+afb3D
+~~~~~
+
+.. autofunction:: afb3D
+
+dwt3D
+~~~~~
+
+.. autofunction:: dwt3D
+
+idwt3D
+~~~~~~
+
+.. autofunction:: idwt3D
+

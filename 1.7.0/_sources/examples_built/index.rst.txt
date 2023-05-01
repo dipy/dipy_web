@@ -1,0 +1,1813 @@
+:orphan:
+
+.. _ref_examples:
+
+Examples
+========
+
+.. toctree::
+   :maxdepth: 1
+
+   ../note_about_examples
+
+.. contents::
+   :depth: 2
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    </div>
+
+Quick Start
+-----------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In diffusion MRI (dMRI) usually we use three types of files, a Nifti file with the diffusion we...">
+
+.. only:: html
+
+  .. image:: /examples_built/01_quick_start/images/thumb/sphx_glr_quick_start_thumb.png
+    :alt: Getting started with DIPY
+
+  :ref:`sphx_glr_examples_built_01_quick_start_quick_start.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Getting started with DIPY</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/01_quick_start/images/thumb/sphx_glr_tracking_introduction_eudx_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_01_quick_start_tracking_introduction_eudx.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Preprocessing
+-------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview -------- Often in imaging it is common to reslice images in different resolutions. Esp...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_reslice_datasets_thumb.png
+    :alt: Reslice diffusion datasets
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_reslice_datasets.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reslice diffusion datasets</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview -------- During a dMRI acquisition, the subject motion inevitable. This motion implies...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_motion_correction_thumb.png
+    :alt: Between-volumes Motion Correction on DWI datasets
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_motion_correction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Between-volumes Motion Correction on DWI datasets</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Often, one is interested in estimating the noise in the diffusion signal. One of the methods to...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_piesno_thumb.png
+    :alt: Noise estimation using PIESNO
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_piesno.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Noise estimation using PIESNO</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Using the non-local means filter [Coupe08]_ and [Coupe11]_ and  you can denoise 3D or 4D images...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_nlmeans_thumb.png
+    :alt: Denoise images using Non-Local Means (NLMEANS)
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_nlmeans.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Non-Local Means (NLMEANS)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_brain_extraction_dwi_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_brain_extraction_dwi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Patch2Self [Fadnavis20]_ is  a self-supervised learning method for denoising DWI data, which us...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_patch2self_thumb.png
+    :alt: Patch2Self: Self-Supervised Denoising via Statistical Independence
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_patch2self.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Patch2Self: Self-Supervised Denoising via Statistical Independence</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="PCA-based denoising algorithms are effective denoising methods because they explore the redunda...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_localpca_thumb.png
+    :alt: Denoise images using Local PCA via empirical thresholds
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_localpca.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Local PCA via empirical thresholds</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how you can create gradient tables and sphere objects using DIPY_.">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_gradients_spheres_thumb.png
+    :alt: Gradients and Spheres
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_gradients_spheres.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gradients and Spheres</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The adaptive soft coefficient matching (ASCM) as described in [Coupe11]_ is a improved extensio...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_ascm_thumb.png
+    :alt: Denoise images using Adaptive Soft Coefficient Matching (ASCM)
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_ascm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Adaptive Soft Coefficient Matching (ASCM)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Computing the Signal-to-Noise-Ratio (SNR) of DW images is still an open question, as SNR depend...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_snr_in_cc_thumb.png
+    :alt: SNR estimation for Diffusion-Weighted Images
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_snr_in_cc.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">SNR estimation for Diffusion-Weighted Images</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The PCA-based denoising algorithm exploits the redundancy across the diffusion-weighted images ...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_mppca_thumb.png
+    :alt: Denoise images using the Marcenko-Pastur PCA algorithm
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_mppca.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using the Marcenko-Pastur PCA algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Magnetic Resonance (MR) images are reconstructed from the Fourier coefficients of acquired k-sp...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_gibbs_thumb.png
+    :alt: Suppress Gibbs oscillations
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_gibbs.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Suppress Gibbs oscillations</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Reconstruction
+--------------
+
+Below, an overview of all reconstruction models available on DIPY.
+
+Note: Some reconstruction models do not have a tutorial yet
+
+.. include:: ../reconstruction_models_list.rst
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Q-space trajectory imaging (QTI) [1]_ with applied positivity constraints (QTI+) is an estimati...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qtiplus_thumb.png
+    :alt: Applying positivity constraints to Q-space Trajectory Imaging (QTI+)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qtiplus.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Applying positivity constraints to Q-space Trajectory Imaging (QTI+)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to model the diffusion signal as a linear combination of continuous functions from ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_shore_thumb.png
+    :alt: Continuous and analytical diffusion signal modelling with 3D-SHORE
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_shore.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Continuous and analytical diffusion signal modelling with 3D-SHORE</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply Diffusion Spectrum Imaging [Wedeen08]_ to diffusion MRI datasets of Cartes...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsi_thumb.png
+    :alt: Reconstruct with Diffusion Spectrum Imaging
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Diffusion Spectrum Imaging</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsid_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsid.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate two SHORE-based scalar maps: return to origin probability (RTOP) [Desc...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_shore_metrics_thumb.png
+    :alt: Calculate SHORE scalar maps
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_shore_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate SHORE scalar maps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply Generalized Q-Sampling Imaging [Yeh2010]_ to diffusion MRI datasets. You c...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_gqi_thumb.png
+    :alt: Reconstruct with Generalized Q-Sampling Imaging
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_gqi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Generalized Q-Sampling Imaging</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply a Constant Solid Angle ODF (Q-Ball) model from Aganj et al. [Aganj2010]_ t...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_csa_thumb.png
+    :alt: Reconstruct with Constant Solid Angle (Q-Ball)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_csa.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Constant Solid Angle (Q-Ball)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we will use the Sparse Fascicle Model (SFM) [Rokem2015]_, to reconstruct the f...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_sfm_thumb.png
+    :alt: Reconstruction with the Sparse Fascicle Model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_sfm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with the Sparse Fascicle Model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate two DSI-based scalar maps: return to origin probability (RTOP) [Descot...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsi_metrics_thumb.png
+    :alt: Calculate DSI-based scalar maps
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsi_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate DSI-based scalar maps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion kurtosis model is an expansion of the diffusion tensor model (see example_reconst...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dki_thumb.png
+    :alt: Reconstruction of the diffusion signal with the kurtosis tensor model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the kurtosis tensor model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Different models of diffusion MRI can be compared based on their accuracy in fitting the diffus...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_kfold_xval_thumb.png
+    :alt: K-fold cross-validation for model comparison
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_kfold_xval.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">K-fold cross-validation for model comparison</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Q-space trajectory imaging (QTI) by Westin et al. [1]_ is a general framework for analyzing dif...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qti_thumb.png
+    :alt: Reconstruct with Q-space Trajectory Imaging (QTI)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Q-space Trajectory Imaging (QTI)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion tensor model is a model that describes the diffusion within a voxel. First propos...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dti_thumb.png
+    :alt: Reconstruction of the diffusion signal with the Tensor model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the Tensor model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to obtain a voxel specific response function in the form of axially symmetric tenso...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_forecast_thumb.png
+    :alt: Crossing invariant fiber response function with FORECAST model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_forecast.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crossing invariant fiber response function with FORECAST model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion tensor model takes into account certain kinds of noise (thermal), but not other k...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_restore_dti_thumb.png
+    :alt: Using the RESTORE algorithm for robust tensor fitting
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_restore_dti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using the RESTORE algorithm for robust tensor fitting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="DKI can also be used to derive concrete biophysical parameters by applying microstructural mode...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dki_micro_thumb.png
+    :alt: Reconstruction of the diffusion signal with the WMTI model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dki_micro.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the WMTI model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how you can use a spherical harmonics (SH) function to reconstruct any spher...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_sh_thumb.png
+    :alt: Signal Reconstruction Using Spherical Harmonics
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_sh.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Signal Reconstruction Using Spherical Harmonics</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="As shown previously (see example_reconst_dti), the diffusion tensor model is a simple way to ch...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_fwdti_thumb.png
+    :alt: Using the free water elimination model to remove DTI free water contamination
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_fwdti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using the free water elimination model to remove DTI free water contamination</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The IVIM model expresses the MRI signal as follows:">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_ivim_thumb.png
+    :alt: Intravoxel incoherent motion
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_ivim.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Intravoxel incoherent motion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use Constrained Spherical Deconvolution (CSD) introduced by Tournier ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_csd_thumb.png
+    :alt: Reconstruction with Constrained Spherical Deconvolution
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_csd.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Constrained Spherical Deconvolution</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use Multi-Shell Multi-Tissue Constrained Spherical Deconvolution (MSM...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_mcsd_thumb.png
+    :alt: Reconstruction with Multi-Shell Multi-Tissue CSD
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_mcsd.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Multi-Shell Multi-Tissue CSD</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to model the diffusion signal as a linear combination of continuous functions from ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_mapmri_thumb.png
+    :alt: Continuous and analytical diffusion signal modelling with MAP-MRI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_mapmri.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Continuous and analytical diffusion signal modelling with MAP-MRI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Diffusion Kurtosis Imaging (DKI) is one of the conventional ways to estimate the degree of non-...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_msdki_thumb.png
+    :alt: Mean signal diffusion kurtosis imaging (MSDKI)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_msdki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mean signal diffusion kurtosis imaging (MSDKI)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use RUMBA-SD to reconstruct fiber orientation density functions (fODF...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_rumba_thumb.png
+    :alt: Reconstruction with Robust and Unbiased Model-BAsed Spherical Deconvolution
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_rumba.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Robust and Unbiased Model-BAsed Spherical Deconvolution</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="q        au-dMRI can be seen as a time-dependent extension of the MAP-MRI functional basis [Oza...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qtdmri_thumb.png
+    :alt: Estimating diffusion time dependent q-space indices using qt-dMRI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qtdmri.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Estimating diffusion time dependent q-space indices using qt-dMRI</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Contextual Enhancement
+----------------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This demo presents an example of crossing-preserving contextual enhancement of FOD/ODF fields [...">
+
+.. only:: html
+
+  .. image:: /examples_built/10_contextual_enhancement/images/thumb/sphx_glr_contextual_enhancement_thumb.png
+    :alt: Crossing-preserving contextual enhancement
+
+  :ref:`sphx_glr_examples_built_10_contextual_enhancement_contextual_enhancement.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crossing-preserving contextual enhancement</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This demo presents the fiber to bundle coherence (FBC) quantitative measure of the alignment of...">
+
+.. only:: html
+
+  .. image:: /examples_built/10_contextual_enhancement/images/thumb/sphx_glr_fiber_to_bundle_coherence_thumb.png
+    :alt: Fiber to bundle coherence measures
+
+  :ref:`sphx_glr_examples_built_10_contextual_enhancement_fiber_to_bundle_coherence.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fiber to bundle coherence measures</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Fiber Tracking
+--------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Surface seeding is a way to generate initial position for tractography from cortical surfaces p...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_surface_seed_thumb.png
+    :alt: Surface seeding for tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_surface_seed.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Surface seeding for tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Deterministic maximum direction getter is the deterministic version of the probabilistic direct...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_deterministic_thumb.png
+    :alt: An introduction to the Deterministic Maximum Direction Getter
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_deterministic.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">An introduction to the Deterministic Maximum Direction Getter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Parallel Transport Tractography">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_ptt_thumb.png
+    :alt: Parallel Transport Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_ptt.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parallel Transport Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here, we demonstrate fiber tracking using a probabilistic direction getter and RUMBA-SD, a mode...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_rumba_thumb.png
+    :alt: Tracking with Robust Unbiased Model-BAsed Spherical Deconvolution (RUMBA-SD)
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_rumba.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tracking with Robust Unbiased Model-BAsed Spherical Deconvolution (RUMBA-SD)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Tracking requires a per-voxel model. Here, the model is the Sparse Fascicle Model (SFM), descri...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_sfm_thumb.png
+    :alt: Tracking with the Sparse Fascicle Model
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_sfm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tracking with the Sparse Fascicle Model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how choices in direction-getter impact fiber tracking results by demonstrati...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_bootstrap_peaks_thumb.png
+    :alt: Bootstrap and Closest Peak Direction Getters Example
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_bootstrap_peaks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bootstrap and Closest Peak Direction Getters Example</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_introduction_eudx_0_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_introduction_eudx_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_introduction_eudx_1_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_introduction_eudx_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Probabilistic fiber tracking is a way of reconstructing white matter connections using diffusio...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_probabilistic_thumb.png
+    :alt: An introduction to the Probabilistic Direction Getter
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_probabilistic.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">An introduction to the Probabilistic Direction Getter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="PFT finds an alternative streamline segment whenever the stopping criterion returns a position ...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_pft_thumb.png
+    :alt: Particle Filtering Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_pft.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Particle Filtering Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Evaluating the results of tractography algorithms is one of the biggest challenges for diffusio...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_linear_fascicle_evaluation_thumb.png
+    :alt: Linear fascicle evaluation (LiFE)
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_linear_fascicle_evaluation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear fascicle evaluation (LiFE)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Each stopping criterion determines if the stopping is &#x27;valid&#x27; or &#x27;invalid&#x27;. A streamline is &#x27;va...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_stopping_criterion_thumb.png
+    :alt: Using Various Stopping Criterion for Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_stopping_criterion.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using Various Stopping Criterion for Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Streamlines Analysis and Connectivity
+-------------------------------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use BUAN [Chandio2020]_ to calculate shape similarity between ...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_bundle_shape_similarity_thumb.png
+    :alt: BUAN Bundle Shape Similarity Score
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_shape_similarity.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">BUAN Bundle Shape Similarity Score</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use BUAN [Chandio2020]_ to create assignment maps on a bundle....">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_bundle_assignment_maps_thumb.png
+    :alt: BUAN Bundle Assignment Maps Creation
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_assignment_maps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">BUAN Bundle Assignment Maps Creation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we will extract the values of a statistic from a volume, using the coordinates...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_afq_tract_profiles_thumb.png
+    :alt: Extracting AFQ tract profiles from segmented bundles
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_afq_tract_profiles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Extracting AFQ tract profiles from segmented bundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to calculate the lengths of a set of streamlines and also how to compres...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_streamline_length_thumb.png
+    :alt: Streamline length and size reduction
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_length.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Streamline length and size reduction</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an outlier scoring method that compares the pathways of each streamline in a bundle (pa...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_cluster_confidence_thumb.png
+    :alt: Calculation of Outliers with Cluster Confidence Index
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_cluster_confidence.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculation of Outliers with Cluster Confidence Index</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate a Path Length Map for Anisotropic Radiation Therapy Contours given a s...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_path_length_map_thumb.png
+    :alt: Calculate Path Length Map
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_path_length_map.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate Path Length Map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example is meant to be an introduction to some of the streamline tools available in DIPY_....">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_streamline_tools_thumb.png
+    :alt: Connectivity Matrices, ROI Intersections and Density Maps
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_tools.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Connectivity Matrices, ROI Intersections and Density Maps</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Registration
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to coregister a set of bundles to a common space that is not biased b...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundle_group_registration_thumb.png
+    :alt: Groupwise Bundle Registration
+
+  :ref:`sphx_glr_examples_built_20_registration_bundle_group_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Groupwise Bundle Registration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how you can register two bundles from two different subjects directly in ...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundle_registration_thumb.png
+    :alt: Direct Bundle Registration
+
+  :ref:`sphx_glr_examples_built_20_registration_bundle_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Direct Bundle Registration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will register two 3D volumes from the same modality using SyN with the Cross -Correlation (C...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_syn_registration_3d_thumb.png
+    :alt: Symmetric Diffeomorphic Registration in 3D
+
+  :ref:`sphx_glr_examples_built_20_registration_syn_registration_3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Symmetric Diffeomorphic Registration in 3D</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates registration of a binary and a fuzzy image. This could be seen as ali...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_register_binary_fuzzy_thumb.png
+    :alt: Diffeomorphic Registration with binary and fuzzy images
+
+  :ref:`sphx_glr_examples_built_20_registration_register_binary_fuzzy.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Diffeomorphic Registration with binary and fuzzy images</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will perform the classic Circle-To-C experiment for diffeomorphic registration">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_syn_registration_2d_thumb.png
+    :alt: Symmetric Diffeomorphic Registration in 2D
+
+  :ref:`sphx_glr_examples_built_20_registration_syn_registration_2d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Symmetric Diffeomorphic Registration in 2D</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how you can nonlinearly register two bundles from two different subjects ...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundlewarp_registration_thumb.png
+    :alt: Nonrigid Bundle Registration with BundleWarp
+
+  :ref:`sphx_glr_examples_built_20_registration_bundlewarp_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nonrigid Bundle Registration with BundleWarp</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to compute a transformation to register two 3D volumes by maximizatio...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_affine_registration_masks_thumb.png
+    :alt: Affine Registration with Masks
+
+  :ref:`sphx_glr_examples_built_20_registration_affine_registration_masks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Affine Registration with Masks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to register streamlines into a template space by applying non-rigid defo...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_streamline_registration_thumb.png
+    :alt: Applying image-based deformations to streamlines
+
+  :ref:`sphx_glr_examples_built_20_registration_streamline_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Applying image-based deformations to streamlines</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to compute an affine transformation to register two 3D volumes by max...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_affine_registration_3d_thumb.png
+    :alt: Affine Registration in 3D
+
+  :ref:`sphx_glr_examples_built_20_registration_affine_registration_3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Affine Registration in 3D</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Segmentation
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_brain_extraction_dwi_0_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_23_segmentation_brain_extraction_dwi_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_brain_extraction_dwi_1_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_23_segmentation_brain_extraction_dwi_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use QuickBundles [Garyfallidis12]_ to simplify/cluster streaml...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_quickbundles_thumb.png
+    :alt: Tractography Clustering with QuickBundles
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_quickbundles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering with QuickBundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to segment a T1-weighted structural image by using Bayesian formulati...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_tissue_classification_thumb.png
+    :alt: Tissue Classification of a T1-weighted Structural Image
+
+  :ref:`sphx_glr_examples_built_23_segmentation_tissue_classification.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tissue Classification of a T1-weighted Structural Image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This page lists available metrics that can be used by the tractography clustering framework. Fo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_clustering_metrics_thumb.png
+    :alt: Tractography Clustering - Available Metrics
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_clustering_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering - Available Metrics</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how Fast Streamline Search [StOnge2022]_ can be used to find all similar ...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_fast_streamline_search_thumb.png
+    :alt: Fast Streamline Search
+
+  :ref:`sphx_glr_examples_built_23_segmentation_fast_streamline_search.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fast Streamline Search</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="QuickBundles [Garyfallidis12]_ is a flexible algorithm that requires only a distance metric and...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_extending_clustering_framework_thumb.png
+    :alt: Enhancing QuickBundles with different metrics and features
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_extending_clustering_framework.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Enhancing QuickBundles with different metrics and features</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This page lists available features that can be used by the tractography clustering framework. F...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_clustering_features_thumb.png
+    :alt: Tractography Clustering - Available Features
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_clustering_features.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering - Available Features</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use RecoBundles [Garyfallidis17]_ to extract bundles from trac...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_bundle_extraction_thumb.png
+    :alt: Automatic Fiber Bundle Extraction with RecoBundles
+
+  :ref:`sphx_glr_examples_built_23_segmentation_bundle_extraction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Automatic Fiber Bundle Extraction with RecoBundles</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Simulation
+----------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_reconst_dsid_1_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_reconst_dsid_0_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we show how to simulate the Diffusion Kurtosis Imaging (DKI) data of a single v...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_simulate_dki_thumb.png
+    :alt: DKI MultiTensor Simulation
+
+  :ref:`sphx_glr_examples_built_26_simulations_simulate_dki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DKI MultiTensor Simulation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we show how someone can simulate the signal and the ODF of a single voxel using...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_simulate_multi_tensor_thumb.png
+    :alt: MultiTensor Simulation
+
+  :ref:`sphx_glr_examples_built_26_simulations_simulate_multi_tensor.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">MultiTensor Simulation</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Multiprocessing
+---------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show an example of parallel reconstruction using a Q-Ball Constant Solid Angle model (see Ag...">
+
+.. only:: html
+
+  .. image:: /examples_built/29_Multiprocessing/images/thumb/sphx_glr_reconst_csa_parallel_thumb.png
+    :alt: Parallel reconstruction using Q-Ball
+
+  :ref:`sphx_glr_examples_built_29_Multiprocessing_reconst_csa_parallel.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parallel reconstruction using Q-Ball</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use parallelism (multiprocessing) using peaks_from_model in order to ...">
+
+.. only:: html
+
+  .. image:: /examples_built/29_Multiprocessing/images/thumb/sphx_glr_reconst_csd_parallel_thumb.png
+    :alt: Parallel reconstruction using CSD
+
+  :ref:`sphx_glr_examples_built_29_Multiprocessing_reconst_csd_parallel.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parallel reconstruction using CSD</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+File Formats
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview ========">
+
+.. only:: html
+
+  .. image:: /examples_built/32_file_formats/images/thumb/sphx_glr_streamline_formats_thumb.png
+    :alt: Read/Write streamline files
+
+  :ref:`sphx_glr_examples_built_32_file_formats_streamline_formats.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Read/Write streamline files</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Visualization
+-------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here is a simple tutorial following the probabilistic CSA Tracking Example in which we generate...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_roi_contour_thumb.png
+    :alt: Visualization of ROI Surface Rendered with Streamlines
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_roi_contour.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualization of ROI Surface Rendered with Streamlines</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="First, let&#x27;s download some available datasets. Here we are using a dataset which provides metri...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_bundles_thumb.png
+    :alt: Visualize bundles and metrics on bundles
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_bundles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualize bundles and metrics on bundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we present an example for visualizing slices from 3D images.">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_slice_thumb.png
+    :alt: Simple volume slicing
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_slice.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple volume slicing</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In DIPY_ we created a thin interface to access many of the capabilities available in the FURY 3...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_advanced_thumb.png
+    :alt: Advanced interactive visualization
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_advanced.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Advanced interactive visualization</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+Workflows
+--------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A workflow is a series of DIPY_ operations with fixed inputs and outputs that is callable via c...">
+
+.. only:: html
+
+  .. image:: /examples_built/37_workflows/images/thumb/sphx_glr_workflow_creation_thumb.png
+    :alt: Creating a new workflow.
+
+  :ref:`sphx_glr_examples_built_37_workflows_workflow_creation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating a new workflow.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A CombinedWorkflow is a series of DIPY_ workflows organized together in a way that the output o...">
+
+.. only:: html
+
+  .. image:: /examples_built/37_workflows/images/thumb/sphx_glr_combined_workflow_creation_thumb.png
+    :alt: Creating a new combined workflow
+
+  :ref:`sphx_glr_examples_built_37_workflows_combined_workflow_creation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating a new combined workflow</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+   /examples_built/01_quick_start/index.rst
+   /examples_built/04_preprocessing/index.rst
+   /examples_built/07_reconstruction/index.rst
+   /examples_built/10_contextual_enhancement/index.rst
+   /examples_built/13_fiber_tracking/index.rst
+   /examples_built/17_streamline_analysis/index.rst
+   /examples_built/20_registration/index.rst
+   /examples_built/23_segmentation/index.rst
+   /examples_built/26_simulations/index.rst
+   /examples_built/29_Multiprocessing/index.rst
+   /examples_built/32_file_formats/index.rst
+   /examples_built/35_visualization/index.rst
+   /examples_built/37_workflows/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: examples_built_python.zip </examples_built/examples_built_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: examples_built_jupyter.zip </examples_built/examples_built_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

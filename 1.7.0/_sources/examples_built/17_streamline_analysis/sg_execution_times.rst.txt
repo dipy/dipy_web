@@ -1,0 +1,24 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_17_streamline_analysis_sg_execution_times:
+
+Computation times
+=================
+**00:26.036** total execution time for **examples_built_17_streamline_analysis** files:
+
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_afq_tract_profiles.py` (``afq_tract_profiles.py``)           | 00:26.036 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_assignment_maps.py` (``bundle_assignment_maps.py``)   | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_shape_similarity.py` (``bundle_shape_similarity.py``) | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_cluster_confidence.py` (``cluster_confidence.py``)           | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_path_length_map.py` (``path_length_map.py``)                 | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_length.py` (``streamline_length.py``)             | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_tools.py` (``streamline_tools.py``)               | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+

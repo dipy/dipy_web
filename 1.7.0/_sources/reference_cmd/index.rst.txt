@@ -1,0 +1,39 @@
+.. _workflows_reference:
+
+Command Line Utilities Reference
+================================
+
+.. toctree::
+
+   dipy_align_affine.rst
+   dipy_align_syn.rst
+   dipy_apply_transform.rst
+   dipy_buan_lmm.rst
+   dipy_buan_profiles.rst
+   dipy_bundlewarp.rst
+   dipy_correct_motion.rst
+   dipy_denoise_lpca.rst
+   dipy_denoise_mppca.rst
+   dipy_denoise_nlmeans.rst
+   dipy_denoise_patch2self.rst
+   dipy_evac_plus.rst
+   dipy_fetch.rst
+   dipy_fit_csa.rst
+   dipy_fit_csd.rst
+   dipy_fit_dki.rst
+   dipy_fit_dti.rst
+   dipy_fit_ivim.rst
+   dipy_fit_mapmri.rst
+   dipy_gibbs_ringing.rst
+   dipy_horizon.rst
+   dipy_info.rst
+   dipy_labelsbundles.rst
+   dipy_mask.rst
+   dipy_median_otsu.rst
+   dipy_recobundles.rst
+   dipy_reslice.rst
+   dipy_slr.rst
+   dipy_snr_in_cc.rst
+   dipy_split.rst
+   dipy_track.rst
+   dipy_track_pft.rst

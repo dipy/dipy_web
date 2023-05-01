@@ -1,0 +1,42 @@
+
+
+.. _sphx_glr_examples_built_32_file_formats:
+
+File Formats
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview ========">
+
+.. only:: html
+
+  .. image:: /examples_built/32_file_formats/images/thumb/sphx_glr_streamline_formats_thumb.png
+    :alt: Read/Write streamline files
+
+  :ref:`sphx_glr_examples_built_32_file_formats_streamline_formats.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Read/Write streamline files</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/32_file_formats/streamline_formats
+

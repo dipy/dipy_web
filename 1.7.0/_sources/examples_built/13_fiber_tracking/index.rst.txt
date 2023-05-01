@@ -1,0 +1,240 @@
+
+
+.. _sphx_glr_examples_built_13_fiber_tracking:
+
+Fiber Tracking
+--------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Surface seeding is a way to generate initial position for tractography from cortical surfaces p...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_surface_seed_thumb.png
+    :alt: Surface seeding for tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_surface_seed.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Surface seeding for tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Deterministic maximum direction getter is the deterministic version of the probabilistic direct...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_deterministic_thumb.png
+    :alt: An introduction to the Deterministic Maximum Direction Getter
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_deterministic.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">An introduction to the Deterministic Maximum Direction Getter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Parallel Transport Tractography">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_ptt_thumb.png
+    :alt: Parallel Transport Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_ptt.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parallel Transport Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here, we demonstrate fiber tracking using a probabilistic direction getter and RUMBA-SD, a mode...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_rumba_thumb.png
+    :alt: Tracking with Robust Unbiased Model-BAsed Spherical Deconvolution (RUMBA-SD)
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_rumba.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tracking with Robust Unbiased Model-BAsed Spherical Deconvolution (RUMBA-SD)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Tracking requires a per-voxel model. Here, the model is the Sparse Fascicle Model (SFM), descri...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_sfm_thumb.png
+    :alt: Tracking with the Sparse Fascicle Model
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_sfm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tracking with the Sparse Fascicle Model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how choices in direction-getter impact fiber tracking results by demonstrati...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_bootstrap_peaks_thumb.png
+    :alt: Bootstrap and Closest Peak Direction Getters Example
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_bootstrap_peaks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bootstrap and Closest Peak Direction Getters Example</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_introduction_eudx_0_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_introduction_eudx_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_introduction_eudx_1_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_introduction_eudx_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Probabilistic fiber tracking is a way of reconstructing white matter connections using diffusio...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_probabilistic_thumb.png
+    :alt: An introduction to the Probabilistic Direction Getter
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_probabilistic.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">An introduction to the Probabilistic Direction Getter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="PFT finds an alternative streamline segment whenever the stopping criterion returns a position ...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_pft_thumb.png
+    :alt: Particle Filtering Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_pft.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Particle Filtering Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Evaluating the results of tractography algorithms is one of the biggest challenges for diffusio...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_linear_fascicle_evaluation_thumb.png
+    :alt: Linear fascicle evaluation (LiFE)
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_linear_fascicle_evaluation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear fascicle evaluation (LiFE)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Each stopping criterion determines if the stopping is &#x27;valid&#x27; or &#x27;invalid&#x27;. A streamline is &#x27;va...">
+
+.. only:: html
+
+  .. image:: /examples_built/13_fiber_tracking/images/thumb/sphx_glr_tracking_stopping_criterion_thumb.png
+    :alt: Using Various Stopping Criterion for Tractography
+
+  :ref:`sphx_glr_examples_built_13_fiber_tracking_tracking_stopping_criterion.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using Various Stopping Criterion for Tractography</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/13_fiber_tracking/surface_seed
+   /examples_built/13_fiber_tracking/tracking_deterministic
+   /examples_built/13_fiber_tracking/tracking_ptt
+   /examples_built/13_fiber_tracking/tracking_rumba
+   /examples_built/13_fiber_tracking/tracking_sfm
+   /examples_built/13_fiber_tracking/tracking_bootstrap_peaks
+   /examples_built/13_fiber_tracking/tracking_introduction_eudx_0
+   /examples_built/13_fiber_tracking/tracking_introduction_eudx_1
+   /examples_built/13_fiber_tracking/tracking_probabilistic
+   /examples_built/13_fiber_tracking/tracking_pft
+   /examples_built/13_fiber_tracking/linear_fascicle_evaluation
+   /examples_built/13_fiber_tracking/tracking_stopping_criterion
+

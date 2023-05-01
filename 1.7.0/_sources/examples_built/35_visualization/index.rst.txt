@@ -1,0 +1,96 @@
+
+
+.. _sphx_glr_examples_built_35_visualization:
+
+Visualization
+-------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here is a simple tutorial following the probabilistic CSA Tracking Example in which we generate...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_roi_contour_thumb.png
+    :alt: Visualization of ROI Surface Rendered with Streamlines
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_roi_contour.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualization of ROI Surface Rendered with Streamlines</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="First, let&#x27;s download some available datasets. Here we are using a dataset which provides metri...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_bundles_thumb.png
+    :alt: Visualize bundles and metrics on bundles
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_bundles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualize bundles and metrics on bundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we present an example for visualizing slices from 3D images.">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_slice_thumb.png
+    :alt: Simple volume slicing
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_slice.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple volume slicing</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In DIPY_ we created a thin interface to access many of the capabilities available in the FURY 3...">
+
+.. only:: html
+
+  .. image:: /examples_built/35_visualization/images/thumb/sphx_glr_viz_advanced_thumb.png
+    :alt: Advanced interactive visualization
+
+  :ref:`sphx_glr_examples_built_35_visualization_viz_advanced.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Advanced interactive visualization</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/35_visualization/viz_roi_contour
+   /examples_built/35_visualization/viz_bundles
+   /examples_built/35_visualization/viz_slice
+   /examples_built/35_visualization/viz_advanced
+

@@ -1,0 +1,543 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`data`
+===========
+.. automodule:: dipy.data
+
+.. currentmodule:: dipy.data
+.. autosummary::
+
+   DataError
+   loads_compat
+   DATA_DIR
+   get_sim_voxels
+   get_skeleton
+   get_sphere
+   default_sphere
+   small_sphere
+   get_3shell_gtab
+   get_isbi2013_2shell_gtab
+   get_gtab_taiwan_dsi
+   dsi_voxels
+   dsi_deconv_voxels
+   mrtrix_spherical_functions
+   get_cmap
+   two_cingulum_bundles
+   matlab_life_results
+   load_sdp_constraints
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`data.fetcher`
+---------------------------
+.. automodule:: dipy.data.fetcher
+
+.. currentmodule:: dipy.data.fetcher
+.. autosummary::
+
+   copyfileobj_withprogress
+   check_md5
+   fetch_data
+   fetch_isbi2013_2shell
+   fetch_stanford_labels
+   fetch_sherbrooke_3shell
+   fetch_stanford_hardi
+   fetch_resdnn_weights
+   fetch_synb0_weights
+   fetch_synb0_test
+   fetch_evac_weights
+   fetch_evac_test
+   fetch_stanford_t1
+   fetch_stanford_pve_maps
+   fetch_stanford_tracks
+   fetch_taiwan_ntu_dsi
+   fetch_syn_data
+   fetch_mni_template
+   fetch_scil_b0
+   fetch_bundles_2_subjects
+   fetch_ivim
+   fetch_cfin_multib
+   fetch_file_formats
+   fetch_bundle_atlas_hcp842
+   fetch_target_tractogram_hcp
+   fetch_bundle_fa_hcp
+   fetch_qtdMRI_test_retest_2subjects
+   fetch_gold_standard_io
+   fetch_qte_lte_pte
+   fetch_fury_surface
+   fetch_DiB_70_lte_pte_ste
+   fetch_DiB_217_lte_pte_ste
+   fetch_ptt_minimal_dataset
+   fetch_bundle_warp_dataset
+   get_fnames
+   read_qtdMRI_test_retest_2subjects
+   read_scil_b0
+   read_siemens_scil_b0
+   read_isbi2013_2shell
+   read_sherbrooke_3shell
+   read_stanford_labels
+   read_stanford_hardi
+   read_stanford_t1
+   read_stanford_pve_maps
+   read_taiwan_ntu_dsi
+   read_syn_data
+   fetch_tissue_data
+   read_tissue_data
+   read_mni_template
+   fetch_cenir_multib
+   read_cenir_multib
+   read_bundles_2_subjects
+   read_ivim
+   read_cfin_dwi
+   read_cfin_t1
+   get_file_formats
+   get_bundle_atlas_hcp842
+   get_two_hcp842_bundles
+   get_target_tractogram_hcp
+   read_qte_lte_pte
+   read_DiB_70_lte_pte_ste
+   read_DiB_217_lte_pte_ste
+   extract_example_tracts
+   read_five_af_bundles
+   to_bids_description
+   fetch_hcp
+   fetch_hbn
+
+
+.. currentmodule:: dipy.data
+
+
+:class:`DataError`
+~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: DataError
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+loads_compat
+~~~~~~~~~~~~
+
+.. autofunction:: loads_compat
+
+DATA_DIR
+~~~~~~~~
+
+.. autofunction:: DATA_DIR
+
+get_sim_voxels
+~~~~~~~~~~~~~~
+
+.. autofunction:: get_sim_voxels
+
+get_skeleton
+~~~~~~~~~~~~
+
+.. autofunction:: get_skeleton
+
+get_sphere
+~~~~~~~~~~
+
+.. autofunction:: get_sphere
+
+default_sphere
+~~~~~~~~~~~~~~
+
+.. autofunction:: default_sphere
+
+small_sphere
+~~~~~~~~~~~~
+
+.. autofunction:: small_sphere
+
+get_3shell_gtab
+~~~~~~~~~~~~~~~
+
+.. autofunction:: get_3shell_gtab
+
+get_isbi2013_2shell_gtab
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_isbi2013_2shell_gtab
+
+get_gtab_taiwan_dsi
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_gtab_taiwan_dsi
+
+dsi_voxels
+~~~~~~~~~~
+
+.. autofunction:: dsi_voxels
+
+dsi_deconv_voxels
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: dsi_deconv_voxels
+
+mrtrix_spherical_functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: mrtrix_spherical_functions
+
+get_cmap
+~~~~~~~~
+
+.. autofunction:: get_cmap
+
+two_cingulum_bundles
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: two_cingulum_bundles
+
+matlab_life_results
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: matlab_life_results
+
+load_sdp_constraints
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: load_sdp_constraints
+
+
+.. currentmodule:: dipy.data.fetcher
+
+copyfileobj_withprogress
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: copyfileobj_withprogress
+
+check_md5
+~~~~~~~~~
+
+.. autofunction:: check_md5
+
+fetch_data
+~~~~~~~~~~
+
+.. autofunction:: fetch_data
+
+fetch_isbi2013_2shell
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_isbi2013_2shell
+
+fetch_stanford_labels
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_stanford_labels
+
+fetch_sherbrooke_3shell
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_sherbrooke_3shell
+
+fetch_stanford_hardi
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_stanford_hardi
+
+fetch_resdnn_weights
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_resdnn_weights
+
+fetch_synb0_weights
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_synb0_weights
+
+fetch_synb0_test
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_synb0_test
+
+fetch_evac_weights
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_evac_weights
+
+fetch_evac_test
+~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_evac_test
+
+fetch_stanford_t1
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_stanford_t1
+
+fetch_stanford_pve_maps
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_stanford_pve_maps
+
+fetch_stanford_tracks
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_stanford_tracks
+
+fetch_taiwan_ntu_dsi
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_taiwan_ntu_dsi
+
+fetch_syn_data
+~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_syn_data
+
+fetch_mni_template
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_mni_template
+
+fetch_scil_b0
+~~~~~~~~~~~~~
+
+.. autofunction:: fetch_scil_b0
+
+fetch_bundles_2_subjects
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_bundles_2_subjects
+
+fetch_ivim
+~~~~~~~~~~
+
+.. autofunction:: fetch_ivim
+
+fetch_cfin_multib
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_cfin_multib
+
+fetch_file_formats
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_file_formats
+
+fetch_bundle_atlas_hcp842
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_bundle_atlas_hcp842
+
+fetch_target_tractogram_hcp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_target_tractogram_hcp
+
+fetch_bundle_fa_hcp
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_bundle_fa_hcp
+
+fetch_qtdMRI_test_retest_2subjects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_qtdMRI_test_retest_2subjects
+
+fetch_gold_standard_io
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_gold_standard_io
+
+fetch_qte_lte_pte
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_qte_lte_pte
+
+fetch_fury_surface
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_fury_surface
+
+fetch_DiB_70_lte_pte_ste
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_DiB_70_lte_pte_ste
+
+fetch_DiB_217_lte_pte_ste
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_DiB_217_lte_pte_ste
+
+fetch_ptt_minimal_dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_ptt_minimal_dataset
+
+fetch_bundle_warp_dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_bundle_warp_dataset
+
+get_fnames
+~~~~~~~~~~
+
+.. autofunction:: get_fnames
+
+read_qtdMRI_test_retest_2subjects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_qtdMRI_test_retest_2subjects
+
+read_scil_b0
+~~~~~~~~~~~~
+
+.. autofunction:: read_scil_b0
+
+read_siemens_scil_b0
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_siemens_scil_b0
+
+read_isbi2013_2shell
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_isbi2013_2shell
+
+read_sherbrooke_3shell
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_sherbrooke_3shell
+
+read_stanford_labels
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_stanford_labels
+
+read_stanford_hardi
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_stanford_hardi
+
+read_stanford_t1
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_stanford_t1
+
+read_stanford_pve_maps
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_stanford_pve_maps
+
+read_taiwan_ntu_dsi
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_taiwan_ntu_dsi
+
+read_syn_data
+~~~~~~~~~~~~~
+
+.. autofunction:: read_syn_data
+
+fetch_tissue_data
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_tissue_data
+
+read_tissue_data
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_tissue_data
+
+read_mni_template
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_mni_template
+
+fetch_cenir_multib
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: fetch_cenir_multib
+
+read_cenir_multib
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_cenir_multib
+
+read_bundles_2_subjects
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_bundles_2_subjects
+
+read_ivim
+~~~~~~~~~
+
+.. autofunction:: read_ivim
+
+read_cfin_dwi
+~~~~~~~~~~~~~
+
+.. autofunction:: read_cfin_dwi
+
+read_cfin_t1
+~~~~~~~~~~~~
+
+.. autofunction:: read_cfin_t1
+
+get_file_formats
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_file_formats
+
+get_bundle_atlas_hcp842
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_bundle_atlas_hcp842
+
+get_two_hcp842_bundles
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_two_hcp842_bundles
+
+get_target_tractogram_hcp
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: get_target_tractogram_hcp
+
+read_qte_lte_pte
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_qte_lte_pte
+
+read_DiB_70_lte_pte_ste
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_DiB_70_lte_pte_ste
+
+read_DiB_217_lte_pte_ste
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_DiB_217_lte_pte_ste
+
+extract_example_tracts
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: extract_example_tracts
+
+read_five_af_bundles
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: read_five_af_bundles
+
+to_bids_description
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: to_bids_description
+
+fetch_hcp
+~~~~~~~~~
+
+.. autofunction:: fetch_hcp
+
+fetch_hbn
+~~~~~~~~~
+
+.. autofunction:: fetch_hbn
+

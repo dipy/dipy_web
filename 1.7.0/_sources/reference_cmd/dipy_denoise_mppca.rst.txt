@@ -1,0 +1,43 @@
+
+==================
+dipy_denoise_mppca
+==================
+
+Usage
+-----
+
+ dipy_denoise_mppca [-h] [--patch_radius [int ...]] [--pca_method str] [--return_sigma] [--out_dir str] [--out_denoised str] [--out_sigma str] input_files
+
+Workflow wrapping Marcenko-Pastur PCA denoising method.
+
+Positional Arguments
+--------------------
+
+
+  input_files           Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --patch_radius [int ...]
+                        The radius of the local patch to be taken around each voxel (in voxels) For example, for a patch radius with value 2, and assuming the input image is a 3D image, the denoising will take place in blocks of 5x5x5 voxels.
+  --pca_method str      Use either eigenvalue decomposition ('eig') or singular value decomposition ('svd') for principal component analysis. The default method is 'eig' which is faster. However, occasionally 'svd' might be more accurate.
+  --return_sigma        If true, a noise standard deviation estimate based on the Marcenko-Pastur distribution is returned [2]_.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Output directory. (default current directory)
+  --out_denoised str    Name of the resulting denoised volume.
+  --out_sigma str       Name of the resulting sigma volume.
+
+References
+----------
+
+ 
+.. [1] Veraart J, Novikov DS, Christiaens D, Ades-aron B, Sijbers,Fieremans E, 2016. Denoising of Diffusion MRI using random matrixtheory. Neuroimage 142:394-406.doi: 10.1016/j.neuroimage.2016.08.016
+.. [2] Veraart J, Fieremans E, Novikov DS. 2016. Diffusion MRI noisemapping using random matrix theory. Magnetic Resonance in Medicine.doi: 10.1002/mrm.26059.
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

@@ -1,0 +1,186 @@
+
+
+.. _sphx_glr_examples_built_23_segmentation:
+
+Segmentation
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_brain_extraction_dwi_0_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_23_segmentation_brain_extraction_dwi_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_brain_extraction_dwi_1_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_23_segmentation_brain_extraction_dwi_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use QuickBundles [Garyfallidis12]_ to simplify/cluster streaml...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_quickbundles_thumb.png
+    :alt: Tractography Clustering with QuickBundles
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_quickbundles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering with QuickBundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to segment a T1-weighted structural image by using Bayesian formulati...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_tissue_classification_thumb.png
+    :alt: Tissue Classification of a T1-weighted Structural Image
+
+  :ref:`sphx_glr_examples_built_23_segmentation_tissue_classification.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tissue Classification of a T1-weighted Structural Image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This page lists available metrics that can be used by the tractography clustering framework. Fo...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_clustering_metrics_thumb.png
+    :alt: Tractography Clustering - Available Metrics
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_clustering_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering - Available Metrics</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how Fast Streamline Search [StOnge2022]_ can be used to find all similar ...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_fast_streamline_search_thumb.png
+    :alt: Fast Streamline Search
+
+  :ref:`sphx_glr_examples_built_23_segmentation_fast_streamline_search.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fast Streamline Search</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="QuickBundles [Garyfallidis12]_ is a flexible algorithm that requires only a distance metric and...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_extending_clustering_framework_thumb.png
+    :alt: Enhancing QuickBundles with different metrics and features
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_extending_clustering_framework.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Enhancing QuickBundles with different metrics and features</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This page lists available features that can be used by the tractography clustering framework. F...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_segment_clustering_features_thumb.png
+    :alt: Tractography Clustering - Available Features
+
+  :ref:`sphx_glr_examples_built_23_segmentation_segment_clustering_features.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tractography Clustering - Available Features</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use RecoBundles [Garyfallidis17]_ to extract bundles from trac...">
+
+.. only:: html
+
+  .. image:: /examples_built/23_segmentation/images/thumb/sphx_glr_bundle_extraction_thumb.png
+    :alt: Automatic Fiber Bundle Extraction with RecoBundles
+
+  :ref:`sphx_glr_examples_built_23_segmentation_bundle_extraction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Automatic Fiber Bundle Extraction with RecoBundles</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/23_segmentation/brain_extraction_dwi_0
+   /examples_built/23_segmentation/brain_extraction_dwi_1
+   /examples_built/23_segmentation/segment_quickbundles
+   /examples_built/23_segmentation/tissue_classification
+   /examples_built/23_segmentation/segment_clustering_metrics
+   /examples_built/23_segmentation/fast_streamline_search
+   /examples_built/23_segmentation/segment_extending_clustering_framework
+   /examples_built/23_segmentation/segment_clustering_features
+   /examples_built/23_segmentation/bundle_extraction
+

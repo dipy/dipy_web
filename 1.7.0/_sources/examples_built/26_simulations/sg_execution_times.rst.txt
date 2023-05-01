@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_26_simulations_sg_execution_times:
+
+Computation times
+=================
+**00:02.685** total execution time for **examples_built_26_simulations** files:
+
++-------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_26_simulations_simulate_multi_tensor.py` (``simulate_multi_tensor.py``) | 00:02.685 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_0.py` (``reconst_dsid_0.py``)               | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_1.py` (``reconst_dsid_1.py``)               | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_26_simulations_simulate_dki.py` (``simulate_dki.py``)                   | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------+-----------+--------+

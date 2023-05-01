@@ -1,0 +1,56 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`stats`
+============
+.. automodule:: dipy.stats
+
+.. currentmodule:: dipy.stats
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`stats.analysis`
+-----------------------------
+.. automodule:: dipy.stats.analysis
+
+.. currentmodule:: dipy.stats.analysis
+.. autosummary::
+
+   peak_values
+   anatomical_measures
+   assignment_map
+   gaussian_weights
+   afq_profile
+
+
+.. currentmodule:: dipy.stats
+
+
+.. currentmodule:: dipy.stats.analysis
+
+peak_values
+~~~~~~~~~~~
+
+.. autofunction:: peak_values
+
+anatomical_measures
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: anatomical_measures
+
+assignment_map
+~~~~~~~~~~~~~~
+
+.. autofunction:: assignment_map
+
+gaussian_weights
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: gaussian_weights
+
+afq_profile
+~~~~~~~~~~~
+
+.. autofunction:: afq_profile
+

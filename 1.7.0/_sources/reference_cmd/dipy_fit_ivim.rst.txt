@@ -1,0 +1,53 @@
+
+=============
+dipy_fit_ivim
+=============
+
+Usage
+-----
+
+ dipy_fit_ivim [-h] [--split_b_D int] [--split_b_S0 int] [--b0_threshold int] [--save_metrics [str ...]] [--out_dir str] [--out_S0_predicted str]
+                     [--out_perfusion_fraction str] [--out_D_star str] [--out_D str]
+                     input_files bvalues_files bvectors_files mask_files
+
+Workflow for Intra-voxel Incoherent Motion reconstruction and for computing IVIM metrics. Performs a IVIM reconstruction on the files by 'globing' ``input_files`` and saves the IVIM metrics in a directory specified by ``out_dir``.
+
+Positional Arguments
+--------------------
+
+
+  input_files           Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+  bvalues_files         Path to the bvalues files. This path may contain wildcards to use multiple bvalues files at once.
+  bvectors_files        Path to the bvalues files. This path may contain wildcards to use multiple bvalues files at once.
+  mask_files            Path to the input masks. This path may contain wildcards to use multiple masks at once. (default: No mask used)
+
+Optional Arguments
+------------------
+
+
+  -h, --help            show this help message and exit
+  --split_b_D int       Value to split the bvals to estimate D for the two-stage process of fitting.
+  --split_b_S0 int      Value to split the bvals to estimate S0 for the two-stage process of fitting.
+  --b0_threshold int    Threshold value for the b0 bval.
+  --save_metrics [str ...]
+                        List of metrics to save. Possible values: S0_predicted, perfusion_fraction, D_star, D
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str         Output directory. (default current directory)
+  --out_S0_predicted str
+                        Name of the S0 signal estimated to be saved.
+  --out_perfusion_fraction str
+                        Name of the estimated volume fractions to be saved.
+  --out_D_star str      Name of the estimated pseudo-diffusion parameter to be saved.
+  --out_D str           Name of the estimated diffusion parameter to be saved.
+
+References
+----------
+
+ 
+.. [Stejskal65] Stejskal, E. O.; Tanner, J. E. (1 January 1965).                "Spin Diffusion Measurements: Spin Echoes in the                Presence of a Time-Dependent Field Gradient". The                Journal of Chemical Physics 42 (1): 288.                Bibcode: 1965JChPh..42..288S. doi:10.1063/1.1695690.
+.. [LeBihan84] Le Bihan, Denis, et al. "Separation of diffusion               and perfusion in intravoxel incoherent motion MR               imaging." Radiology 168.2 (1988): 497-505.
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

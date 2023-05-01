@@ -1,0 +1,60 @@
+
+
+.. _sphx_glr_examples_built_01_quick_start:
+
+Quick Start
+-----------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In diffusion MRI (dMRI) usually we use three types of files, a Nifti file with the diffusion we...">
+
+.. only:: html
+
+  .. image:: /examples_built/01_quick_start/images/thumb/sphx_glr_quick_start_thumb.png
+    :alt: Getting started with DIPY
+
+  :ref:`sphx_glr_examples_built_01_quick_start_quick_start.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Getting started with DIPY</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Local fiber tracking is an approach used to model white matter fibers by creating streamlines f...">
+
+.. only:: html
+
+  .. image:: /examples_built/01_quick_start/images/thumb/sphx_glr_tracking_introduction_eudx_thumb.png
+    :alt: Introduction to Basic Tracking
+
+  :ref:`sphx_glr_examples_built_01_quick_start_tracking_introduction_eudx.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Introduction to Basic Tracking</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/01_quick_start/quick_start
+   /examples_built/01_quick_start/tracking_introduction_eudx
+

@@ -1,0 +1,63 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`direction`
+================
+.. automodule:: dipy.direction
+
+.. currentmodule:: dipy.direction
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`direction.peaks`
+------------------------------
+.. automodule:: dipy.direction.peaks
+
+.. currentmodule:: dipy.direction.peaks
+.. autosummary::
+
+   PeaksAndMetrics
+   peak_directions_nl
+   peak_directions
+   peaks_from_model
+   reshape_peaks_for_visualization
+
+
+.. currentmodule:: dipy.direction
+
+
+.. currentmodule:: dipy.direction.peaks
+
+
+:class:`PeaksAndMetrics`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. autoclass:: PeaksAndMetrics
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+  .. automethod:: __init__
+
+peak_directions_nl
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: peak_directions_nl
+
+peak_directions
+~~~~~~~~~~~~~~~
+
+.. autofunction:: peak_directions
+
+peaks_from_model
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: peaks_from_model
+
+reshape_peaks_for_visualization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: reshape_peaks_for_visualization
+

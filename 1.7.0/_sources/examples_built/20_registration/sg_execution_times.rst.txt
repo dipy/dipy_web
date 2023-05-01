@@ -1,0 +1,28 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_20_registration_sg_execution_times:
+
+Computation times
+=================
+**01:09.483** total execution time for **examples_built_20_registration** files:
+
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_streamline_registration.py` (``streamline_registration.py``)     | 00:58.789 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_bundlewarp_registration.py` (``bundlewarp_registration.py``)     | 00:10.694 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_affine_registration_3d.py` (``affine_registration_3d.py``)       | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_affine_registration_masks.py` (``affine_registration_masks.py``) | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_bundle_group_registration.py` (``bundle_group_registration.py``) | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_bundle_registration.py` (``bundle_registration.py``)             | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_register_binary_fuzzy.py` (``register_binary_fuzzy.py``)         | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_syn_registration_2d.py` (``syn_registration_2d.py``)             | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_20_registration_syn_registration_3d.py` (``syn_registration_3d.py``)             | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------+-----------+--------+

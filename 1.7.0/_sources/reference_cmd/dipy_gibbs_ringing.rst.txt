@@ -1,0 +1,41 @@
+
+==================
+dipy_gibbs_ringing
+==================
+
+Usage
+-----
+
+ dipy_gibbs_ringing [-h] [--slice_axis int] [--n_points int] [--num_processes int] [--out_dir str] [--out_unring str] input_files
+
+Workflow for applying Gibbs Ringing method.
+
+Positional Arguments
+--------------------
+
+
+  input_files          Path to the input volumes. This path may contain wildcards to process multiple inputs at once.
+
+Optional Arguments
+------------------
+
+
+  -h, --help           show this help message and exit
+  --slice_axis int     Data axis corresponding to the number of acquired slices. Could be (0, 1, or 2): for example, a value of 2 would mean the third axis.
+  --n_points int       Number of neighbour points to access local TV (see note).
+  --num_processes int  Split the calculation to a pool of children processes. Only applies to 3D or 4D `data` arrays. Default is 1. If < 0 the maximal number of cores minus ``num_processes + 1`` is used (enter -1 to use as many cores as possible). 0 raises an error.
+
+Output Arguments(Optional)
+--------------------------
+
+
+  --out_dir str        Output directory. (default current directory)
+  --out_unring str     Name of the resulting denoised volume.
+
+References
+----------
+
+ 
+.. [1] Neto Henriques, R., 2018. Advanced Methods for Diffusion MRIData Analysis and their Application to the Healthy Ageing Brain(Doctoral thesis). https://doi.org/10.17863/CAM.29356
+.. [2] Kellner E, Dhital B, Kiselev VG, Reisert M. Gibbs-ringingartifact removal based on local subvoxel-shifts. Magn Reson Med. 2016doi: 10.1002/mrm.26054.
+Garyfallidis, E., M. Brett, B. Amirbekian, A. Rokem, S. Van Der Walt, M. Descoteaux, and I. Nimmo-Smith. Dipy, a library for the analysis of diffusion MRI data. Frontiers in Neuroinformatics, 1-18, 2014.

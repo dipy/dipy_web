@@ -1,0 +1,240 @@
+
+
+.. _sphx_glr_examples_built_04_preprocessing:
+
+Preprocessing
+-------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview -------- Often in imaging it is common to reslice images in different resolutions. Esp...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_reslice_datasets_thumb.png
+    :alt: Reslice diffusion datasets
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_reslice_datasets.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reslice diffusion datasets</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Overview -------- During a dMRI acquisition, the subject motion inevitable. This motion implies...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_motion_correction_thumb.png
+    :alt: Between-volumes Motion Correction on DWI datasets
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_motion_correction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Between-volumes Motion Correction on DWI datasets</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Often, one is interested in estimating the noise in the diffusion signal. One of the methods to...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_piesno_thumb.png
+    :alt: Noise estimation using PIESNO
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_piesno.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Noise estimation using PIESNO</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Using the non-local means filter [Coupe08]_ and [Coupe11]_ and  you can denoise 3D or 4D images...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_nlmeans_thumb.png
+    :alt: Denoise images using Non-Local Means (NLMEANS)
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_nlmeans.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Non-Local Means (NLMEANS)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to extract brain information and mask from a b0 image using DIPY_&#x27;s segment.mask mo...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_brain_extraction_dwi_thumb.png
+    :alt: Brain segmentation with median_otsu
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_brain_extraction_dwi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brain segmentation with median_otsu</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Patch2Self [Fadnavis20]_ is  a self-supervised learning method for denoising DWI data, which us...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_patch2self_thumb.png
+    :alt: Patch2Self: Self-Supervised Denoising via Statistical Independence
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_patch2self.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Patch2Self: Self-Supervised Denoising via Statistical Independence</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="PCA-based denoising algorithms are effective denoising methods because they explore the redunda...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_localpca_thumb.png
+    :alt: Denoise images using Local PCA via empirical thresholds
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_localpca.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Local PCA via empirical thresholds</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how you can create gradient tables and sphere objects using DIPY_.">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_gradients_spheres_thumb.png
+    :alt: Gradients and Spheres
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_gradients_spheres.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gradients and Spheres</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The adaptive soft coefficient matching (ASCM) as described in [Coupe11]_ is a improved extensio...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_ascm_thumb.png
+    :alt: Denoise images using Adaptive Soft Coefficient Matching (ASCM)
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_ascm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using Adaptive Soft Coefficient Matching (ASCM)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Computing the Signal-to-Noise-Ratio (SNR) of DW images is still an open question, as SNR depend...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_snr_in_cc_thumb.png
+    :alt: SNR estimation for Diffusion-Weighted Images
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_snr_in_cc.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">SNR estimation for Diffusion-Weighted Images</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The PCA-based denoising algorithm exploits the redundancy across the diffusion-weighted images ...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_mppca_thumb.png
+    :alt: Denoise images using the Marcenko-Pastur PCA algorithm
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_mppca.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Denoise images using the Marcenko-Pastur PCA algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Magnetic Resonance (MR) images are reconstructed from the Fourier coefficients of acquired k-sp...">
+
+.. only:: html
+
+  .. image:: /examples_built/04_preprocessing/images/thumb/sphx_glr_denoise_gibbs_thumb.png
+    :alt: Suppress Gibbs oscillations
+
+  :ref:`sphx_glr_examples_built_04_preprocessing_denoise_gibbs.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Suppress Gibbs oscillations</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/04_preprocessing/reslice_datasets
+   /examples_built/04_preprocessing/motion_correction
+   /examples_built/04_preprocessing/piesno
+   /examples_built/04_preprocessing/denoise_nlmeans
+   /examples_built/04_preprocessing/brain_extraction_dwi
+   /examples_built/04_preprocessing/denoise_patch2self
+   /examples_built/04_preprocessing/denoise_localpca
+   /examples_built/04_preprocessing/gradients_spheres
+   /examples_built/04_preprocessing/denoise_ascm
+   /examples_built/04_preprocessing/snr_in_cc
+   /examples_built/04_preprocessing/denoise_mppca
+   /examples_built/04_preprocessing/denoise_gibbs
+

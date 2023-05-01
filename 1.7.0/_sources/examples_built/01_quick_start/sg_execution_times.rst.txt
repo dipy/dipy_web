@@ -1,0 +1,14 @@
+
+:orphan:
+
+.. _sphx_glr_examples_built_01_quick_start_sg_execution_times:
+
+Computation times
+=================
+**00:22.458** total execution time for **examples_built_01_quick_start** files:
+
++-----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_01_quick_start_tracking_introduction_eudx.py` (``tracking_introduction_eudx.py``) | 00:19.945 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_built_01_quick_start_quick_start.py` (``quick_start.py``)                               | 00:02.513 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------+-----------+--------+

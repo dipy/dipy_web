@@ -1,0 +1,186 @@
+
+
+.. _sphx_glr_examples_built_20_registration:
+
+Registration
+------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to coregister a set of bundles to a common space that is not biased b...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundle_group_registration_thumb.png
+    :alt: Groupwise Bundle Registration
+
+  :ref:`sphx_glr_examples_built_20_registration_bundle_group_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Groupwise Bundle Registration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how you can register two bundles from two different subjects directly in ...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundle_registration_thumb.png
+    :alt: Direct Bundle Registration
+
+  :ref:`sphx_glr_examples_built_20_registration_bundle_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Direct Bundle Registration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will register two 3D volumes from the same modality using SyN with the Cross -Correlation (C...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_syn_registration_3d_thumb.png
+    :alt: Symmetric Diffeomorphic Registration in 3D
+
+  :ref:`sphx_glr_examples_built_20_registration_syn_registration_3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Symmetric Diffeomorphic Registration in 3D</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates registration of a binary and a fuzzy image. This could be seen as ali...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_register_binary_fuzzy_thumb.png
+    :alt: Diffeomorphic Registration with binary and fuzzy images
+
+  :ref:`sphx_glr_examples_built_20_registration_register_binary_fuzzy.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Diffeomorphic Registration with binary and fuzzy images</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will perform the classic Circle-To-C experiment for diffeomorphic registration">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_syn_registration_2d_thumb.png
+    :alt: Symmetric Diffeomorphic Registration in 2D
+
+  :ref:`sphx_glr_examples_built_20_registration_syn_registration_2d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Symmetric Diffeomorphic Registration in 2D</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how you can nonlinearly register two bundles from two different subjects ...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_bundlewarp_registration_thumb.png
+    :alt: Nonrigid Bundle Registration with BundleWarp
+
+  :ref:`sphx_glr_examples_built_20_registration_bundlewarp_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nonrigid Bundle Registration with BundleWarp</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to compute a transformation to register two 3D volumes by maximizatio...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_affine_registration_masks_thumb.png
+    :alt: Affine Registration with Masks
+
+  :ref:`sphx_glr_examples_built_20_registration_affine_registration_masks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Affine Registration with Masks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to register streamlines into a template space by applying non-rigid defo...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_streamline_registration_thumb.png
+    :alt: Applying image-based deformations to streamlines
+
+  :ref:`sphx_glr_examples_built_20_registration_streamline_registration.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Applying image-based deformations to streamlines</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how to compute an affine transformation to register two 3D volumes by max...">
+
+.. only:: html
+
+  .. image:: /examples_built/20_registration/images/thumb/sphx_glr_affine_registration_3d_thumb.png
+    :alt: Affine Registration in 3D
+
+  :ref:`sphx_glr_examples_built_20_registration_affine_registration_3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Affine Registration in 3D</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/20_registration/bundle_group_registration
+   /examples_built/20_registration/bundle_registration
+   /examples_built/20_registration/syn_registration_3d
+   /examples_built/20_registration/register_binary_fuzzy
+   /examples_built/20_registration/syn_registration_2d
+   /examples_built/20_registration/bundlewarp_registration
+   /examples_built/20_registration/affine_registration_masks
+   /examples_built/20_registration/streamline_registration
+   /examples_built/20_registration/affine_registration_3d
+

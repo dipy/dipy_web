@@ -1,0 +1,96 @@
+
+
+.. _sphx_glr_examples_built_26_simulations:
+
+Simulation
+----------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_reconst_dsid_1_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_reconst_dsid_0_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_26_simulations_reconst_dsid_0.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we show how to simulate the Diffusion Kurtosis Imaging (DKI) data of a single v...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_simulate_dki_thumb.png
+    :alt: DKI MultiTensor Simulation
+
+  :ref:`sphx_glr_examples_built_26_simulations_simulate_dki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DKI MultiTensor Simulation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we show how someone can simulate the signal and the ODF of a single voxel using...">
+
+.. only:: html
+
+  .. image:: /examples_built/26_simulations/images/thumb/sphx_glr_simulate_multi_tensor_thumb.png
+    :alt: MultiTensor Simulation
+
+  :ref:`sphx_glr_examples_built_26_simulations_simulate_multi_tensor.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">MultiTensor Simulation</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/26_simulations/reconst_dsid_1
+   /examples_built/26_simulations/reconst_dsid_0
+   /examples_built/26_simulations/simulate_dki
+   /examples_built/26_simulations/simulate_multi_tensor
+

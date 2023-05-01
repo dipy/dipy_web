@@ -1,0 +1,177 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`sims`
+===========
+.. automodule:: dipy.sims
+
+.. currentmodule:: dipy.sims
+.. autosummary::
+
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`sims.phantom`
+---------------------------
+.. automodule:: dipy.sims.phantom
+
+.. currentmodule:: dipy.sims.phantom
+.. autosummary::
+
+   add_noise
+   diff2eigenvectors
+   orbital_phantom
+
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+Module: :mod:`sims.voxel`
+-------------------------
+.. automodule:: dipy.sims.voxel
+
+.. currentmodule:: dipy.sims.voxel
+.. autosummary::
+
+   diffusion_evals
+   add_noise
+   sticks_and_ball
+   callaghan_perpendicular
+   gaussian_parallel
+   cylinders_and_ball_soderman
+   single_tensor
+   multi_tensor
+   multi_tensor_dki
+   kurtosis_element
+   dki_signal
+   single_tensor_odf
+   all_tensor_evecs
+   multi_tensor_odf
+   single_tensor_rtop
+   multi_tensor_rtop
+   single_tensor_pdf
+   multi_tensor_pdf
+   single_tensor_msd
+   multi_tensor_msd
+
+
+.. currentmodule:: dipy.sims
+
+
+.. currentmodule:: dipy.sims.phantom
+
+add_noise
+~~~~~~~~~
+
+.. autofunction:: add_noise
+
+diff2eigenvectors
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: diff2eigenvectors
+
+orbital_phantom
+~~~~~~~~~~~~~~~
+
+.. autofunction:: orbital_phantom
+
+
+.. currentmodule:: dipy.sims.voxel
+
+diffusion_evals
+~~~~~~~~~~~~~~~
+
+.. autofunction:: diffusion_evals
+
+add_noise
+~~~~~~~~~
+
+.. autofunction:: add_noise
+
+sticks_and_ball
+~~~~~~~~~~~~~~~
+
+.. autofunction:: sticks_and_ball
+
+callaghan_perpendicular
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: callaghan_perpendicular
+
+gaussian_parallel
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: gaussian_parallel
+
+cylinders_and_ball_soderman
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: cylinders_and_ball_soderman
+
+single_tensor
+~~~~~~~~~~~~~
+
+.. autofunction:: single_tensor
+
+multi_tensor
+~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor
+
+multi_tensor_dki
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor_dki
+
+kurtosis_element
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: kurtosis_element
+
+dki_signal
+~~~~~~~~~~
+
+.. autofunction:: dki_signal
+
+single_tensor_odf
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: single_tensor_odf
+
+all_tensor_evecs
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: all_tensor_evecs
+
+multi_tensor_odf
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor_odf
+
+single_tensor_rtop
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: single_tensor_rtop
+
+multi_tensor_rtop
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor_rtop
+
+single_tensor_pdf
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: single_tensor_pdf
+
+multi_tensor_pdf
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor_pdf
+
+single_tensor_msd
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: single_tensor_msd
+
+multi_tensor_msd
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: multi_tensor_msd
+

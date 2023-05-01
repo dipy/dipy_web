@@ -1,0 +1,150 @@
+
+
+.. _sphx_glr_examples_built_17_streamline_analysis:
+
+Streamlines Analysis and Connectivity
+-------------------------------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use BUAN [Chandio2020]_ to calculate shape similarity between ...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_bundle_shape_similarity_thumb.png
+    :alt: BUAN Bundle Shape Similarity Score
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_shape_similarity.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">BUAN Bundle Shape Similarity Score</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example explains how we can use BUAN [Chandio2020]_ to create assignment maps on a bundle....">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_bundle_assignment_maps_thumb.png
+    :alt: BUAN Bundle Assignment Maps Creation
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_bundle_assignment_maps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">BUAN Bundle Assignment Maps Creation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we will extract the values of a statistic from a volume, using the coordinates...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_afq_tract_profiles_thumb.png
+    :alt: Extracting AFQ tract profiles from segmented bundles
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_afq_tract_profiles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Extracting AFQ tract profiles from segmented bundles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to calculate the lengths of a set of streamlines and also how to compres...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_streamline_length_thumb.png
+    :alt: Streamline length and size reduction
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_length.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Streamline length and size reduction</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an outlier scoring method that compares the pathways of each streamline in a bundle (pa...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_cluster_confidence_thumb.png
+    :alt: Calculation of Outliers with Cluster Confidence Index
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_cluster_confidence.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculation of Outliers with Cluster Confidence Index</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate a Path Length Map for Anisotropic Radiation Therapy Contours given a s...">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_path_length_map_thumb.png
+    :alt: Calculate Path Length Map
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_path_length_map.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate Path Length Map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example is meant to be an introduction to some of the streamline tools available in DIPY_....">
+
+.. only:: html
+
+  .. image:: /examples_built/17_streamline_analysis/images/thumb/sphx_glr_streamline_tools_thumb.png
+    :alt: Connectivity Matrices, ROI Intersections and Density Maps
+
+  :ref:`sphx_glr_examples_built_17_streamline_analysis_streamline_tools.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Connectivity Matrices, ROI Intersections and Density Maps</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/17_streamline_analysis/bundle_shape_similarity
+   /examples_built/17_streamline_analysis/bundle_assignment_maps
+   /examples_built/17_streamline_analysis/afq_tract_profiles
+   /examples_built/17_streamline_analysis/streamline_length
+   /examples_built/17_streamline_analysis/cluster_confidence
+   /examples_built/17_streamline_analysis/path_length_map
+   /examples_built/17_streamline_analysis/streamline_tools
+

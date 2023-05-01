@@ -1,0 +1,480 @@
+
+
+.. _sphx_glr_examples_built_07_reconstruction:
+
+Reconstruction
+--------------
+
+Below, an overview of all reconstruction models available on DIPY.
+
+Note: Some reconstruction models do not have a tutorial yet
+
+.. include:: ../reconstruction_models_list.rst
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Q-space trajectory imaging (QTI) [1]_ with applied positivity constraints (QTI+) is an estimati...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qtiplus_thumb.png
+    :alt: Applying positivity constraints to Q-space Trajectory Imaging (QTI+)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qtiplus.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Applying positivity constraints to Q-space Trajectory Imaging (QTI+)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to model the diffusion signal as a linear combination of continuous functions from ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_shore_thumb.png
+    :alt: Continuous and analytical diffusion signal modelling with 3D-SHORE
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_shore.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Continuous and analytical diffusion signal modelling with 3D-SHORE</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply Diffusion Spectrum Imaging [Wedeen08]_ to diffusion MRI datasets of Cartes...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsi_thumb.png
+    :alt: Reconstruct with Diffusion Spectrum Imaging
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Diffusion Spectrum Imaging</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An alternative method to DSI is the method proposed by [Canales10]_ which is called DSI with De...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsid_thumb.png
+    :alt: DSI Deconvolution vs DSI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsid.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DSI Deconvolution vs DSI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate two SHORE-based scalar maps: return to origin probability (RTOP) [Desc...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_shore_metrics_thumb.png
+    :alt: Calculate SHORE scalar maps
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_shore_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate SHORE scalar maps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply Generalized Q-Sampling Imaging [Yeh2010]_ to diffusion MRI datasets. You c...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_gqi_thumb.png
+    :alt: Reconstruct with Generalized Q-Sampling Imaging
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_gqi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Generalized Q-Sampling Imaging</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to apply a Constant Solid Angle ODF (Q-Ball) model from Aganj et al. [Aganj2010]_ t...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_csa_thumb.png
+    :alt: Reconstruct with Constant Solid Angle (Q-Ball)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_csa.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Constant Solid Angle (Q-Ball)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we will use the Sparse Fascicle Model (SFM) [Rokem2015]_, to reconstruct the f...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_sfm_thumb.png
+    :alt: Reconstruction with the Sparse Fascicle Model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_sfm.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with the Sparse Fascicle Model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to calculate two DSI-based scalar maps: return to origin probability (RTOP) [Descot...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dsi_metrics_thumb.png
+    :alt: Calculate DSI-based scalar maps
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dsi_metrics.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate DSI-based scalar maps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion kurtosis model is an expansion of the diffusion tensor model (see example_reconst...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dki_thumb.png
+    :alt: Reconstruction of the diffusion signal with the kurtosis tensor model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the kurtosis tensor model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Different models of diffusion MRI can be compared based on their accuracy in fitting the diffus...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_kfold_xval_thumb.png
+    :alt: K-fold cross-validation for model comparison
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_kfold_xval.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">K-fold cross-validation for model comparison</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Q-space trajectory imaging (QTI) by Westin et al. [1]_ is a general framework for analyzing dif...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qti_thumb.png
+    :alt: Reconstruct with Q-space Trajectory Imaging (QTI)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruct with Q-space Trajectory Imaging (QTI)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion tensor model is a model that describes the diffusion within a voxel. First propos...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dti_thumb.png
+    :alt: Reconstruction of the diffusion signal with the Tensor model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the Tensor model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to obtain a voxel specific response function in the form of axially symmetric tenso...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_forecast_thumb.png
+    :alt: Crossing invariant fiber response function with FORECAST model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_forecast.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crossing invariant fiber response function with FORECAST model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The diffusion tensor model takes into account certain kinds of noise (thermal), but not other k...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_restore_dti_thumb.png
+    :alt: Using the RESTORE algorithm for robust tensor fitting
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_restore_dti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using the RESTORE algorithm for robust tensor fitting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="DKI can also be used to derive concrete biophysical parameters by applying microstructural mode...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_dki_micro_thumb.png
+    :alt: Reconstruction of the diffusion signal with the WMTI model
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_dki_micro.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction of the diffusion signal with the WMTI model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how you can use a spherical harmonics (SH) function to reconstruct any spher...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_sh_thumb.png
+    :alt: Signal Reconstruction Using Spherical Harmonics
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_sh.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Signal Reconstruction Using Spherical Harmonics</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="As shown previously (see example_reconst_dti), the diffusion tensor model is a simple way to ch...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_fwdti_thumb.png
+    :alt: Using the free water elimination model to remove DTI free water contamination
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_fwdti.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using the free water elimination model to remove DTI free water contamination</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The IVIM model expresses the MRI signal as follows:">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_ivim_thumb.png
+    :alt: Intravoxel incoherent motion
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_ivim.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Intravoxel incoherent motion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use Constrained Spherical Deconvolution (CSD) introduced by Tournier ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_csd_thumb.png
+    :alt: Reconstruction with Constrained Spherical Deconvolution
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_csd.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Constrained Spherical Deconvolution</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use Multi-Shell Multi-Tissue Constrained Spherical Deconvolution (MSM...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_mcsd_thumb.png
+    :alt: Reconstruction with Multi-Shell Multi-Tissue CSD
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_mcsd.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Multi-Shell Multi-Tissue CSD</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show how to model the diffusion signal as a linear combination of continuous functions from ...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_mapmri_thumb.png
+    :alt: Continuous and analytical diffusion signal modelling with MAP-MRI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_mapmri.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Continuous and analytical diffusion signal modelling with MAP-MRI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Diffusion Kurtosis Imaging (DKI) is one of the conventional ways to estimate the degree of non-...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_msdki_thumb.png
+    :alt: Mean signal diffusion kurtosis imaging (MSDKI)
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_msdki.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mean signal diffusion kurtosis imaging (MSDKI)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use RUMBA-SD to reconstruct fiber orientation density functions (fODF...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_rumba_thumb.png
+    :alt: Reconstruction with Robust and Unbiased Model-BAsed Spherical Deconvolution
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_rumba.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reconstruction with Robust and Unbiased Model-BAsed Spherical Deconvolution</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="q        au-dMRI can be seen as a time-dependent extension of the MAP-MRI functional basis [Oza...">
+
+.. only:: html
+
+  .. image:: /examples_built/07_reconstruction/images/thumb/sphx_glr_reconst_qtdmri_thumb.png
+    :alt: Estimating diffusion time dependent q-space indices using qt-dMRI
+
+  :ref:`sphx_glr_examples_built_07_reconstruction_reconst_qtdmri.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Estimating diffusion time dependent q-space indices using qt-dMRI</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_built/07_reconstruction/reconst_qtiplus
+   /examples_built/07_reconstruction/reconst_shore
+   /examples_built/07_reconstruction/reconst_dsi
+   /examples_built/07_reconstruction/reconst_dsid
+   /examples_built/07_reconstruction/reconst_shore_metrics
+   /examples_built/07_reconstruction/reconst_gqi
+   /examples_built/07_reconstruction/reconst_csa
+   /examples_built/07_reconstruction/reconst_sfm
+   /examples_built/07_reconstruction/reconst_dsi_metrics
+   /examples_built/07_reconstruction/reconst_dki
+   /examples_built/07_reconstruction/kfold_xval
+   /examples_built/07_reconstruction/reconst_qti
+   /examples_built/07_reconstruction/reconst_dti
+   /examples_built/07_reconstruction/reconst_forecast
+   /examples_built/07_reconstruction/restore_dti
+   /examples_built/07_reconstruction/reconst_dki_micro
+   /examples_built/07_reconstruction/reconst_sh
+   /examples_built/07_reconstruction/reconst_fwdti
+   /examples_built/07_reconstruction/reconst_ivim
+   /examples_built/07_reconstruction/reconst_csd
+   /examples_built/07_reconstruction/reconst_mcsd
+   /examples_built/07_reconstruction/reconst_mapmri
+   /examples_built/07_reconstruction/reconst_msdki
+   /examples_built/07_reconstruction/reconst_rumba
+   /examples_built/07_reconstruction/reconst_qtdmri
+
