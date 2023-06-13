@@ -48,13 +48,15 @@ def index(request, workshop_slug):
     context['show_pricing_info'] = bool(workshop.pricing_tiers.filter(price__gt=0).count())
     context['coming_soon'] = False
 
-    if timezone.now() < workshop.registration_start_date and int(workshop.year) != 2023:
+    if timezone.now() < workshop.registration_start_date and int(workshop.year) not in [2023, 2024]:
         context['coming_soon'] = True
         return render(request, 'workshop/comingsoon.html', context)
 
     context["STRIPE_PUBLIC_KEY"] = settings.STRIPE_PUBLIC_KEY
     if workshop.year == 2023:
         return render(request, 'workshop/index_2023.html', context)
+    elif workshop.year == 2024:
+        return render(request, 'workshop/index_2024.html', context)
     return render(request, 'workshop/index.html', context)
 
 
