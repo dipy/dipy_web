@@ -1,0 +1,1368 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>DIPY WORKSHOP {{workshop.year}}</title>
+  <meta name="author" content="Maharshi Gor" />
+  <meta name="description" content="DIPY Workshop {{workshop_year}} {{workshop.location}}" />
+  <meta name="keywords" content="Workshop, neuroimaging, dti, diffusion imaging" />
+  <link rel="icon" type="image/png" href="{% static 'images/dipy-favicon.png' %}">
+  <meta name="Resource-type" content="Document" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'
+    type='text/css'>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/countdown.css' %}" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/workshop-2023.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/util.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/timeline.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/gallery.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/number-list.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/carousel.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'workshop/css/highlight-carousel.css' %}" />
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div id="menu-wrap" class="">
+    <div class="row menu-row">
+      <div class="col-md-1 hamburger"><a href="javascript:void(0);" class="icon" onclick="openCloseMenu()"><i
+            class="fa fa-bars color-dipy"></i></a></div>
+      <div class="col-md-10" id="menu">
+        <ul>
+          <li data-menuanchor="Home" onclick="openCloseMenu()"><a href="#Home">Home</a></li>
+          <li data-menuanchor="About" onclick="openCloseMenu()"><a href="#About">About</a></li>
+          <li data-menuanchor="Speakers" onclick="openCloseMenu()"><a href="#Speakers">Speakers</a></li>
+          <li data-menuanchor="Why" onclick="openCloseMenu()"><a href="#Why">Why?</a></li>
+          <li data-menuanchor="Highlight" onclick="openCloseMenu()">
+            <a href="#Highlight" class="no-mobile-view">Highlights</a>
+            <a href="#MHighlight" class="mobile-view-only">Highlights</a>
+          </li>
+          <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
+          <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
+          <!-- <li data-menuanchor="Venue" onclick="openCloseMenu()"><a href="#Venue">Venue</a></li> -->
+          <!-- <li data-menuanchor="Lodging" onclick="openCloseMenu()"><a href="#Lodging">Lodging</a></li> -->
+          <!-- <li data-menuanchor="Gallery" onclick="openCloseMenu()"><a href="#Gallery">Gallery</a></li> -->
+          <li data-menuanchor="Contact" onclick="openCloseMenu()"><a href="#Contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
+    </div>
+  </div>
+  <main>
+    <section class="home" id="Home">
+      <div class="gradient"></div>
+      <div class="simpleslide100">
+        {% if workshop.bg_images.all %}
+        {% for bg in workshop.bg_images.all %}
+        <div class="simpleslide100-item bg-img1" style="background-image: url('{{bg.url}}');"></div>
+        {% endfor %}
+        {% else %}
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/dipy_odf_vs_2018-10-03.png' %});"></div>
+        <div class="simpleslide100-item bg-img1" style="background-image: url({% static 'workshop/images/CST.png' %});">
+        </div>
+        <div class="simpleslide100-item bg-img1"
+          style="background-image: url({% static 'workshop/images/msd_odfs.png' %});"></div>
+        {% endif %}
+      </div>
+      <div class="full-page content-section">
+        <h1 class="content-title l1-txt1 p-b-10">
+          DIPY WORKSHOP
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+        <h5 class="m2-txt4 p-b-25">
+          {{workshop.codename|title}} Edition
+        </h5>
+        {% if workshop.start_date.year != workshop.end_date.year %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F Y"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% elif workshop.start_date.month != workshop.end_date.month %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS F"}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% else %}
+        <p class="m2-txt3 p-b-10">{{workshop.start_date|date:"dS "}} - {{workshop.end_date|date:"dS F Y"}}</p>
+        {% endif %}
+        <p class="m2-txt1 p-b-48">
+          {{workshop.location}}
+        </p>
+
+
+        <!-- <small class="m2-txt1 p-b-25"> <b class="m2-txt2">Workshop</b> has been started <br/> Don't miss it!</small> -->
+
+        <div id="countdown" class="p-b-48">
+          <div class="number">
+            <span class="days time"></span>
+            <span class="text">Days</span>
+          </div>
+          <div class="number">
+            <span class="hours time"></span>
+            <span class="text">Hours</span>
+          </div>
+          <div class="number">
+            <span class="minutes time"></span>
+            <span class="text">Minutes</span>
+          </div>
+          <div class="number">
+            <span class="seconds time"></span>
+            <span class="text">Seconds</span>
+          </div>
+        </div>
+
+        <div class="p-b-25">
+          <a href="#Registration" role="button"
+            class="btn btn-lg btn-secondary register-btn">Register Now</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="full-page about" id="About">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          About the workshop
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="full-page-content about-content p-t-20">
+        <div class="flex-col-c-m pos-absolute watermark-wrapper">
+          <img class="watermark" src="{% static 'workshop/images/dipy-watermark.svg' %}" alt="">
+        </div>
+        <p class="s2-txt4 txt-justify fs-18">
+          Attention grads, researchers, physicists, radiologists, doctors and technicians interested in medical imaging!
+          Join us for an exciting online workshop hosted by DIPY. Our comprehensive program is
+          designed to equip you with the skills and knowledge needed to master the latest techniques and tools in
+          structural and diffusion imaging.
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Our team of expert instructors will guide you through the fundamentals of diffusion theory, data
+          pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading
+          professionals, ask questions, and network with like-minded peers.
+
+        </p>
+        <p class="s2-txt4 txt-justify fa-18 p-t-20">
+          Whether you're new to diffusion imaging or an experienced practitioner, this workshop is perfect for you. Our
+          curriculum is tailored to meet the needs of individuals at all levels of expertise. Don't miss this chance to
+          enhance your skills and advance your career.
+
+        </p>
+        <p class="s2-txt4 txt-justify fs-18 p-t-20">
+          Register today to secure your spot in this highly anticipated event. We can't wait to see you in the event!
+
+        </p>
+        <p class="s2-txt2 txt-right p-t-20">
+          &#8211; DIPY Team!
+        </p>
+      </div>
+    </section>
+
+    <section class="full-page speakers p-b-50" id="Speakers">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Speakers
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="full-page-content speakers-wrapper">
+        <div class="speaker-content">
+          <div class="row">
+            {% for speaker in workshop.speakers.all %}
+            <div class="col-lg-4 p-b-40 flex-c">
+              <div class="speaker-card">
+                <div class="speaker-img">
+                  <img src="{{speaker.avatar_url}}" alt="{{speaker.fullname}}">
+                </div>
+                <div class="speaker-data">
+                  <h3 class="m2-txt4">{{speaker.fullname|title}}</h3>
+                  <p class="p-t-10">{{speaker.title}}</p>
+                  <p class="s2-text3">{{speaker.affiliation}}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <section class="conf-management p-t-50">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black txt-center">
+              Conference Management
+            </h1>
+            <div class="speaker-divider m-b-40"></div>
+          </div>
+          <div class="speaker-content">
+            <div class="row">
+              <div class="col-lg-4 p-b-40 flex-c offset-lg-2">
+                <div class="speaker-card">
+                  <div class="speaker-img">
+                    <img src="{% static 'workshop/images/kelesy.jpg' %}" alt="Kelsey Daniel
+                    ">
+                  </div>
+                  <div class="speaker-data">
+                    <h3 class="m2-txt4">Kelsey Daniel</h3>
+                    <p class="p-t-10">Senior Conference Manager</p>
+                    <p class="s2-text3">Indiana University</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 p-b-40 flex-c">
+                <div class="speaker-card">
+                  <div class="speaker-img">
+                    <img src="{% static 'workshop/images/maharshi.jpeg' %}" alt="Maharshi Gor
+                    ">
+                  </div>
+                  <div class="speaker-data">
+                    <h3 class="m2-txt4">Maharshi Gor</h3>
+                    <p class="p-t-10">Website &amp; Technical Support</p>
+                    <p class="s2-text3">Indiana University</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="participants p-t-50">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black">
+              Participants From
+            </h1>
+            <div class="speaker-divider m-b-40"></div>
+          </div>
+
+          <div class="c-slider">
+            <div class="c-slide-track">
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EPFL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UPENN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UTHA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/BUSM.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EMORY.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUSM.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/LU.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/CAMH.jpg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/USHER.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/HARVARD.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MIT.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MSINAI.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/MWISCONSIN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/JHOPKINS.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCHICAGO.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/DUKE.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/THEMINDRESNET.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/HMRI.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UW.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCB.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UCSD.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/PENNMED.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UARIZONA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/DELLMEDSCHOOL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUPUI.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EPFL.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UPENN.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/UTHA.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/BUSM.jpeg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/EMORY.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/IUSM.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/LU.png' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/CAMH.jpg' %}" width="250" alt="" />
+              </div>
+              <div class="c-slide">
+                <img src="{% static 'workshop/images/universities/USHER.png' %}" width="250" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="thanks p-t-50">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black">
+              Special Thanks
+            </h1>
+            <div class="speaker-divider m-b-40"></div>
+          </div>
+          <div class="flex-col-c w-full thanks-content">
+            <div class="flex-sa w-full flex-w">
+              <img src="{% static 'workshop/images/universities/GRG.png' %}" width="150" alt="" />
+              <img src="{% static 'workshop/images/universities/ISE.jpeg' %}" width="150" alt="" />
+              <!-- <img src="{% static 'workshop/images/universities/NIBIB.jpeg' %}" width="250" alt="" /> -->
+            </div>
+            <strong class="s2-txt2 fs-16 m-b-20 color-black">Multiple speakers including Garyfallidis, Landman and Harezlak are funded by the National Institutes of Health. In addition, Koudoro, Rokem and Girard are funded from an EOSS grant through the Chan Zuckerberg Initiative.</strong>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="full-page why p-b-50" id="Why">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Why DIPY Workshop?
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="full-page-content why-content">
+        <h1 class="m2-txt4 lh-1-5">
+          Here are a few reasons why attending the DIPY MR Imaging workshop is essential:
+        </h1>
+        <div class="p-t-20">
+          <ol class="list">
+            <li class="list-item"><span class="list-item__number">1.</span>
+              <p class="list-item__title">Hands-on experience:</p>
+              <p class="list-item__details txt-justify">
+                The workshop offers a hands-on learning experience, which is essential for learning how to use MR
+                imaging techniques and software effectively. The practical sessions provide attendees with the
+                opportunity to work on real-world problems and gain valuable experience in the field.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">2.</span>
+              <p class="list-item__title">Expert instructors:</p>
+              <p class="list-item__details txt-justify">
+                The workshop is led by expert instructors who have extensive experience in MR imaging and DIPY software.
+                They provide valuable insights and expertise, which is essential for staying up-to-date with the latest
+                advancements in this rapidly evolving field.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">3.</span>
+              <p class="list-item__title">Networking opportunities:</p>
+              <p class="list-item__details txt-justify">
+                The workshop provides an excellent opportunity for attendees to network with other professionals in the
+                field. This can lead to collaborations and the sharing of knowledge and expertise, which is critical for
+                advancing research in the field.
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">4.</span>
+              <p class="list-item__title">Access to the latest technology:</p>
+              <p class="list-item__details txt-justify">
+                The DIPY workshop provides access to the latest software for analyzing and processing MR imaging data.
+                This ensures that attendees are working with the most advanced technology available, which can lead to
+                more accurate and efficient analysis of data.
+
+              </p>
+            </li>
+
+            <li class="list-item"><span class="list-item__number">5.</span>
+              <p class="list-item__title">Deep understanding of the theory behind the methods:</p>
+              <p class="list-item__details txt-justify">
+                The topics covered need a solid understanding of the models, theory and math. For this reason, all
+                tutorials will be provided at four levels : <br />
+                a&#41; Theory <br />
+                b&#41; Algorithms/Methods <br />
+                c&#41; Code/Interfaces <br />
+                d&#41; Clinical Application Examples.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="full-page highlights no-mobile-view" id="Highlight">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Highlights
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="highlight-wrapper">
+        <div class="highlight-container">
+          <input type="radio" name="slider" id="item-1" checked>
+          <input type="radio" name="slider" id="item-2">
+          <input type="radio" name="slider" id="item-3">
+          <input type="radio" name="slider" id="item-4">
+          <input type="radio" name="slider" id="item-5">
+          <input type="radio" name="slider" id="item-6">
+          <div class="cards">
+            <label class="card" for="item-1" id="highlight-1">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/tractometry.png?raw=true"
+                alt="highlight 1">
+            </label>
+            <label class="card" for="item-2" id="highlight-2">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/wrapping_bundles.png?raw=true"
+                alt="highlight 2">
+            </label>
+            <label class="card" for="item-3" id="highlight-3">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/illuminating_lines.png?raw=true"
+                alt="highlight 3">
+            </label>
+            <label class="card" for="item-4" id="highlight-4">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/preprocess.png?raw=true"
+                alt="highlight 4">
+            </label>
+            <label class="card" for="item-5" id="highlight-5">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/brain-extraction.png?raw=true"
+                alt="highlight 5">
+            </label>
+            <label class="card" for="item-6" id="highlight-6">
+              <img src="https://raw.githubusercontent.com/dipy/dipy_data/master/generative_approach.png?raw=true"
+                alt="highlight 6">
+            </label>
+          </div>
+          <div class="player">
+            <div class="upper-part">
+              <div class="info-area" id="test">
+                <label class="highlight-info" id="highlight-info-1">
+                  <div class="title">Advanced tractometry</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-2">
+                  <div class="title">Warping of bundles</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-3">
+                  <div class="title">Cinematic visualization</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-4">
+                  <div class="title">State-of-the-art preprocessing</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-5">
+                  <div class="title">Accurate brain extraction</div>
+                </label>
+                <label class="highlight-info" id="highlight-info-5">
+                  <div class="title">Generative approaches for missing data</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-highlights full-page mobile-view-only" id="MHighlight">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Highlights
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="flex">
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/tractometry.png?raw=true" alt="highlight 1">
+          </div>
+          <div class="title">Advanced tractometry</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/wrapping_bundles.png?raw=true"
+              alt="highlight 2">
+          </div>
+          <div class="title">Warping of bundles</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/illuminating_lines.png?raw=true"
+              alt="highlight 3">
+          </div>
+          <div class="title">Cinematic visualization</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/preprocess.png?raw=true" alt="highlight 4">
+          </div>
+          <div class="title">State-of-the-art preprocessing</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/brain-extraction.png?raw=true"
+              alt="highlight 5">
+          </div>
+          <div class="title">Accurate brain extraction</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-highlights-holder">
+          <div class="m-highlights-img-holder" scroll="0">
+            <img class="m-highlights-img"
+              src="https://raw.githubusercontent.com/dipy/dipy_data/master/generative_approach.png?raw=true"
+              alt="highlight 6">
+          </div>
+          <div class="title">Generative approaches for missing data</div>
+          <div class="left-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+          <div class="right-arrow float-btn">
+            <div class="round">
+              <div id="cta">
+                <span class="arrow primera next "></span>
+                <span class="arrow segunda next "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="full-page program p-b-50" id="Schedule">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Schedule
+        </h1>
+        <div class="speaker-divider m-b-10"></div>
+
+        <strong class="s2-txt2 fs-16 m-b-20">All the times mentioned in the section are according to EST Time
+          Zone.</strong>
+      </div>
+      <div class="full-page-content program-content">
+        <div class="row p-b-100">
+          <div class="col-lg-4 col-sm-12">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 1 - Monday, March 11
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Preprocessing
+              </h5>
+              <div class="row">
+                <div class="col-12" style='text-align: center;'>
+                  <!-- Timeline Area-->
+                  More Detailed Coming Soon...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 2 - Tuesday, March 12
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Reconstruction
+              </h5>
+              <div class="row">
+                <div class="col-12" style='text-align: center;'>
+                  <!-- Timeline Area-->
+                  More Detailed Coming Soon...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 3 - Wednesday, March 13
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Tractography
+              </h5>
+              <div class="row">
+                <div class="col-12" style='text-align: center;'>
+                  <!-- Timeline Area-->
+                  More Detailed Coming Soon...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 4 - Thursday, March 14
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Tractometry
+              </h5>
+              <div class="row">
+                <div class="col-12" style='text-align: center;'>
+                  <!-- Timeline Area-->
+                  More Detailed Coming Soon...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="program-day">
+              <h3 class="program-title m2-txt3 m-b-10">
+                Day 5 - Friday, March 15
+              </h3>
+              <h5 class="program-title m2-txt4 p-b-20">
+                Mixed Topics
+              </h5>
+              <div class="row">
+                <div class="col-12" style='text-align: center;'>
+                  <!-- Timeline Area-->
+                  More Detailed Coming Soon...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="full-page payment p-b-50" id="Registration">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Registration
+        </h1>
+        <div class="speaker-divider"></div>
+      </div>
+      <div class="full-page-content payment-content">
+        <section class="conf-management">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black txt-center">
+              Student
+            </h1>
+            <div class="speaker-divider m-b-10"></div>
+            <strong class="s2-txt2 fs-16 m-b-20">Master's Degree Students, PhD Candidates, Postdocs should take this
+              option.</strong>
+          </div>
+          <div class="speaker-content">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Silver
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;200
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Listen to the talks live.</li>
+                      <li>Learn from the experts.</li>
+                      <li>First 3 days workshop.</li>
+                      <li>Basic kit for diffusion imaging.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Gold
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;500
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Silver.</li>
+                      <li>Complete 5 days of workshop.</li>
+                      <li>Attend study groups </li>
+                      <li>Present your work.</li>
+                      <li>LinkedIn verifiable certificate.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Platinum
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;995
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Gold.</li>
+                      <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
+                      <li>Year-long support option.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="conf-management p-t-50">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black txt-center">
+              Academic
+            </h1>
+            <div class="speaker-divider m-b-10"></div>
+            <strong class="s2-txt2 fs-16 m-b-20">Faculty, Research Scientists, Any Academic Personnel should take this
+              option.</strong>
+          </div>
+          <div class="speaker-content">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Silver
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;300
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Listen to the talks live.</li>
+                      <li>Learn from the experts.</li>
+                      <li>First 3 days of workshop.</li>
+                      <li>Basic kit for diffusion imaging.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Gold
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;600
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Silver.</li>
+                      <li>Complete 5 days of workshop.</li>
+                      <li>Attend study groups </li>
+                      <li>Present your work.</li>
+                      <li>LinkedIn verifiable certificate.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Platinum
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;1200
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Gold.</li>
+                      <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
+                      <li>Year-long support option.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="conf-management p-t-50">
+          <div class="flex-col-c">
+            <h1 class="content-title l2-txt1 p-b-10 color-black txt-center">
+              Non - Academic
+            </h1>
+            <div class="speaker-divider m-b-10"></div>
+            <strong class="s2-txt2 fs-16 m-b-20">Industry Personnel, Medical Staff, Radiologists, Neurologists, etc.
+              should take this option.</strong>
+          </div>
+          <div class="speaker-content">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Silver
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;400
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Listen to the talks live.</li>
+                      <li>Learn from the experts.</li>
+                      <li>First 3 days workshop.</li>
+                      <li>Basic kit for diffusion imaging.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Gold
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;750
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Silver.</li>
+                      <li>Complete 5 days of workshop.</li>
+                      <li>Attend study groups </li>
+                      <li>Present your work.</li>
+                      <li>LinkedIn verifiable certificate.</li>
+                      <li>Ability to upgrade during the workshop.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 p-b-30 p-l-20 p-r-20">
+                <div class="payment-card">
+                  <h4 class="payment-card-title m2-txt4">
+                    Platinum
+                  </h4>
+                  <h4 class="payment-card-amount">
+                    &dollar;1500
+                  </h4>
+                  <div class="payment-benefits">
+                    <p class="m2-txt3 p-b-10">What will be included?</p>
+                    <ul class="s2-text3">
+                      <li>Everything in Gold.</li>
+                      <li>Up to 6 one-hour 1:1 with DIPY developers.</li>
+                      <li>Access to talks after the workshop.</li>
+                      <li>Access to materials after the workshop.</li>
+                      <li>Year-long support option.</li>
+                    </ul>
+                  </div>
+                  <div class="payment-purchase p-b-20 flex-c">
+                    <div>
+                      <button class="btn btn-lg btn-secondary register-btn"
+                        onclick="window.location.href='https://indianauniv.ungerboeck.com/prod/emc00/register.aspx?OrgCode=10&EvtID=11238&AppCode=REG&CC=123012550750';">
+                        Register NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- <div class="p-t-20 flex-c s2-txt2 txt-center">
+
+        These prices includes Unlimited Coffee, Continental Breakfast and Snacks on the venue
+
+      </div> -->
+    </section>
+
+    <!-- <section class="full-page venue p-b-50" id="Venue">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Venue
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+
+      <div class="full-page-content venue-content">
+        <div class="map_canvas">
+          <div class="gmap_canvas">
+            <iframe id="gmap_canvas" height="80%" width="100%" src="{{workshop.location_map}}" frameborder="0"
+              scrolling="no" marginheight="0" marginwidth="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <section class="full-page lodging p-b-50" id="Lodging">
+      <div class="flex-c flex-w">
+        <div class="lodging-section">
+          <h1 class="content-title l1-txt1 p-b-10 color-black">
+            Lodging
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="side-border">
+            <p class="s2-txt4 txt-justify fs-16">
+              A block of rooms has been reserved at Le Merigot Santa Monica at discounted prices. This allows you to be
+              in
+              the same location with the conference and reduce commute time. Which further allows more time to explore
+              Santa Monica.
+
+            </p>
+            <div class="flex-l p-t-20">
+              <i class="fa fa-map-marker color-dipy s2-txt4 fs-16" aria-hidden="true"></i>
+              <p class="s2-txt4 txt-justify fs-16 p-l-10">
+                Le Merigot Santa Monica,
+                1740 Ocean Ave,
+                Santa Monica, CA 90401
+              </p>
+            </div>
+            <p class="s2-txt4 txt-justify fs-16 p-t-20">
+              <strong class="s2-txt2 fs-20">Reservations</strong><br />
+              <span class="p-t-5">
+                In order to secure a hotel room at the conference hotel, you may contact the hotel directly and specify
+                DIPY
+                Workshop to receive the discounted price and make your reservation.
+                You may also reserve your room online through the group booking link below.
+              </span>
+            </p>
+            <div class="p-t-20">
+              <a class="s2-txt2 fs-16"
+                href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.marriott.com%2Fevents%2Fstart.mi%3Fid%3D1675361476433%26key%3DGRP&data=05%7C01%7Ckkdaniel%40iu.edu%7C77e9003ec5994b32529708db05492e67%7C1113be34aed14d00ab4bcdd02510be91%7C0%7C0%7C638109584417929653%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000%7C%7C%7C&sdata=%2Fp7aUbw5Lf0CQIjNl93v%2BnsyIxi%2F9VbreIHfflGJo78%3D&reserved=0">Book
+                your group rate for DIPY Workshop 2023 at Le Merigot Santa Monica
+              </a>
+            </div>
+            <div class="p-t-20">
+              <p class="s2-txt4 fs-18">
+                Last day for this discounted price is: <strong class="color-dipy">March 15, 2023</strong>
+              </p>
+              <p class="s2-txt4 fs-18">
+                Parking: <strong class="color-dipy">&dollar;56</strong>
+              </p>
+              <p class="s2-txt2 p-t-20 p-b-10">Optional Resort Fee Benefits:</p>
+              <div class="flex-c">
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>In-room WIFI</li>
+                  <li>Tesla & Universal Charging Stations</li>
+                  <li>Custom Beach Cruiser Bicycle Rentals</li>
+                  <li>Beach Chair, Umbrella, and Towel Service</li>
+                </ul>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>Boogie Board Rentals</li>
+                  <li>Coffee & Tea Served in the Lobby</li>
+                  <li>Fruit Infused Water Served in the Lobby Every Afternoon</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <div class="lodging-section">
+          <h1 class="content-title l1-txt1 p-b-10 color-black">
+            Transportation
+          </h1>
+          <div class="speaker-divider m-b-40"></div>
+          <div class="side-border">
+            <p class="s2-txt4 txt-justify fs-16">
+              <strong class="s2-txt2 fs-20">Los Angeles International Airport (LAX)</strong>
+            </p>
+            <p class="s2-txt4 fs-14 p-t-10">
+              <i class="fa fa-phone s2-txt4 fs-16" aria-hidden="true"></i> (Airport) : &nbsp;<strong
+                class="color-limestone fs-14">+1 310-646-5252
+              </strong>
+            </p>
+            <p class="s2-txt4 fs-14">
+              <i class="fa fa-location-arrow s2-txt4 fs-16" aria-hidden="true"></i> (Hotel) : &nbsp;<strong
+                class="color-limestone fs-14">14.5 km NW
+
+              </strong>
+            </p>
+            <p class="s2-txt4 txt-justify fs-16 p-t-10">
+              <strong class="s2-txt2 color-limestone fs-20">Hotel does not provide a shuttle service for this
+                event</strong>
+            </p>
+            <p class="s2-txt2 p-t-20">
+              <strong class="s2-txt2 fs-20">
+                Alternative transport:
+              </strong> <br />
+
+            </p>
+            <div class="flex-sb flex-w mobile-wrap">
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Town Car Limo Service</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>&dollar;110 (one way)</li>
+                  <li>Reservation required</li>
+                </ul>
+              </div>
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Taxi</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>&dollar;60 (one way)</li>
+                </ul>
+              </div>
+              <div>
+                <p class="s2-txt2 color-limestone p-t-10 p-b-10">Rideshare services</p>
+                <ul class="s2-txt4 fs-14 p-l-20">
+                  <li>Uber</li>
+                  <li>Lyft</li>
+                </ul>
+              </div>
+
+            </div>
+            <p class="s2-txt2 p-t-20">
+              <strong class="s2-txt2 fs-20">
+                Driving Directions:
+              </strong> <br />
+            </p>
+            <p class="s2-txt2 color-limestone p-t-10 p-b-10">SURFACE STREET</p>
+            <p class="s2-txt4 txt-justify fs-16">
+              Sepulveda Blvd. north to Lincoln Boulevard north, 8 miles to Pico Blvd. turn left, right turn on to Ocean
+              Avenue.
+
+            </p>
+            <p class="s2-txt2 color-limestone p-t-10 p-b-10">FREEWAY</p>
+            <p class="s2-txt4 txt-justify fs-16">
+              Century Blvd. to 405 north, 5 miles to 10 west, 3 miles to 4th/5th Street Exit (stay in the lane that
+              indicates 4th street), turn left on 4th to Pico Blvd., turn right on Pico to Ocean Avenue, then turn right
+              on Ocean ave. We are halfway down the street on the left hand side.
+
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <section class="full-page p-b-50" id="Gallery">
+      <div class="full-page-heading">
+        <h1 class="content-title l1-txt1 p-b-10 color-black">
+          Gallery
+        </h1>
+        <div class="speaker-divider m-b-40"></div>
+      </div>
+      <div class="full-page-content">
+        <section class="gallery">
+          <div class="gallery__item">
+            <input type="radio" id="img-1" checked name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_4.JPG' %}" alt="" />
+            <label for="img-1" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_4.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-2" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_3.JPG' %}" alt="" />
+            <label for="img-2" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_3.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-3" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_2.JPG' %}" alt="" />
+            <label for="img-3" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_2.JPG' %}"
+                alt="" /></label>
+          </div>
+          <div class="gallery__item">
+            <input type="radio" id="img-4" name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{% static 'workshop/images/gallery_1.jpeg' %}" alt="" />
+            <label for="img-4" class="gallery__thumb"><img src="{% static 'workshop/images/gallery_1.jpeg' %}"
+                alt="" /></label>
+          </div>
+        </section>
+        <div class="s2-txt4 txt-justify fs-16 p-t-20 gallery__text">
+          <p>
+            <strong class="s2-txt2 fs-20">About the location</strong>
+          </p>
+          <br />
+          <p>
+            We are fortunate to be holding this workshop in Santa Monica, Los Angeles in one of the most beautiful
+            places in the world. Santa Monica provides a range of facilities and entertainment options near the ocean.
+          </p>
+          <br />
+          <p>
+            In addition, you can of course also visit the great sites available in central LA (The Getty, Universal
+            Studios, etc.). For more options see <a class="s2-txt2 fs-16"
+              href="https://www.timeout.com/los-angeles/things-to-do/best-places-visit-los-angeles" target="_blank">here
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="full-page contact" id="Contact">
+      <h1 class="content-title l1-txt1 p-b-10 color-black">
+        Contact
+      </h1>
+      <div class="speaker-divider m-b-40"></div>
+
+      <div class="p-l-10 row">
+        <div class="col-12 p-l-10 p-r-50">
+          <!-- <i class="fa fa-4x fa-envelope-o" style="color: #ff7f00;"></i> -->
+          <p class="m2-txt3 p-t-20">Contact us for more information by sending an email at
+            <strong>dipy&#64;python.org</strong>
+          </p>
+          <p class="m2-txt3 p-t-20">or joining our interactive chatroom at <a
+              href="https://gitter.im/dipy/dipy"><strong>https://gitter.im/dipy/dipy</strong></a></p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <script type="text/javascript" src="{% static 'workshop/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+  <script type="text/javascript">
+    function openCloseMenu () {
+      if (window.innerWidth < 768) {
+        var x = document.getElementById("menu");
+        if (x.className.includes("responsive")) {
+          x.className = "col-md-10"
+        } else {
+          x.className = "responsive";
+        }
+      }
+    }
+    $(document).ready(function () {
+      // menu highlighting
+      var menu = $('#menu-wrap');
+      menu.hide();
+      $(window).scroll(function () {
+        menu.show();
+        var scrollHeight = $(window).scrollTop();
+        $('a[href^="#"]').each(function () {
+          var target = $(this).attr('href');
+          var offset = $(target).offset().top;
+          var windowHeight = $(window).height();
+          if (offset <= scrollHeight + windowHeight && offset + $(target).height() > scrollHeight) {
+            $(this).parents('#menu li').addClass('active');
+            $(this).parents('#menu li').siblings().removeClass('active');
+            return false; // exit the loop
+          } else {
+            $(this).parents('#menu li').removeClass('active');
+          }
+        });
+        setTimeout(function () {
+          var scrollHeight = $(window).scrollTop();
+          if (scrollHeight == 0) {
+            menu.hide();
+          }
+        }, 500);
+      });
+
+      var activeHighlight = 0;
+      // highlight carousel
+      setInterval(function () {
+        activeHighlight += 1;
+        activeHighlight %= 6;
+        $(`#item-${(activeHighlight + 1)}`).prop('checked', true);
+      }, 3000)
+    });
+  </script>
+
+  <script type="text/javascript" src="{% static 'workshop/js/main.js' %}"></script>
+  <script type="text/javascript" src="{% static 'workshop/js/countdown.js' %}"></script>
+  <script type="text/javascript" src="{% static 'workshop/js/scroll.js' %}"></script>
+
+
+</body>
+
+</html>
