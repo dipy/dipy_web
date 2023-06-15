@@ -4,7 +4,9 @@ __all__ = ['index_static', 'index', 'eventspace', 'dashboard_workshops',
            'add_workshop', 'edit_workshop', 'delete_workshop']
 
 # from calendar import calendar
+import os
 import datetime
+import fnmatch
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -72,6 +74,19 @@ def latest(request):
     workshop = Workshop.objects.latest('start_date')
     return redirect(reverse('workshop:index',
                     kwargs={'workshop_slug': workshop.slug}))
+
+
+def certificates(request, workshop_slug):
+    workshop = Workshop.objects.get(slug__contains=workshop_slug)
+    context = {}
+    context['workshop'] = workshop
+
+    files = os.listdir(os.path.join(settings.STATIC_ROOT, 'workshop',
+                                    'certificates', str(workshop.year)))
+    files = fnmatch.filter(files, '*.pdf')
+    files = {f[:-4].replace('_', ' '): f for f in files}
+    context['all_files'] = files
+    return render(request, 'workshop/certificates.html', context)
 
 
 @login_required

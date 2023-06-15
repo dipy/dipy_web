@@ -36,4 +36,5 @@ urlpatterns = [
     path('', views.workshops, name='workshops'),
     path('latest', views.latest, name='latest'),
     path('<str:workshop_slug>', views.index, name='index'),
+    path('<str:workshop_slug>/certificates', views.certificates, name='certificates'),
 ]
