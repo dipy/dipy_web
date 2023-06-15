@@ -1,0 +1,37 @@
+{% extends "website/base_template.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style type="text/css">
+.loginbox {
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}
+
+
+{% block content_body %}
+<div class="content-card">
+    <div class="row">
+      {% if all_files %}
+      <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
+        <h2 class='text-center'> DIPY Workshops {{workshop.year}} Certificates </h2>
+      </div>
+      <div>
+        {% for name, filepath in all_files.items %}
+          <div class="col-xs-12 col-sm-6"><a href="{% static 'workshop/certificates/' %}{{workshop.year}}/{{filepath}}"><p class="dashboard-button btn btn-default">{{name}}</p></a></div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class = "col-md-6 col-md-offset-3 m-t-80 m-b-80">
+        <div class="col-lg-12 omb_login p-b-10 loginbox">
+          <h2 class='text-center'>No certificates found</h2>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+</div>
+{% endblock %}
