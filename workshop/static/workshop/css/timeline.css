@@ -122,9 +122,7 @@
   width: fit-content;
   border-radius: 20px;
   background-color: #ff7f00;
-  /* padding-right: 10px; */
-  /* This will be fixed once pictures are available */
-  padding: 0 10px;
+  padding-right: 10px;
   opacity: 0.8;
 }
 
