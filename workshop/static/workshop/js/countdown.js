@@ -14,6 +14,7 @@ function getTimeRemaining(endtime) {
 }
 
 function initializeClock(id, endtime) {
+  let clockStop = document.getElementById(id + "-stop");
   let clock = document.getElementById(id);
   let daysSpan = clock.querySelector(".days");
   let hoursSpan = clock.querySelector(".hours");
@@ -30,6 +31,8 @@ function initializeClock(id, endtime) {
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
+      clock.style.display = "none";
+      clockStop.style.display = "block";
     }
   }
 
