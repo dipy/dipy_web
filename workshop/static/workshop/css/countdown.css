@@ -1,30 +1,47 @@
-#countdown {
-  display: flex;
+#countdown,
+#reg-countdown {
+  display: none;
   align-items: center;
   z-index: 3;
   color: white;
 }
-#countdown .number {
+
+#countdown .number,
+#reg-countdown .number {
   font-size: 2.5em;
   position: relative;
   padding-bottom: 12px;
 }
-#countdown .number:not(:last-child) {
+
+#countdown .number:not(:last-child),
+#reg-countdown .number:not(:last-child) {
   margin-right: 20px;
 }
-#countdown .number:not(:last-child)::after {
+
+#countdown .number:not(:last-child)::after,
+#reg-countdown .number:not(:last-child)::after {
   content: ":";
   position: absolute;
   right: -16px;
   top: -0.25vw;
 }
-#countdown .text {
+
+#countdown .text,
+#reg-countdown .text {
   font-size: 0.3em;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
-#countdown .time {
+
+#countdown .time,
+#reg-countdown .time {
   font-size: inherit;
+}
+
+
+#countdown-stop,
+#reg-countdown-stop {
+  display: none;
 }

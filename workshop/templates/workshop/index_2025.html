@@ -52,7 +52,7 @@
             <a href="#MHighlight" class="mobile-view-only">Highlights</a>
           </li>
           <li data-menuanchor="Schedule" onclick="openCloseMenu()"><a href="#Schedule">Schedule</a></li>
-          <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration">Registration</a></li>
+          <li data-menuanchor="Registration" onclick="openCloseMenu()"><a href="#Registration" id="Registration-link">Registration</a></li>
           <!-- <li data-menuanchor="Gallery" onclick="openCloseMenu()"><a href="#Gallery">Gallery</a></li> -->
           <li data-menuanchor="Contact" onclick="openCloseMenu()"><a href="#Contact">Contact</a></li>
         </ul>
@@ -98,6 +98,8 @@
 
 
         <small id="countdown-stop" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Workshop</b> has been started <br/> Don't miss it!</small>
+    
+        <small id="countdown-title" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Registration</b> has been started <br/> Don't miss it!</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -118,8 +120,29 @@
           </div>
         </div>
 
-        <div class="p-b-25">
+        <div class="p-b-25" id="reg-countdown-stop">
           <a href="#Registration" role="button" class="btn btn-lg btn-secondary register-btn">Register Now</a>
+        </div>
+
+        <small id="reg-countdown-title" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Registration</b> will start in ...</small>
+
+        <div id="reg-countdown" class="p-b-48">
+          <div class="number">
+            <span class="days time"></span>
+            <span class="text">Days</span>
+          </div>
+          <div class="number">
+            <span class="hours time"></span>
+            <span class="text">Hours</span>
+          </div>
+          <div class="number">
+            <span class="minutes time"></span>
+            <span class="text">Minutes</span>
+          </div>
+          <div class="number">
+            <span class="seconds time"></span>
+            <span class="text">Seconds</span>
+          </div>
         </div>
 
       </div>
