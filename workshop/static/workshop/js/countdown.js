@@ -40,5 +40,5 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = "2024-03-11T09:00:00-04:00";
+const deadline = "2025-03-16T09:00:00-04:00";
 initializeClock("countdown", deadline);
