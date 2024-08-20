@@ -28,6 +28,8 @@ function initializeClock(id, startTime, endTime, enable) {
     enableBlock.forEach((e) => (e.style.display = "none"));
   }
 
+  let timeinterval = setInterval(updateClock, 1000);
+
   function updateClock() {
     let t = getTimeRemaining(endTime);
 
@@ -49,9 +51,6 @@ function initializeClock(id, startTime, endTime, enable) {
       enableBlock.forEach((e) => (e.style.display = "block"));
     }
   }
-
-  updateClock();
-  let timeinterval = setInterval(updateClock, 1000);
 }
 
 const workshopStart = "2025-03-16T09:00:00-04:00";
