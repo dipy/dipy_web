@@ -50,7 +50,7 @@ def index(request, workshop_slug):
     context['show_pricing_info'] = bool(workshop.pricing_tiers.filter(price__gt=0).count())
     context['coming_soon'] = False
 
-    if timezone.now() < workshop.registration_start_date and int(workshop.year) not in [2023, 2024]:
+    if timezone.now() < workshop.registration_start_date and int(workshop.year) not in [2023, 2024, 2025]:
         context['coming_soon'] = True
         return render(request, 'workshop/comingsoon.html', context)
 
@@ -59,6 +59,8 @@ def index(request, workshop_slug):
         return render(request, 'workshop/index_2023.html', context)
     elif workshop.year == 2024:
         return render(request, 'workshop/index_2024.html', context)
+    elif workshop.year == 2025:
+        return render(request, 'workshop/index_2025.html', context)
     return render(request, 'workshop/index.html', context)
 
 
