@@ -372,6 +372,10 @@ html, body {
   transition: all 0.5s ease-in-out;
 }
 
+.payment-strike-through {
+  font-size: 20px;
+}
+
 .payment-card-amount {
   font-size: 30px;
   font-weight: 600;
@@ -381,6 +385,7 @@ html, body {
   color: white;
   transition: all 0.5s ease-in-out;
 }
+
 
 .payment-benefits {
   text-align: center;
