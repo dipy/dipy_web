@@ -238,7 +238,16 @@ html, body {
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
+  min-height: 542px;
   /* margin: 0 35px; */
+}
+
+.payment-purchase {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  width: 100%;
+  width: calc(100% - 30px);
 }
 
 .venue-content {
@@ -278,6 +287,10 @@ html, body {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 0;
+  }
+
+  .payment-purchase {
+    width: 100%;
   }
 
 
