@@ -60,6 +60,10 @@
       <div class="col-md-1"><img class="" src="{% static 'workshop/images/iu_trident_web_reverse.png' %}"></div>
     </div>
   </div>
+
+  <div class="announcement-banner">
+    <span>Early bird offer extended for students till January 17th!</span>
+  </div>
   <main>
     <section class="home" id="Home">
       <div class="gradient"></div>
@@ -97,9 +101,9 @@
         </p>
 
 
-        <small id="countdown-stop" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Workshop</b> has been started <br/> Don't miss it!</small>
+        <small id="countdown-stop" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Registration</b> is now open! <br/> Secure your spot today - don't miss out!</small>
     
-        <small id="countdown-title" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Registration</b> has been started <br/> Don't miss it!</small>
+        <small id="countdown-title" style="display: none" class="m2-txt1 p-b-25"> <b class="m2-txt2">Registration</b> is now open! <br/> Secure your spot today - don't miss out!</small>
 
         <div id="countdown" class="p-b-48">
           <div class="number">
@@ -1806,7 +1810,7 @@
           Registration
         </h1>
         <div class="speaker-divider m-b-10"></div>
-        <!-- <strong class="s2-txt2 fs-16 m-b-20"><sup>&ast;</sup>Get the Early Birds 25% Discount before 3rd January 2025.</strong> -->
+        <strong class="s2-txt2 fs-16 m-b-20"><sup>&ast;</sup>Get the Early Birds 25% Discount before 17th January 2025 for Students.</strong>
       </div>
       <div class="full-page-content payment-content">
         <section class="conf-management">
@@ -1826,10 +1830,9 @@
                     Basic
                   </h4>
                   <h4 class="payment-card-amount">
-                    <!-- <s class="payment-strike-through">&dollar;400</s> -->
+                    <s class="payment-strike-through">&dollar;400</s>
                     
-                    <span>&dollar;400
-                      <!-- <sup>&ast;</sup> -->
+                    <span>&dollar;300<sup>&ast;</sup>
                     </span>
                   </h4>
                   <div class="payment-benefits">
@@ -1858,9 +1861,8 @@
                     Premium
                   </h4>
                   <h4 class="payment-card-amount">
-                    <!-- <s class="payment-strike-through">&dollar;800</s> -->
-                    <span>&dollar;800
-                      <!-- <sup>&ast;</sup> -->
+                    <s class="payment-strike-through">&dollar;800</s>
+                    <span>&dollar;600<sup>&ast;</sup>
                     </span>
                   </h4>
                   <div class="payment-benefits">
@@ -2143,9 +2145,11 @@
     $(document).ready(function () {
       // menu highlighting
       var menu = $('#menu-wrap');
+      var announcementBanner = $(".announcement-banner");
       menu.hide();
       $(window).scroll(function () {
         menu.show();
+        announcementBanner.hide();
         var scrollHeight = $(window).scrollTop();
         $('a[href^="#"]').each(function () {
           var target = $(this).attr('href');
@@ -2163,6 +2167,7 @@
           var scrollHeight = $(window).scrollTop();
           if (scrollHeight == 0) {
             menu.hide();
+            announcementBanner.show();
           }
         }, 500);
       });
