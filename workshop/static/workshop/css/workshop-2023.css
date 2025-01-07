@@ -40,6 +40,22 @@ html, body {
   padding: 0 50px;
 }
 
+.announcement-banner {
+  position: fixed;
+  top: 0px;
+  height: 50px;
+  width: 100vw;
+  background-color: #fc7f0c;
+  color: #ffffff;
+  z-index: 7;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  font-size: 18px;
+  text-align: center;
+}
 
 .content-section {
   /* Creating half page effect */
@@ -256,6 +272,10 @@ html, body {
 
 
 @media only screen and (max-width: 600px) {
+  .announcement-banner {
+    padding: 10px 20px;
+    height: auto;
+  }
 
   .full-page-heading {
     padding-left: 10px;
