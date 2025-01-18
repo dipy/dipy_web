@@ -1830,9 +1830,10 @@
                     Basic
                   </h4>
                   <h4 class="payment-card-amount">
-                    <s class="payment-strike-through">&dollar;400</s>
+                    <!-- <s class="payment-strike-through">&dollar;400</s> -->
                     
-                    <span>&dollar;300<sup>&ast;</sup>
+                    <span>&dollar;400
+                      <!-- <sup>&ast;</sup> -->
                     </span>
                   </h4>
                   <div class="payment-benefits">
@@ -1861,8 +1862,9 @@
                     Premium
                   </h4>
                   <h4 class="payment-card-amount">
-                    <s class="payment-strike-through">&dollar;800</s>
-                    <span>&dollar;600<sup>&ast;</sup>
+                    <!-- <s class="payment-strike-through">&dollar;800</s> -->
+                    <span>&dollar;800
+                      <!-- <sup>&ast;</sup> -->
                     </span>
                   </h4>
                   <div class="payment-benefits">
@@ -1941,10 +1943,8 @@
                     Premium
                   </h4>
                   <h4 class="payment-card-amount">
-                    <!-- <s class="payment-strike-through">&dollar;1100</s> -->
-                    <span>&dollar;1100
-                      <!-- <sup>&ast;</sup> -->
-                    </span>
+                    <s class="payment-strike-through">&dollar;1100</s>
+                    <span>&dollar;975<sup>&ast;</sup></span>
                   </h4>
                   <div class="payment-benefits">
                     <p class="m2-txt3 p-b-10">What will be included?</p>
@@ -2022,10 +2022,8 @@
                     Premium
                   </h4>
                   <h4 class="payment-card-amount">
-                    <!-- <s class="payment-strike-through">&dollar;1300</s> -->
-                    <span>&dollar;1300
-                      <!-- <sup>&ast;</sup> -->
-                    </span>
+                    <s class="payment-strike-through">&dollar;1300</s>
+                    <span>&dollar;1100<sup>&ast;</sup></span>
                   </h4>
                   <div class="payment-benefits">
                     <p class="m2-txt3 p-b-10">What will be included?</p>
@@ -2147,9 +2145,10 @@
       var menu = $('#menu-wrap');
       var announcementBanner = $(".announcement-banner");
       menu.hide();
+      announcementBanner.hide();
       $(window).scroll(function () {
         menu.show();
-        announcementBanner.hide();
+        // announcementBanner.hide();
         var scrollHeight = $(window).scrollTop();
         $('a[href^="#"]').each(function () {
           var target = $(this).attr('href');
@@ -2167,7 +2166,7 @@
           var scrollHeight = $(window).scrollTop();
           if (scrollHeight == 0) {
             menu.hide();
-            announcementBanner.show();
+            // announcementBanner.show();
           }
         }, 500);
       });
