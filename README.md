@@ -1,4 +1,4 @@
-⚠️⚠️⚠️⚠️⚠️⚠️ DEPRECATED IN  FAVOR of https://github.com/dipy/workshop.dipy.org ⚠️⚠️⚠️⚠️⚠️⚠️
+⚠️⚠️⚠️⚠️⚠️⚠️ DEPRECATED IN  FAVOR of https://github.com/dipy/workshop.dipy.org and https://github.com/dipy/dipy.org ⚠️⚠️⚠️⚠️⚠️⚠️
 
 
 # dipy_web
